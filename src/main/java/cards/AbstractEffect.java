@@ -5,7 +5,7 @@ public abstract class AbstractEffect implements Effect {
 	String effectName;
 	String effectDescription;
 	
-	public AbstractEffect(String effectName, String effectDescription) {
+	public AbstractEffect(final String effectName, final String effectDescription) {
 		super();
 		this.effectName = effectName;
 		this.effectDescription = effectDescription;

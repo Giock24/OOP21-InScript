@@ -13,7 +13,7 @@ public class BaseCard implements Card {
 	//file descrizione
 	//file immagine
 	
-	public BaseCard(String idCard, String name, int lifeValue, int attackValue, int manaCost, Effect effect) {
+	public BaseCard(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final Effect effect) {
 		super();
 		this.idCard = idCard;
 		this.name = name;
