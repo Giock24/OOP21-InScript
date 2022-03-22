@@ -1,4 +1,4 @@
-package it.unibo.samplejavafx;
+package main.application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
