@@ -15,11 +15,11 @@ public class GameMasterImpl implements GameMaster {
     
     boolean isTheAIturn;
 
-    public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck, boolean isTheAIturn) {
+    public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck) {
         super();
         this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Card>(), new ArrayList<Card>());
         this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Card>(), new ArrayList<Card>());
-        this.isTheAIturn = isTheAIturn;
+        this.isTheAIturn = false; 
     }
 
     @Override
