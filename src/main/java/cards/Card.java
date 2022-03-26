@@ -8,4 +8,7 @@ public interface Card {
 	int gatMana();
 	Effect getEffect();
 	int getPlacementRounds();
+	void setArrack(int newValue);
+	void setLifePoint(int newValue);
+	
 }
