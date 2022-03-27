@@ -1,14 +1,19 @@
 package drawphasemanager;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import cards.Card;
 import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
+    private static final boolean PLAYER_TURN = true;
     private Player player;
-    
-    private DrawPhaseManagerImpl(final Player player) {
-        this.player = player;
-    }
+    private Player playerIA;
+    private List<Card> currentDeck;
+    private List<Card> currentHand;
 
     /**
      * {@inheritDoc}
@@ -24,8 +29,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      */
     @Override
     public void drawPhaseManager(final Player player, final Player playerIA) {
-        // TODO Auto-generated method stub
-
+        this.player = player;
+        this.playerIA = playerIA;
     }
 
     /**
@@ -33,26 +38,35 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      */
     @Override
     public void draw(final boolean isThePlayerTurn) {
-        // TODO Auto-generated method stub
+        if (isThePlayerTurn == DrawPhaseManagerImpl.PLAYER_TURN) {
+            this.manaAndHand(this.player);
+        } else {
+            this.manaAndHand(this.playerIA);
+        }
 
     }
     
     /**
-     *   when called increment +1 Player's mana.
+     *   when called increment mana and add one card on currentPlayer's hand
+     *   
+     * @param currentPlayer
      */
-    private void incrementMana() {
-        // TODO Auto-generated method stub
-
+    private void manaAndHand(final Player currentPlayer) {
+        currentPlayer.getMana();
+        this.currentDeck = new ArrayList<>(currentPlayer.getDeck().stream().collect(Collectors.toList()));
+        this.currentHand = new ArrayList<>(currentPlayer.getHand().stream().collect(Collectors.toList()));
+        
+        this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
+        this.currentDeck.remove(this.currentDeck.size() - 1);
     }
     
-    /**
-     *   when called you can decide to swap:
-         from Player turn to IA turn or vice versa.
-         
-     * @param newPlayer is the player set (Player or IA)
-     */
-    private void setStatus(final Player newPlayer) {
-        this.player = newPlayer;
+    public List<Card> getCurrentDeck() {
+        return new ArrayList<>(List.copyOf(this.currentDeck));
     }
+    
+    public List<Card> getCurrentHand() {
+        return new ArrayList<>(List.copyOf(this.currentHand));
+    }
+    
 
 }
