@@ -18,7 +18,7 @@ public class Exalted extends AbstractEffect{
     }
 
     @Override
-    public void useEffect(Player cardOwner, Player enemy, int boardPosition) {
+    public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         if (boardPosition == 0) {
             cardOwner.getCurrentBoard().get(boardPosition+1).setAttack(cardOwner.getCurrentBoard().get(boardPosition+1).getAttack() + 1);
             
