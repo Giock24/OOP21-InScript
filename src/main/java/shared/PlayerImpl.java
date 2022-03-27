@@ -71,9 +71,9 @@ public class PlayerImpl implements Player {
     /**
      *  {@inheritDoc}
      */
-	@Override
-	public void setMana(final int mana) {
-		this.currentMana = this.currentMana + mana;
-	}
+    @Override
+    public void setMana(final int mana) {
+        this.currentMana = this.currentMana + mana;
+    }
 
 }

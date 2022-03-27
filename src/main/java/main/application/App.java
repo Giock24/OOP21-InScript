@@ -12,8 +12,7 @@ public final class App {
     private App() { }
 
     public static void main(final String[] args) {
-        //JavaFXAppWithFXML.run(args);
-        Application.launch(JavaFXApp.class, args);
+        Application.launch(JavaFXAppWithFXML.class, args);
         // The following line raises: Error: class it.unibo.samplejavafx.App is not a subclass of javafx.application.Application
         //JavaFXApp.launch(args);
         // While the following would do just fine:
