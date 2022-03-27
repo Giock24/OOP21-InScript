@@ -68,7 +68,7 @@ public class BaseCard implements Card {
     }
 
     @Override
-    public void setArrack(final int newValue) {
+    public void setAttack(final int newValue) {
         this.attackValue = newValue;
     }
 
