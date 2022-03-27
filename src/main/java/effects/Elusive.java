@@ -18,11 +18,11 @@ public class Elusive extends AbstractEffect{
     }
 
     @Override
-    public void useEffect(Player cardOwner, Player enemy, int boardPosition) {
+    public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         
-        if (!enemy.getCurrentBoard().get(boardPosition).getEffect().getNameEffect().equals("Elusive")) {
+        if (!enemy.getCurrentBoard().get(boardPosition).getEffect().getNameEffect().equals(cardOwner.getCurrentBoard().get(boardPosition).getEffect().getNameEffect())) {
             
-            //waiting for setter method of player life 
+            enemy.setLifePoints(enemy.getLifePoints() - cardOwner.getCurrentBoard().get(boardPosition).getAttack()); 
             
         }
         
