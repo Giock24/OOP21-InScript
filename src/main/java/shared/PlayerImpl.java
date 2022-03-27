@@ -13,7 +13,7 @@ public class PlayerImpl implements Player {
     private ArrayList<Card> currentBoard;
     private ArrayList<Card> hand;
     
-    public PlayerImpl(ArrayList<Card> deck, int lifePoints, int mana, int currentMana,ArrayList<Card> currentBoard, ArrayList<Card> hand) {
+    public PlayerImpl(final ArrayList<Card> deck, final int lifePoints, final int mana, final int currentMana, final ArrayList<Card> currentBoard, final ArrayList<Card> hand) {
         super();
         this.deck = deck;
         this.lifePoints = lifePoints;
@@ -71,9 +71,14 @@ public class PlayerImpl implements Player {
     /**
      *  {@inheritDoc}
      */
-	@Override
-	public void setMana(final int mana) {
-		this.currentMana = this.currentMana + mana;
-	}
+    @Override
+    public void setMana(final int mana) {
+        this.currentMana = this.currentMana + mana;
+    }
+
+    @Override
+    public void setLifePoints(final int newValueOfLife) {
+        this.lifePoints = newValueOfLife;
+    }
 
 }
