@@ -10,6 +10,7 @@ import shared.Player;
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
     private static final boolean PLAYER_TURN = true;
+    private static final int NO_MORE_CARDS = 0;
     private Player player;
     private Player playerIA;
     private List<Card> currentDeck;
@@ -52,12 +53,14 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * @param currentPlayer
      */
     private void manaAndHand(final Player currentPlayer) {
-        currentPlayer.getMana();
-        this.currentDeck = new ArrayList<>(currentPlayer.getDeck().stream().collect(Collectors.toList()));
-        this.currentHand = new ArrayList<>(currentPlayer.getHand().stream().collect(Collectors.toList()));
-        
-        this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
-        this.currentDeck.remove(this.currentDeck.size() - 1);
+        if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
+            currentPlayer.getMana();
+            this.currentDeck = new ArrayList<>(currentPlayer.getDeck().stream().collect(Collectors.toList()));
+            this.currentHand = new ArrayList<>(currentPlayer.getHand().stream().collect(Collectors.toList()));
+            
+            this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
+            this.currentDeck.remove(this.currentDeck.size() - 1);
+        }
     }
     
     public List<Card> getCurrentDeck() {
@@ -67,6 +70,5 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     public List<Card> getCurrentHand() {
         return new ArrayList<>(List.copyOf(this.currentHand));
     }
-    
 
 }
