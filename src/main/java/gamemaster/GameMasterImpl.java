@@ -3,7 +3,7 @@ package gamemaster;
 import java.util.ArrayList;
 
 import cards.Card;
-import drawphasemanager.ControllerDrawPhase;
+import drawphasemanager.DrawPhaseManagerImpl;
 import mainphasemanager.MainPhaseManager;
 import shared.Player;
 import shared.PlayerImpl;
