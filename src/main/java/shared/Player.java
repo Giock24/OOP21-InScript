@@ -1,6 +1,7 @@
 package shared;
 
 import java.util.List;
+import java.util.Optional;
 
 import cards.Card;
 
@@ -26,7 +27,7 @@ public interface Player {
     /**
      * @return the current board
      */
-    List<Card> getCurrentBoard();
+    List<Optional<Card>> getCurrentBoard();
 	
     /**
      * @return return the current Hand
