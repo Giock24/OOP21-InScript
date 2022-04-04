@@ -11,15 +11,15 @@ import shared.PlayerImpl;
 
 public class GameMasterImpl implements GameMaster {
     
-    Player humanPlayer;
-    Player aiPlayer;
+    private Player humanPlayer;
+    private Player aiPlayer;
     
     boolean isTheAIturn;
 
-    public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck, boolean isTheAIturn) {
+    public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck) {
         super();
-        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(Player.NUM_CARD_BOARD), new ArrayList<Card>());
-        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(Player.NUM_CARD_BOARD), new ArrayList<Card>());
+        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
+        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
         this.isTheAIturn = isTheAIturn;
     }
 
@@ -27,6 +27,17 @@ public class GameMasterImpl implements GameMaster {
     public boolean startGame() {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public Player getHumanPlayer() {
+        return humanPlayer;
+    }
+
+    @Override
+    public Player getIAPlayer() {
+        // TODO Auto-generated method stub
+        return aiPlayer;
     }
     
 }
