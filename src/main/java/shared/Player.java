@@ -6,6 +6,8 @@ import java.util.Optional;
 import cards.Card;
 
 public interface Player {
+    
+    int NUM_CARD_BOARD=5;
 
     /**
      * @return the current Deck
