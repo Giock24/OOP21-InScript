@@ -11,8 +11,8 @@ import shared.PlayerImpl;
 
 public class GameMasterImpl implements GameMaster {
     
-    Player humanPlayer;
-    Player aiPlayer;
+    private Player humanPlayer;
+    private Player aiPlayer;
     
     boolean isTheAIturn;
 
@@ -27,6 +27,17 @@ public class GameMasterImpl implements GameMaster {
     public boolean startGame() {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public Player getHumanPlayer() {
+        return humanPlayer;
+    }
+
+    @Override
+    public Player getIAPlayer() {
+        // TODO Auto-generated method stub
+        return aiPlayer;
     }
     
 }
