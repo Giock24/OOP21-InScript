@@ -1,9 +1,11 @@
-package gamemaster;
+package view;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
 import cards.Card;
+import gamemaster.GameMaster;
+import gamemaster.GameMasterImpl;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
