@@ -3,5 +3,13 @@ package battlephasemanager;
 import shared.PhaseManager;
 
 public interface BattlePhaseManager extends PhaseManager {
-    void startBattle(boolean isTheAIturn);
+    
+    /**
+     * the card of the owner of the turn attack the cards of the other player
+     * inside this function are also handle the effect that will be activated in that phase
+     * 
+     * @param isTheAIturn
+     * @return return true if the game is END
+     */
+    boolean startBattle(boolean isTheAIturn);
 }
