@@ -17,7 +17,7 @@ import javafx.scene.control.ScrollPane;
 public class BoardController {
     
     GameMaster gameMaster;
-    Optional<Integer> selectedCardToPlace;
+    Optional<Card> selectedCardToPlace;
     Optional<Card> selectedCardToShow;
     
     
@@ -84,8 +84,8 @@ public class BoardController {
      * 
      * @param cardPosInThePlayerHand index of the player field hand
      */
-    private void onCardSelectedFromHand(int cardPosInThePlayerHand) {
-        selectedCardToPlace=Optional.of(cardPosInThePlayerHand);
+    private void onCardSelectedFromHand(Card selectedCard) {
+        selectedCardToPlace=Optional.of(selectedCard);
     }
     
     /**
@@ -161,7 +161,7 @@ public class BoardController {
     }
     
     /**
-     * this functio attach the cards element to the scrollPane named handPlayer
+     * this function attach the cards element to the scrollPane named handPlayer
      */
     private void updatePlayerHand() {
         handPlayer.getChildren().removeAll();
@@ -170,8 +170,7 @@ public class BoardController {
           
                 final Button cardCell= new Button();
                 cardCell.setOnMouseEntered(event -> onCardSelectedToShow(card));
-                //TODO finish to implement this event
-                //cardCell.setOnMouseClicked(event -> onCardSelectedFromHand(card));
+                cardCell.setOnMouseClicked(event -> onCardSelectedFromHand(card));
                 cardCell.setGraphic(generateCardElement(card));
                 
                 handPlayer.getChildren().add(cardCell);
@@ -196,7 +195,19 @@ public class BoardController {
      */
     @FXML
     private void onEndTrunButtonPress(Event event) {
-        // TODO call the method of the battle phase manager
+        gameMaster.getBattlePhaseManager().startBattle(false);
+        updateView();
+        //TODO add here a timer or an animation to give to the player the time to understand what happened
+        gameMaster.getDrawPhaseManager().draw(true);
+        //TODO gameMaster.getMainPhaseManagerIA()
+        updateView();
+        //TODO add here a timer or an animation to give to the player the time to understand what happened
+        gameMaster.getBattlePhaseManager().startBattle(true);
+        updateView();
+        //TODO add here a timer or an animation to give to the player the time to understand what happened
+        gameMaster.getDrawPhaseManager().draw(false);
+        
+        
     }
 
 
