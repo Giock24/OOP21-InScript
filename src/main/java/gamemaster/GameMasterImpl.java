@@ -8,6 +8,7 @@ import cards.Card;
 import drawphasemanager.DrawPhaseManager;
 import drawphasemanager.DrawPhaseManagerImpl;
 import mainphasemanager.MainPhaseManager;
+import mainphasemanager.MainPhaseManagerIA;
 import shared.Player;
 import shared.PlayerImpl;
 
@@ -21,6 +22,7 @@ public class GameMasterImpl implements GameMaster {
     private DrawPhaseManager drawPhaseManager;
     private MainPhaseManager mainPhaseManager;
     private BattlePhaseManager battlePhaseManager;
+    private MainPhaseManagerIA mainPhaseManagerIA;
 
     public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck) {
         super();
@@ -28,8 +30,9 @@ public class GameMasterImpl implements GameMaster {
         this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
         this.isTheAIturn = false;
         //this.drawPhaseManager = new ()
-        //this.mainPhasemanager = new ()
+        //this.mainPhasemanager = new mainPhaseManager(humanPlayer)
         //this.battlePhaseManager = new ()
+        //this.mainPhaseManagerIA = new mainPhaseManagerIA(aiPlayer)
     }
 
     @Override
@@ -61,6 +64,11 @@ public class GameMasterImpl implements GameMaster {
     @Override
     public BattlePhaseManager getBattlePhaseManager() {
         return battlePhaseManager;
+    }
+
+    @Override
+    public MainPhaseManagerIA getMainPhaseManagerAI() {
+        return mainPhaseManagerIA;
     }
     
 }
