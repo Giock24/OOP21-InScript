@@ -51,12 +51,14 @@ public class BoardController {
     /**
      * this function generate the grafic for the empty cell
      * 
+     * @param inTheAIBoard indicate if the empty card cell is in the player board or in the AI board
      * @return
      */
-    private VBox generateEmptyCardCell() {
+    private VBox generateEmptyCardCell(boolean inTheAIBoard) {
         final VBox emptyCardCell = new VBox();
         
         //TODO add the rest Of the grafic of the empty cell
+        //TODO if the card is in the AI board the image must be upside down
         
         return emptyCardCell;
     }
@@ -130,7 +132,7 @@ public class BoardController {
                 
                 //TODO finish to implement this event
                 //cardCell.setOnMouseClicked(event -> onCardPositioning(card));
-                cardCell.setGraphic(generateEmptyCardCell());
+                cardCell.setGraphic(generateEmptyCardCell(true));
                 
             }
             boardIA.getChildren().add(cardCell);
@@ -154,7 +156,7 @@ public class BoardController {
                 
                 //TODO finish to implement this event
                 //cardCell.setOnMouseClicked(event -> onCardPositioning(card));
-                cardCell.setGraphic(generateEmptyCardCell());
+                cardCell.setGraphic(generateEmptyCardCell(false));
                 
             }
             
@@ -198,14 +200,14 @@ public class BoardController {
     @FXML
     private void onEndTrunButtonPress(Event event) {
         gameMaster.getBattlePhaseManager().startBattle(false);
-        updateView();
+        this.updateView();
         //TODO add here a timer or an animation to give to the player the time to understand what happened
         gameMaster.getDrawPhaseManager().draw(true);
-        //TODO gameMaster.getMainPhaseManagerIA()
-        updateView();
+        gameMaster.getMainPhaseManagerAI().startAIMainPhase();
+        this.updateView();
         //TODO add here a timer or an animation to give to the player the time to understand what happened
         gameMaster.getBattlePhaseManager().startBattle(true);
-        updateView();
+        this.updateView();
         //TODO add here a timer or an animation to give to the player the time to understand what happened
         gameMaster.getDrawPhaseManager().draw(false);
         
