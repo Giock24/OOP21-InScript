@@ -1,5 +1,6 @@
 package view;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -24,7 +25,7 @@ public class MenuGUI implements Showable {
     }
     
     /**
-     * This method start to create the MenuGUI
+     * This method begins to create the MenuGUI
      */
     private void createGUI() {
         final BorderPane layout = new BorderPane();
@@ -44,12 +45,18 @@ public class MenuGUI implements Showable {
         centralPanel.setSpacing(40);
         
         final Button startB = new Button("START GAME");
+        final Button optionB = new Button("OPTIONS");
         final Button quitB = new Button("QUIT");
         
         startB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
+        optionB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         quitB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         
-        centralPanel.getChildren().addAll(startB, quitB);
+        quitB.setOnAction(e -> {
+            Platform.exit();
+        });
+        
+        centralPanel.getChildren().addAll(startB, optionB, quitB);
         
         return centralPanel;
     }
