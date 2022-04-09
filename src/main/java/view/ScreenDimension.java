@@ -4,8 +4,8 @@ import java.awt.Toolkit;
 
 public enum ScreenDimension {
     
-    WIDTH(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2),
-    HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3);
+    HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3),
+    WIDTH(HEIGHT.getValue() * 1.78);
     
     private double value;
     
