@@ -17,6 +17,7 @@ public enum Music {
     MENU_THEME("MainMenuTheme.wav");
     
     private Clip clip;
+    private int currentFrame;
     
     Music(final String musicName) {
         final InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(musicName); 
@@ -42,10 +43,31 @@ public enum Music {
     }
     
     /**
-     * Loop the current music
+     * Start and Loop the current music
      */
     public void loopMusic() {
+        this.clip.start();
         this.clip.loop(Clip.LOOP_CONTINUOUSLY);
+    }
+    
+    /**
+     * @return true if line is active otherwise false
+     */
+    public boolean musicIsActive() {
+        return this.clip.isActive();
+    }
+    
+    /**
+     * Pause and Resume the current music
+     */
+    public void pauseAndResumeMusic() {
+        if (this.musicIsActive()) {
+            this.currentFrame = this.clip.getFramePosition();
+            this.clip.stop();
+        } else {
+            this.clip.setFramePosition(this.currentFrame);
+            this.loopMusic();
+        }
     }
     
     /**
