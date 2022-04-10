@@ -4,25 +4,6 @@ import java.util.Optional;
 import cards.Card;
 import shared.Player;
 
-/**
- * the function pass with this interface will be call for update the view after a change
- *
- */
-@FunctionalInterface
-interface UpdateView {
-    void update();
-}
-
-/**
- * the function pass with this interface will be call for slow down the update during the IA turn
- * and let the user understand the change 
- *
- */
-@FunctionalInterface
-interface SlowUpdate {
-    void slow();
-}
-
 public interface GameMasterController {
     
     //TODO this methods must be called in a updateView Method inside the view//;
@@ -36,12 +17,11 @@ public interface GameMasterController {
     //////////////////////////////////////
 
     
-    void onSelectCardToShow(UpdateView updateView);
+    void onSelectCardToShow(Card card);
     
-    void onSelectCardToPlace(UpdateView updateView);
+    void onSelectCardToPlace(Card card);
     
+    void onCardPlacing(int indexOfTheCellInTheBoard);
     
-    void onPlaceCard(UpdateView updateView);
-    
-    void onEndTurn(UpdateView updateView,SlowUpdate slowUpdate);
+    void onEndTurn();
 }
