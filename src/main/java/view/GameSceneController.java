@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class BoardController {
+public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
     Optional<Card> selectedCardToPlace;
