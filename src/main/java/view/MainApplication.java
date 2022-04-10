@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
-import static view.Music.MENU_THEME;
-
 /**
  * JavaFX entry point, it launches the main menu
  */
@@ -18,9 +16,7 @@ public class MainApplication extends Application {
     public void start(final Stage primaryStage) throws Exception {
         
         Music.init();
-        MENU_THEME.startMusic();
-        MENU_THEME.loopMusic();
-        
+        Music.MENU_THEME.loopMusic();
         
         final Showable menuGUI = new MenuGUI(primaryStage);
         

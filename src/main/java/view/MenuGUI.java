@@ -1,6 +1,7 @@
 package view;
 
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import static view.ScreenDimension.HEIGHT;
 public class MenuGUI implements Showable {
     
     private static final String STYLE_MENU_BUTTON = "buttonMenu";
+    private static final int SPACING = 40;
     
     private final Stage stage;
     private Scene scene;
@@ -31,10 +33,11 @@ public class MenuGUI implements Showable {
         final BorderPane layout = new BorderPane();
         this.scene = new Scene(layout, WIDTH.getValue(), HEIGHT.getValue());
         
-        layout.setTop(null);
+        this.stage.setMinWidth(WIDTH.getValue());
+        this.stage.setMinHeight(HEIGHT.getValue());
+        
         layout.setCenter(this.centerNode());
-        layout.setLeft(null);
-        layout.setRight(null);
+        layout.setBottom(this.bottomNode());
         
         this.scene.getStylesheets().add("application.css");
     }
@@ -42,7 +45,7 @@ public class MenuGUI implements Showable {
     private Node centerNode() {
         final VBox centralPanel = new VBox();
         centralPanel.setAlignment(Pos.CENTER);
-        centralPanel.setSpacing(40);
+        centralPanel.setSpacing(MenuGUI.SPACING);
         
         final Button startB = new Button("START GAME");
         final Button optionB = new Button("OPTIONS");
@@ -59,6 +62,28 @@ public class MenuGUI implements Showable {
         centralPanel.getChildren().addAll(startB, optionB, quitB);
         
         return centralPanel;
+    }
+    
+    private Node bottomNode() {
+        final VBox rightPanel = new VBox();
+        rightPanel.setAlignment(Pos.BOTTOM_RIGHT);
+        rightPanel.setPadding(new Insets(10, 10, 10, 10));
+        
+        final Button volumeB = new Button("VOLUME ON");
+        
+        volumeB.setOnAction(e -> {
+            Music.MENU_THEME.pauseAndResumeMusic();
+            if (Music.MENU_THEME.musicIsActive()) {
+                volumeB.setText("VOLUME ON");
+            } else {
+                volumeB.setText("VOLUME OFF");
+            }
+        });
+        
+        volumeB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
+        rightPanel.getChildren().add(volumeB);
+        
+        return rightPanel;
     }
     
     /**
