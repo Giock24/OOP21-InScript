@@ -24,6 +24,8 @@ public class MenuGUI implements Showable {
     public MenuGUI(final Stage stage) {
         this.stage = stage;
         this.createGUI();
+        
+        final SceneController sc = new SceneController(this.stage, this.scene);
     }
     
     /**
@@ -54,6 +56,12 @@ public class MenuGUI implements Showable {
         startB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         optionB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         quitB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
+        
+        startB.setOnAction(e -> {
+            final BoardGUI board = new BoardGUI(this.stage);
+            this.scene = board.getScene();
+            this.stage.show();
+        });
         
         quitB.setOnAction(e -> {
             Platform.exit();
