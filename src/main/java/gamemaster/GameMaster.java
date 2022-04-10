@@ -3,6 +3,7 @@ package gamemaster;
 import battlephasemanager.BattlePhaseManager;
 import drawphasemanager.DrawPhaseManager;
 import mainphasemanager.MainPhaseManager;
+import mainphasemanager.MainPhaseManagerIA;
 import shared.Player;
 
 public interface GameMaster {
@@ -27,4 +28,5 @@ public interface GameMaster {
     
     BattlePhaseManager getBattlePhaseManager();
     
+    MainPhaseManagerIA getMainPhaseManagerAI();
 }
