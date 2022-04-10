@@ -19,9 +19,6 @@ import javafx.scene.layout.VBox;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
-    Optional<Card> selectedCardToPlace;
-    Optional<Card> selectedCardToShow;
-    
     
     ////player info/////
     @FXML private Label lifePointsPlayer;
@@ -100,6 +97,10 @@ public class GameSceneController {
      * @return
      */
     private VBox generateCardElement(Card card) {
+        
+        //TODO probably can be necessary change the style of the card if it is gameMasterController.getCardToPlace();
+        //in the hand
+   
         
         final VBox cardElement = new VBox();
         cardElement.setAlignment(Pos.CENTER);
@@ -200,6 +201,8 @@ public class GameSceneController {
      * @return
      */
     private void updateCardViewElement() {
+        
+        final Optional<Card> selectedCardToShow = gameMasterController.getCardToShow();
         
         final VBox cardViewElement = new VBox();
         
