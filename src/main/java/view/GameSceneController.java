@@ -39,6 +39,9 @@ public class GameSceneController {
     @FXML private HBox boardPlayer;
     @FXML private HBox handPlayer; //TODO this must be inside a ScrollPane in the view
     
+    ////cardView////
+    @FXML private VBox cardView;
+    
     private UpdateView updateBoardView = () -> {
 
             ////player info/////
@@ -51,10 +54,13 @@ public class GameSceneController {
             currentManaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getCurrentMana()));
             manaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getMana()));
             
-            ////cards//////
+            ////cards////
             updateBoardIA();
             updateBoardPlayer();
             updatePlayerHand();
+            
+            ////cardView////
+            updateCardViewElement();
         
     };
     
@@ -107,6 +113,15 @@ public class GameSceneController {
         return cardElement;
     }
     
+    /**
+     * function connect to the end-turn button
+     * 
+     * @param event
+     */
+    @FXML
+    private void onEndTrunButtonPress(Event event) {
+        gameMasterController.onEndTurn();
+    }
 
     /**
      * this function attach the cards element to the HBox named boardIA
@@ -177,17 +192,27 @@ public class GameSceneController {
            
         });
     }
-    
-    
+       
     /**
-     * function connect to the end-turn button
+     * this function generate the element for the VBox cardView 
      * 
-     * @param event
+     * @param card this is the selected card to show (it can be Optional.empty)
+     * @return
      */
-    @FXML
-    private void onEndTrunButtonPress(Event event) {
-        gameMasterController.onEndTurn();
+    private void updateCardViewElement() {
+        
+        final VBox cardViewElement = new VBox();
+        
+        if(selectedCardToShow.isPresent()) {
+            //TODO add all the grafic for show the card detail
+        } else {
+            //TODO add all the grafic for show the card detail
+        }
+        
+        cardView=cardViewElement;
+        
     }
+    
 
 
 }
