@@ -12,5 +12,6 @@ public interface Card {
     int getPlacementRounds();
     void setAttack(int newValue);
     void setLifePoint(int newValue);
-	
+    void setName(String newName);
+    void setEffect(Optional<Effect> newEffect);
 }

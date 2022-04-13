@@ -71,13 +71,29 @@ public class BaseCard implements Card {
 
     @Override
     public void setAttack(final int newValue) {
+        
         this.attackValue = newValue;
     }
 
 
     @Override
     public void setLifePoint(final int newValue) {
+        
         this.lifeValue = newValue;
+    }
+
+
+    @Override
+    public void setName(final String newName) {
+        
+        this.name = newName;  
+    }
+
+
+    @Override
+    public void setEffect(final Optional<Effect> newEffect) {
+        
+        this.effect = newEffect;   
     }
 	
 }
