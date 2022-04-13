@@ -13,7 +13,7 @@ public class Healer extends AbstractEffect{
 
     @Override
     public ActivationEvent getActivationEvent() {
-        // TODO Auto-generated method stub
+        
         return ActivationEvent.ENEMYDRAW;
     }
 
