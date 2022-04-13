@@ -1,5 +1,7 @@
 package cards;
 
+import java.util.Optional;
+
 public interface CardFactory {
     
     Card noEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
@@ -12,4 +14,9 @@ public interface CardFactory {
     
     Card poisonEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
     
+    Card armoredEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
+    
+    Card rottenEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
+    
+    Card growthEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String growthName, final int growthLife, final int growthAttack, final Optional<Effect> growthEffect);
 }
