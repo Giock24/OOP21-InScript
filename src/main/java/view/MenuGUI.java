@@ -24,8 +24,8 @@ public class MenuGUI implements Showable {
     public MenuGUI(final Stage stage) {
         this.stage = stage;
         this.createGUI();
+        this.startMusic();
         
-        final SceneController sc = new SceneController(this.stage, this.scene);
     }
     
     /**
@@ -44,6 +44,10 @@ public class MenuGUI implements Showable {
         this.scene.getStylesheets().add("application.css");
     }
     
+    /**
+     * @return
+     *          the central Node of the Menu
+     */
     private Node centerNode() {
         final VBox centralPanel = new VBox();
         centralPanel.setAlignment(Pos.CENTER);
@@ -58,8 +62,10 @@ public class MenuGUI implements Showable {
         quitB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         
         startB.setOnAction(e -> {
+            Music.MENU_THEME.stopMusic();
+            
             final BoardGUI board = new BoardGUI(this.stage);
-            this.scene = board.getScene();
+            this.stage.setScene(board.getScene());
             this.stage.show();
         });
         
@@ -72,6 +78,10 @@ public class MenuGUI implements Showable {
         return centralPanel;
     }
     
+    /**
+     * @return
+     *          the bottom Node of the Menu
+     */
     private Node bottomNode() {
         final VBox rightPanel = new VBox();
         rightPanel.setAlignment(Pos.BOTTOM_RIGHT);
@@ -92,6 +102,14 @@ public class MenuGUI implements Showable {
         rightPanel.getChildren().add(volumeB);
         
         return rightPanel;
+    }
+    
+    /**
+     *  every time is called start the music of the Menu
+     */
+    private void startMusic() {
+        Music.init();
+        Music.MENU_THEME.loopMusic();
     }
     
     /**

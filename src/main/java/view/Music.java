@@ -51,6 +51,13 @@ public enum Music {
     }
     
     /**
+     * Stop the current music
+     */
+    public void stopMusic() {
+        this.clip.stop();
+    }
+    
+    /**
      * @return true if line is active otherwise false
      */
     public boolean musicIsActive() {
@@ -63,7 +70,7 @@ public enum Music {
     public void pauseAndResumeMusic() {
         if (this.musicIsActive()) {
             this.currentFrame = this.clip.getFramePosition();
-            this.clip.stop();
+            this.stopMusic();
         } else {
             this.clip.setFramePosition(this.currentFrame);
             this.loopMusic();

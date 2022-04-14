@@ -15,9 +15,6 @@ public class MainApplication extends Application {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         
-        Music.init();
-        Music.MENU_THEME.loopMusic();
-        
         final Showable menuGUI = new MenuGUI(primaryStage);
         
         primaryStage.setScene(menuGUI.getScene());
