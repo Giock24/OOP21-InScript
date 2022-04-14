@@ -11,10 +11,13 @@ import gamemaster.UpdateView;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class GameSceneController {
     
@@ -70,10 +73,13 @@ public class GameSceneController {
 
     };
     
-    
+    /*
+     * tolto momentaneamente per bug che avviene durante il caricamento del fxml
+     * 
     public void initialize(){
         gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate);
     }
+    */
     
     /**
      * this function generate the grafic for the empty cell
@@ -216,6 +222,17 @@ public class GameSceneController {
         
     }
     
-
+    /**
+     * @param event active when is clicked a button
+     *          when this method is called you can return to menu
+     */
+    @FXML
+    public final void switchToMenuScene(final MouseEvent event) {
+        final Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        final Showable menuGUI = new MenuGUI(primaryStage);
+        
+        primaryStage.setScene(menuGUI.getScene());
+        primaryStage.show();
+    }
 
 }

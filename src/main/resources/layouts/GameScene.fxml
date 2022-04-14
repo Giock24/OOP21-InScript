@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+ fx:controller="view.GameSceneController">
    <children>
       <Label layoutX="52.0" layoutY="33.0" text="This will be GameScene">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button layoutX="250.0" layoutY="188.0" mnemonicParsing="false" text="Return to Menu" />
+      <Button onMouseClicked="#switchToMenuScene" layoutX="250.0" layoutY="188.0" mnemonicParsing="false" text="Return to Menu" />
    </children>
 </AnchorPane>
