@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import cards.Card;
+import shared.AppState;
+import shared.AppStateSingleton;
 import shared.Player;
 
 public class GameMasterControllerImpl implements GameMasterController {
@@ -19,9 +21,9 @@ public class GameMasterControllerImpl implements GameMasterController {
         this.slowUpdate = slowUpdate;
         selectedCardToPlace = Optional.empty();
         selectedCardToShow = Optional.empty();
-        //TODO add the deck here
-        gameMaster= new GameMasterImpl(new ArrayList<Card>(), new ArrayList<Card>());
-        gameMaster.startGame(); //TODO cosider to split the operation in start game in differt method for use also slowUpdate
+        final AppState appState =  AppStateSingleton.getInstance(); 
+        gameMaster= new GameMasterImpl(appState.getHumanPlayerDeck(),appState.getAIPlayerDeck());
+        gameMaster.startGame(); //TODO cosider to split the operation in start game in different method for use also slowUpdate
     }
 
     @Override
