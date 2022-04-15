@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cards.Card;
+import cards.DeckFactory;
+import cards.DeckFactoryImpl;
 
 public class AppStateSingleton implements AppState {
 
     private static AppStateSingleton instance = null; 
  
     private AppStateSingleton() {
+        
+        DeckFactory deckFactory = new DeckFactoryImpl();
+        
         DecksList = new ArrayList<List<Card>>();
-        DecksList.add(new ArrayList<Card>()); //TODO isert here a factory of deck
+        DecksList.add(deckFactory.getStandardDeck()); 
         humanPlayerDeck = DecksList.get(0);
         aiPlayerDeck =  DecksList.get(0);
     } 
