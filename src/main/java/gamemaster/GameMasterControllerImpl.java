@@ -17,6 +17,8 @@ public class GameMasterControllerImpl implements GameMasterController {
     public GameMasterControllerImpl(UpdateView updateView,SlowUpdate slowUpdate) {
         this.updateView = updateView;
         this.slowUpdate = slowUpdate;
+        selectedCardToPlace = Optional.empty();
+        selectedCardToShow = Optional.empty();
         //TODO add the deck here
         gameMaster= new GameMasterImpl(new ArrayList<Card>(), new ArrayList<Card>());
         gameMaster.startGame(); //TODO cosider to split the operation in start game in differt method for use also slowUpdate

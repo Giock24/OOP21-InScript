@@ -45,6 +45,9 @@ public class GameSceneController {
    
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate);
+        
+        
+        
         updateBoardView.update();
     }
     
@@ -61,12 +64,12 @@ public class GameSceneController {
         manaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getMana()));
         
         ////cards////
-        //updateBoardIA();
-        //updateBoardPlayer();
-        //updatePlayerHand();
+        updateBoardIA();
+        updateBoardPlayer();
+        updatePlayerHand();
         
         ////cardView////
-        //updateCardViewElement();
+        updateCardViewElement();
     
 };
 
