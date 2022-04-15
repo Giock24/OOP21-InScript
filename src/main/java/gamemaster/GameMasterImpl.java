@@ -1,6 +1,7 @@
 package gamemaster;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
@@ -25,7 +26,7 @@ public class GameMasterImpl implements GameMaster {
     private BattlePhaseManager battlePhaseManager;
     private MainPhaseManagerIA mainPhaseManagerIA;
 
-    public GameMasterImpl(ArrayList<Card> humanPlayerDeck, ArrayList<Card> aiPlayerDeck) {
+    public GameMasterImpl(List<Card> humanPlayerDeck, List<Card> aiPlayerDeck) {
         super();
         this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
         this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
