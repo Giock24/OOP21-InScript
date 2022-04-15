@@ -42,44 +42,43 @@ public class GameSceneController {
     ////cardView////
     @FXML private VBox cardView;
     
+   
+    public void initialize(){
+        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate);
+        updateBoardView.update();
+    }
+    
     private UpdateView updateBoardView = () -> {
 
-            ////player info/////
-            lifePointsPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getLifePoints()));
-            currentManaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getCurrentMana()));
-            manaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getMana()));
-            
-            ////player IA info////
-            lifePointsIA.setText(Integer.toString(gameMasterController.getIAPlayer().getLifePoints()));
-            currentManaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getCurrentMana()));
-            manaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getMana()));
-            
-            ////cards////
-            updateBoardIA();
-            updateBoardPlayer();
-            updatePlayerHand();
-            
-            ////cardView////
-            updateCardViewElement();
+        ////player info/////
+        lifePointsPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getLifePoints()));
+        currentManaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getCurrentMana()));
+        manaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getMana()));
         
-    };
+        ////player IA info////
+        lifePointsIA.setText(Integer.toString(gameMasterController.getIAPlayer().getLifePoints()));
+        currentManaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getCurrentMana()));
+        manaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getMana()));
+        
+        ////cards////
+        //updateBoardIA();
+        //updateBoardPlayer();
+        //updatePlayerHand();
+        
+        ////cardView////
+        //updateCardViewElement();
     
-    private SlowUpdate slowUpdate = () -> {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }   
+};
 
-    };
-    
-    /*
-     * tolto momentaneamente per bug che avviene durante il caricamento del fxml
-     * 
-    public void initialize(){
-        gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate);
-    }
-    */
+    private SlowUpdate slowUpdate = () -> {
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }   
+
+};
+ 
     
     /**
      * this function generate the grafic for the empty cell
