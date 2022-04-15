@@ -12,12 +12,12 @@ public interface AppState {
     
     List<Card> getAIPlayerDeck();
     
-    void selectHumanPlayerDeck(int indexOfTheDeckList);
+    boolean selectHumanPlayerDeck(int indexOfTheDeckList);
     
-    void selectAIPlayer(int indexOfTheDeckList);
+    boolean selectAIPlayer(int indexOfTheDeckList);
     
-    void demoveDeck(int indexOfTheDeckList);
+    boolean demoveDeck(int indexOfTheDeckList);
     
-    void addDeck(List<Card> newDeck);
+    boolean addDeck(List<Card> newDeck);
     
 }
