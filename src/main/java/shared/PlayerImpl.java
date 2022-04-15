@@ -1,19 +1,20 @@
 package shared;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import cards.Card;
 
 public class PlayerImpl implements Player {
     
-    private ArrayList<Card> deck;
+    private List<Card> deck;
     private int lifePoints;
     private int mana;
     private int currentMana;
-    private ArrayList<Card> currentBoard;
-    private ArrayList<Card> hand;
+    private List<Optional<Card>> currentBoard;
+    private List<Card> hand;
     
-    public PlayerImpl(final ArrayList<Card> deck, final int lifePoints, final int mana, final int currentMana, final ArrayList<Card> currentBoard, final ArrayList<Card> hand) {
+    public PlayerImpl(List<Card> deck, int lifePoints, int mana, int currentMana,List<Optional<Card>> currentBoard, List<Card> hand) {
         super();
         this.deck = deck;
         this.lifePoints = lifePoints;
@@ -27,7 +28,7 @@ public class PlayerImpl implements Player {
      *  {@inheritDoc}
      */
     @Override
-    public ArrayList<Card> getDeck() {
+    public List<Card> getDeck() {
         return this.deck;
     }
 
@@ -56,7 +57,7 @@ public class PlayerImpl implements Player {
      *  {@inheritDoc}
      */
     @Override
-    public ArrayList<Card> getCurrentBoard() {
+    public List<Optional<Card>> getCurrentBoard() {
         return this.currentBoard;
     }
 
@@ -64,7 +65,7 @@ public class PlayerImpl implements Player {
      *  {@inheritDoc}
      */
     @Override
-    public ArrayList<Card> getHand() {
+    public List<Card> getHand() {
         return this.hand;
     }
 
