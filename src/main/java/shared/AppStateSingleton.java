@@ -25,53 +25,61 @@ public class AppStateSingleton implements AppState {
     }
  
     
+    private List<List<Card>> DecksList;
+    
     private List<Card> humanPlayerDeck;
     
     private List<Card> aiPlayerDeck;
     
-    private List<List<Card>> DecksList;
-    
 
     @Override
     public List<List<Card>> getDecksList() {
-        // TODO Auto-generated method stub
-        return null;
+        return DecksList;
     }
 
     @Override
     public List<Card> getHumanPlayerDeck() {
-        // TODO Auto-generated method stub
-        return null;
+        return humanPlayerDeck;
     }
 
     @Override
     public List<Card> getAIPlayerDeck() {
-        // TODO Auto-generated method stub
-        return null;
+        return aiPlayerDeck;
     }
 
     @Override
-    public void selectHumanPlayerDeck(int indexOfTheDeckList) {
-        // TODO Auto-generated method stub
-        
+    public boolean selectHumanPlayerDeck(int indexOfTheDeckList) {
+        if(indexOfTheDeckList<DecksList.size()){
+            humanPlayerDeck = DecksList.get(indexOfTheDeckList);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void selectAIPlayer(int indexOfTheDeckList) {
-        // TODO Auto-generated method stub
-        
+    public boolean selectAIPlayer(int indexOfTheDeckList) {
+        if(indexOfTheDeckList<DecksList.size()){
+            aiPlayerDeck = DecksList.get(indexOfTheDeckList);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void demoveDeck(int indexOfTheDeckList) {
-        // TODO Auto-generated method stub
-        
+    public boolean demoveDeck(int indexOfTheDeckList) {
+        if(indexOfTheDeckList<DecksList.size()){
+            aiPlayerDeck = DecksList.remove(indexOfTheDeckList);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
-    public void addDeck(List<Card> newDeck) {
-        // TODO Auto-generated method stub
-        
+    public boolean addDeck(List<Card> newDeck) {
+        return DecksList.add(newDeck);
     } 
  
 }
