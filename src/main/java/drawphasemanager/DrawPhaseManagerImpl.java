@@ -25,8 +25,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      */
     @Override
     public void handleEffect() {
-        // TODO Auto-generated method stub
-
+        // appena ci sarà un getActivationEvent sostituirai la condizione della filter
+        // nel caso del player controllerai che la carta abbia o myDraw o everyDraw
+        // nel caso del IA (enemyDraw o everyDraw)
+        this.currentHand.stream().filter(card -> card.gatMana() == 12).peek(card -> this.draw(PLAYER_TURN));
     }
 
     /**
