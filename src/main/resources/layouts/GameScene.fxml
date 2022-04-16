@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
       <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
          <padding>
@@ -74,7 +74,7 @@
          <top>
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="538.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" />
+                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -89,7 +89,7 @@
                <children>
                   <Label styleClass="styleTITLE" stylesheets="@../default/application.css" text="INSCRIPT">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="48.0" />
                      </font>
                   </Label>
                </children>

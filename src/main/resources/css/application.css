@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
 
 .buttonMenu{
@@ -12,16 +13,16 @@
 }
 
 .buttonBoard{
-	-fx-background-color: black;
-	-fx-font-family: "Impact";
+	-fx-background-color: #011e26;
+	-fx-font-family: "Press Start 2P", cursive;
 	-fx-border-color: white;
 	-fx-border-radius: 2;
 	-fx-border-width: 2;
-	-fx-text-fill: #e8b53b;
+	-fx-text-fill: white;
 }
 
 .styleTITLE{
-	-fx-font-family: "Press Start 2P", cursive;
+	-fx-font-family: 'Rubik Glitch', cursive;
 	-fx-text-fill: #04efff;
 }
 
