@@ -13,9 +13,14 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,7 +28,7 @@ import javafx.stage.Stage;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
-    
+
     ////player info/////
     @FXML private Label lifePointsPlayer;
     @FXML private Label currentManaPlayer;
@@ -81,7 +86,7 @@ public class GameSceneController {
 };
  
     private OnGameEnd onGameEnd = () -> {
-        /*open dialog with a navigation button*/
+        showGameOverDialog();
     };
 
     /**
@@ -129,7 +134,7 @@ public class GameSceneController {
      * @param event
      */
     @FXML
-    private void onEndTrunButtonPress(Event event) {
+    private void onEndTurnButtonPress(Event event) {
         gameMasterController.onEndTurn();
     }
 
@@ -238,4 +243,16 @@ public class GameSceneController {
         primaryStage.show();
     }
 
+    /**
+     * dialog to show when the game is over
+     * 
+     * @return game over dialog
+     */
+    private void showGameOverDialog() {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Game Over");
+        alert.setHeaderText("Game Over");
+        alert.showAndWait();
+
+    }
 }
