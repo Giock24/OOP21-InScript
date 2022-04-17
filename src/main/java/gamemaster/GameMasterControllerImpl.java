@@ -13,12 +13,15 @@ public class GameMasterControllerImpl implements GameMasterController {
     private final GameMaster gameMaster;
     private final UpdateView updateView;
     private final SlowUpdate slowUpdate;
+    private final OnGameEnd onGameEnd;
     private Optional<Card> selectedCardToPlace;
     private Optional<Card> selectedCardToShow;
+    private boolean isGameEnd;
     
-    public GameMasterControllerImpl(UpdateView updateView,SlowUpdate slowUpdate) {
+    public GameMasterControllerImpl(UpdateView updateView,SlowUpdate slowUpdate,OnGameEnd onGameEnd) {
         this.updateView = updateView;
         this.slowUpdate = slowUpdate;
+        this.onGameEnd = onGameEnd;
         selectedCardToPlace = Optional.empty();
         selectedCardToShow = Optional.empty();
         final AppState appState =  AppStateSingleton.getInstance(); 
@@ -83,17 +86,33 @@ public class GameMasterControllerImpl implements GameMasterController {
      */
     @Override
     public void onEndTurn() {
-        gameMaster.getBattlePhaseManager().startBattle(false);
+        
+        isGameEnd=gameMaster.getBattlePhaseManager().startBattle(false);
         updateView.update();
         slowUpdate.slow();
-        gameMaster.getDrawPhaseManager().draw(true);
-        gameMaster.getMainPhaseManagerAI().startAIMainPhase();
+        if(isGameEnd) {
+            this.onGameEnd.end();
+        }
+        isGameEnd=gameMaster.getDrawPhaseManager().draw(true);
+        if(isGameEnd) {
+            this.onGameEnd.end();
+        }
+        isGameEnd=gameMaster.getMainPhaseManagerAI().startAIMainPhase();
+        if(isGameEnd) {
+            this.onGameEnd.end();
+        }
         updateView.update();
         slowUpdate.slow();
-        gameMaster.getBattlePhaseManager().startBattle(true);
+        isGameEnd=gameMaster.getBattlePhaseManager().startBattle(true);
         updateView.update();
         slowUpdate.slow();
-        gameMaster.getDrawPhaseManager().draw(false);
+        if(isGameEnd) {
+            this.onGameEnd.end();
+        }
+        isGameEnd=gameMaster.getDrawPhaseManager().draw(false);
+        if(isGameEnd) {
+            this.onGameEnd.end();
+        }
     }
 
 

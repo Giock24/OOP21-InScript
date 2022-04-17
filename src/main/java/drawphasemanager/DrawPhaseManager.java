@@ -22,8 +22,10 @@ public interface DrawPhaseManager extends PhaseManager {
      *     when called set mana and update the GUI.
      * 
      * @param isTheAIturn is true if is IA turn
+     * 
+     * @return return true if the game END
      */
-    void draw(boolean isTheAIturn);
+    boolean draw(boolean isTheAIturn);
     
     /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
     List<Card> getCurrentDeck();

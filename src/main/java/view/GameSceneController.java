@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import cards.Card;
 import gamemaster.GameMasterControllerImpl;
+import gamemaster.OnGameEnd;
 import gamemaster.SlowUpdate;
 import gamemaster.UpdateView;
 import javafx.event.Event;
@@ -44,10 +45,7 @@ public class GameSceneController {
     
    
     public void initialize(){
-        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate);
-        
-        
-        
+        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate,onGameEnd);
         updateBoardView.update();
     }
     
@@ -82,7 +80,10 @@ public class GameSceneController {
 
 };
  
-    
+    private OnGameEnd onGameEnd = () -> {
+        /*open dialog with a navigation button*/
+    };
+
     /**
      * this function generate the grafic for the empty cell
      * 
