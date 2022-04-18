@@ -68,4 +68,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         return new ArrayList<>(List.copyOf(this.currentHand));
     }
 
+    @Override
+    public void firstDraw(boolean isTheAIturn) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
