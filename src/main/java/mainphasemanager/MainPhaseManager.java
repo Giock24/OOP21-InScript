@@ -13,5 +13,5 @@ public interface MainPhaseManager extends PhaseManager {
      * @param cardToBePositioned
      * @param boardCellIndex
      */
-    void positioning( Card cardToBePositioned, int boardCellIndex);
+    void positioning( Card cardToBePositioned, int boardCellIndex, boolean isThePlayerTurn);
 }

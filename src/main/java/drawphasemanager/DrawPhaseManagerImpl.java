@@ -77,4 +77,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerIA.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
     }
 
+    @Override
+    public void firstDraw(boolean isTheAIturn) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

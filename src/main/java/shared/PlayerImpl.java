@@ -77,4 +77,9 @@ public class PlayerImpl implements Player {
         this.currentMana = this.currentMana + mana;
     }
 
+    @Override
+    public void setCurrentBoard(final List<Optional<Card>> board) {
+        this.currentBoard = board.stream().limit(NUM_CARD_BOARD).toList();
+    }
+
 }
