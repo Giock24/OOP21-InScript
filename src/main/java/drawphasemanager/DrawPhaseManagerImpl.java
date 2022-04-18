@@ -9,7 +9,6 @@ import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
-    private static final boolean PLAYER_TURN = true;
     private static final int NO_MORE_CARDS = 0;
     private Player player;
     private Player playerIA;
@@ -38,11 +37,11 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void draw(final boolean isThePlayerTurn) {
-        if (isThePlayerTurn == DrawPhaseManagerImpl.PLAYER_TURN) {
-            this.manaAndHand(this.player);
-        } else {
+    public void draw(final boolean isTheAITurn) {
+        if (isTheAITurn == true) {
             this.manaAndHand(this.playerIA);
+        } else {
+            this.manaAndHand(this.player);
         }
 
     }
