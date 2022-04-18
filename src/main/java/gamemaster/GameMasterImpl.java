@@ -42,7 +42,8 @@ public class GameMasterImpl implements GameMaster {
         Random rand = new Random();
         boolean isAITurn = rand.nextBoolean();
         
-        //TODO add 3 card in the hand of each player
+        drawPhaseManager.firstDraw(false);
+        drawPhaseManager.firstDraw(true);
         
         if(isAITurn) {
             drawPhaseManager.draw(true);
