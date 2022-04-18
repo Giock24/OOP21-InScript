@@ -7,6 +7,8 @@ import shared.PhaseManager;
 import shared.Player;
 
 public interface DrawPhaseManager extends PhaseManager {
+    
+    int INITAL_CARD_IN_THE_HAND = 4;
 	
     /**
      *     In futuro aggiungeremo il parametro per passare la BoardGUI.
@@ -19,11 +21,18 @@ public interface DrawPhaseManager extends PhaseManager {
     void drawPhaseManager(Player player, Player playerIA);
 	
     /**
-     *     when called set mana and update the GUI.
+     *     add a card on the player hand and increases the mana
      * 
      * @param isTheAIturn is true if is IA turn
      */
     void draw(boolean isTheAIturn);
+    
+    /**
+     *     add 4 card on the player hand and increases the mana
+     * 
+     * @param isTheAIturn
+     */
+    void firstDraw(boolean isTheAIturn);
     
     /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
     List<Card> getCurrentDeck();
