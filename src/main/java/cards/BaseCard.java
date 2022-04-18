@@ -1,5 +1,7 @@
 package cards;
 
+import java.util.Optional;
+
 public class BaseCard implements Card {
 	
 	String idCard;
@@ -8,12 +10,12 @@ public class BaseCard implements Card {
 	int attackValue;
 	int manaCost;
 	int placementRounds;
-	Effect effect;
+	Optional<Effect> effect;
 	
 	//file descrizione
 	//file immagine
 	
-	public BaseCard(String idCard, String name, int lifeValue, int attackValue, int manaCost, Effect effect) {
+	public BaseCard(String idCard, String name, int lifeValue, int attackValue, int manaCost, Optional<Effect> effect) {
 		super();
 		this.idCard = idCard;
 		this.name = name;
@@ -56,7 +58,7 @@ public class BaseCard implements Card {
 	}
 
 	@Override
-	public Effect getEffect() {
+	public Optional<Effect> getEffect() {
 		
 		return this.effect;
 	}
