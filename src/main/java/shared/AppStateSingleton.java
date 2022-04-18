@@ -39,17 +39,17 @@ public class AppStateSingleton implements AppState {
 
     @Override
     public List<List<Card>> getDecksList() {
-        return DecksList;
+        return  this.DecksList;
     }
 
     @Override
     public List<Card> getHumanPlayerDeck() {
-        return humanPlayerDeck;
+        return new ArrayList<>(List.copyOf(this.humanPlayerDeck));
     }
 
     @Override
     public List<Card> getAIPlayerDeck() {
-        return aiPlayerDeck;
+        return new ArrayList<>(List.copyOf(this.aiPlayerDeck));
     }
 
     @Override
