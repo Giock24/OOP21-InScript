@@ -3,21 +3,22 @@ package drawphasemanager;
 import java.util.ArrayList;
 import java.util.List;
 
+import cards.ActivationEvent;
 import cards.Card;
 import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
-    private static final boolean PLAYER_TURN = true;
     private static final int NO_MORE_CARDS = 0;
+    private boolean isTheAIturn;
     private final Player player;
-    private final Player playerIA;
+    private final Player playerAI;
     private List<Card> currentDeck;
     private List<Card> currentHand;
     
-    public DrawPhaseManagerImpl (final Player player, final Player playerIA) {
+    public DrawPhaseManagerImpl (final Player player, final Player playerAI) {
         this.player = player;
-        this.playerIA = playerIA;
+        this.playerAI = playerAI;
     }
 
     /**
@@ -25,33 +26,63 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      */
     @Override
     public void handleEffect() {
-        // appena ci sarà un getActivationEvent sostituirai la condizione della filter
-        // nel caso del player controllerai che la carta abbia o myDraw o everyDraw
-        // nel caso del IA (enemyDraw o everyDraw)
-        this.currentHand.stream().filter(card -> card.gatMana() == 12).peek(card -> this.draw(PLAYER_TURN));
+        
+        if (this.isTheAIturn) {
+            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
+            this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
+        } else {
+            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.player);
+            this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
+        }
+    }
+    
+    @Override
+    public void firstDraw(final boolean isTheAIturn) {
+        // TODO Auto-generated method stub
+        
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void draw(final boolean isThePlayerTurn) {
-        if (isThePlayerTurn == DrawPhaseManagerImpl.PLAYER_TURN) {
-            this.manaAndHand(this.player);
+    public void draw(final boolean isTheAIturn) {
+        this.isTheAIturn = isTheAIturn;
+        
+        if (this.isTheAIturn) {
+            this.playerAI.getMana();
+            this.generalDraw(this.playerAI);
+            
+            this.handleEffect();
         } else {
-            this.manaAndHand(this.playerIA);
+            this.player.getMana();
+            this.generalDraw(this.player);
+            
+            this.handleEffect();
         }
 
     }
     
     /**
-     *   when called increment mana and add one card on currentPlayer's hand
+     * {@inheritDoc}
+     */
+    @Override
+    public void drawWithoutMana(final boolean isTheAITurn) {
+        if (isTheAITurn) {
+            this.generalDraw(this.playerAI);
+        } else {
+            this.generalDraw(this.player);
+        }
+        
+    }
+    
+    /**
+     *   when called add one card on currentPlayer's hand
      *   
      * @param currentPlayer
      */
-    private void manaAndHand(final Player currentPlayer) {
+    private void generalDraw(final Player currentPlayer) {
         if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            currentPlayer.getMana();
             this.currentDeck = currentPlayer.getDeck();
             this.currentHand = currentPlayer.getHand();
             
@@ -60,18 +91,18 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         }
     }
     
+    private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
+        this.currentHand.stream().filter(card -> card.getEffect().isPresent()).filter(card -> card
+                .getEffect().get().getActivationEvent() == event)
+                .peek(card -> this.generalDraw(player)); 
+    }
+    
     public List<Card> getCurrentDeck() {
         return new ArrayList<>(List.copyOf(this.currentDeck));
     }
     
     public List<Card> getCurrentHand() {
         return new ArrayList<>(List.copyOf(this.currentHand));
-    }
-
-    @Override
-    public void firstDraw(boolean isTheAIturn) {
-        // TODO Auto-generated method stub
-        
     }
 
 }

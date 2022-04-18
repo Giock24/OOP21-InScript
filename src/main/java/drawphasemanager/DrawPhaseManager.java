@@ -2,10 +2,8 @@ package drawphasemanager;
 
 import java.util.List;
 
-
 import cards.Card;
 import shared.PhaseManager;
-import shared.Player;
 
 public interface DrawPhaseManager extends PhaseManager {
     
@@ -24,6 +22,14 @@ public interface DrawPhaseManager extends PhaseManager {
      * @param isTheAIturn
      */
     void firstDraw(boolean isTheAIturn);
+    
+    /**
+     * 
+     *    add a card on the player's hand without increment of mana
+     * 
+     * @param isTheAITurn
+     */
+    void drawWithoutMana(boolean isTheAITurn);
     
     /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
     List<Card> getCurrentDeck();
