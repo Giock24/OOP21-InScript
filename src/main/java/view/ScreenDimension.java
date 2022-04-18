@@ -8,9 +8,11 @@ public enum ScreenDimension {
     WIDTH(HEIGHT.getValue() * 1.78);
     
     private double value;
+    private double minValue;
     
     ScreenDimension(final double value) {
         this.value = value;
+        this.minValue = value;
     }
     
     /**
@@ -18,6 +20,20 @@ public enum ScreenDimension {
      */
     public double getValue() {
         return this.value;
+    }
+    
+    /**
+     * @return min value to resize a Stage
+     */
+    public double getMinValue() {
+        return this.minValue;
+    }
+    
+    /**
+     * @param value is the new size's value to set
+     */
+    public void setCurrentValue(final double value) {
+        this.value = value;
     }
 
 }

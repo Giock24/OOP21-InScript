@@ -25,6 +25,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static view.ScreenDimension.WIDTH;
+import static view.ScreenDimension.HEIGHT;
+
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
@@ -238,6 +241,9 @@ public class GameSceneController {
     public final void switchToMenuScene(final MouseEvent event) {
         final Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
         final Showable menuGUI = new MenuGUI(primaryStage);
+        
+        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
+        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
         
         primaryStage.setScene(menuGUI.getScene());
         primaryStage.show();

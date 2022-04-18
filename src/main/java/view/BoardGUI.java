@@ -5,18 +5,15 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import static view.ScreenDimension.WIDTH;
 import static view.ScreenDimension.HEIGHT;
 
 public class BoardGUI implements Showable{
     
-    private final Stage stage;
     private Scene scene;
     
-    public BoardGUI(final Stage stage) {
-        this.stage = stage;
+    public BoardGUI() {
         this.loadFXML();
     }
     
@@ -26,13 +23,16 @@ public class BoardGUI implements Showable{
     private void loadFXML() {
         try {
             final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("GameScene.fxml"));
-            this.scene = new Scene(root);
+            this.scene = new Scene(root, WIDTH.getValue(), HEIGHT.getValue());
         } catch (IOException e) {
             e.printStackTrace();
         }
         
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Scene getScene() {
         return this.scene;

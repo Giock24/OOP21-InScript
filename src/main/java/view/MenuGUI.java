@@ -35,8 +35,8 @@ public class MenuGUI implements Showable {
         final BorderPane layout = new BorderPane();
         this.scene = new Scene(layout, WIDTH.getValue(), HEIGHT.getValue());
         
-        this.stage.setMinWidth(WIDTH.getValue());
-        this.stage.setMinHeight(HEIGHT.getValue());
+        this.stage.setMinWidth(WIDTH.getMinValue());
+        this.stage.setMinHeight(HEIGHT.getMinValue());
         
         layout.setCenter(this.centerNode());
         layout.setBottom(this.bottomNode());
@@ -64,7 +64,10 @@ public class MenuGUI implements Showable {
         startB.setOnAction(e -> {
             Music.MENU_THEME.stopMusic();
             
-            final BoardGUI board = new BoardGUI(this.stage);
+            WIDTH.setCurrentValue(this.scene.getWidth());
+            HEIGHT.setCurrentValue(this.scene.getHeight());
+            
+            final BoardGUI board = new BoardGUI();
             this.stage.setScene(board.getScene());
             this.stage.show();
         });
