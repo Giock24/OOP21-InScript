@@ -27,12 +27,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     @Override
     public void handleEffect() {
         
+        this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
+        this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
+        
         if (this.isTheAIturn) {
             this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
-            this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
         } else {
             this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.player);
-            this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         }
     }
     
@@ -52,13 +53,9 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         if (this.isTheAIturn) {
             this.playerAI.getMana();
             this.generalDraw(this.playerAI);
-            
-            this.handleEffect();
         } else {
             this.player.getMana();
             this.generalDraw(this.player);
-            
-            this.handleEffect();
         }
 
     }
@@ -91,6 +88,14 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         }
     }
     
+    /**
+     * 
+     *    select an ActivationEvent to filter the current Hand and for each
+     *    event found draw a card
+     * 
+     * @param event 
+     * @param player 
+     */
     private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
         this.currentHand.stream().filter(card -> card.getEffect().isPresent()).filter(card -> card
                 .getEffect().get().getActivationEvent() == event)
