@@ -38,11 +38,11 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void draw(final boolean isTheAITurn) {
+    public boolean draw(final boolean isTheAITurn) {
         if (isTheAITurn == true) {
-            this.manaAndHand(this.playerIA);
+            return this.manaAndHand(this.playerIA);
         } else {
-            this.manaAndHand(this.player);
+            return this.manaAndHand(this.player);
         }
 
     }

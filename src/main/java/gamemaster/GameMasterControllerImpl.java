@@ -74,7 +74,7 @@ public class GameMasterControllerImpl implements GameMasterController {
     @Override
     public void onCardPlacing(int indexOfTheCellInTheBoard) {
         if(selectedCardToPlace.isPresent()) {
-            gameMaster.getMainPhaseManager().positioning(selectedCardToPlace.get(), indexOfTheCellInTheBoard);
+            gameMaster.getMainPhaseManager().positioning(selectedCardToPlace.get(), indexOfTheCellInTheBoard,false);
             selectedCardToPlace=Optional.empty();
             updateView.update();
         }
