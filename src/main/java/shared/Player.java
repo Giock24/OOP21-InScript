@@ -42,4 +42,10 @@ public interface Player {
      * @param mana the value that decreases current mana
      */
     void setMana(int mana);
+    
+    /**
+     * @param board the new board state after battle and or positioning
+     */
+    void setCurrentBoard(List<Optional<Card>> board);
+
 }
