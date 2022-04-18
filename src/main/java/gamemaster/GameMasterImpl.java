@@ -28,8 +28,11 @@ public class GameMasterImpl implements GameMaster {
 
     public GameMasterImpl(List<Card> humanPlayerDeck, List<Card> aiPlayerDeck) {
         super();
-        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
-        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
+
+        ArrayList<Optional<Card>> emptyBoard = new ArrayList<Optional<Card>>(Player.NUM_CARD_BOARD);
+        
+        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<>(List.copyOf(emptyBoard)), new ArrayList<Card>());
+        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<>(List.copyOf(emptyBoard)), new ArrayList<Card>());
         this.isTheAIturn = false;
         //this.drawPhaseManager = new ()
         //this.mainPhasemanager = new mainPhaseManager(humanPlayer)
