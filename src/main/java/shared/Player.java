@@ -47,5 +47,10 @@ public interface Player {
      * @param board the new board state after battle and or positioning
      */
     void setCurrentBoard(List<Optional<Card>> board);
+    
+    /**
+     * @param life the new life of current player
+     */
+    void setLifePoints(int life);
 
 }
