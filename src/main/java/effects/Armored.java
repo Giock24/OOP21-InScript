@@ -20,7 +20,8 @@ public class Armored extends AbstractEffect {
     @Override
     public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         
-        cardOwner.getCurrentBoard().get(boardPosition).setLifePoint(cardOwner.getCurrentBoard().get(boardPosition).getLifePoint() + (enemy.getCurrentBoard().get(boardPosition).getAttack() / 2));
+        cardOwner.getCurrentBoard().get(boardPosition).get().setLifePoint(cardOwner.getCurrentBoard().get(boardPosition).get().getLifePoint() + (enemy.getCurrentBoard().get(boardPosition).get().getAttack() / 2));
+        
         
     }
 

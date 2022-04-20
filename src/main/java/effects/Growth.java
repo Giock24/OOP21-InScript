@@ -33,10 +33,10 @@ public class Growth extends AbstractEffect{
     @Override
     public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         
-        cardOwner.getCurrentBoard().get(boardPosition).setLifePoint(this.lifePoint);
-        cardOwner.getCurrentBoard().get(boardPosition).setAttack(this.attack);
-        cardOwner.getCurrentBoard().get(boardPosition).setEffect(this.effect);
-        cardOwner.getCurrentBoard().get(boardPosition).setName(this.name);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setLifePoint(this.lifePoint);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setAttack(this.attack);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setEffect(this.effect);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setName(this.name);
         
     }
 

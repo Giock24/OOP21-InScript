@@ -22,10 +22,10 @@ public class Rotten extends AbstractEffect {
     @Override
     public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         
-        cardOwner.getCurrentBoard().get(boardPosition).setLifePoint(3);
-        cardOwner.getCurrentBoard().get(boardPosition).setAttack(0);
-        cardOwner.getCurrentBoard().get(boardPosition).setEffect(Optional.empty());
-        cardOwner.getCurrentBoard().get(boardPosition).setName("Putridume");
+        cardOwner.getCurrentBoard().get(boardPosition).get().setLifePoint(3);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setAttack(0);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setEffect(Optional.empty());
+        cardOwner.getCurrentBoard().get(boardPosition).get().setName("Putridume");
     }
 
 }

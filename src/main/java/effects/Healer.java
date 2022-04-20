@@ -21,23 +21,22 @@ public class Healer extends AbstractEffect{
     public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         if (boardPosition == 0) {
             if (cardOwner.getCurrentBoard().contains(cardOwner.getCurrentBoard().get(boardPosition+1))) {
-                cardOwner.getCurrentBoard().get(boardPosition+1).setLifePoint(cardOwner.getCurrentBoard().get(boardPosition+1).getLifePoint() + 1);
+                cardOwner.getCurrentBoard().get(boardPosition+1).get().setLifePoint(cardOwner.getCurrentBoard().get(boardPosition+1).get().getLifePoint() + 1);
             }
             
         }else if (boardPosition == 4) {
             if (cardOwner.getCurrentBoard().contains(cardOwner.getCurrentBoard().get(boardPosition-1))) {
-                cardOwner.getCurrentBoard().get(boardPosition-1).setLifePoint(cardOwner.getCurrentBoard().get(boardPosition-1).getLifePoint() + 1);
+                cardOwner.getCurrentBoard().get(boardPosition-1).get().setLifePoint(cardOwner.getCurrentBoard().get(boardPosition-1).get().getLifePoint() + 1);
             }
             
         }else{
             if (cardOwner.getCurrentBoard().contains(cardOwner.getCurrentBoard().get(boardPosition-1))) {
-                cardOwner.getCurrentBoard().get(boardPosition-1).setLifePoint(cardOwner.getCurrentBoard().get(boardPosition-1).getLifePoint() + 1);
+                cardOwner.getCurrentBoard().get(boardPosition-1).get().setLifePoint(cardOwner.getCurrentBoard().get(boardPosition-1).get().getLifePoint() + 1);
             }
             if (cardOwner.getCurrentBoard().contains(cardOwner.getCurrentBoard().get(boardPosition-1))) {
-                cardOwner.getCurrentBoard().get(boardPosition+1).setLifePoint(cardOwner.getCurrentBoard().get(boardPosition+1).getLifePoint() + 1);
+                cardOwner.getCurrentBoard().get(boardPosition+1).get().setLifePoint(cardOwner.getCurrentBoard().get(boardPosition+1).get().getLifePoint() + 1);
             }
         }
-            
     }
 
 }
