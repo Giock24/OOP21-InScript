@@ -83,10 +83,12 @@ public class BaseCard implements Card {
     }
 
 
+
     @Override
     public void setName(final String newName) {
         
         this.name = newName;  
+
     }
 
 
@@ -94,6 +96,7 @@ public class BaseCard implements Card {
     public void setEffect(final Optional<Effect> newEffect) {
         
         this.effect = newEffect;   
+
     }
 	
 }

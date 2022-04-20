@@ -40,6 +40,9 @@ public class PlayerImpl implements Player {
         return this.lifePoints;
     }
 
+    /**
+     *  {@inheritDoc}
+     */
     @Override
     public int getMana() {
         return this.mana;
@@ -77,9 +80,22 @@ public class PlayerImpl implements Player {
         this.currentMana = this.currentMana + mana;
     }
 
+    /**
+     *  {@inheritDoc}
+     */
     @Override
-    public void setLifePoints(final int newValueOfLife) {
-        this.lifePoints = newValueOfLife;
+    public void setCurrentBoard(final List<Optional<Card>> board) {
+        this.currentBoard = board.stream().limit(NUM_CARD_BOARD).toList();
     }
+
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public void setLifePoints(final int life) {
+        this.lifePoints = life;
+    }
+    
+
 
 }

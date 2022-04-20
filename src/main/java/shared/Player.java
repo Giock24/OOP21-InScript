@@ -42,6 +42,15 @@ public interface Player {
      * @param mana the value that decreases current mana
      */
     void setMana(int mana);
-    	
-    void setLifePoints(int newValueOfLife); //newValueOfLife is the new value of player life
+    
+    /**
+     * @param board the new board state after battle and or positioning
+     */
+    void setCurrentBoard(List<Optional<Card>> board);
+    
+    /**
+     * @param life the new life of current player
+     */
+    void setLifePoints(int life);
+
 }
