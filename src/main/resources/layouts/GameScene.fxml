@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="656.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
       <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
          <padding>
@@ -67,7 +67,7 @@
       </VBox>
    </left>
    <right>
-      <VBox fx:id="cardView" prefHeight="200.0" prefWidth="154.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER" />
+      <VBox fx:id="cardView" prefHeight="240.0" prefWidth="279.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER" />
    </right>
    <top>
       <BorderPane prefHeight="113.0" prefWidth="595.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
@@ -98,17 +98,17 @@
       </BorderPane>
    </top>
    <center>
-      <SplitPane dividerPositions="0.5063829787234042" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <SplitPane disable="true" dividerPositions="0.50199203187251" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
         <items>
-            <HBox fx:id="boardIA" prefHeight="36.0" prefWidth="285.0" />
-            <HBox fx:id="boardPlayer" prefHeight="110.0" prefWidth="285.0" />
+            <HBox fx:id="boardIA" alignment="CENTER" prefHeight="36.0" prefWidth="285.0" spacing="4.0" />
+            <HBox fx:id="boardPlayer" alignment="CENTER" prefHeight="110.0" prefWidth="285.0" spacing="4.0" />
         </items>
       </SplitPane>
    </center>
    <bottom>
-      <ScrollPane prefHeight="86.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="109.0" prefWidth="726.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="handPlayer" alignment="TOP_CENTER" prefHeight="93.0" prefWidth="465.0" />
+            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="108.0" prefWidth="513.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css" />
          </content>
       </ScrollPane>
    </bottom>
