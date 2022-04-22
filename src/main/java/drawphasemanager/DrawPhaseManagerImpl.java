@@ -2,6 +2,7 @@ package drawphasemanager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import cards.ActivationEvent;
 import cards.Card;
@@ -10,10 +11,14 @@ import shared.Player;
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
     private static final int NO_MORE_CARDS = 0;
+    
     private boolean isTheAIturn;
+    
     private final Player player;
     private final Player playerAI;
-    private List<Card> currentDeck;
+    
+    // lasciati per i testing togliere col tempo
+    private List<Card> currentDeck; 
     private List<Card> currentHand;
     
     public DrawPhaseManagerImpl (final Player player, final Player playerAI) {
@@ -79,27 +84,44 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * @param currentPlayer
      */
     private void generalDraw(final Player currentPlayer) {
+        final List<Card> tmpDeck = currentPlayer.getDeck();
+        final List<Card> tmpHand = currentPlayer.getHand();
+        
+        
         if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            this.currentDeck = currentPlayer.getDeck();
-            this.currentHand = currentPlayer.getHand();
+            this.currentDeck = tmpDeck; // campi da togliere in seguito
+            this.currentHand = tmpHand;
             
-            this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
-            this.currentDeck.remove(this.currentDeck.size() - 1);
+            tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
+            tmpDeck.remove(tmpDeck.size() - 1);
         }
     }
     
     /**
      * 
-     *    select an ActivationEvent to filter the current Hand and for each
+     *    select an ActivationEvent to filter the current Board and for each
      *    event found draw a card
      * 
      * @param event 
      * @param player 
      */
     private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
-        this.currentHand.stream().filter(card -> card.getEffect().isPresent()).filter(card -> card
-                .getEffect().get().getActivationEvent() == event)
-                .peek(card -> this.generalDraw(player)); 
+        final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
+        
+        for(int pos = 0; pos <= tmpBoard.size(); pos++) {
+            if (tmpBoard.get(pos).isPresent()) {
+                final Card cardSaved = tmpBoard.get(pos).get();
+                
+              if (cardSaved.getEffect().isPresent() && 
+                  cardSaved.getEffect().get().getActivationEvent() == event) {
+                  cardSaved.getEffect().get().useEffect(player, playerAI, pos);
+                  
+              }
+              
+            }   
+            
+        }
+        
     }
     
     public List<Card> getCurrentDeck() {
