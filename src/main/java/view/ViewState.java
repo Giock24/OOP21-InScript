@@ -2,7 +2,7 @@ package view;
 
 import java.awt.Toolkit;
 
-public enum ScreenDimension {
+public enum ViewState {
     
     HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3),
     WIDTH(HEIGHT.getValue() * 1.78),
@@ -14,7 +14,7 @@ public enum ScreenDimension {
     private double value;
     private double minValue;
     
-    ScreenDimension(final double value) {
+    ViewState(final double value) {
         this.value = value;
         this.minValue = value;
     }

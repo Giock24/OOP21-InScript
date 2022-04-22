@@ -10,8 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import static view.ScreenDimension.WIDTH;
-import static view.ScreenDimension.HEIGHT;
+import static view.ViewState.WIDTH;
+import static view.ViewState.HEIGHT;
 
 public class MenuGUI implements Showable {
     

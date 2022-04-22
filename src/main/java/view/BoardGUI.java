@@ -6,8 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import static view.ScreenDimension.WIDTH;
-import static view.ScreenDimension.HEIGHT;
+import static view.ViewState.WIDTH;
+import static view.ViewState.HEIGHT;
 
 public class BoardGUI implements Showable{
     

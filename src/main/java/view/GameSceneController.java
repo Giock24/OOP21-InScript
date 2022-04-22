@@ -30,8 +30,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import static view.ScreenDimension.WIDTH;
-import static view.ScreenDimension.HEIGHT;
+import static view.ViewState.WIDTH;
+import static view.ViewState.HEIGHT;
 
 public class GameSceneController {
     
@@ -115,7 +115,7 @@ public class GameSceneController {
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;");
         
-        emptyCardCell.setMinSize(ScreenDimension.CARD_WIDTH.getValue(), ScreenDimension.CARD_HEIGHT.getValue());
+        emptyCardCell.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
         return emptyCardCell;
     }
