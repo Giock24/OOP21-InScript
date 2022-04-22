@@ -14,7 +14,7 @@ public class Elusive extends AbstractEffect{
     @Override
     public ActivationEvent getActivationEvent() {
         
-        return ActivationEvent.ONATTAKING;
+        return ActivationEvent.ONDEFENDING;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class Elusive extends AbstractEffect{
             enemy.setLifePoints(enemy.getLifePoints() - cardOwner.getCurrentBoard().get(boardPosition).get().getAttack()); 
             
         }
-        
+        // testare Poison attaccante contro elusive
     }
 
 }
