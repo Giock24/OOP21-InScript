@@ -5,7 +5,11 @@ import java.awt.Toolkit;
 public enum ScreenDimension {
     
     HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3),
-    WIDTH(HEIGHT.getValue() * 1.78);
+    WIDTH(HEIGHT.getValue() * 1.78),
+    
+    CARD_HEIGHT(HEIGHT.getValue() * 0.23),
+    CARD_WIDTH(CARD_HEIGHT.getValue() * 0.58);
+    
     
     private double value;
     private double minValue;

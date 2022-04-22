@@ -1,5 +1,6 @@
 package view;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -13,14 +14,18 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -97,12 +102,20 @@ public class GameSceneController {
      * 
      * @param inTheAIBoard indicate if the empty card cell is in the player board or in the AI board
      * @return
+     * @throws FileNotFoundException 
      */
-    private VBox generateEmptyCardCell(boolean inTheAIBoard) {
+    private VBox generateEmptyCardCell(boolean inTheAIBoard) throws FileNotFoundException {
         final VBox emptyCardCell = new VBox();
         
-        //TODO add the rest Of the grafic of the empty cell
-        //TODO if the card is in the AI board the image must be upside down
+        String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
+        
+        emptyCardCell.setStyle(""
+                + "-fx-background-image:url('"+ image +"'); "
+                + "-fx-background-repeat: no-repeat;\n"
+                + "-fx-background-size: contain;\n"
+                + "-fx-background-size: 100% 100%;");
+        
+        emptyCardCell.setMinSize(ScreenDimension.CARD_WIDTH.getValue(), ScreenDimension.CARD_HEIGHT.getValue());
         
         return emptyCardCell;
     }
@@ -147,6 +160,7 @@ public class GameSceneController {
     private void updateBoardIA() {    
         boardIA.getChildren().removeAll();
         
+        
         gameMasterController.getIAPlayer().getCurrentBoard().forEach(card -> {
             final Button cardCell= new Button();
             if( card.isPresent()) {
@@ -156,7 +170,11 @@ public class GameSceneController {
                 
             } else {
                 
-                cardCell.setGraphic(generateEmptyCardCell(true));
+                try {
+                    cardCell.setGraphic(generateEmptyCardCell(true));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 
             }
             boardIA.getChildren().add(cardCell);
@@ -171,9 +189,10 @@ public class GameSceneController {
     private void updateBoardPlayer() {    
         boardPlayer.getChildren().removeAll();
         
+        
         List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
-        IntStream.range(0, userBoard.size()-1).forEach(index -> {
+        IntStream.range(0, userBoard.size()).forEach(index -> {
             final Button cardCell= new Button();
             Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
@@ -184,7 +203,11 @@ public class GameSceneController {
             } else {
                 
                 cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
-                cardCell.setGraphic(generateEmptyCardCell(false));
+                try {
+                    cardCell.setGraphic(generateEmptyCardCell(false));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 
             }
             
