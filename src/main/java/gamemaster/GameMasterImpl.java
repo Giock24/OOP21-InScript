@@ -3,6 +3,7 @@ package gamemaster;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import battlephasemanager.BattlePhaseManager;
 import cards.Card;
@@ -27,8 +28,16 @@ public class GameMasterImpl implements GameMaster {
 
     public GameMasterImpl(List<Card> humanPlayerDeck, List<Card> aiPlayerDeck) {
         super();
-        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
-        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA, new ArrayList<Optional<Card>>(), new ArrayList<Card>());
+        
+        final List<Optional<Card>> emptyBoard = new ArrayList<Optional<Card>>();
+        IntStream.range(0, Player.NUM_CARD_BOARD).forEach( index -> {
+            emptyBoard.add(Optional.empty());
+        });
+        
+        //System.out.print(emptyBoard.size());
+        
+        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
+        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
         this.isTheAIturn = false;
         //this.drawPhaseManager = new ()
         //this.mainPhasemanager = new mainPhaseManager(humanPlayer)

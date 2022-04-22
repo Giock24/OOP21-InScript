@@ -67,5 +67,33 @@ public class BaseCard implements Card {
 		
 		return this.placementRounds;
 	}
+
+
+    @Override
+    public void setAttack(int newValue) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void setLifePoint(int newValue) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void setName(String newName) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+    @Override
+    public void setEffect(Optional<Effect> newEffect) {
+        // TODO Auto-generated method stub
+        
+    }
 	
 }
