@@ -4,7 +4,7 @@ import java.awt.Toolkit;
 
 public enum ViewState {
     
-    HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 3),
+    HEIGHT(Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2),
     WIDTH(HEIGHT.getValue() * 1.78),
     
     CARD_HEIGHT(HEIGHT.getValue() * 0.23),

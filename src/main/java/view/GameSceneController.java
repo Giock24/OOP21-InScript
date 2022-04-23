@@ -26,6 +26,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ import static view.ViewState.HEIGHT;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
+    private int colomn; // campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
 
     ////player info/////
     @FXML private Label lifePointsPlayer;
@@ -47,10 +49,9 @@ public class GameSceneController {
     @FXML private Label currentManaIA;
     @FXML private Label manaIA;
     
-    
     ////cards//////
-    @FXML private HBox boardIA;
-    @FXML private HBox boardPlayer;
+    @FXML private GridPane boardIA;
+    @FXML private GridPane boardPlayer;
     @FXML private HBox handPlayer; //TODO this must be inside a ScrollPane in the view
     
     ////cardView////
@@ -159,10 +160,12 @@ public class GameSceneController {
      */
     private void updateBoardIA() {    
         boardIA.getChildren().removeAll();
-        
+        this.colomn = 0;
         
         gameMasterController.getIAPlayer().getCurrentBoard().forEach(card -> {
             final Button cardCell= new Button();
+            cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            
             if( card.isPresent()) {
                 
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
@@ -177,7 +180,8 @@ public class GameSceneController {
                 }
                 
             }
-            boardIA.getChildren().add(cardCell);
+            boardIA.addColumn(this.colomn, cardCell);
+            this.colomn++;
         });
         
         
@@ -189,11 +193,12 @@ public class GameSceneController {
     private void updateBoardPlayer() {    
         boardPlayer.getChildren().removeAll();
         
-        
         List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
         IntStream.range(0, userBoard.size()).forEach(index -> {
             final Button cardCell= new Button();
+            cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            
             Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
                 
@@ -211,7 +216,7 @@ public class GameSceneController {
                 
             }
             
-            boardPlayer.getChildren().add(cardCell);
+            boardPlayer.addColumn(index, cardCell);
         });
         
     }
