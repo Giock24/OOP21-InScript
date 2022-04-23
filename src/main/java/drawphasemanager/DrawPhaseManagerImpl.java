@@ -3,6 +3,7 @@ package drawphasemanager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
 import cards.Card;
@@ -36,16 +37,24 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         
         if (this.isTheAIturn) {
-            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
+            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.player);
         } else {
-            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.player);
+            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
         }
     }
     
     @Override
     public void firstDraw(final boolean isTheAIturn) {
-        // TODO Auto-generated method stub
         
+        if (isTheAIturn) {
+            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
+                this.generalDraw(this.playerAI);
+            });
+        } else {
+            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
+                this.generalDraw(this.player);
+            });
+        }
     }
 
     /**
@@ -114,7 +123,12 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
                 
               if (cardSaved.getEffect().isPresent() && 
                   cardSaved.getEffect().get().getActivationEvent() == event) {
-                  cardSaved.getEffect().get().useEffect(player, playerAI, pos);
+                  
+                  if(this.isTheAIturn) {
+                      cardSaved.getEffect().get().useEffect(this.playerAI, this.player, pos);
+                  } else {
+                      cardSaved.getEffect().get().useEffect(this.player, this.playerAI, pos);
+                  }
                   
               }
               
