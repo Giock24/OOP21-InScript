@@ -43,6 +43,9 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         }
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void firstDraw(final boolean isTheAIturn) {
         
@@ -67,9 +70,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         if (this.isTheAIturn) {
             this.playerAI.getMana();
             this.generalDraw(this.playerAI);
+            
+            this.handleEffect();
         } else {
             this.player.getMana();
             this.generalDraw(this.player);
+            
+            this.handleEffect();
         }
 
     }
