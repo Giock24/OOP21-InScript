@@ -3,6 +3,7 @@ package gamemaster;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import battlephasemanager.BattlePhaseManager;
@@ -47,8 +48,19 @@ public class GameMasterImpl implements GameMaster {
 
     @Override
     public boolean startGame() {
-        // TODO Auto-generated method stub
-        return false;
+        Random rand = new Random();
+        boolean isAITurn = rand.nextBoolean();
+        
+        drawPhaseManager.firstDraw(false);
+        drawPhaseManager.firstDraw(true);
+        
+        if(isAITurn) {
+            drawPhaseManager.draw(true);
+            mainPhaseManagerIA.startAIMainPhase();
+            battlePhaseManager.startBattle(true);
+        }
+        
+        return isAITurn;
     }
 
     @Override

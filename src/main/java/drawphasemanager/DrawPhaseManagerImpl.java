@@ -2,8 +2,10 @@ package drawphasemanager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.stream.IntStream;
 
+import cards.ActivationEvent;
 import cards.Card;
 import gamemaster.GameMaster;
 import shared.Player;
@@ -11,57 +13,141 @@ import shared.Player;
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
     private static final int NO_MORE_CARDS = 0;
-    private Player player;
-    private Player playerIA;
-    private List<Card> currentDeck;
+    
+    private boolean isTheAIturn;
+    
+    private final Player player;
+    private final Player playerAI;
+    
+    // lasciati per i testing togliere col tempo
+    private List<Card> currentDeck; 
     private List<Card> currentHand;
+    
+    public DrawPhaseManagerImpl (final Player player, final Player playerAI) {
+        this.player = player;
+        this.playerAI = playerAI;
+    }
 
     /**
      * {@inheritDoc}
      */
     @Override
     public void handleEffect() {
-        // TODO Auto-generated method stub
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void drawPhaseManager(final Player player, final Player playerIA) {
-        this.player = player;
-        this.playerIA = playerIA;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean draw(final boolean isTheAITurn) {
-        if (isTheAITurn == true) {
-            return this.manaAndHand(this.playerIA);
+        
+        this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
+        this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
+        
+        if (this.isTheAIturn) {
+            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.player);
         } else {
-            return this.manaAndHand(this.player);
+            this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
         }
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void firstDraw(final boolean isTheAIturn) {
+        
+        if (isTheAIturn) {
+            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
+                this.generalDraw(this.playerAI);
+            });
+        } else {
+            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
+                this.generalDraw(this.player);
+            });
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean draw(final boolean isTheAIturn) {
+        this.isTheAIturn = isTheAIturn;
+        
+        if (this.isTheAIturn) {
+            this.playerAI.getMana();
+            this.generalDraw(this.playerAI);
+            
+            this.handleEffect();
+        } else {
+            this.player.getMana();
+            this.generalDraw(this.player);
+            
+            this.handleEffect();
+        }
+
+        return false;
 
     }
     
     /**
-     *   when called increment mana and add one card on currentPlayer's hand
+     * {@inheritDoc}
+     */
+    @Override
+    public void drawWithoutMana(final boolean isTheAITurn) {
+        if (isTheAITurn) {
+            this.generalDraw(this.playerAI);
+        } else {
+            this.generalDraw(this.player);
+        }
+        
+    }
+    
+    /**
+     *   when called add one card on currentPlayer's hand
      *   
      * @param currentPlayer
+     * @return 
      */
-    private boolean manaAndHand(final Player currentPlayer) {
+    private boolean generalDraw(final Player currentPlayer) {
+        final List<Card> tmpDeck = currentPlayer.getDeck();
+        final List<Card> tmpHand = currentPlayer.getHand();
+        
+        
         if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            currentPlayer.getMana();
-            this.currentDeck = new ArrayList<>(currentPlayer.getDeck().stream().collect(Collectors.toList()));
-            this.currentHand = new ArrayList<>(currentPlayer.getHand().stream().collect(Collectors.toList()));
+            this.currentDeck = tmpDeck; // campi da togliere in seguito
+            this.currentHand = tmpHand;
             
-            this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
-            this.currentDeck.remove(this.currentDeck.size() - 1);
+            tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
+            tmpDeck.remove(tmpDeck.size() - 1);
         }
         return checkGameEnd();
+    }
+    
+    /**
+     * 
+     *    select an ActivationEvent to filter the current Board and for each
+     *    event found draw a card
+     * 
+     * @param event 
+     * @param player 
+     */
+    private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
+        final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
+        
+        for(int pos = 0; pos <= tmpBoard.size(); pos++) {
+            if (tmpBoard.get(pos).isPresent()) {
+                final Card cardSaved = tmpBoard.get(pos).get();
+                
+              if (cardSaved.getEffect().isPresent() && 
+                  cardSaved.getEffect().get().getActivationEvent() == event) {
+                  
+                  if(this.isTheAIturn) {
+                      cardSaved.getEffect().get().useEffect(this.playerAI, this.player, pos);
+                  } else {
+                      cardSaved.getEffect().get().useEffect(this.player, this.playerAI, pos);
+                  }
+                  
+              }
+              
+            }   
+            
+        }
+        
     }
     
     public List<Card> getCurrentDeck() {
@@ -73,13 +159,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     }
     
     private boolean checkGameEnd() {
-        return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerIA.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
-    }
-
-    @Override
-    public void firstDraw(boolean isTheAIturn) {
-        // TODO Auto-generated method stub
-        
+        return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerAI.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
     }
 
 }

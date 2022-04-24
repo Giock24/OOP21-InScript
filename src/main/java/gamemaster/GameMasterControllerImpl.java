@@ -26,7 +26,7 @@ public class GameMasterControllerImpl implements GameMasterController {
         selectedCardToShow = Optional.empty();
         final AppState appState =  AppStateSingleton.getInstance(); 
         gameMaster= new GameMasterImpl(appState.getHumanPlayerDeck(),appState.getAIPlayerDeck());
-        gameMaster.startGame(); //TODO cosider to split the operation in start game in different method for use also slowUpdate
+        //gameMaster.startGame(); //TODO cosider to split the operation in start game in different method for use also slowUpdate
     }
 
     @Override
