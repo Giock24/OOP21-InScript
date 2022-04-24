@@ -1,6 +1,7 @@
 package view;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -224,10 +225,9 @@ public class GameSceneController {
         
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
-                final Button cardCell= new Button();
-                cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
+                final VBox cardCell= generateEmptyCardCell(false);
+                //cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
                 cardCell.setOnMouseClicked(event -> gameMasterController.onSelectCardToPlace(card));
-                cardCell.setGraphic(generateCardElement(card));
                 
                 handPlayer.getChildren().add(cardCell);
            
@@ -252,7 +252,8 @@ public class GameSceneController {
             //TODO add all the grafic for show the card detail
         }
         
-        cardView=cardViewElement;
+        cardView.getChildren().removeAll();
+        cardView.getChildren().add(cardViewElement);
         
     }
     

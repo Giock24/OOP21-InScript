@@ -8,6 +8,11 @@ import cards.Card;
 public interface Player {
     
     int NUM_CARD_BOARD=5;
+    
+    /**
+     * @return true if the player is the AI player
+     */
+    boolean isAiPlayer();
 
     /**
      * @return the current Deck

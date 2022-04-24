@@ -12,8 +12,6 @@ import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
-    private static final int NO_MORE_CARDS = 0;
-    
     private boolean isTheAIturn;
     
     private final Player player;
@@ -48,17 +46,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void firstDraw(final boolean isTheAIturn) {
+    public void firstDraw() {
         
-        if (isTheAIturn) {
             IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.playerAI);
-            });
-        } else {
-            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.player);
             });
-        }
+
     }
 
     /**
@@ -68,9 +62,14 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     public boolean draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
+
+        
         if (this.isTheAIturn) {
+            
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             this.playerAI.getMana();
             this.generalDraw(this.playerAI);
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             
             this.handleEffect();
         } else {
@@ -107,10 +106,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         final List<Card> tmpDeck = currentPlayer.getDeck();
         final List<Card> tmpHand = currentPlayer.getHand();
         
-        
-        if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            this.currentDeck = tmpDeck; // campi da togliere in seguito
-            this.currentHand = tmpHand;
+        if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
             tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
             tmpDeck.remove(tmpDeck.size() - 1);
@@ -129,7 +125,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
         final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
         
-        for(int pos = 0; pos <= tmpBoard.size(); pos++) {
+        for(int pos = 0; pos <= tmpBoard.size()-1; pos++) {
             if (tmpBoard.get(pos).isPresent()) {
                 final Card cardSaved = tmpBoard.get(pos).get();
                 
