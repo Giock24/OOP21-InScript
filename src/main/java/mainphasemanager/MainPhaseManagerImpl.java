@@ -9,6 +9,8 @@ import shared.Player;
 
 public class MainPhaseManagerImpl implements MainPhaseManager {
     
+    private static final int NO_ENOUGH_MANA = 0;
+    
     private final Player player;
     private final Player playerAI;
     
@@ -31,13 +33,12 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      */
     @Override
     public void positioning(final Card cardToBePositioned, final int boardCellIndex, final boolean isTheAITurn) {
-        // TODO mettere un controllo sul mana totale che ha a disposizione il player di quel turno
         
-        if (isTheAITurn) {
+        if (isTheAITurn && this.isEnoughTheMana(this.playerAI, cardToBePositioned)) {
             this.playerPositioning(this.playerAI, cardToBePositioned, boardCellIndex);
             
             // TODO aggiungere handleEffect
-        } else {
+        } else if (!isTheAITurn && this.isEnoughTheMana(this.player, cardToBePositioned)) {
             this.playerPositioning(this.player, cardToBePositioned, boardCellIndex);
             
             // TODO aggiungere handleEffect
@@ -64,8 +65,19 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                 }
             });
         }
-        
-        
+           
+    }
+    
+    /**
+     * 
+     *     check if the player can place that card with the current mana
+     * 
+     * @param player
+     * @param cardToBePositioned
+     * @return true if can place that card otherwise false
+     */
+    private boolean isEnoughTheMana (final Player player, final Card cardToBePositioned) {
+        return player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManagerImpl.NO_ENOUGH_MANA;
     }
 
 }
