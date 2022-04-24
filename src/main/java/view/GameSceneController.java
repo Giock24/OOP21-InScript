@@ -163,23 +163,25 @@ public class GameSceneController {
         this.colomn = 0;
         
         gameMasterController.getIAPlayer().getCurrentBoard().forEach(card -> {
-            final Button cardCell= new Button();
-            cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            VBox cardCell= null;
+            
             
             if( card.isPresent()) {
                 
+                cardCell = generateCardElement(card.get());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
-                cardCell.setGraphic(generateCardElement(card.get()));
                 
             } else {
                 
                 try {
-                    cardCell.setGraphic(generateEmptyCardCell(true));
+                    cardCell = generateEmptyCardCell(true);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 
             }
+            
+            cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             boardIA.addColumn(this.colomn, cardCell);
             this.colomn++;
         });
@@ -196,27 +198,31 @@ public class GameSceneController {
         List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
         IntStream.range(0, userBoard.size()).forEach(index -> {
-            final Button cardCell= new Button();
-            cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            VBox cardCell = null;
             
             Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
                 
+                cardCell = generateCardElement(card.get());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
-                cardCell.setGraphic(generateCardElement(card.get()));
                 
             } else {
                 
-                cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
                 try {
-                    cardCell.setGraphic(generateEmptyCardCell(false));
+                    cardCell = generateEmptyCardCell(false);
+                    cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 
+                
             }
             
-            boardPlayer.addColumn(index, cardCell);
+            if(cardCell != null) {
+                cardCell.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+                boardPlayer.addColumn(index, cardCell);
+            }
+            
         });
         
     }
