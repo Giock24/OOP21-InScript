@@ -32,7 +32,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     @Override
     public void handleEffect() {
         
-        System.out.print("handleEffect");
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         
@@ -49,14 +48,11 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     @Override
     public void firstDraw() {
         
-            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
-        
             IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.playerAI);
                 this.generalDraw(this.player);
             });
 
-            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
     }
 
     /**
@@ -66,9 +62,14 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     public boolean draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
+
+        
         if (this.isTheAIturn) {
+            
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             this.playerAI.getMana();
             this.generalDraw(this.playerAI);
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             
             this.handleEffect();
         } else {
@@ -124,7 +125,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
         final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
         
-        for(int pos = 0; pos <= tmpBoard.size(); pos++) {
+        for(int pos = 0; pos <= tmpBoard.size()-1; pos++) {
             if (tmpBoard.get(pos).isPresent()) {
                 final Card cardSaved = tmpBoard.get(pos).get();
                 

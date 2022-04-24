@@ -49,12 +49,7 @@ public class GameMasterImpl implements GameMaster {
     @Override
     public void startGame() {
         
-        System.out.print("startGame\n");
-        
         drawPhaseManager.firstDraw();
-        
-        System.out.print(aiPlayer.getHand().size()+"\n");
-        System.out.print(humanPlayer.getHand().size()+"\n");
         
         drawPhaseManager.draw(true);
         //mainPhaseManagerIA.startAIMainPhase();
