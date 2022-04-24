@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
       <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
          <padding>
@@ -137,9 +137,9 @@
       </SplitPane>
    </center>
    <bottom>
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="183.0" prefWidth="692.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="260.0" prefWidth="796.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="108.0" prefWidth="513.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css" />
+            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="132.0" prefWidth="690.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css" />
          </content>
       </ScrollPane>
    </bottom>
