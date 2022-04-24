@@ -89,7 +89,15 @@ public class PlayerImpl implements Player {
      */
     @Override
     public void setMana(final int mana) {
-        this.currentMana = this.currentMana + mana;
+        this.mana = this.mana + mana;
+    }
+    
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public void setCurrentMana(final int mana) {
+        this.currentMana = this.currentMana - mana;
     }
 
     /**
@@ -107,6 +115,5 @@ public class PlayerImpl implements Player {
     public void setLifePoints(final int life) {
         this.lifePoints = life;
     }
-
 
 }
