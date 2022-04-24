@@ -247,7 +247,21 @@ public class GameSceneController {
         VBox cardViewElement = new VBox();
         
         if(selectedCardToShow.isPresent()) {
-            cardViewElement = generateCardElement(selectedCardToShow.get());
+            
+            final Card card = selectedCardToShow.get();
+            
+            cardViewElement.setStyle(""
+                    + "-fx-background-image:url('sampleCardImage.png'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;");
+            
+            cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
+            
+            final Label cardName = new Label();
+            cardName.setText(card.getName());
+            
+            cardViewElement.getChildren().add(cardName);
         } 
         
         cardView.getChildren().clear();
