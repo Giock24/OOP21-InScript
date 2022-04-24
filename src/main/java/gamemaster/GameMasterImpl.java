@@ -7,11 +7,13 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import battlephasemanager.BattlePhaseManager;
+import battlephasemanager.BattlePhaseManagerImpl;
 import cards.Card;
 import drawphasemanager.DrawPhaseManager;
 import drawphasemanager.DrawPhaseManagerImpl;
 import mainphasemanager.MainPhaseManager;
 import mainphasemanager.MainPhaseManagerIA;
+import mainphasemanager.MainPhaseManagerImpl;
 import shared.Player;
 import shared.PlayerImpl;
 
@@ -40,9 +42,9 @@ public class GameMasterImpl implements GameMaster {
         this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
         this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
         this.isTheAIturn = false;
-        //this.drawPhaseManager = new ()
-        //this.mainPhasemanager = new mainPhaseManager(humanPlayer)
-        //this.battlePhaseManager = new ()
+        this.drawPhaseManager = new DrawPhaseManagerImpl(humanPlayer, aiPlayer);
+        this.mainPhaseManager = new MainPhaseManagerImpl(humanPlayer, aiPlayer);
+        this.battlePhaseManager = new BattlePhaseManagerImpl(humanPlayer, aiPlayer);
         //this.mainPhaseManagerIA = new mainPhaseManagerIA(aiPlayer)
     }
 
