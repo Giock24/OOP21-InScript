@@ -135,13 +135,19 @@ public class GameSceneController {
    
         
         final VBox cardElement = new VBox();
-        cardElement.setAlignment(Pos.CENTER);
+      //  cardElement.setAlignment(Pos.CENTER);
         //centralPanel.setSpacing(40);
         
-        final Label cardName = new Label();
-        cardName.setText(card.getName());
+      // final Label cardName = new Label();
+      //  cardName.setText(card.getName());
         
-        //TODO add all the card element
+        cardElement.setStyle(""
+                + "-fx-background-image:url('sampleCardImage.png'); "
+                + "-fx-background-repeat: no-repeat;\n"
+                + "-fx-background-size: contain;\n"
+                + "-fx-background-size: 100% 100%;");
+        
+        cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
         return cardElement;
     }
@@ -225,7 +231,7 @@ public class GameSceneController {
         
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
-                final VBox cardCell= generateEmptyCardCell(false);
+                final VBox cardCell= generateCardElement(card);
                 //cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
                 cardCell.setOnMouseClicked(event -> gameMasterController.onSelectCardToPlace(card));
                 
