@@ -52,7 +52,7 @@ public interface Player {
     void setMana(int mana);
     
     /**
-     * @param mana the value that decreases current mana
+     * @param mana the value that increases or decreases current mana
      */
     void setCurrentMana(int mana);
     
