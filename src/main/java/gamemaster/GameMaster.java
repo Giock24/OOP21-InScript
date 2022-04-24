@@ -17,7 +17,7 @@ public interface GameMaster {
      */
     int INTIAL_NUM_CARDS_IN_HAND = 3;
     
-    boolean startGame();
+    void startGame();
     
     Player getHumanPlayer();
     

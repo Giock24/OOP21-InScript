@@ -12,8 +12,6 @@ import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
-    private static final int NO_MORE_CARDS = 0;
-    
     private boolean isTheAIturn;
     
     private final Player player;
@@ -34,6 +32,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     @Override
     public void handleEffect() {
         
+        System.out.print("handleEffect");
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.playerAI);
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         
@@ -48,17 +47,16 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void firstDraw(final boolean isTheAIturn) {
+    public void firstDraw() {
         
-        if (isTheAIturn) {
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
+        
             IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.playerAI);
-            });
-        } else {
-            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.player);
             });
-        }
+
+            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
     }
 
     /**
@@ -107,10 +105,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         final List<Card> tmpDeck = currentPlayer.getDeck();
         final List<Card> tmpHand = currentPlayer.getHand();
         
-        
-        if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            this.currentDeck = tmpDeck; // campi da togliere in seguito
-            this.currentHand = tmpHand;
+        if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
             tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
             tmpDeck.remove(tmpDeck.size() - 1);
