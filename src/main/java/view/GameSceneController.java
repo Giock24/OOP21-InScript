@@ -135,11 +135,9 @@ public class GameSceneController {
    
         
         final VBox cardElement = new VBox();
+        cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
       //  cardElement.setAlignment(Pos.CENTER);
         //centralPanel.setSpacing(40);
-        
-      // final Label cardName = new Label();
-      //  cardName.setText(card.getName());
         
         cardElement.setStyle(""
                 + "-fx-background-image:url('sampleCardImage.png'); "
@@ -147,7 +145,12 @@ public class GameSceneController {
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;");
         
-        cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
+
+        
+        final Label cardName = new Label();
+        cardName.setText(card.getName());
+        
+        cardElement.getChildren().add(cardName);
         
         return cardElement;
     }
