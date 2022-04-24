@@ -11,6 +11,8 @@ public interface GameMaster {
     int DEFAULT_PLAYER_LIFE = 0;
     int MIN_PLAYER_LIFE = -10;
     int INITIAL_MANA = 0;
+    int MAXIMUM_MANA = 10;
+    int MANA_PLUS_ONE = 1;
     
     /**
      * this is the number of card that each player have in the hand before the drawingPhase
