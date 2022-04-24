@@ -48,33 +48,36 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
         effectEnemy = extractEvent(enemy);
     }
     
-    private List<Optional<Card>> handleBattle(final Player protagonist, final Player antagonist){
+    private List<Optional<Card>> handleBattle(final Player protagonist, final Player antagonist, final boolean a){
         final List<Optional<Card>> tmp = new ArrayList<>();
         for(int i = 0; i < protagonist.getCurrentBoard().size(); i++) {
             if(protagonist.getCurrentBoard().get(i).isPresent()) {
                 if(antagonist.getCurrentBoard().get(i).isPresent()) {
-                    // Metodo dello sviluppo della battaglia.
-                    // da aggiungere la parte per gestire gli effetti
                     
-                    //if(effectPlayer.get(i).isPresent()) {
-                    //    effectPlayer.get(i).get().useEffect(protagonist, antagonist, i);
-                    //}
-                    
-                    // if(List.of(ActivationEvent.ONDEFENDING, ActivationEvent.ONDEATH).contains(antagonist))
-                    // Se la carta è presente sottrae alla vita attuale di tale carta l'attacco della carta del protagonista
+                    if(a) {
+                        if(effectEnemy.get(i).get().getActivationEvent() == ActivationEvent.ONATTAKING) {
+                            effectEnemy.get(i).get().useEffect(antagonist, protagonist, i);
+                        }
+                        if(effectPlayer.get(i).get().getActivationEvent() == ActivationEvent.ONDEFENDING) {
+                            effectPlayer.get(i).get().useEffect(protagonist, antagonist, i);
+                        }
+                    }
+                    // fare lo stesso if se è il turno del giocatore;
+
                     antagonist.getCurrentBoard().get(i).get().setLifePoint(antagonist.getCurrentBoard().get(i).get().getLifePoint() - protagonist.getCurrentBoard().get(i).get().getAttack());
-                    if(antagonist.getCurrentBoard().get(i).get().getLifePoint() <= 0) {
-                        tmp.add(Optional.empty());
-                    }
-                    else {
-                        tmp.add(antagonist.getCurrentBoard().get(i));
-                    }
+                    
+                    // aggiungere attivazione dell'effetto on death se la carta è morta e se possidete un effetto con activation OnDeath;
+                    
+                    tmp.add(antagonist.getCurrentBoard().get(i));        
                 }
                 else {
                     antagonist.setLifePoints(antagonist.getLifePoints() - protagonist.getCurrentBoard().get(i).get().getAttack());
                 }
             }
         }
+    
+        // aggiungere controllo per determinare se una carta sia effettivamente morta dopo l'uso dell'effetto ON DEATH
+        
         return tmp;
     }
 
@@ -82,10 +85,10 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
     public boolean startBattle(final boolean isTheAIturn) {
         handleEffect();
         if(isTheAIturn) {
-            player.setCurrentBoard(handleBattle(enemy, player)); 
+            player.setCurrentBoard(handleBattle(enemy, player, isTheAIturn)); 
         }
         else {
-            enemy.setCurrentBoard(handleBattle(player, enemy)); 
+            enemy.setCurrentBoard(handleBattle(player, enemy, isTheAIturn)); 
         }
         return player.getLifePoints() <= 0 || enemy.getLifePoints() <= 0;
     }
