@@ -105,7 +105,7 @@ public class GameSceneController {
      * @return
      * @throws FileNotFoundException 
      */
-    private VBox generateEmptyCardCell(boolean inTheAIBoard) throws FileNotFoundException {
+    private VBox generateEmptyCardCell(boolean inTheAIBoard) {
         final VBox emptyCardCell = new VBox();
         
         String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
@@ -173,11 +173,7 @@ public class GameSceneController {
                 
             } else {
                 
-                try {
-                    cardCell = generateEmptyCardCell(true);
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+                cardCell = generateEmptyCardCell(true);
                 
             }
             
@@ -207,15 +203,8 @@ public class GameSceneController {
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
                 
             } else {
-                
-                try {
-                    cardCell = generateEmptyCardCell(false);
-                    cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                
-                
+                cardCell = generateEmptyCardCell(false);
+                cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
             }
             
             if(cardCell != null) {
