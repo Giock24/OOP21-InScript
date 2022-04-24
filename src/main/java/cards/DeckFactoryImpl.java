@@ -4,15 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DeckFactoryImpl implements DeckFactory {
+    
+    final List<Card> standardDeck = new ArrayList<>();
 
     @Override
     public List<Card> getStandardDeck() {
 
-        final List<Card> standardDeck = new ArrayList<>();
         
-        //TODO use here the card factory and add all the cards
         
-        return standardDeck;
+        for(int i=0; i==4; i++) {
+            this.standardDeck.add(new CardFactoyImpl().noEffect("st-01", "Cane", 1, 1, 1));
+        }
+        
+        
+        return this.standardDeck;
     }
 
 }
