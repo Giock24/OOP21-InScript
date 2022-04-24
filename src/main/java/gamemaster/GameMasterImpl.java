@@ -37,10 +37,8 @@ public class GameMasterImpl implements GameMaster {
             emptyBoard.add(Optional.empty());
         });
         
-        //System.out.print(emptyBoard.size());
-        
-        this.humanPlayer = new PlayerImpl(humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
-        this.aiPlayer = new PlayerImpl(aiPlayerDeck,  GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,emptyBoard, new ArrayList<Card>());
+        this.humanPlayer = new PlayerImpl(false,humanPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE,  GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,new ArrayList<Optional<Card>>(emptyBoard), new ArrayList<Card>());
+        this.aiPlayer = new PlayerImpl(true,aiPlayerDeck, GameMasterImpl.DEFAULT_PLAYER_LIFE, GameMasterImpl.INITIAL_MANA, GameMasterImpl.INITIAL_MANA,new ArrayList<Optional<Card>>(emptyBoard), new ArrayList<Card>());
         this.isTheAIturn = false;
         this.drawPhaseManager = new DrawPhaseManagerImpl(humanPlayer, aiPlayer);
         this.mainPhaseManager = new MainPhaseManagerImpl(humanPlayer, aiPlayer);
@@ -50,16 +48,16 @@ public class GameMasterImpl implements GameMaster {
 
     @Override
     public boolean startGame() {
-        Random rand = new Random();
-        boolean isAITurn = rand.nextBoolean();
+        final Random rand = new Random();
+        final boolean isAITurn = rand.nextBoolean();
         
         drawPhaseManager.firstDraw(false);
         drawPhaseManager.firstDraw(true);
         
         if(isAITurn) {
-            drawPhaseManager.draw(true);
+            drawPhaseManager.draw(isAITurn);
             mainPhaseManagerIA.startAIMainPhase();
-            battlePhaseManager.startBattle(true);
+            battlePhaseManager.startBattle(isAITurn);
         }
         
         return isAITurn;
