@@ -53,6 +53,8 @@ public class GameMasterImpl implements GameMaster {
         
         drawPhaseManager.draw(true);
         //mainPhaseManagerIA.startAIMainPhase();
+        
+        drawPhaseManager.draw(false);
 
     }
 
