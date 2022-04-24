@@ -13,20 +13,11 @@ import gamemaster.SlowUpdate;
 import gamemaster.UpdateView;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -169,7 +160,7 @@ public class GameSceneController {
      * this function attach the cards element to the HBox named boardIA
      */
     private void updateBoardIA() {    
-        boardIA.getChildren().removeAll();
+        boardIA.getChildren().clear();
         this.colomn = 0;
         
         gameMasterController.getIAPlayer().getCurrentBoard().forEach(card -> {
@@ -199,7 +190,7 @@ public class GameSceneController {
      * this function attach the cards element to the HBox named boardIA
      */
     private void updateBoardPlayer() {    
-        boardPlayer.getChildren().removeAll();
+        boardPlayer.getChildren().clear();
         
         List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
@@ -230,12 +221,12 @@ public class GameSceneController {
      * this function attach the cards element to the HBOX named handPlayer
      */
     private void updatePlayerHand() {
-        handPlayer.getChildren().removeAll();
+        handPlayer.getChildren().clear();
         
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
                 final VBox cardCell= generateCardElement(card);
-                //cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
+                cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
                 cardCell.setOnMouseClicked(event -> gameMasterController.onSelectCardToPlace(card));
                 
                 handPlayer.getChildren().add(cardCell);
@@ -253,15 +244,13 @@ public class GameSceneController {
         
         final Optional<Card> selectedCardToShow = gameMasterController.getCardToShow();
         
-        final VBox cardViewElement = new VBox();
+        VBox cardViewElement = new VBox();
         
         if(selectedCardToShow.isPresent()) {
-            //TODO add all the grafic for show the card detail
-        } else {
-            //TODO add all the grafic for show the card detail
-        }
+            cardViewElement = generateCardElement(selectedCardToShow.get());
+        } 
         
-        cardView.getChildren().removeAll();
+        cardView.getChildren().clear();
         cardView.getChildren().add(cardViewElement);
         
     }
