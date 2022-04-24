@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+
+
+.buttonMenu{
+	-fx-background-color: black;
+	-fx-font-size: 20;
+	-fx-font-family: "Impact";
+	-fx-border-color: white;
+	-fx-border-radius: 2;
+	-fx-border-width: 2;
+	-fx-text-fill: #e8b53b;
+}
+
+.buttonBoard{
+	-fx-background-color: #011e26;
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-border-color: white;
+	-fx-border-radius: 2;
+	-fx-border-width: 2;
+	-fx-text-fill: white;
+}
+
+.styleTITLE{
+	-fx-font-family: 'Rubik Glitch', cursive;
+	-fx-text-fill: #04efff;
+}
+
+.textStyle{
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-text-fill: white;
+}
+
+.root{
+	-fx-background-image: url("menu_background.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+}
+
+.boardBG{
+	-fx-background-image: url("template_board_Inscript.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+}
+
+.handBoardBG{
+	-fx-background-image: url("template_handboard.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+}
+

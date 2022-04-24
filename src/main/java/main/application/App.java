@@ -5,6 +5,7 @@ package main.application;
 
 
 import javafx.application.Application;
+import view.MainApplication;
 import shared.AppStateSingleton;
 
 /** Main application entry-point. */
@@ -14,10 +15,10 @@ public final class App {
 
     public static void main(final String[] args) {
         AppStateSingleton.getInstance(); // initialization of the appState
-        Application.launch(JavaFXAppWithFXML.class, args);
+        Application.launch(MainApplication.class, args);
         // The following line raises: Error: class it.unibo.samplejavafx.App is not a subclass of javafx.application.Application
-        // JavaFXApp.launch(args);
+        //JavaFXApp.launch(args);
         // While the following would do just fine:
-        // JavaFXApp.run(args)
+        //JavaFXApp.run(args);
     }
 }

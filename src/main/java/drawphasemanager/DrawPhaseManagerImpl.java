@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import cards.Card;
+import gamemaster.GameMaster;
 import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
@@ -37,11 +38,11 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void draw(final boolean isTheAITurn) {
+    public boolean draw(final boolean isTheAITurn) {
         if (isTheAITurn == true) {
-            this.manaAndHand(this.playerIA);
+            return this.manaAndHand(this.playerIA);
         } else {
-            this.manaAndHand(this.player);
+            return this.manaAndHand(this.player);
         }
 
     }
@@ -51,7 +52,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      *   
      * @param currentPlayer
      */
-    private void manaAndHand(final Player currentPlayer) {
+    private boolean manaAndHand(final Player currentPlayer) {
         if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
             currentPlayer.getMana();
             this.currentDeck = new ArrayList<>(currentPlayer.getDeck().stream().collect(Collectors.toList()));
@@ -60,6 +61,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             this.currentHand.add(this.currentDeck.get(this.currentDeck.size() - 1));
             this.currentDeck.remove(this.currentDeck.size() - 1);
         }
+        return checkGameEnd();
     }
     
     public List<Card> getCurrentDeck() {
@@ -68,6 +70,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
     public List<Card> getCurrentHand() {
         return new ArrayList<>(List.copyOf(this.currentHand));
+    }
+    
+    private boolean checkGameEnd() {
+        return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerIA.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
     }
 
     @Override
