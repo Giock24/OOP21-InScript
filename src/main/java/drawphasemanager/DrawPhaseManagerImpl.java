@@ -3,6 +3,7 @@ package drawphasemanager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
@@ -66,10 +67,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (this.isTheAIturn) {
             
-            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             this.playerAI.getMana();
             this.generalDraw(this.playerAI);
-            System.out.print("player ai deck size:"+this.playerAI.getDeck().size()+"\n");
             
             this.handleEffect();
         } else {
@@ -108,8 +107,11 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
-            tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
-            tmpDeck.remove(tmpDeck.size() - 1);
+            final Random rand = new Random();
+            final int index = Math.abs(rand.nextInt()) %(tmpDeck.size()-1);
+            
+            tmpHand.add(tmpDeck.get(index));
+            tmpDeck.remove(index);
         }
         return checkGameEnd();
     }
