@@ -66,6 +66,7 @@
                   <Label fx:id="manaIA" styleClass="textStyle" stylesheets="@../default/application.css" />
                </children>
             </HBox>
+            <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
          </children>
       </VBox>
    </left>

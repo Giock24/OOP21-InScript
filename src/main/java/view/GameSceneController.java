@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -48,9 +49,13 @@ public class GameSceneController {
     ////cardView////
     @FXML private VBox cardView;
     
+    ////battle phase button////
+    @FXML private Button battlePhaseButton;
+    
    
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate,onGameEnd);
+        inizializeEndTurnButton();
         updateBoardView.update();
     }
     
@@ -147,13 +152,13 @@ public class GameSceneController {
     }
     
     /**
-     * function connect to the end-turn button
+     * function update the end-turn button
      * 
      * @param event
      */
-    @FXML
-    private void onEndTurnButtonPress(Event event) {
-        gameMasterController.onEndTurn();
+    private void inizializeEndTurnButton() {
+        battlePhaseButton.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_WIDTH.getValue());
+        battlePhaseButton.setOnMousePressed(event -> gameMasterController.onEndTurn());
     }
 
     /**
