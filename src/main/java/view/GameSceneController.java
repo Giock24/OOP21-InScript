@@ -1,7 +1,6 @@
 package view;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -121,22 +120,23 @@ public class GameSceneController {
      */
     private VBox generateCardElement(Card card) {
         
-        //TODO probably can be necessary change the style of the card if it is gameMasterController.getCardToPlace();
-        //in the hand
-   
         
         final VBox cardElement = new VBox();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
-      //  cardElement.setAlignment(Pos.CENTER);
-        //centralPanel.setSpacing(40);
+        
+        final Optional<Card> cardToPlace = gameMasterController.getCardToPlace();
+        final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get() == card;
         
         cardElement.setStyle(""
                 + "-fx-background-image:url('sampleCardImage.png'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
-                + "-fx-background-size: 100% 100%;");
-        
-
+                + "-fx-background-size: 100% 100%;"
+                + (isCardToPlace == true ? ( 
+                        "-fx-border-color: #a7ab7d;\n" 
+                        + "-fx-border-width: 6;\n" 
+                        ) : "")
+               );
         
         final Label cardName = new Label();
         cardName.setText(card.getName());
@@ -227,7 +227,7 @@ public class GameSceneController {
           
                 final VBox cardCell= generateCardElement(card);
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
-                cardCell.setOnMouseClicked(event -> gameMasterController.onSelectCardToPlace(card));
+                cardCell.setOnMousePressed(event -> gameMasterController.onSelectCardToPlace(card));
                 
                 handPlayer.getChildren().add(cardCell);
            
