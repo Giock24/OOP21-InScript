@@ -2,6 +2,7 @@ package shared;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import cards.Card;
 
@@ -105,7 +106,7 @@ public class PlayerImpl implements Player {
      */
     @Override
     public void setCurrentBoard(final List<Optional<Card>> board) {
-        this.currentBoard = board.stream().limit(NUM_CARD_BOARD).toList();
+        this.currentBoard = board.stream().limit(NUM_CARD_BOARD).collect(Collectors.toList());
     }
 
     /**
