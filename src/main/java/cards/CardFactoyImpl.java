@@ -3,6 +3,7 @@ package cards;
 import java.util.Optional;
 
 import effects.Armored;
+import effects.Draw;
 import effects.Elusive;
 import effects.Exalted;
 import effects.Growth;
@@ -61,6 +62,10 @@ public class CardFactoyImpl implements CardFactory {
         return new BaseCard(idCard, name, lifeValue, attackValue, manaCost, Optional.of(new Growth(growthName, growthLife, growthAttack, growthEffect)));
     }
 
-    
+    @Override
+    public Card drawEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost) {
+        
+        return new BaseCard(idCard, name, lifeValue, attackValue, manaCost, Optional.of(new Draw()));
+    }
 
 }

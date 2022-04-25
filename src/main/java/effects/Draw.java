@@ -2,7 +2,6 @@ package effects;
 
 import cards.AbstractEffect;
 import cards.ActivationEvent;
-import cards.DeckFactoryImpl;
 import drawphasemanager.DrawPhaseManagerImpl;
 import shared.Player;
 
