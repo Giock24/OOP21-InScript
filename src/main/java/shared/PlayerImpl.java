@@ -7,6 +7,7 @@ import cards.Card;
 
 public class PlayerImpl implements Player {
     
+    private final boolean isAiPlayer;
     private List<Card> deck;
     private int lifePoints;
     private int mana;
@@ -14,8 +15,9 @@ public class PlayerImpl implements Player {
     private List<Optional<Card>> currentBoard;
     private List<Card> hand;
     
-    public PlayerImpl(List<Card> deck, int lifePoints, int mana, int currentMana,List<Optional<Card>> currentBoard, List<Card> hand) {
+    public PlayerImpl(boolean isAiplayer,List<Card> deck, int lifePoints, int mana, int currentMana,List<Optional<Card>> currentBoard, List<Card> hand) {
         super();
+        this.isAiPlayer= isAiplayer;
         this.deck = deck;
         this.lifePoints = lifePoints;
         this.mana = mana;
@@ -23,6 +25,16 @@ public class PlayerImpl implements Player {
         this.currentBoard = currentBoard;
         this.hand = hand;
     }
+    
+
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public boolean isAiPlayer() {
+        return this.isAiPlayer;
+    }
+        
 
     /**
      *  {@inheritDoc}
@@ -77,6 +89,14 @@ public class PlayerImpl implements Player {
      */
     @Override
     public void setMana(final int mana) {
+        this.mana = this.mana + mana;
+    }
+    
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public void setCurrentMana(final int mana) {
         this.currentMana = this.currentMana + mana;
     }
 
@@ -95,7 +115,5 @@ public class PlayerImpl implements Player {
     public void setLifePoints(final int life) {
         this.lifePoints = life;
     }
-    
-
 
 }

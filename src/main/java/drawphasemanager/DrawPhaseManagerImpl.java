@@ -3,6 +3,7 @@ package drawphasemanager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
@@ -12,12 +13,11 @@ import shared.Player;
 
 public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
-    private static final int NO_MORE_CARDS = 0;
-    
     private boolean isTheAIturn;
     
     private final Player player;
     private final Player playerAI;
+    private final Random rng = new Random();
     
     // lasciati per i testing togliere col tempo
     private List<Card> currentDeck; 
@@ -48,17 +48,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void firstDraw(final boolean isTheAIturn) {
+    public void firstDraw() {
         
-        if (isTheAIturn) {
             IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.playerAI);
-            });
-        } else {
-            IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.player);
             });
-        }
+
     }
 
     /**
@@ -68,13 +64,16 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     public boolean draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
+
+        
         if (this.isTheAIturn) {
-            this.playerAI.getMana();
+            
+            this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
             
             this.handleEffect();
         } else {
-            this.player.getMana();
+            this.restoreMana(this.player);
             this.generalDraw(this.player);
             
             this.handleEffect();
@@ -88,13 +87,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void drawWithoutMana(final boolean isTheAITurn) {
-        if (isTheAITurn) {
-            this.generalDraw(this.playerAI);
-        } else {
-            this.generalDraw(this.player);
-        }
-        
+    public void drawWithoutMana(final Player player) {
+            this.generalDraw(player);
     }
     
     /**
@@ -107,13 +101,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         final List<Card> tmpDeck = currentPlayer.getDeck();
         final List<Card> tmpHand = currentPlayer.getHand();
         
-        
-        if (currentPlayer.getDeck().size() > DrawPhaseManagerImpl.NO_MORE_CARDS) {
-            this.currentDeck = tmpDeck; // campi da togliere in seguito
-            this.currentHand = tmpHand;
+        if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
-            tmpHand.add(tmpDeck.get(tmpDeck.size() - 1));
-            tmpDeck.remove(tmpDeck.size() - 1);
+            final int randInt = this.rng.nextInt() % (tmpDeck.size());
+            final int index = Math.abs(randInt);
+            
+            tmpHand.add(tmpDeck.get(index));
+            tmpDeck.remove(index);
         }
         return checkGameEnd();
     }
@@ -129,7 +123,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private void selectEventAndPlayer(final ActivationEvent event, final Player player) {
         final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
         
-        for(int pos = 0; pos <= tmpBoard.size(); pos++) {
+        for(int pos = 0; pos <= tmpBoard.size()-1; pos++) {
             if (tmpBoard.get(pos).isPresent()) {
                 final Card cardSaved = tmpBoard.get(pos).get();
                 
@@ -148,6 +142,19 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             
         }
         
+    }
+    
+    /**
+     * 
+     *     when called restore all mana of that player
+     * 
+     * @param player
+     */
+    private void restoreMana(final Player player) {
+        if (player.getMana() + GameMaster.MANA_PLUS_ONE <= GameMaster.MAXIMUM_MANA) {
+            player.setMana(GameMaster.MANA_PLUS_ONE);
+            player.setCurrentMana(player.getMana() - player.getCurrentMana());
+        }
     }
     
     public List<Card> getCurrentDeck() {

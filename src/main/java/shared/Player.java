@@ -8,6 +8,11 @@ import cards.Card;
 public interface Player {
     
     int NUM_CARD_BOARD=5;
+    
+    /**
+     * @return true if the player is the AI player
+     */
+    boolean isAiPlayer();
 
     /**
      * @return the current Deck
@@ -18,7 +23,10 @@ public interface Player {
      * @return the current life point
      */
     int getLifePoints();
-	
+    
+    /**
+     * @return the total mana that player can use
+     */
     int getMana();
 	
     /**
@@ -39,9 +47,14 @@ public interface Player {
     /* probabilmente ci saranno anche i metodi per modificare i valori*/
 	
     /**
-     * @param mana the value that decreases current mana
+     * @param mana the value that increases total mana
      */
     void setMana(int mana);
+    
+    /**
+     * @param mana the value that increases or decreases current mana
+     */
+    void setCurrentMana(int mana);
     
     /**
      * @param board the new board state after battle and or positioning

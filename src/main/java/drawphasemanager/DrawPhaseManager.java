@@ -4,10 +4,12 @@ import java.util.List;
 
 import cards.Card;
 import shared.PhaseManager;
+import shared.Player;
 
 public interface DrawPhaseManager extends PhaseManager {
     
-    int INITAL_CARD_IN_THE_HAND = 4;
+    int INITAL_CARD_IN_THE_HAND = 3;
+    int NO_MORE_CARDS = 0;
 		
     /**
      *     adds a card on the player's hand and increases the mana
@@ -23,7 +25,7 @@ public interface DrawPhaseManager extends PhaseManager {
      * 
      * @param isTheAIturn
      */
-    void firstDraw(boolean isTheAIturn);
+    void firstDraw();
     
     /**
      * 
@@ -31,7 +33,7 @@ public interface DrawPhaseManager extends PhaseManager {
      * 
      * @param isTheAITurn
      */
-    void drawWithoutMana(boolean isTheAITurn);
+    void drawWithoutMana(Player player);
     
     /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
     List<Card> getCurrentDeck();
