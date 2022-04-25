@@ -19,4 +19,6 @@ public interface CardFactory {
     Card rottenEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
     
     Card growthEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String growthName, final int growthLife, final int growthAttack, final Optional<Effect> growthEffect);
+    
+    Card drawEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost);
 }

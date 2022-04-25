@@ -3,5 +3,6 @@ package cards;
 import java.util.List;
 
 public interface DeckFactory {
-    List<Card> getStandardDeck();
+    List<Card> getPlayerDeck();
+    List<Card> getPlayerIADeck();
 }
