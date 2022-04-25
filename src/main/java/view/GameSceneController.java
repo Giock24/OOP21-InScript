@@ -10,7 +10,9 @@ import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
 import gamemaster.SlowUpdate;
 import gamemaster.UpdateView;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -18,8 +20,11 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -82,13 +87,15 @@ public class GameSceneController {
 };
 
     private SlowUpdate slowUpdate = () -> {
-    try {
-        Thread.sleep(1000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }   
+        /*
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */   
 
-};
+    };
  
     private OnGameEnd onGameEnd = () -> {
         showGameOverDialog();
@@ -144,7 +151,7 @@ public class GameSceneController {
                );
         
         final Label cardName = new Label();
-        cardName.setText(card.getName());
+        cardName.setText(card.getName()+"        "+card.getMana());
         
         cardElement.getChildren().add(cardName);
         
@@ -197,19 +204,18 @@ public class GameSceneController {
     private void updateBoardPlayer() {    
         boardPlayer.getChildren().clear();
         
-        List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
+        final List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
         IntStream.range(0, userBoard.size()).forEach(index -> {
             VBox cardCell = null;
             
-            Optional<Card> card= userBoard.get(index);
+            
+            final Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
-                
                 cardCell = generateCardElement(card.get());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
-                
             } else {
-                cardCell = generateEmptyCardCell(false);
+                cardCell = generateEmptyCardCell(false); 
                 cardCell.setOnMousePressed(event -> gameMasterController.onCardPlacing(index));
             }
             
@@ -219,6 +225,7 @@ public class GameSceneController {
             }
             
         });
+        
         
     }
     

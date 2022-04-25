@@ -102,7 +102,7 @@
       </BorderPane>
    </top>
    <center>
-      <SplitPane disable="true" dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
         <items>
             <GridPane fx:id="boardIA" alignment="CENTER" hgap="4.0">
               <columnConstraints>
