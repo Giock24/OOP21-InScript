@@ -97,7 +97,7 @@ public class PlayerImpl implements Player {
      */
     @Override
     public void setCurrentMana(final int mana) {
-        this.currentMana = this.currentMana - mana;
+        this.currentMana = this.currentMana + mana;
     }
 
     /**

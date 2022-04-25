@@ -17,6 +17,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     
     private final Player player;
     private final Player playerAI;
+    private final Random rng = new Random();
     
     // lasciati per i testing togliere col tempo
     private List<Card> currentDeck; 
@@ -67,12 +68,12 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (this.isTheAIturn) {
             
-            this.playerAI.getMana();
+            this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
             
             this.handleEffect();
         } else {
-            this.player.getMana();
+            this.restoreMana(this.player);
             this.generalDraw(this.player);
             
             this.handleEffect();
@@ -107,8 +108,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
-            final Random rand = new Random();
-            final int index = Math.abs(rand.nextInt()) %(tmpDeck.size()-1);
+            final int randInt = this.rng.nextInt() % (tmpDeck.size()-1);
+            final int index = Math.abs(randInt);
             
             tmpHand.add(tmpDeck.get(index));
             tmpDeck.remove(index);
@@ -146,6 +147,19 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             
         }
         
+    }
+    
+    /**
+     * 
+     *     when called restore all mana of that player
+     * 
+     * @param player
+     */
+    private void restoreMana(final Player player) {
+        if (player.getMana() + GameMaster.MANA_PLUS_ONE <= GameMaster.MAXIMUM_MANA) {
+            player.setMana(GameMaster.MANA_PLUS_ONE);
+            player.setCurrentMana(player.getMana() - player.getCurrentMana());
+        }
     }
     
     public List<Card> getCurrentDeck() {
