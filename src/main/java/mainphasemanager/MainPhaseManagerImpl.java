@@ -9,8 +9,6 @@ import shared.Player;
 
 public class MainPhaseManagerImpl implements MainPhaseManager {
     
-    private static final int NO_ENOUGH_MANA = 0;
-    
     private final Player player;
     private final Player playerAI;
     
@@ -47,6 +45,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
     
     /**
      *     when called the current Player place the card
+     *     and his current mana is decreased
      * 
      * @param currentPlayer
      */
@@ -77,7 +76,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      * @return true if can place that card otherwise false
      */
     private boolean isEnoughTheMana (final Player player, final Card cardToBePositioned) {
-        return player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManagerImpl.NO_ENOUGH_MANA;
+        return player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManager.NO_ENOUGH_MANA;
     }
 
 }
