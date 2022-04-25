@@ -7,7 +7,7 @@ public interface Card {
     String getName();
     int getLifePoint();
     int getAttack();
-    int gatMana();
+    int getMana();
     Optional<Effect> getEffect();
     int getPlacementRounds();
     void setAttack(int newValue);

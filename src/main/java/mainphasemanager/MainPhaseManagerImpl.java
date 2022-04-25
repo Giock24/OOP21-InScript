@@ -73,7 +73,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                 if (currentCard.equals(cardToBePositioned)) {
                     tmpHand.remove(index);
                     
-                    currentPlayer.setCurrentMana(- cardToBePositioned.gatMana());
+                    currentPlayer.setCurrentMana(- cardToBePositioned.getMana());
                 }
             });
         }
@@ -118,7 +118,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      * @return true if can place that card otherwise false
      */
     private boolean isEnoughTheMana (final Player player, final Card cardToBePositioned) {
-        this.canPlace = player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManager.NO_ENOUGH_MANA;
+        this.canPlace = player.getCurrentMana() - cardToBePositioned.getMana() >= MainPhaseManager.NO_ENOUGH_MANA;
         return this.canPlace;
     }
     
