@@ -87,13 +87,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public void drawWithoutMana(final boolean isTheAITurn) {
-        if (isTheAITurn) {
-            this.generalDraw(this.playerAI);
-        } else {
-            this.generalDraw(this.player);
-        }
-        
+    public void drawWithoutMana(final Player player) {
+            this.generalDraw(player);
     }
     
     /**

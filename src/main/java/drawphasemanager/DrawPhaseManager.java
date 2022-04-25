@@ -4,6 +4,7 @@ import java.util.List;
 
 import cards.Card;
 import shared.PhaseManager;
+import shared.Player;
 
 public interface DrawPhaseManager extends PhaseManager {
     
@@ -32,7 +33,7 @@ public interface DrawPhaseManager extends PhaseManager {
      * 
      * @param isTheAITurn
      */
-    void drawWithoutMana(boolean isTheAITurn);
+    void drawWithoutMana(Player player);
     
     /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
     List<Card> getCurrentDeck();
