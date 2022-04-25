@@ -7,13 +7,13 @@ import java.util.Optional;
 import cards.ActivationEvent;
 import cards.Card;
 import cards.Effect;
+import gamemaster.GameMaster;
 import shared.Player;
 
 public class BattlePhaseManagerImpl implements BattlePhaseManager {
     
     private final Player player;
     private final Player enemy;
-
     private List<Optional<Effect>> effectPlayer = new ArrayList<>(), effectEnemy = new ArrayList<>();
     private final List<ActivationEvent> eventTarget = List.of(ActivationEvent.ONATTAKING, ActivationEvent.ONDEFENDING, ActivationEvent.ONDEATH);
     
@@ -46,7 +46,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
         final List<Optional<Card>> tmp = new ArrayList<>();
         final List<Optional<Card>> afterBattle = new ArrayList<>();
         for(int i = 0; i < protagonist.getCurrentBoard().size(); i++) {
-            if(protagonist.getCurrentBoard().get(i).isPresent()) {
+            if(protagonist.getCurrentBoard().get(i).isPresent() && protagonist.getCurrentBoard().get(i).get().getLifePoint() > 0) {
                 if(antagonist.getCurrentBoard().get(i).isPresent()) {
                     
                     antagonist.getCurrentBoard().get(i).get().setLifePoint(antagonist.getCurrentBoard().get(i).get().getLifePoint() - protagonist.getCurrentBoard().get(i).get().getAttack());
@@ -74,10 +74,12 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                         // il parametro i usato in questo scenario specifica solo come "bersaglio" quello immediatamente davanti alla carta morente/o la carta stessa.
                         antagonist.getCurrentBoard().get(i).get().getEffect().get().useEffect(antagonist, protagonist, i);
                     }                    
-                    tmp.add(antagonist.getCurrentBoard().get(i));        
+                    tmp.add(antagonist.getCurrentBoard().get(i));
                 }
                 else {
-                    antagonist.setLifePoints(antagonist.getLifePoints() - protagonist.getCurrentBoard().get(i).get().getAttack());
+                    final int damageReceived = antagonist.getLifePoints() + protagonist.getCurrentBoard().get(i).get().getAttack();
+                    antagonist.setLifePoints(damageReceived);
+                    protagonist.setLifePoints(protagonist.getLifePoints() - damageReceived);
                 }
             }
         }
@@ -109,7 +111,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
         else {
             enemy.setCurrentBoard(handleBattle(player, enemy, isTheAIturn)); 
         }
-        return player.getLifePoints() <= 0 || enemy.getLifePoints() <= 0;
+        return player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || enemy.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE;
     }
 
 }
