@@ -16,9 +16,10 @@ public class AppStateSingleton implements AppState {
         DeckFactory deckFactory = new DeckFactoryImpl();
         
         DecksList = new ArrayList<List<Card>>();
-        DecksList.add(deckFactory.getStandardDeck()); 
+        DecksList.add(deckFactory.getPlayerDeck()); 
+        DecksList.add(deckFactory.getPlayerIADeck());
         humanPlayerDeck = DecksList.get(0);
-        aiPlayerDeck =  DecksList.get(0);
+        aiPlayerDeck =  DecksList.get(1);
     } 
  
     public static AppStateSingleton getInstance() {
