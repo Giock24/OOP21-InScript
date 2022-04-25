@@ -108,7 +108,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (tmpDeck.size() > DrawPhaseManager.NO_MORE_CARDS) {
             
-            final int randInt = this.rng.nextInt() % (tmpDeck.size()-1);
+            final int randInt = this.rng.nextInt() % (tmpDeck.size());
             final int index = Math.abs(randInt);
             
             tmpHand.add(tmpDeck.get(index));
