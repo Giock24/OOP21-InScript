@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+import cards.ActivationEvent;
 import cards.Card;
 import shared.Player;
 
 public class MainPhaseManagerImpl implements MainPhaseManager {
     
-    private static final int NO_ENOUGH_MANA = 0;
+    private boolean isTheAITurn;
+    private boolean canPlace;
+    private boolean cellEmpty;
     
     private final Player player;
     private final Player playerAI;
@@ -24,7 +27,12 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      */
     @Override
     public void handleEffect() {
-        // TODO Auto-generated method stub
+        
+        if (this.isTheAITurn) {
+            this.activeEvent(this.playerAI);
+        } else {
+            this.activeEvent(this.player);
+        }
 
     }
 
@@ -33,20 +41,22 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      */
     @Override
     public void positioning(final Card cardToBePositioned, final int boardCellIndex, final boolean isTheAITurn) {
+        this.isTheAITurn = isTheAITurn;
         
         if (isTheAITurn && this.isEnoughTheMana(this.playerAI, cardToBePositioned)) {
             this.playerPositioning(this.playerAI, cardToBePositioned, boardCellIndex);
             
-            // TODO aggiungere handleEffect
+            this.handleEffect();
         } else if (!isTheAITurn && this.isEnoughTheMana(this.player, cardToBePositioned)) {
             this.playerPositioning(this.player, cardToBePositioned, boardCellIndex);
             
-            // TODO aggiungere handleEffect
+            this.handleEffect();
         }
     }
     
     /**
      *     when called the current Player place the card
+     *     and his current mana is decreased
      * 
      * @param currentPlayer
      */
@@ -54,7 +64,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
         final List<Optional<Card>> tmpBoard = currentPlayer.getCurrentBoard();
         final List<Card> tmpHand = currentPlayer.getHand();
         
-        if (tmpBoard.get(boardCellIndex).isEmpty()) {
+        if (this.isCellEmpty(tmpBoard, boardCellIndex)) {
             tmpBoard.set(boardCellIndex, Optional.of(cardToBePositioned));
             
             IntStream.range(0, tmpHand.size() - 1).forEach(index -> {
@@ -62,10 +72,41 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                 
                 if (currentCard.equals(cardToBePositioned)) {
                     tmpHand.remove(index);
+                    
+                    currentPlayer.setCurrentMana(- cardToBePositioned.gatMana());
                 }
             });
         }
            
+    }
+    
+    /**
+     *
+     *    check the player's current board and for each
+     *    event found active (On Positioning EFFECT)
+     *
+     * @param player
+     */
+    private void activeEvent(final Player player) {
+        final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
+        
+        IntStream.range(0, tmpBoard.size() - 1).forEach(index -> {
+            if (tmpBoard.get(index).isPresent()) {
+                final Card cardSaved = tmpBoard.get(index).get();
+                
+                if (cardSaved.getEffect().isPresent() &&
+                    cardSaved.getEffect().get().getActivationEvent() == ActivationEvent.POSITIONING) {
+                    
+                    if (this.isTheAITurn) {
+                        cardSaved.getEffect().get().useEffect(this.playerAI, this.player, index);
+                    } else {
+                        cardSaved.getEffect().get().useEffect(this.player, this.playerAI, index);
+                    }
+                }
+                
+            }
+            
+        });
     }
     
     /**
@@ -77,7 +118,37 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
      * @return true if can place that card otherwise false
      */
     private boolean isEnoughTheMana (final Player player, final Card cardToBePositioned) {
-        return player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManagerImpl.NO_ENOUGH_MANA;
+        this.canPlace = player.getCurrentMana() - cardToBePositioned.gatMana() >= MainPhaseManager.NO_ENOUGH_MANA;
+        return this.canPlace;
+    }
+    
+    /**
+     * 
+     *    check if the cell selected is empty
+     * 
+     * @param board
+     * @param boardCellIndex
+     * @return true if is empty otherwise false
+     */
+    private boolean isCellEmpty(final List<Optional<Card>> board, final int boardCellIndex) {
+        this.cellEmpty = board.get(boardCellIndex).isEmpty();
+        return this.cellEmpty;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean checkCanPlace() {
+        return this.canPlace;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean checkCellEmpty() {
+        return this.cellEmpty;
     }
 
 }
