@@ -52,7 +52,7 @@ public class BaseCard implements Card {
     }
     
     @Override
-    public int gatMana() {
+    public int getMana() {
     	
     	return this.manaCost;
     }
