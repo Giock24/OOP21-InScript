@@ -210,7 +210,7 @@ public class GameSceneController {
                 
             } else {
                 cardCell = generateEmptyCardCell(false);
-                cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
+                cardCell.setOnMousePressed(event -> gameMasterController.onCardPlacing(index));
             }
             
             if(cardCell != null) {
