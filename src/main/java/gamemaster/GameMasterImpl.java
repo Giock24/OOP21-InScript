@@ -47,20 +47,15 @@ public class GameMasterImpl implements GameMaster {
     }
 
     @Override
-    public boolean startGame() {
-        final Random rand = new Random();
-        final boolean isAITurn = rand.nextBoolean();
+    public void startGame() {
         
-        drawPhaseManager.firstDraw(false);
-        drawPhaseManager.firstDraw(true);
+        drawPhaseManager.firstDraw();
         
-        if(isAITurn) {
-            drawPhaseManager.draw(isAITurn);
-            mainPhaseManagerIA.startAIMainPhase();
-            battlePhaseManager.startBattle(isAITurn);
-        }
+        drawPhaseManager.draw(true);
+        //mainPhaseManagerIA.startAIMainPhase();
         
-        return isAITurn;
+        drawPhaseManager.draw(false);
+
     }
 
     @Override
