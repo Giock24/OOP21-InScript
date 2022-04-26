@@ -20,6 +20,14 @@
             <Insets bottom="4.0" left="15.0" right="4.0" top="35.0" />
          </padding>
          <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </HBox>
             <Label styleClass="textStyle" stylesheets="@../default/application.css" text="INFO PLAYER:">
                <font>
                   <Font size="18.0" />
@@ -66,7 +74,6 @@
                   <Label fx:id="manaIA" styleClass="textStyle" stylesheets="@../default/application.css" />
                </children>
             </HBox>
-            <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
          </children>
       </VBox>
    </left>
@@ -116,7 +123,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <padding>
-                  <Insets left="50.0" right="50.0" top="50.0" />
+                  <Insets bottom="10.0" left="50.0" right="50.0" top="50.0" />
                </padding>
             </GridPane>
             <GridPane fx:id="boardPlayer" hgap="4.0">
@@ -131,7 +138,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <padding>
-                  <Insets bottom="50.0" left="50.0" right="50.0" />
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="10.0" />
                </padding>
             </GridPane>
         </items>
@@ -140,7 +147,10 @@
    <bottom>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="260.0" prefWidth="796.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="132.0" prefWidth="690.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css" />
+            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="132.0" prefWidth="690.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css">
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding></HBox>
          </content>
       </ScrollPane>
    </bottom>
