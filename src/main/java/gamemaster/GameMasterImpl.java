@@ -13,6 +13,7 @@ import drawphasemanager.DrawPhaseManager;
 import drawphasemanager.DrawPhaseManagerImpl;
 import mainphasemanager.MainPhaseManager;
 import mainphasemanager.MainPhaseManagerIA;
+import mainphasemanager.MainPhaseManagerIAimpl;
 import mainphasemanager.MainPhaseManagerImpl;
 import shared.Player;
 import shared.PlayerImpl;
@@ -43,7 +44,7 @@ public class GameMasterImpl implements GameMaster {
         this.drawPhaseManager = new DrawPhaseManagerImpl(humanPlayer, aiPlayer);
         this.mainPhaseManager = new MainPhaseManagerImpl(humanPlayer, aiPlayer);
         this.battlePhaseManager = new BattlePhaseManagerImpl(humanPlayer, aiPlayer);
-        //this.mainPhaseManagerIA = new mainPhaseManagerIA(aiPlayer)
+        this.mainPhaseManagerIA = new MainPhaseManagerIAimpl(humanPlayer, aiPlayer);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class GameMasterImpl implements GameMaster {
         drawPhaseManager.firstDraw();
         
         drawPhaseManager.draw(true);
-        //mainPhaseManagerIA.startAIMainPhase();
+        mainPhaseManagerIA.startAIMainPhase();
         
         drawPhaseManager.draw(false);
 
