@@ -150,10 +150,13 @@ public class GameSceneController {
                         ) : "")
                );
         
-        final Label cardName = new Label();
-        cardName.setText(card.getName()+"        "+card.getMana());
+        final Label cardNameAndMana = new Label();
+        cardNameAndMana.setText(card.getName()+"      mana:"+card.getMana());
+        final Label cardAttackAndLife = new Label();
+        cardAttackAndLife.setText("atk:"+card.getAttack()+"        HP:"+card.getLifePoint());
         
-        cardElement.getChildren().add(cardName);
+        cardElement.getChildren().add(cardNameAndMana);
+        cardElement.getChildren().add(cardAttackAndLife);
         
         return cardElement;
     }
