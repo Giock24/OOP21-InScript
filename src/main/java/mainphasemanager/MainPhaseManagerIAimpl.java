@@ -44,7 +44,7 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
                 } else {
                     break;
                 }
-            } while (cheaperPlacableCard<=playerAI.getCurrentMana());
+            } while (cheaperPlacableCard<=playerAI.getCurrentMana() && numberOfEmptyBoardCell() != 0);
         }
         
         return false;
