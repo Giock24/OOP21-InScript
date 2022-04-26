@@ -78,8 +78,8 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
     
     
     private int indexOfTheDungerousEnemyCardNotAlreadyCovered() {
-        int indexOfTheDungerous = Math.abs(rand.nextInt())%Player.NUM_CARD_BOARD;
-        do {indexOfTheDungerous = Math.abs(rand.nextInt())%Player.NUM_CARD_BOARD; } while (playerAI.getCurrentBoard().get(indexOfTheDungerous).isPresent());
+        int indexOfTheDungerous = Math.abs(rand.nextInt()%Player.NUM_CARD_BOARD);
+        do {indexOfTheDungerous = Math.abs(rand.nextInt()%Player.NUM_CARD_BOARD); } while (playerAI.getCurrentBoard().get(indexOfTheDungerous).isPresent());
         
         int dungerousCardAttack = player.getCurrentBoard().get(indexOfTheDungerous).isPresent()? player.getCurrentBoard().get(indexOfTheDungerous).get().getAttack():0;
         
