@@ -28,25 +28,32 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
      */
     @Override
     public boolean startAIMainPhase() {
+        /*
         playerAI.getHand().stream().forEach(card -> {
             System.out.print(card.getMana()+"\n");
         });
+        */
         
         //System.out.print( indexOfTheMostExpensivePlacebleCard());
         
-        do {
-            final Optional<Card> cardToPlace =  getMostExpensivePlacebleCard();
-            if(cardToPlace.isPresent()) {
-                this.mainPhaseManager.positioning(null, indexOfTheDungerousEnemyCard(), true);
-            } else {
-                break;
-            }
-        } while (cheaperPlacableCard<=playerAI.getCurrentMana());
-        
+        if(numberOfEmptyBoardCell() != 0) {
+            do {
+                final Optional<Card> cardToPlace =  getMostExpensivePlacebleCard();
+                if(cardToPlace.isPresent()) {
+                    this.mainPhaseManager.positioning(cardToPlace.get(), indexOfTheDungerousEnemyCardNotAlreadyCovered(), true);
+                } else {
+                    break;
+                }
+            } while (cheaperPlacableCard<=playerAI.getCurrentMana());
+        }
         
         return false;
     }
-
+    
+    private int numberOfEmptyBoardCell() {
+        return (int) playerAI.getCurrentBoard().stream().filter((card)->card.isEmpty()).count();
+    }
+    
     private Optional<Card> getMostExpensivePlacebleCard() {
 
         Optional<Card> MostExpensiveCard = Optional.empty();
@@ -70,17 +77,20 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
     }
     
     
-    private int indexOfTheDungerousEnemyCard() {
+    private int indexOfTheDungerousEnemyCardNotAlreadyCovered() {
         int indexOfTheDungerous = Math.abs(rand.nextInt())%Player.NUM_CARD_BOARD;
+        do {indexOfTheDungerous = Math.abs(rand.nextInt())%Player.NUM_CARD_BOARD; } while (playerAI.getCurrentBoard().get(indexOfTheDungerous).isPresent());
+        
         int dungerousCardAttack = player.getCurrentBoard().get(indexOfTheDungerous).isPresent()? player.getCurrentBoard().get(indexOfTheDungerous).get().getAttack():0;
         
         for(final Optional<Card> card:player.getCurrentBoard()) {
-            if(card.isPresent() && card.get().getAttack()>dungerousCardAttack) {
+            if(card.isPresent() && card.get().getAttack()>dungerousCardAttack && playerAI.getCurrentBoard().get(player.getCurrentBoard().indexOf(card)).isEmpty()) {
                 indexOfTheDungerous = player.getCurrentBoard().indexOf(card);
                 dungerousCardAttack = card.get().getAttack();
             }
         }
         
         return indexOfTheDungerous;
+        
     }
 }
