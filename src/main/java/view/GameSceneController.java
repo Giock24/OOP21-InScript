@@ -18,8 +18,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -34,7 +36,9 @@ import static view.ViewState.HEIGHT;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
-    private int colomn; // campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
+    private int colomn; // TODO campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
+    
+    @FXML private BorderPane root;
 
     ////player info/////
     @FXML private Label lifePointsPlayer;
@@ -284,13 +288,8 @@ public class GameSceneController {
         
     }
     
-    /**
-     * @param event active when is clicked a button
-     *          when this method is called you can return to menu
-     */
-    @FXML
-    public final void switchToMenuScene(final MouseEvent event) {
-        final Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    private void returnToMenu() {
+        final Stage primaryStage = (Stage)root.getScene().getWindow();
         final Showable menuGUI = new MenuGUI(primaryStage);
         
         WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
@@ -299,6 +298,16 @@ public class GameSceneController {
         primaryStage.setScene(menuGUI.getScene());
         primaryStage.show();
     }
+    
+    /**
+     * @param event active when is clicked a button
+     *          when this method is called you can return to menu
+     */
+    @FXML
+    public final void switchToMenuScene(final MouseEvent event) {
+        returnToMenu();
+    }
+    
 
     /**
      * dialog to show when the game is over
@@ -309,7 +318,11 @@ public class GameSceneController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Game Over");
         alert.setHeaderText("Game Over");
-        alert.showAndWait();
+        Optional<ButtonType> result =  alert.showAndWait();
+        
+        if(result.get() == ButtonType.OK || result.get() == ButtonType.CLOSE) {
+            returnToMenu();
+        }
 
     }
 }
