@@ -98,7 +98,7 @@ public class GameMasterControllerImpl implements GameMasterController {
         if(isGameEnd) {
             this.onGameEnd.end();
         }
-        //isGameEnd=gameMaster.getMainPhaseManagerAI().startAIMainPhase();
+        isGameEnd=gameMaster.getMainPhaseManagerAI().startAIMainPhase();
         if(isGameEnd) {
             this.onGameEnd.end();
         }
