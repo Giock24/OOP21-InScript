@@ -3,6 +3,8 @@ package cards;
 import java.util.Optional;
 
 public interface Card {
+    int FIRST_ROUND_PLACED = 1;
+    
     String getIdCard();
     String getName();
     int getLifePoint();
@@ -10,6 +12,7 @@ public interface Card {
     int getMana();
     Optional<Effect> getEffect();
     int getPlacementRounds();
+    void setPlacementRounds(int newValue);
     void setAttack(int newValue);
     void setLifePoint(int newValue);
     void setName(String newName);

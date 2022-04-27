@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
 import cards.Card;
+import cards.Effect;
 import gamemaster.GameMaster;
 import shared.Player;
 
@@ -68,11 +69,13 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         
         if (this.isTheAIturn) {
             
+            this.updatePlacementRounds(this.playerAI);
             this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
             
             this.handleEffect();
         } else {
+            this.updatePlacementRounds(this.player);
             this.restoreMana(this.player);
             this.generalDraw(this.player);
             
@@ -128,7 +131,8 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
                 final Card cardSaved = tmpBoard.get(pos).get();
                 
               if (cardSaved.getEffect().isPresent() && 
-                  cardSaved.getEffect().get().getActivationEvent() == event) {
+                  cardSaved.getEffect().get().getActivationEvent() == event &&
+                  cardSaved.getPlacementRounds() <= Effect.MAXIMUM_USE_EFFECT) {
                   
                   if(this.isTheAIturn) {
                       cardSaved.getEffect().get().useEffect(this.playerAI, this.player, pos);
@@ -155,6 +159,23 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             player.setMana(GameMaster.MANA_PLUS_ONE);
             player.setCurrentMana(player.getMana() - player.getCurrentMana());
         }
+    }
+    
+    /**
+     * 
+     *    when called increase the placement round for each card on board
+     * 
+     * @param player
+     */
+    private void updatePlacementRounds(final Player player) {
+        final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
+        
+        tmpBoard.forEach(card -> {
+            if (card.isPresent()) {
+                card.get().setPlacementRounds(card.get().getPlacementRounds() + 1);
+            }
+        });
+        
     }
     
     public List<Card> getCurrentDeck() {

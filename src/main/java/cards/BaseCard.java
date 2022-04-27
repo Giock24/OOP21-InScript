@@ -98,5 +98,13 @@ public class BaseCard implements Card {
         this.effect = newEffect;   
 
     }
+
+
+    @Override
+    public void setPlacementRounds(final int newValue) {
+        
+        this.placementRounds = newValue;
+        
+    }
 	
 }

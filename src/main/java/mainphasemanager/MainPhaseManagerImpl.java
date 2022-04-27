@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
 import cards.Card;
+import cards.Effect;
 import shared.Player;
 
 public class MainPhaseManagerImpl implements MainPhaseManager {
@@ -65,6 +66,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
         final List<Card> tmpHand = currentPlayer.getHand();
         
         if (this.isCellEmpty(tmpBoard, boardCellIndex)) {
+            cardToBePositioned.setPlacementRounds(Card.FIRST_ROUND_PLACED);
             tmpBoard.set(boardCellIndex, Optional.of(cardToBePositioned));
             
             IntStream.range(0, tmpHand.size() - 1).forEach(index -> {
@@ -72,6 +74,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                 
                 if (currentCard.equals(cardToBePositioned)) {
                     tmpHand.remove(index);
+                    
                     
                     currentPlayer.setCurrentMana(- cardToBePositioned.getMana());
                 }
@@ -95,7 +98,8 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                 final Card cardSaved = tmpBoard.get(index).get();
                 
                 if (cardSaved.getEffect().isPresent() &&
-                    cardSaved.getEffect().get().getActivationEvent() == ActivationEvent.POSITIONING) {
+                    cardSaved.getEffect().get().getActivationEvent() == ActivationEvent.POSITIONING &&
+                    cardSaved.getPlacementRounds() <= Effect.MAXIMUM_USE_EFFECT) {
                     
                     if (this.isTheAITurn) {
                         cardSaved.getEffect().get().useEffect(this.playerAI, this.player, index);
