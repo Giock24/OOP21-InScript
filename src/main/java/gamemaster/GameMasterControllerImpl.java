@@ -111,6 +111,7 @@ public class GameMasterControllerImpl implements GameMasterController {
             this.onGameEnd.end();
         }
         isGameEnd=gameMaster.getDrawPhaseManager().draw(false);
+        updateView.update();
         if(isGameEnd) {
             this.onGameEnd.end();
         }
