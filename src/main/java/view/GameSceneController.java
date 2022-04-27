@@ -1,7 +1,6 @@
 package view;
 
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -11,24 +10,23 @@ import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
 import gamemaster.SlowUpdate;
 import gamemaster.UpdateView;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -38,7 +36,9 @@ import static view.ViewState.HEIGHT;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
-    private int colomn; // campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
+    private int colomn; // TODO campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
+    
+    @FXML private BorderPane root;
 
     ////player info/////
     @FXML private Label lifePointsPlayer;
@@ -58,9 +58,13 @@ public class GameSceneController {
     ////cardView////
     @FXML private VBox cardView;
     
+    ////battle phase button////
+    @FXML private Button battlePhaseButton;
+    
    
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate,onGameEnd);
+        inizializeEndTurnButton();
         updateBoardView.update();
     }
     
@@ -87,13 +91,15 @@ public class GameSceneController {
 };
 
     private SlowUpdate slowUpdate = () -> {
-    try {
-        Thread.sleep(1000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }   
+        /*
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */   
 
-};
+    };
  
     private OnGameEnd onGameEnd = () -> {
         showGameOverDialog();
@@ -130,37 +136,50 @@ public class GameSceneController {
      */
     private VBox generateCardElement(Card card) {
         
-        //TODO probably can be necessary change the style of the card if it is gameMasterController.getCardToPlace();
-        //in the hand
-   
         
         final VBox cardElement = new VBox();
-        cardElement.setAlignment(Pos.CENTER);
-        //centralPanel.setSpacing(40);
+        cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
-        final Label cardName = new Label();
-        cardName.setText(card.getName());
+        final Optional<Card> cardToPlace = gameMasterController.getCardToPlace();
+        final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get() == card;
         
-        //TODO add all the card element
+        cardElement.setStyle(""
+                + "-fx-background-image:url('sampleCardImage.png'); "
+                + "-fx-background-repeat: no-repeat;\n"
+                + "-fx-background-size: contain;\n"
+                + "-fx-background-size: 100% 100%;"
+                + (isCardToPlace == true ? ( 
+                        "-fx-border-color: #a7ab7d;\n" 
+                        + "-fx-border-width: 6;\n" 
+                        ) : "")
+               );
+        
+        final Label cardNameAndMana = new Label();
+        cardNameAndMana.setText(card.getName()+"      mana:"+card.getMana());
+        final Label cardAttackAndLife = new Label();
+        cardAttackAndLife.setText("atk:"+card.getAttack()+"        HP:"+card.getLifePoint());
+        
+        cardElement.getChildren().add(cardNameAndMana);
+        cardElement.getChildren().add(cardAttackAndLife);
         
         return cardElement;
     }
     
     /**
-     * function connect to the end-turn button
+     * function update the end-turn button
      * 
      * @param event
      */
-    @FXML
-    private void onEndTurnButtonPress(Event event) {
-        gameMasterController.onEndTurn();
+    private void inizializeEndTurnButton() {
+        battlePhaseButton.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_WIDTH.getValue());
+        battlePhaseButton.setOnMousePressed(event -> gameMasterController.onEndTurn());
     }
 
     /**
      * this function attach the cards element to the HBox named boardIA
      */
     private void updateBoardIA() {    
-        boardIA.getChildren().removeAll();
+        boardIA.getChildren().clear();
         this.colomn = 0;
         
         gameMasterController.getIAPlayer().getCurrentBoard().forEach(card -> {
@@ -190,22 +209,21 @@ public class GameSceneController {
      * this function attach the cards element to the HBox named boardIA
      */
     private void updateBoardPlayer() {    
-        boardPlayer.getChildren().removeAll();
+        boardPlayer.getChildren().clear();
         
-        List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
+        final List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
  
         IntStream.range(0, userBoard.size()).forEach(index -> {
             VBox cardCell = null;
             
-            Optional<Card> card= userBoard.get(index);
+            
+            final Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
-                
                 cardCell = generateCardElement(card.get());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
-                
             } else {
-                cardCell = generateEmptyCardCell(false);
-                cardCell.setOnMouseClicked(event -> gameMasterController.onCardPlacing(index));
+                cardCell = generateEmptyCardCell(false); 
+                cardCell.setOnMousePressed(event -> gameMasterController.onCardPlacing(index));
             }
             
             if(cardCell != null) {
@@ -215,19 +233,20 @@ public class GameSceneController {
             
         });
         
+        
     }
     
     /**
      * this function attach the cards element to the HBOX named handPlayer
      */
     private void updatePlayerHand() {
-        handPlayer.getChildren().removeAll();
+        handPlayer.getChildren().clear();
         
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
-                final VBox cardCell= generateEmptyCardCell(false);
-                //cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
-                cardCell.setOnMouseClicked(event -> gameMasterController.onSelectCardToPlace(card));
+                final VBox cardCell= generateCardElement(card);
+                cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
+                cardCell.setOnMousePressed(event -> gameMasterController.onSelectCardToPlace(card));
                 
                 handPlayer.getChildren().add(cardCell);
            
@@ -244,26 +263,33 @@ public class GameSceneController {
         
         final Optional<Card> selectedCardToShow = gameMasterController.getCardToShow();
         
-        final VBox cardViewElement = new VBox();
+        VBox cardViewElement = new VBox();
         
         if(selectedCardToShow.isPresent()) {
-            //TODO add all the grafic for show the card detail
-        } else {
-            //TODO add all the grafic for show the card detail
-        }
+            
+            final Card card = selectedCardToShow.get();
+            
+            cardViewElement.setStyle(""
+                    + "-fx-background-image:url('sampleCardImage.png'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;");
+            
+            cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
+            
+            final Label cardName = new Label();
+            cardName.setText(card.getName());
+            
+            cardViewElement.getChildren().add(cardName);
+        } 
         
-        cardView.getChildren().removeAll();
+        cardView.getChildren().clear();
         cardView.getChildren().add(cardViewElement);
         
     }
     
-    /**
-     * @param event active when is clicked a button
-     *          when this method is called you can return to menu
-     */
-    @FXML
-    public final void switchToMenuScene(final MouseEvent event) {
-        final Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    private void returnToMenu() {
+        final Stage primaryStage = (Stage)root.getScene().getWindow();
         final Showable menuGUI = new MenuGUI(primaryStage);
         
         WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
@@ -272,6 +298,16 @@ public class GameSceneController {
         primaryStage.setScene(menuGUI.getScene());
         primaryStage.show();
     }
+    
+    /**
+     * @param event active when is clicked a button
+     *          when this method is called you can return to menu
+     */
+    @FXML
+    public final void switchToMenuScene(final MouseEvent event) {
+        returnToMenu();
+    }
+    
 
     /**
      * dialog to show when the game is over
@@ -282,7 +318,11 @@ public class GameSceneController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Game Over");
         alert.setHeaderText("Game Over");
-        alert.showAndWait();
+        Optional<ButtonType> result =  alert.showAndWait();
+        
+        if(result.get() == ButtonType.OK || result.get() == ButtonType.CLOSE) {
+            returnToMenu();
+        }
 
     }
 }

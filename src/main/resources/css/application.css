@@ -52,3 +52,12 @@
 	-fx-background-size: 100% 100%;
 }
 
+.battlePhaseButton{
+	-fx-background-image:url('battlePhaseButton.png');
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+	-fx-border-color: white;
+	-fx-border-radius: 2;
+	-fx-border-width: 2;
+}

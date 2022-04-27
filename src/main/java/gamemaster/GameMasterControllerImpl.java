@@ -65,6 +65,7 @@ public class GameMasterControllerImpl implements GameMasterController {
     @Override
     public void onSelectCardToPlace(Card card) {
         selectedCardToPlace=Optional.of(card);
+        
         updateView.update();
     }
 
