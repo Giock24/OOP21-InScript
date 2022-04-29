@@ -103,8 +103,10 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                     
                     if (this.isTheAITurn) {
                         cardSaved.getEffect().get().useEffect(this.playerAI, this.player, index);
+                        cardSaved.setPlacementRounds(cardSaved.getPlacementRounds() + 1);
                     } else {
                         cardSaved.getEffect().get().useEffect(this.player, this.playerAI, index);
+                        cardSaved.setPlacementRounds(cardSaved.getPlacementRounds() + 1);
                     }
                 }
                 
