@@ -34,8 +34,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         
         if (this.isTheAIturn) {
+            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.playerAI);
             this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.player);
         } else {
+            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.player);
             this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
         }
     }
