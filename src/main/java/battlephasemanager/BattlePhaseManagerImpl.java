@@ -81,8 +81,8 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                 }
                 else {
                     final int damageReceived = antagonist.getLifePoints() + protagonist.getCurrentBoard().get(i).get().getAttack();
-                    antagonist.setLifePoints(damageReceived);
-                    protagonist.setLifePoints(protagonist.getLifePoints() - damageReceived);
+                    antagonist.setLifePoints(-damageReceived);
+                    protagonist.setLifePoints(damageReceived);
                     tmp.add(Optional.empty());
                     // System.out.println("added non-existing element");
                 }
