@@ -1,6 +1,5 @@
 package drawphasemanager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -19,10 +18,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private final Player player;
     private final Player playerAI;
     private final Random rng = new Random();
-    
-    // lasciati per i testing togliere col tempo
-    private List<Card> currentDeck; 
-    private List<Card> currentHand;
     
     public DrawPhaseManagerImpl (final Player player, final Player playerAI) {
         this.player = player;
@@ -174,14 +169,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             }
         });
         
-    }
-    
-    public List<Card> getCurrentDeck() {
-        return new ArrayList<>(List.copyOf(this.currentDeck));
-    }
-    
-    public List<Card> getCurrentHand() {
-        return new ArrayList<>(List.copyOf(this.currentHand));
     }
     
     private boolean checkGameEnd() {

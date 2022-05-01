@@ -1,8 +1,5 @@
 package drawphasemanager;
 
-import java.util.List;
-
-import cards.Card;
 import shared.PhaseManager;
 import shared.Player;
 
@@ -35,8 +32,4 @@ public interface DrawPhaseManager extends PhaseManager {
      */
     void drawWithoutMana(Player player);
     
-    /* questi metodi sono solo usati per il testing col tempo verranno rimossi */
-    List<Card> getCurrentDeck();
-    
-    List<Card> getCurrentHand();
 }
