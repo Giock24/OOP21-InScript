@@ -30,7 +30,7 @@ public class CardGraficImpl implements CardGrafic {
         final VBox cardElement = new VBox();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
-        final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get() == card;
+        final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get().equals(card);
         
         cardElement.setStyle(""
                 + "-fx-background-image:url('sampleCardImage.png'); "

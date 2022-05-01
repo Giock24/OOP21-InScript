@@ -57,7 +57,7 @@ public class GameSceneController {
     @FXML private HBox handPlayer; //TODO this must be inside a ScrollPane in the view
     
     ////cardView////
-    @FXML private VBox cardView;
+    @FXML private GridPane cardView;
     
     ////battle phase button////
     @FXML private Button battlePhaseButton;
@@ -187,12 +187,13 @@ public class GameSceneController {
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
                 final VBox cardCell= this.cardGrafic.generateCardElement(card,gameMasterController.getCardToPlace());
-                cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
+                cardCell.setOnMouseReleased(event -> gameMasterController.onSelectCardToShow(card));
                 cardCell.setOnMousePressed(event -> gameMasterController.onSelectCardToPlace(card));
                 
                 handPlayer.getChildren().add(cardCell);
            
         });
+        
     }
        
     /**

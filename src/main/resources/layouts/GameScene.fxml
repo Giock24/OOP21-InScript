@@ -77,9 +77,6 @@
          </children>
       </VBox>
    </left>
-   <right>
-      <VBox fx:id="cardView" prefHeight="240.0" prefWidth="279.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER" />
-   </right>
    <top>
       <BorderPane prefHeight="113.0" prefWidth="595.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
          <top>
@@ -154,4 +151,20 @@
          </content>
       </ScrollPane>
    </bottom>
+   <right>
+      <GridPane fx:id="cardView" prefHeight="240.0" prefWidth="279.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         </padding>
+      </GridPane>
+   </right>
 </BorderPane>
