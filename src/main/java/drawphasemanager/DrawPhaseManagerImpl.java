@@ -65,10 +65,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     public boolean draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
-
-        
         if (this.isTheAIturn) {
-            
             this.updatePlacementRounds(this.playerAI);
             this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
@@ -157,8 +154,9 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private void restoreMana(final Player player) {
         if (player.getMana() + GameMaster.MANA_PLUS_ONE <= GameMaster.MAXIMUM_MANA) {
             player.setMana(GameMaster.MANA_PLUS_ONE);
-            player.setCurrentMana(player.getMana() - player.getCurrentMana());
-        }
+        } 
+        
+        player.setCurrentMana(player.getMana() - player.getCurrentMana());
     }
     
     /**
