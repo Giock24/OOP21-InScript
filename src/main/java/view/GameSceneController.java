@@ -36,6 +36,7 @@ import static view.ViewState.HEIGHT;
 public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
+    CardGrafic cardGrafic;
     private int colomn; // TODO campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
     
     @FXML private BorderPane root;
@@ -64,6 +65,7 @@ public class GameSceneController {
    
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate,onGameEnd);
+        this.cardGrafic = new CardGraficImpl();
         inizializeEndTurnButton();
         updateBoardView.update();
     }
@@ -104,66 +106,6 @@ public class GameSceneController {
     private OnGameEnd onGameEnd = () -> {
         showGameOverDialog();
     };
-
-    /**
-     * this function generate the grafic for the empty cell
-     * 
-     * @param inTheAIBoard indicate if the empty card cell is in the player board or in the AI board
-     * @return
-     * @throws FileNotFoundException 
-     */
-    private VBox generateEmptyCardCell(boolean inTheAIBoard) {
-        final VBox emptyCardCell = new VBox();
-        
-        String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
-        
-        emptyCardCell.setStyle(""
-                + "-fx-background-image:url('"+ image +"'); "
-                + "-fx-background-repeat: no-repeat;\n"
-                + "-fx-background-size: contain;\n"
-                + "-fx-background-size: 100% 100%;");
-        
-        emptyCardCell.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
-        
-        return emptyCardCell;
-    }
-    
-    /**
-     * this function generate the element for display the cards
-     * 
-     * @param card
-     * @return
-     */
-    private VBox generateCardElement(Card card) {
-        
-        
-        final VBox cardElement = new VBox();
-        cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
-        
-        final Optional<Card> cardToPlace = gameMasterController.getCardToPlace();
-        final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get() == card;
-        
-        cardElement.setStyle(""
-                + "-fx-background-image:url('sampleCardImage.png'); "
-                + "-fx-background-repeat: no-repeat;\n"
-                + "-fx-background-size: contain;\n"
-                + "-fx-background-size: 100% 100%;"
-                + (isCardToPlace == true ? ( 
-                        "-fx-border-color: #a7ab7d;\n" 
-                        + "-fx-border-width: 6;\n" 
-                        ) : "")
-               );
-        
-        final Label cardNameAndMana = new Label();
-        cardNameAndMana.setText(card.getName()+"      mana:"+card.getMana());
-        final Label cardAttackAndLife = new Label();
-        cardAttackAndLife.setText("atk:"+card.getAttack()+"        HP:"+card.getLifePoint());
-        
-        cardElement.getChildren().add(cardNameAndMana);
-        cardElement.getChildren().add(cardAttackAndLife);
-        
-        return cardElement;
-    }
     
     /**
      * function update the end-turn button
@@ -188,12 +130,12 @@ public class GameSceneController {
             
             if( card.isPresent()) {
                 
-                cardCell = generateCardElement(card.get());
+                cardCell = this.cardGrafic.generateCardElement(card.get(),gameMasterController.getCardToPlace());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
                 
             } else {
                 
-                cardCell = generateEmptyCardCell(true);
+                cardCell = this.cardGrafic.generateEmptyCardCell(true);
                 
             }
             
@@ -219,10 +161,10 @@ public class GameSceneController {
             
             final Optional<Card> card= userBoard.get(index);
             if( card.isPresent()) {
-                cardCell = generateCardElement(card.get());
+                cardCell = this.cardGrafic.generateCardElement(card.get(),gameMasterController.getCardToPlace());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card.get()));
             } else {
-                cardCell = generateEmptyCardCell(false); 
+                cardCell =this.cardGrafic.generateEmptyCardCell(false); 
                 cardCell.setOnMousePressed(event -> gameMasterController.onCardPlacing(index));
             }
             
@@ -244,7 +186,7 @@ public class GameSceneController {
         
         gameMasterController.getHumanPlayer().getHand().forEach((card) -> {
           
-                final VBox cardCell= generateCardElement(card);
+                final VBox cardCell= this.cardGrafic.generateCardElement(card,gameMasterController.getCardToPlace());
                 cardCell.setOnMouseEntered(event -> gameMasterController.onSelectCardToShow(card));
                 cardCell.setOnMousePressed(event -> gameMasterController.onSelectCardToPlace(card));
                 
@@ -261,27 +203,7 @@ public class GameSceneController {
      */
     private void updateCardViewElement() {
         
-        final Optional<Card> selectedCardToShow = gameMasterController.getCardToShow();
-        
-        VBox cardViewElement = new VBox();
-        
-        if(selectedCardToShow.isPresent()) {
-            
-            final Card card = selectedCardToShow.get();
-            
-            cardViewElement.setStyle(""
-                    + "-fx-background-image:url('sampleCardImage.png'); "
-                    + "-fx-background-repeat: no-repeat;\n"
-                    + "-fx-background-size: contain;\n"
-                    + "-fx-background-size: 100% 100%;");
-            
-            cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
-            
-            final Label cardName = new Label();
-            cardName.setText(card.getName());
-            
-            cardViewElement.getChildren().add(cardName);
-        } 
+        final VBox cardViewElement = this.cardGrafic.generateCardViewElement(gameMasterController.getCardToShow());
         
         cardView.getChildren().clear();
         cardView.getChildren().add(cardViewElement);
