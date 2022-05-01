@@ -5,7 +5,7 @@ import java.util.List;
 import cards.Card;
 
 public interface AppState {
-   
+    
     List<List<Card>> getDecksList();
     
     List<Card> getHumanPlayerDeck();
