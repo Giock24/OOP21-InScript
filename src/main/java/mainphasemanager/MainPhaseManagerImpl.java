@@ -43,7 +43,6 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
     @Override
     public void positioning(final Card cardToBePositioned, final int boardCellIndex, final boolean isTheAITurn) {
         this.isTheAITurn = isTheAITurn;
-        
         if (isTheAITurn && this.isEnoughTheMana(this.playerAI, cardToBePositioned)) {
             this.playerPositioning(this.playerAI, cardToBePositioned, boardCellIndex);
             
@@ -69,16 +68,9 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
             cardToBePositioned.setPlacementRounds(Card.FIRST_ROUND_PLACED);
             tmpBoard.set(boardCellIndex, Optional.of(cardToBePositioned));
             
-            IntStream.range(0, tmpHand.size() - 1).forEach(index -> {
-                final Card currentCard = tmpHand.get(index);
-                
-                if (currentCard.equals(cardToBePositioned)) {
-                    tmpHand.remove(index);
-                    
-                    
-                    currentPlayer.setCurrentMana(- cardToBePositioned.getMana());
-                }
-            });
+            tmpHand.remove(cardToBePositioned);
+            currentPlayer.setCurrentMana(- cardToBePositioned.getMana());
+           
         }
            
     }

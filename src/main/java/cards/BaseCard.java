@@ -106,5 +106,24 @@ public class BaseCard implements Card {
         this.placementRounds = newValue;
         
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        final Card other = (Card) obj;
+        if (this.idCard != other.getIdCard()) {
+            return false;
+        }
+
+
+        return true;
+    }
 	
 }
