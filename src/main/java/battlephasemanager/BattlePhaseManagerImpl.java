@@ -80,9 +80,8 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                     // System.out.println("added existing element");
                 }
                 else {
-                    final int damageReceived = antagonist.getLifePoints() + protagonist.getCurrentBoard().get(i).get().getAttack();
-                    antagonist.setLifePoints(-damageReceived);
-                    protagonist.setLifePoints(damageReceived);
+                    antagonist.setLifePoints(antagonist.getLifePoints() - protagonist.getCurrentBoard().get(i).get().getAttack());
+                    protagonist.setLifePoints(protagonist.getLifePoints() + protagonist.getCurrentBoard().get(i).get().getAttack());
                     tmp.add(Optional.empty());
                     // System.out.println("added non-existing element");
                 }
@@ -114,7 +113,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
     }
     
     @Override
-    public boolean startBattle(final boolean isTheAIturn) {
+    public void startBattle(final boolean isTheAIturn) {
         // timesUsed++;
         handleEffect();
         if(isTheAIturn) {
@@ -126,7 +125,6 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
         // System.out.println(this.timesUsed);
         // System.out.println(player.getCurrentBoard().toString());
         // System.out.println(enemy.getCurrentBoard().toString());
-        return player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || enemy.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE;
     }
 
 }

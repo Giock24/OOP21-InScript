@@ -103,8 +103,8 @@ public class GameSceneController {
 
     };
  
-    private OnGameEnd onGameEnd = () -> {
-        showGameOverDialog();
+    private OnGameEnd onGameEnd = (String endMessage) -> {
+        showGameOverDialog(endMessage);
     };
     
     /**
@@ -237,11 +237,11 @@ public class GameSceneController {
      * 
      * @return game over dialog
      */
-    private void showGameOverDialog() {
-        Alert alert = new Alert(AlertType.INFORMATION);
+    private void showGameOverDialog(String endMessage) {
+        final Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Game Over");
-        alert.setHeaderText("Game Over");
-        Optional<ButtonType> result =  alert.showAndWait();
+        alert.setHeaderText(endMessage);
+        final Optional<ButtonType> result =  alert.showAndWait();
         
         if(result.get() == ButtonType.OK || result.get() == ButtonType.CLOSE) {
             returnToMenu();

@@ -1,5 +1,6 @@
 package cards;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class BaseCard implements Card {
@@ -108,22 +109,24 @@ public class BaseCard implements Card {
     }
     
     @Override
-    public boolean equals(Object obj) {
+    public int hashCode() {
+        return Objects.hash(idCard);
+    }
+
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
+            return false;   
+        }
+        if (getClass() != obj.getClass()) {
             return false;
         }
-
-        if (obj.getClass() != this.getClass()) {
-            return false;
-        }
-
-        final Card other = (Card) obj;
-        if (this.idCard != other.getIdCard()) {
-            return false;
-        }
-
-
-        return true;
+        final BaseCard other = (BaseCard) obj;
+        return Objects.equals(idCard, other.idCard);
     }
 	
 }

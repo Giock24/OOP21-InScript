@@ -1,6 +1,5 @@
 package drawphasemanager;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -20,10 +19,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private final Player playerAI;
     private final Random rng = new Random();
     
-    // lasciati per i testing togliere col tempo
-    private List<Card> currentDeck; 
-    private List<Card> currentHand;
-    
     public DrawPhaseManagerImpl (final Player player, final Player playerAI) {
         this.player = player;
         this.playerAI = playerAI;
@@ -39,8 +34,10 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         this.selectEventAndPlayer(ActivationEvent.EVERYDRAW, this.player);
         
         if (this.isTheAIturn) {
+            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.playerAI);
             this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.player);
         } else {
+            this.selectEventAndPlayer(ActivationEvent.MYDRAW, this.player);
             this.selectEventAndPlayer(ActivationEvent.ENEMYDRAW, this.playerAI);
         }
     }
@@ -62,27 +59,22 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public boolean draw(final boolean isTheAIturn) {
+    public void draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
-
-        
-        if (this.isTheAIturn) {
-            
+        if (this.isTheAIturn && this.playerAI.getDeck().size()>0) {
             this.updatePlacementRounds(this.playerAI);
             this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
             
             this.handleEffect();
-        } else {
+        } else if( this.player.getDeck().size()>0) {
             this.updatePlacementRounds(this.player);
             this.restoreMana(this.player);
             this.generalDraw(this.player);
             
             this.handleEffect();
         }
-
-        return false;
 
     }
     
@@ -100,7 +92,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * @param currentPlayer
      * @return 
      */
-    private boolean generalDraw(final Player currentPlayer) {
+    private void generalDraw(final Player currentPlayer) {
         final List<Card> tmpDeck = currentPlayer.getDeck();
         final List<Card> tmpHand = currentPlayer.getHand();
         
@@ -112,7 +104,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             tmpHand.add(tmpDeck.get(index));
             tmpDeck.remove(index);
         }
-        return checkGameEnd();
     }
     
     /**
@@ -157,8 +148,9 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     private void restoreMana(final Player player) {
         if (player.getMana() + GameMaster.MANA_PLUS_ONE <= GameMaster.MAXIMUM_MANA) {
             player.setMana(GameMaster.MANA_PLUS_ONE);
-            player.setCurrentMana(player.getMana() - player.getCurrentMana());
-        }
+        } 
+        
+        player.setCurrentMana(player.getMana() - player.getCurrentMana());
     }
     
     /**
@@ -177,17 +169,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         });
         
     }
-    
-    public List<Card> getCurrentDeck() {
-        return new ArrayList<>(List.copyOf(this.currentDeck));
-    }
-    
-    public List<Card> getCurrentHand() {
-        return new ArrayList<>(List.copyOf(this.currentHand));
-    }
-    
-    private boolean checkGameEnd() {
-        return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerAI.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
-    }
+
 
 }

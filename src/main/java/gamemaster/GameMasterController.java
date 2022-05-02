@@ -6,6 +6,12 @@ import shared.Player;
 
 public interface GameMasterController {
     
+    String GameOverWinMessage="Hai vinto";
+    String GameOverLoseMessage="Hai Perso";
+    String GameOverTieMessage="Pareggio - non ci sono piu carte da pescare";
+    
+    
+    
     //TODO this methods must be called in a updateView Method inside the view//;
     
     Optional<Card> getCardToShow();

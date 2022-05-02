@@ -6,5 +6,5 @@ package gamemaster;
  */
 @FunctionalInterface
 public interface OnGameEnd {
-    void end();
+    void end(String endMessage);
 }

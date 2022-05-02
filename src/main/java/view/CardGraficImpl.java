@@ -14,7 +14,7 @@ public class CardGraficImpl implements CardGrafic {
         
         final String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
         
-        emptyCardCell.setStyle(""
+        emptyCardCell.setStyle(" "
                 + "-fx-background-image:url('"+ image +"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
