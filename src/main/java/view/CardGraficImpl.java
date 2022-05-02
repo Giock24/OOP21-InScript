@@ -9,12 +9,12 @@ import javafx.scene.layout.VBox;
 public class CardGraficImpl implements CardGrafic {
 
     @Override
-    public VBox generateEmptyCardCell(boolean inTheAIBoard) {
+    public VBox generateEmptyCardCell(final boolean inTheAIBoard) {
         final VBox emptyCardCell = new VBox();
         
-        String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
+        final String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
         
-        emptyCardCell.setStyle(""
+        emptyCardCell.setStyle(" "
                 + "-fx-background-image:url('"+ image +"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
@@ -26,21 +26,21 @@ public class CardGraficImpl implements CardGrafic {
     }
 
     @Override
-    public VBox generateCardElement(Card card,Optional<Card> cardToPlace) {
+    public VBox generateCardElement(final Card card, final Optional<Card> cardToPlace) {
         final VBox cardElement = new VBox();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
         final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get() == card;
         
-        cardElement.setStyle(""
+        cardElement.setStyle(" "
                 + "-fx-background-image:url('sampleCardImage.png'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;"
-                + (isCardToPlace == true ? ( 
+                + (isCardToPlace == true ?  
                         "-fx-border-color: #a7ab7d;\n" 
                         + "-fx-border-width: 6;\n" 
-                        ) : "")
+                         : "")
                );
         
         final Label cardNameAndMana = new Label();
@@ -55,14 +55,14 @@ public class CardGraficImpl implements CardGrafic {
     }
 
     @Override
-    public VBox generateCardViewElement(Optional<Card> selectedCardToShow) {
-        VBox cardViewElement = new VBox();
+    public VBox generateCardViewElement(final Optional<Card> selectedCardToShow) {
+        final VBox cardViewElement = new VBox();
         
         if(selectedCardToShow.isPresent()) {
             
             final Card card = selectedCardToShow.get();
             
-            cardViewElement.setStyle(""
+            cardViewElement.setStyle(" "
                     + "-fx-background-image:url('sampleCardImage.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
