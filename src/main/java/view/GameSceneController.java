@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 import cards.Card;
 import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
-import gamemaster.SlowUpdate;
+import gamemaster.OnPhaseChange;
 import gamemaster.UpdateView;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -41,6 +41,8 @@ public class GameSceneController {
     
     @FXML private BorderPane root;
 
+    @FXML private Label currentPhase; 
+    
     ////player info/////
     @FXML private Label lifePointsPlayer;
     @FXML private Label currentManaPlayer;
@@ -64,7 +66,7 @@ public class GameSceneController {
     
    
     public void initialize(){
-        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,slowUpdate,onGameEnd);
+        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
         this.cardGrafic = new CardGraficImpl();
         inizializeEndTurnButton();
         updateBoardView.update();
@@ -92,14 +94,15 @@ public class GameSceneController {
     
 };
 
-    private SlowUpdate slowUpdate = () -> {
-        /*
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */   
+    private OnPhaseChange onPhaseChange = (String phase) -> {
+        //try {
+            this.currentPhase.setText(phase);
+            //System.out.print(phase+"\n");
+            //Thread.sleep(500);
+        //} catch (InterruptedException e) {
+         //   e.printStackTrace();
+        //}
+         
 
     };
  

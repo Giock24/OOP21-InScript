@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
       <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
          <padding>
@@ -82,19 +82,6 @@
    </right>
    <top>
       <BorderPane prefHeight="113.0" prefWidth="595.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
-         <top>
-            <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="538.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets right="60.0" top="20.0" />
-               </padding>
-            </HBox>
-         </top>
          <center>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="459.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
@@ -106,6 +93,22 @@
                </children>
             </HBox>
          </center>
+         <top>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" GridPane.columnIndex="2" />
+                  <Label fx:id="currentPhase" text=""  styleClass="textStyle" stylesheets="@../default/application.css"  />
+               </children>
+            </GridPane>
+         </top>
       </BorderPane>
    </top>
    <center>

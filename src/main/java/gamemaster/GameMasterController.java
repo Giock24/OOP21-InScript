@@ -10,9 +10,12 @@ public interface GameMasterController {
     String GameOverLoseMessage="Hai Perso";
     String GameOverTieMessage="Pareggio - non ci sono piu carte da pescare";
     
-    
-    
-    //TODO this methods must be called in a updateView Method inside the view//;
+    String DrawPhaseAIMessage = "Fase di pescata del nemico";
+    String DrawPhaseMessage = "Fase di pescata del giocatore";
+    String MainPhaseAIMessage = "Fase di posizionamento del nemico";
+    String MainPhaseMessage = "Fase di posizionamento del giocatore";
+    String BattlePhaseAIMessage = "Fase di battaglia del nemico";
+    String BattlePhaseMessage ="Fase di battaglia del giocatore";
     
     Optional<Card> getCardToShow();
     Optional<Card> getCardToPlace();
