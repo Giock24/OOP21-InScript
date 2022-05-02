@@ -107,20 +107,20 @@ public class GameMasterControllerImpl implements GameMasterController {
         gameMaster.getBattlePhaseManager().startBattle(false);
         updateView.update();
         slowUpdate.slow();
-        checkGameEnd();
+        if(checkGameEnd())return;
         gameMaster.getDrawPhaseManager().draw(true);
-        checkGameEnd();
+        if(checkGameEnd())return;
         gameMaster.getMainPhaseManagerAI().startAIMainPhase();
-        checkGameEnd();
+        if(checkGameEnd())return;
         updateView.update();
         slowUpdate.slow();
         gameMaster.getBattlePhaseManager().startBattle(true);
         updateView.update();
         slowUpdate.slow();
-        checkGameEnd();
+        if(checkGameEnd())return;
         gameMaster.getDrawPhaseManager().draw(false);
         updateView.update();
-        checkGameEnd();
+        if(checkGameEnd())return;
     }
 
 
