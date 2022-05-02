@@ -26,7 +26,7 @@ public class CardGraficImpl implements CardGrafic {
     }
 
     @Override
-    public VBox generateCardElement(final Card card,Optional<Card> cardToPlace) {
+    public VBox generateCardElement(final Card card, final Optional<Card> cardToPlace) {
         final VBox cardElement = new VBox();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
