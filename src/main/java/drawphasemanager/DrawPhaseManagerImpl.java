@@ -59,24 +59,22 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * {@inheritDoc}
      */
     @Override
-    public boolean draw(final boolean isTheAIturn) {
+    public void draw(final boolean isTheAIturn) {
         this.isTheAIturn = isTheAIturn;
         
-        if (this.isTheAIturn) {
+        if (this.isTheAIturn && this.playerAI.getDeck().size()>0) {
             this.updatePlacementRounds(this.playerAI);
             this.restoreMana(this.playerAI);
             this.generalDraw(this.playerAI);
             
             this.handleEffect();
-        } else {
+        } else if( this.player.getDeck().size()>0) {
             this.updatePlacementRounds(this.player);
             this.restoreMana(this.player);
             this.generalDraw(this.player);
             
             this.handleEffect();
         }
-
-        return false;
 
     }
     
@@ -94,7 +92,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
      * @param currentPlayer
      * @return 
      */
-    private boolean generalDraw(final Player currentPlayer) {
+    private void generalDraw(final Player currentPlayer) {
         final List<Card> tmpDeck = currentPlayer.getDeck();
         final List<Card> tmpHand = currentPlayer.getHand();
         
@@ -106,7 +104,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
             tmpHand.add(tmpDeck.get(index));
             tmpDeck.remove(index);
         }
-        return checkGameEnd();
     }
     
     /**
@@ -172,9 +169,6 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
         });
         
     }
-    
-    private boolean checkGameEnd() {
-        return this.player.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE || this.playerAI.getLifePoints() <= GameMaster.MIN_PLAYER_LIFE; 
-    }
+
 
 }

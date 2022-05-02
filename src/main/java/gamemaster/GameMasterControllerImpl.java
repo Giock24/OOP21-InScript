@@ -16,7 +16,6 @@ public class GameMasterControllerImpl implements GameMasterController {
     private final OnGameEnd onGameEnd;
     private Optional<Card> selectedCardToPlace;
     private Optional<Card> selectedCardToShow;
-    private boolean isGameEnd;
     
     public GameMasterControllerImpl(UpdateView updateView,SlowUpdate slowUpdate,OnGameEnd onGameEnd) {
         this.updateView = updateView;
@@ -29,6 +28,23 @@ public class GameMasterControllerImpl implements GameMasterController {
         gameMaster.startGame(); //TODO cosider to split the operation in start game in different method for use also slowUpdate
     }
 
+    private boolean checkGameEnd() {
+        if(getHumanPlayer().getLifePoints() <= GameMaster.MIN_PLAYER_LIFE ) {
+            this.onGameEnd.end(GameOverLoseMessage);
+            return true;
+        }
+        if(getIAPlayer().getLifePoints() <= GameMaster.MIN_PLAYER_LIFE) {
+            this.onGameEnd.end(GameOverWinMessage);
+            return true;
+        }
+        if(getHumanPlayer().getDeck().size() <= 0 || getIAPlayer().getDeck().size() <= 0) {
+            this.onGameEnd.end(GameOverTieMessage);
+            return true;
+        }
+        return false;
+    }
+
+    
     @Override
     public Optional<Card> getCardToPlace() {
         return selectedCardToPlace;
@@ -88,33 +104,23 @@ public class GameMasterControllerImpl implements GameMasterController {
     @Override
     public void onEndTurn() {
         
-        isGameEnd=gameMaster.getBattlePhaseManager().startBattle(false);
+        gameMaster.getBattlePhaseManager().startBattle(false);
         updateView.update();
         slowUpdate.slow();
-        if(isGameEnd) {
-            this.onGameEnd.end();
-        }
-        isGameEnd=gameMaster.getDrawPhaseManager().draw(true);
-        if(isGameEnd) {
-            this.onGameEnd.end();
-        }
-        isGameEnd=gameMaster.getMainPhaseManagerAI().startAIMainPhase();
-        if(isGameEnd) {
-            this.onGameEnd.end();
-        }
+        checkGameEnd();
+        gameMaster.getDrawPhaseManager().draw(true);
+        checkGameEnd();
+        gameMaster.getMainPhaseManagerAI().startAIMainPhase();
+        checkGameEnd();
         updateView.update();
         slowUpdate.slow();
-        isGameEnd=gameMaster.getBattlePhaseManager().startBattle(true);
+        gameMaster.getBattlePhaseManager().startBattle(true);
         updateView.update();
         slowUpdate.slow();
-        if(isGameEnd) {
-            this.onGameEnd.end();
-        }
-        isGameEnd=gameMaster.getDrawPhaseManager().draw(false);
+        checkGameEnd();
+        gameMaster.getDrawPhaseManager().draw(false);
         updateView.update();
-        if(isGameEnd) {
-            this.onGameEnd.end();
-        }
+        checkGameEnd();
     }
 
 

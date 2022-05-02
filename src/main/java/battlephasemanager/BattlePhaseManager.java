@@ -9,7 +9,6 @@ public interface BattlePhaseManager extends PhaseManager {
      * inside this function are also handle the effect that will be activated in that phase
      * 
      * @param isTheAIturn
-     * @return return true if the game is END
      */
-    boolean startBattle(boolean isTheAIturn);
+    void startBattle(boolean isTheAIturn);
 }
