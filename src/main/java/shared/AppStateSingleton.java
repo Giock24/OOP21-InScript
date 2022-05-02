@@ -1,7 +1,9 @@
 package shared;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cards.Card;
 import cards.DeckFactory;
@@ -15,11 +17,11 @@ public class AppStateSingleton implements AppState {
         
         DeckFactory deckFactory = new DeckFactoryImpl();
         
-        DecksList = new ArrayList<List<Card>>();
-        DecksList.add(deckFactory.getPlayerDeck()); 
-        DecksList.add(deckFactory.getPlayerIADeck());
-        humanPlayerDeck = DecksList.get(0);
-        aiPlayerDeck =  DecksList.get(1);
+        DecksList = new HashMap<String, List<Card>>();
+        DecksList.putAll(deckFactory.getDecks());
+        
+        humanPlayerDeck = DecksList.get("deck-standard");
+        aiPlayerDeck =  DecksList.get("deck-standard-IA");
     } 
  
     public static AppStateSingleton getInstance() {
@@ -31,7 +33,8 @@ public class AppStateSingleton implements AppState {
     }
  
     
-    private List<List<Card>> DecksList;
+    
+    private Map<String, List<Card>> DecksList;
     
     private List<Card> humanPlayerDeck;
     
@@ -39,7 +42,7 @@ public class AppStateSingleton implements AppState {
     
 
     @Override
-    public List<List<Card>> getDecksList() {
+    public  Map<String, List<Card>> getDecksList() {
         return  this.DecksList;
     }
 
@@ -54,38 +57,23 @@ public class AppStateSingleton implements AppState {
     }
 
     @Override
-    public boolean selectHumanPlayerDeck(int indexOfTheDeckList) {
-        if(indexOfTheDeckList<DecksList.size()){
-            humanPlayerDeck = DecksList.get(indexOfTheDeckList);
-            return true;
-        } else {
-            return false;
-        }
+    public void selectHumanPlayerDeck(final String deckName) {
+       humanPlayerDeck = DecksList.get(deckName);
     }
 
     @Override
-    public boolean selectAIPlayer(int indexOfTheDeckList) {
-        if(indexOfTheDeckList<DecksList.size()){
-            aiPlayerDeck = DecksList.get(indexOfTheDeckList);
-            return true;
-        } else {
-            return false;
-        }
+    public void selectAIPlayer(final String deckName) {
+       aiPlayerDeck = DecksList.get(deckName);
     }
 
     @Override
-    public boolean demoveDeck(int indexOfTheDeckList) {
-        if(indexOfTheDeckList<DecksList.size()){
-            aiPlayerDeck = DecksList.remove(indexOfTheDeckList);
-            return true;
-        } else {
-            return false;
-        }
+    public void demoveDeck(final String deckName) {
+       aiPlayerDeck = DecksList.remove(deckName);
     }
 
     @Override
-    public boolean addDeck(List<Card> newDeck) {
-        return DecksList.add(newDeck);
+    public void addDeck(String deckName,List<Card> newDeck) {
+        DecksList.put(deckName,newDeck);
     } 
  
 }

@@ -1,7 +1,9 @@
 package cards;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import effects.Armored;
@@ -13,10 +15,19 @@ public class DeckFactoryImpl implements DeckFactory {
     
     final List<Card> playerDeck = new ArrayList<>();
     final List<Card> playerIADeck = new ArrayList<>();
+    final Map<String, List<Card>> DeckList = new HashMap<String, List<Card>>();
     final CardIDgenerator idGenerator = CardIDgeneratorImpl.getIntance();
-
+    
     @Override
-    public List<Card> getPlayerDeck() {
+    public Map<String, List<Card>> getDecks() {
+        
+        this.DeckList.put("deck-standard", getPlayerDeck());
+        this.DeckList.put("deck-standard-IA", getPlayerIADeck());
+        
+        return DeckList;
+    }
+
+    private List<Card> getPlayerDeck() {
         
         this.playerDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Cane", 1, 1, 1));
         this.playerDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Cane", 1, 1, 1));
@@ -42,8 +53,7 @@ public class DeckFactoryImpl implements DeckFactory {
         return this.playerDeck;
     }
 
-    @Override
-    public List<Card> getPlayerIADeck() {
+    private List<Card> getPlayerIADeck() {
         
         this.playerIADeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Cane", 1, 1, 1));
         this.playerIADeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Cane", 1, 1, 1));
