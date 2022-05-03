@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cards.BaseCard;
 import cards.Card;
 import cards.DeckFactory;
 import cards.DeckFactoryImpl;
@@ -48,12 +49,20 @@ public class AppStateSingleton implements AppState {
 
     @Override
     public List<Card> getHumanPlayerDeck() {
-        return new ArrayList<>(List.copyOf(this.humanPlayerDeck));
+        final List<Card> humanPlayerDeckCopy = new ArrayList<>();
+        List.copyOf(this.humanPlayerDeck).forEach(card -> {
+            humanPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getEffect()));
+        });
+        return humanPlayerDeckCopy;
     }
 
     @Override
     public List<Card> getAIPlayerDeck() {
-        return new ArrayList<>(List.copyOf(this.aiPlayerDeck));
+        final List<Card> AiPlayerDeckCopy = new ArrayList<>();
+        List.copyOf(this.aiPlayerDeck).forEach(card -> {
+            AiPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getEffect()));
+        });
+        return AiPlayerDeckCopy;
     }
 
     @Override

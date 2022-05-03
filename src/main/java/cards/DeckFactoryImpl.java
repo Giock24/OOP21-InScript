@@ -8,6 +8,8 @@ import java.util.Optional;
 
 import effects.Armored;
 import effects.Elusive;
+import effects.Exalted;
+import effects.Poison;
 import shared.CardIDgenerator;
 import shared.CardIDgeneratorImpl;
 
@@ -77,6 +79,38 @@ public class DeckFactoryImpl implements DeckFactory {
         this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Uovo", 8, 0, 8, "Fafnir Drago Antico", 8, 8, Optional.of(new Armored())));
         
         return this.playerIADeck;
+    }
+    
+    public List<Card> getMaisDeck(){
+        
+        final List<Card> gillasDeck = new ArrayList<>();
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
+        this.playerIADeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2));
+        this.playerIADeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2));
+        
+        this.playerIADeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2));
+        this.playerIADeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2));
+        this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3));
+        this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3));
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 0, 3, 4, "Gigante", 4, 4,  Optional.empty()));
+
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 0, 3, 4, "Gigante", 4, 4,  Optional.empty()));
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Armored())));
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Armored())));
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietitrebbia", 4, 0, 7, "Cupo Mietitore", 8, 8, Optional.of(new Poison())));
+        this.playerIADeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietritrebbia", 4, 0, 7, "Cupo Mietitore", 8, 8, Optional.of(new Poison())));
+        
+        this.playerIADeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "MAISxodia il proibito", 10, 10, 10));
+       
+        return gillasDeck;
     }
 
 }

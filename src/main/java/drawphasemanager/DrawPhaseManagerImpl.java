@@ -122,8 +122,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
                 final Card cardSaved = tmpBoard.get(pos).get();
                 
               if (cardSaved.getEffect().isPresent() && 
-                  cardSaved.getEffect().get().getActivationEvent() == event &&
-                  cardSaved.getPlacementRounds() <= Effect.MAXIMUM_USE_EFFECT) {
+                  cardSaved.getEffect().get().getActivationEvent() == event) {
                   
                   if(this.isTheAIturn) {
                       cardSaved.getEffect().get().useEffect(this.playerAI, this.player, pos);
