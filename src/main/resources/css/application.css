@@ -31,6 +31,21 @@
 	-fx-text-fill: white;
 }
 
+.buttonSelection{
+	-fx-background-color: #eff9ba;
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-border-color: #424d30;
+	-fx-border-radius: 2;
+	-fx-border-width: 2;
+	-fx-text-fill: #424d30;
+}
+
+.textStyleSelection{
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-font-size: 20;
+	-fx-text-fill: #424d30;
+}
+
 .root{
 	-fx-background-image: url("menu_background.png");
 	-fx-background-repeat: no-repeat;
@@ -52,6 +67,14 @@
 	-fx-background-size: 100% 100%;
 }
 
+.selectionBG{
+	-fx-background-image: url("choose_your_deck_bg.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+	
+}
+
 .battlePhaseButton{
 	-fx-background-image:url('battlePhaseButton.png');
 	-fx-background-repeat: no-repeat;
@@ -61,3 +84,4 @@
 	-fx-border-radius: 2;
 	-fx-border-width: 2;
 }
+
