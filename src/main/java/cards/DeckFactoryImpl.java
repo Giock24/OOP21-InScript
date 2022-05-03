@@ -91,16 +91,24 @@ public class DeckFactoryImpl implements DeckFactory {
         this.maisDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2));
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3));
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3));
+        this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3));
+        
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 1, 3, 3));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 1, 3, 3));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 1, 3, 3));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 0, 3, 4, "Gigante", 4, 4,  Optional.empty()));
         this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 0, 3, 4, "Gigante", 4, 4,  Optional.empty()));
         
         this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 0, 3, 4, "Gigante", 4, 4,  Optional.empty()));
-        this.maisDeck.add(new CardFactoyImpl().rottenEffect(idGenerator.generateID(), "Melma", 4, 2, 4));
+        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4));
+        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Healer())));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Healer())));
         
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Healer())));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 0, 4, 5, "Cattedrale del Mais", 0, 8, Optional.of(new Healer())));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 2, 4, 5));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 2, 4, 5));
         this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietitrebbia", 4, 0, 7, "Cupo Mietitore", 8, 8, Optional.of(new Poison())));
         this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietritrebbia", 4, 0, 7, "Cupo Mietitore", 8, 8, Optional.of(new Poison())));
-        
         this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "MAISxodia il proibito", 10, 10, 10));
        
         return MaisDeck;
