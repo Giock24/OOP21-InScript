@@ -73,7 +73,7 @@ public class DeckFactoryImpl implements DeckFactory {
     
     public List<Card> getMaisDeck(){
         
-        final List<Card> gillasDeck = new ArrayList<>();
+        final List<Card> MaisDeck = new ArrayList<>();
         this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
         this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
         this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 2, 0, 1));
@@ -100,7 +100,7 @@ public class DeckFactoryImpl implements DeckFactory {
         
         this.playerIADeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "MAISxodia il proibito", 10, 10, 10));
        
-        return gillasDeck;
+        return MaisDeck;
     }
 
 }
