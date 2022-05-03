@@ -21,7 +21,7 @@ public class AppStateSingleton implements AppState {
         DecksList = new HashMap<String, List<Card>>();
         DecksList.putAll(deckFactory.getDecks());
         
-        humanPlayerDeck = DecksList.get("deck-standard");
+        humanPlayerDeck = DecksList.get("deck-mais");
         aiPlayerDeck =  DecksList.get("deck-standard-IA");
     } 
  
