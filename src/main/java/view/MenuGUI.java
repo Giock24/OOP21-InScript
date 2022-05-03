@@ -67,8 +67,8 @@ public class MenuGUI implements Showable {
             WIDTH.setCurrentValue(this.scene.getWidth());
             HEIGHT.setCurrentValue(this.scene.getHeight());
             
-            final BoardGUI board = new BoardGUI();
-            this.stage.setScene(board.getScene());
+            final Showable select = new SelectionGUI();
+            this.stage.setScene(select.getScene());
             this.stage.show();
         });
         
