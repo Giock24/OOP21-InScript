@@ -42,7 +42,7 @@ public class DeckFactoryImpl implements DeckFactory {
         this.playerDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Sasso", 4, 0, 2, "standardDeckImage/Sasso.png"));
         this.playerDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Corteo no Vax", 1, 3, 4, "standardDeckImage/Corteo_No_Vax.png"));
         this.playerDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Corteo no Vax", 1, 3, 4, "standardDeckImage/Corteo_No_Vax.png"));
-        this.playerDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Terrapiattista", 1, 1, 2, "standardDeckImage/Terrappiattista.png"));
+        this.playerDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Terrapiattista", 1, 1, 2, "standardDeckImage/Terrapiattista.png"));
         this.playerDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studiato", 1, 1, 3, "standardDeckImage/Studiato.png"));
         this.playerDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Pesca", 1, 0, 2, "standardDeckImage/Pesca.png"));
         this.playerDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Pesca", 1, 0, 2, "standardDeckImage/Pesca.png"));
@@ -67,7 +67,7 @@ public class DeckFactoryImpl implements DeckFactory {
         this.playerIADeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Sasso", 4, 0, 2, "standardDeckImage/Sasso.png"));
         this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Corteo no Vax", 1, 3, 4, "standardDeckImage/Corteo_No_Vax.png"));
         this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Corteo no Vax", 1, 3, 4, "standardDeckImage/Corteo_No_Vax.png"));
-        this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Terrapiattista", 1, 1, 2, "standardDeckImage/Terrappiattista.png"));
+        this.playerIADeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Terrapiattista", 1, 1, 2, "standardDeckImage/Terrapiattista.png"));
         this.playerIADeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Ratto", 2, 1, 3, "standardDeckImage/Ratto.png"));
         this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studiato", 1, 1, 3, "standardDeckImage/Studiato.png"));
         this.playerIADeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Pesca", 1, 0, 2, "standardDeckImage/Pesca.png"));
