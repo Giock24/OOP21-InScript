@@ -21,4 +21,6 @@ public interface CardFactory {
     Card growthEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String imageURL, final String growthName, final int growthLife, final int growthAttack, final Optional<Effect> growthEffect, final String growthImageURL);
     
     Card drawEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String imageURL);
+    
+    Card lastwillEffect(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String imageURL, final String lastwillName, final int lastwillLife, final int lastwillAttack, final Optional<Effect> lastwillEffect, final String lastwillImageURL);
 }
