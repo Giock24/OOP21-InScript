@@ -4,11 +4,13 @@ public abstract class AbstractEffect implements Effect {
 	
     String effectName;
     String effectDescription;
+    String imageEffectURL;
     	
-    public AbstractEffect(final String effectName, final String effectDescription) {
+    public AbstractEffect(final String effectName, final String effectDescription, final String imageEffectURL) {
     	super();
     	this.effectName = effectName;
     	this.effectDescription = effectDescription;
+    	this.imageEffectURL = imageEffectURL;
     }
     	
     	
@@ -19,6 +21,14 @@ public abstract class AbstractEffect implements Effect {
     	
     public String getDescriptionEffect() {
     	return this.effectDescription;
+    }
+    
+    public String getImageEffectURL() {
+        return effectDescription;    
+    }
+    
+    public void setImageEffectURL(final String newImageEffectURL) {
+        this.imageEffectURL = newImageEffectURL;
     }
 	
 }

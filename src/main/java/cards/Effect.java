@@ -9,4 +9,6 @@ public interface Effect {
     String getNameEffect();
     String getDescriptionEffect();
     void useEffect(Player cardOwner, Player enemy, int boardPosition);
+    String getImageEffectURL();
+    void setImageEffectURL(String newImageEffectURL);
 }

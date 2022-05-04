@@ -9,7 +9,7 @@ import shared.Player;
 public class Rotten extends AbstractEffect {
 
     public Rotten() {
-        super("Rotten", "Quando i punti vita di questa carta scendono a zero inizia a marcire lasciando del Putridume nel campo");
+        super("Rotten", "Quando i punti vita di questa carta scendono a zero inizia a marcire lasciando del Putridume nel campo", "effects/effect_rotten.png");
         
     }
 

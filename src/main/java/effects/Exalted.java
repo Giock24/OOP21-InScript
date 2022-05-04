@@ -7,7 +7,7 @@ import shared.Player;
 public class Exalted extends AbstractEffect{
 
     public Exalted() {
-        super("Exalted", "Quando questa carta entra in campo gli alleati adicenti guadagno 1 attacco");
+        super("Exalted", "Quando questa carta entra in campo gli alleati adicenti guadagno 1 attacco", "effects/effect_exalted.png");
         
     }
 
