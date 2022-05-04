@@ -4,11 +4,9 @@ import java.util.Optional;
 
 import cards.Card;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -34,6 +32,10 @@ public class CardGraficImpl implements CardGrafic {
     @Override
     public VBox generateCardElement(final Card card, final Optional<Card> cardToPlace) {
         final VBox cardElement = new VBox();
+        final BorderPane statsContainter = new BorderPane();
+        final Pane imageEffect = new Pane();
+        final Pane imageCard = new Pane();
+        final BorderPane nameContainer = new BorderPane();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
         final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get().equals(card);
@@ -49,13 +51,49 @@ public class CardGraficImpl implements CardGrafic {
                          : "")
                );
         
-        final Label cardNameAndMana = new Label();
-        cardNameAndMana.setText(card.getName()+"      mana:"+card.getMana());
-        final Label cardAttackAndLife = new Label();
-        cardAttackAndLife.setText("atk:"+card.getAttack()+"        HP:"+card.getLifePoint());
+        imageCard.setStyle(" "
+                + "-fx-background-image:url('standardDeckImage/Cane.png'); "
+                + "-fx-background-repeat: no-repeat;\n"
+                + "-fx-background-size: contain;\n"
+                + "-fx-background-size: 100% 100%;");
+        imageCard.setPadding(new Insets(60));      
         
-        cardElement.getChildren().add(cardNameAndMana);
-        cardElement.getChildren().add(cardAttackAndLife);
+        imageEffect.setStyle(" "
+                + "-fx-background-image:url('standardDeckImage/Cane.png'); "
+                + "-fx-background-repeat: no-repeat;\n"
+                + "-fx-background-size: contain;\n"
+                + "-fx-background-size: 100% 100%;");
+        imageEffect.setPadding(new Insets(33));      
+        
+        final Label cardName = new Label();
+        cardName.setText(card.getName());
+        
+        final Label cardMana = new Label();
+        cardMana.setText("Mana: "+card.getMana());
+        
+        final Label atkValue = new Label();
+        atkValue.setText("ATK\n "+card.getAttack());
+        atkValue.setPadding(new Insets(7));
+
+        final Label lifeValue = new Label();
+        lifeValue.setText("HP\n "+card.getLifePoint());
+        lifeValue.setPadding(new Insets(7));
+        
+        statsContainter.setLeft(atkValue);
+        statsContainter.setCenter(imageEffect);
+        statsContainter.setRight(lifeValue);
+        
+        BorderPane.setAlignment(atkValue, Pos.CENTER);
+        BorderPane.setAlignment(imageEffect, Pos.CENTER);
+        BorderPane.setAlignment(lifeValue, Pos.CENTER);
+
+        nameContainer.setLeft(cardName);
+        nameContainer.setRight(cardMana);
+
+        cardElement.getChildren().add(nameContainer);
+        cardElement.getChildren().add(imageCard);
+        cardElement.getChildren().add(statsContainter);
+        cardElement.setPadding(new Insets(6));
         
         return cardElement;
     }
@@ -88,9 +126,6 @@ public class CardGraficImpl implements CardGrafic {
             nameContainer.setLeft(cardName);
             nameContainer.setRight(cardMana);
             
-            final Label pipo = new Label();
-            
-            imageContainer.getChildren().add(pipo);
             imageContainer.setStyle(" "
                     + "-fx-background-image:url('standardDeckImage/Cane.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
