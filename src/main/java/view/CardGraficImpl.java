@@ -41,7 +41,7 @@ public class CardGraficImpl implements CardGrafic {
         final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get().equals(card);
         
         cardElement.setStyle(" "
-                + "-fx-background-image:url('sampleCardImage.png'); "
+                + "-fx-background-image:url('cardBackgroud.png'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;"
