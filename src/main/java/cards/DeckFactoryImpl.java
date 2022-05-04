@@ -109,8 +109,8 @@ public class DeckFactoryImpl implements DeckFactory {
         this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Mais Cavagliere", 3, 1, 3, "maisDeckImage/mais_cavagliere.png"));
         this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Mais Cavagliere", 3, 1, 3, "maisDeckImage/mais_cavagliere.png"));
         
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.jpg", "Gigante", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.jpg","Gigante", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.png", "Gigante", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.png","Gigante", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
         this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
         this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
         this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 5, 0, 5, "maisDeckImage/chiesa_del_mais.png", "Cattedrale del Mais", 10, 0, Optional.of(new Healer()), "maisDeckImage/cattedrale_del_mais"));
