@@ -58,15 +58,17 @@ public class CardGraficImpl implements CardGrafic {
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;");
-        imageCard.setPadding(new Insets(60));      
+        imageCard.setPadding(new Insets(60));  
         
-        imageEffect.setStyle(" "
-                + "-fx-background-image:url('standardDeckImage/Cane.png'); "
-                + "-fx-background-repeat: no-repeat;\n"
-                + "-fx-background-size: contain;\n"
-                + "-fx-background-size: 100% 100%;");
+        if(card.getEffect().isPresent()) {
+            imageEffect.setStyle(" "
+                    + "-fx-background-image:url('" + card.getEffect().get().getImageEffectURL() + "'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;");
+        }
         imageEffect.setPadding(new Insets(33));      
-        
+
         final Label cardName = new Label();
         cardName.setText(card.getName());
         cardName.setPadding(new Insets(3));
