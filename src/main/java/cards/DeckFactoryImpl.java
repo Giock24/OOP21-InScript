@@ -85,40 +85,40 @@ public class DeckFactoryImpl implements DeckFactory {
     
     private List<Card> getMaisDeck(){
         
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
         
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.png"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
         
-        this.maisDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2, "maisDeckImage/granaio.png"));
-        this.maisDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2, "maisDeckImage/granaio.png"));
-        this.maisDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2, "maisDeckImage/doppelganger-mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2, "maisDeckImage/doppelganger-mais.png"));
+        this.maisDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2, "maisDeckImage/granaio.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Granaio", 4, 0, 2, "maisDeckImage/granaio.jpg"));
+        this.maisDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2, "maisDeckImage/doppleganger_mais.png"));
+        this.maisDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Doppleganger-Mais", 2, 1, 2, "maisDeckImage/doppleganger_mais.png"));
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
         
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Spaventapasseri", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 3, 1, 3, "maisDeckImage/Mais-knight.png"));
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 3, 1, 3, "maisDeckImage/Mais-knight.png"));
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Cavaglieri di Mais", 3, 1, 3, "maisDeckImage/Mais-knight.png"));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Mais Cavagliere", 3, 1, 3, "maisDeckImage/mais_cavagliere.png"));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Mais Cavagliere", 3, 1, 3, "maisDeckImage/mais_cavagliere.png"));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Mais Cavagliere", 3, 1, 3, "maisDeckImage/mais_cavagliere.png"));
         
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.png", "Gigante", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.png","Gigante", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/Lich.png"));
-        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/Lich.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 5, 0, 5, "maisDeckImage/chiesa.png", "Cattedrale del Mais", 10, 0, Optional.of(new Healer()), "maisDeckImage/cattedrale.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.jpg", "Gigante", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mulino", 3, 0, 4, "maisDeckImage/mulino.jpg","Gigante", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
+        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
+        this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Chiesa del Mais", 5, 0, 5, "maisDeckImage/chiesa_del_mais.png", "Cattedrale del Mais", 10, 0, Optional.of(new Healer()), "maisDeckImage/cattedrale_del_mais"));
         
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 5, 2, 5, "maisDeckImage/il-fattore.png"));
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 5, 2, 5, "maisDeckImage/il-fattore.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietitrebbia", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Cupo Mietitore", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo-mietitore.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietritrebbia", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Cupo Mietitore", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo-mietitore.png"));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 5, 2, 5, "maisDeckImage/il_fattore.png"));
+        this.maisDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "il fattore", 5, 2, 5, "maisDeckImage/il_fattore.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietitrebbia", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Cupo Mietitore", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo_mietitore.png"));
+        this.maisDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Mietritrebbia", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Cupo Mietitore", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo_mietitore.png"));
         this.maisDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "MAISxodia il proibito", 10, 10, 10, "maisDeckImage/MAISxodia.png"));
        
         return this.maisDeck;

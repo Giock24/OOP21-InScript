@@ -54,7 +54,7 @@ public class CardGraficImpl implements CardGrafic {
                );
         
         imageCard.setStyle(" "
-                + "-fx-background-image:url('standardDeckImage/Cane.png'); "
+                + "-fx-background-image:url('"+card.getImageURL()+"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;");
@@ -114,18 +114,21 @@ public class CardGraficImpl implements CardGrafic {
             final Card card = selectedCardToShow.get();
             
             cardViewElement.setStyle(" "
-                    + "-fx-background-image:url('sampleCardImage.png'); "
+                    + "-fx-background-image:url('cardBackgroud.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
             
             cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
+            cardViewElement.setPadding(new Insets(10));
             
             final Label cardName = new Label();
             cardName.setText(card.getName());
+            cardName.setPadding(new Insets(5));
             
             final Label cardMana = new Label();
             cardMana.setText(" "+card.getMana());
+            cardMana.setPadding(new Insets(5));
             
             nameContainer.setLeft(cardName);
             nameContainer.setRight(cardMana);
