@@ -51,7 +51,7 @@ public class DeckFactoryImpl implements DeckFactory {
         this.playerDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Lucertola Rossa", 1, 1, 3, "standardDeckImage/Lucertola_rossa.png", "Coccodrillo Rosso", 3, 3, Optional.empty(), "standardDeckImage/Coccodrillo_rosso.png"));
         this.playerDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "G3n0s", 4, 1, 5, "standardDeckImage/G3n0s.png"));
         this.playerDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Chierico", 3, 2, 3, "standardDeckImage/Chierico.png"));
-        this.playerDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Templare", 2, 4, 5, "standardDeckImage/Tempalre.png"));
+        this.playerDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Templare", 2, 4, 5, "standardDeckImage/Templare.png"));
         this.playerDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Dinosauro", 6, 6, 6, "standardDeckImage/Dinosauro.png"));
         
         return this.playerDeck;

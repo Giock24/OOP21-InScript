@@ -131,7 +131,7 @@ public class CardGraficImpl implements CardGrafic {
             nameContainer.setRight(cardMana);
             
             imageContainer.setStyle(" "
-                    + "-fx-background-image:url('standardDeckImage/Cane.png'); "
+                    + "-fx-background-image:url('"+card.getImageURL()+"'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
