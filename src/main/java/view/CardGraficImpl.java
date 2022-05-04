@@ -35,6 +35,7 @@ public class CardGraficImpl implements CardGrafic {
         final BorderPane statsContainter = new BorderPane();
         final Pane imageEffect = new Pane();
         final Pane imageCard = new Pane();
+        final VBox imagecontainer = new VBox();
         final BorderPane nameContainer = new BorderPane();
         cardElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
@@ -46,19 +47,24 @@ public class CardGraficImpl implements CardGrafic {
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;"
                 + "-fx-font-family: Impact;\n"
-                + "-fx-font-size: 14;"
+                + "-fx-font-size: 16;"
                 + (isCardToPlace == true ?  
                         "-fx-border-color: #a7ab7d;\n" 
                         + "-fx-border-width: 6;\n" 
                          : "")
                );
-        
+                
         imageCard.setStyle(" "
                 + "-fx-background-image:url('"+card.getImageURL()+"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
-                + "-fx-background-size: 100% 100%;");
-        imageCard.setPadding(new Insets(60));  
+                + "-fx-background-size: 95% 95%;");
+        imageCard.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/1.90, ViewState.CARD_WIDTH.getValue()/2.2 ,0 ,ViewState.CARD_WIDTH.getValue()/2.2));
+        // imageCard.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue()/2);
+                
+        imagecontainer.getChildren().add(imageCard);
+        imagecontainer.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/20.9, 0, 0, ViewState.CARD_HEIGHT.getValue()/30));
+        imagecontainer.setAlignment(Pos.CENTER);
         
         if(card.getEffect().isPresent()) {
             imageEffect.setStyle(" "
@@ -67,7 +73,8 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
         }
-        imageEffect.setPadding(new Insets(33));      
+        // imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/4, ViewState.CARD_WIDTH.getValue()/3 ,0 ,ViewState.CARD_WIDTH.getValue()/3));
+        imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue()/2);
 
         final Label cardName = new Label();
         cardName.setText(card.getName());
@@ -97,10 +104,10 @@ public class CardGraficImpl implements CardGrafic {
         nameContainer.setRight(cardMana);
 
         cardElement.getChildren().add(nameContainer);
-        cardElement.getChildren().add(imageCard);
+        cardElement.getChildren().add(imagecontainer);
         cardElement.getChildren().add(statsContainter);
         cardElement.setPadding(new Insets(6));
-        
+                
         return cardElement;
     }
 
