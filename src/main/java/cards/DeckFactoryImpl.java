@@ -129,13 +129,13 @@ public class DeckFactoryImpl implements DeckFactory {
     
     private List<Card> getShinobiDeck() {
         
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 1));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 1));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 1));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 2));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 2));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Studente Accademia", 1, 1, 2));
         
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 2));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 2));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 2));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 1));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 1));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Genin", 1, 2, 1));
         
         this.shinobiDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Ninja Medico", 3, 0, 2));
         this.shinobiDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Ninja Medico", 3, 0, 2));
@@ -148,14 +148,14 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Chunin", 1, 4, 3));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Chunin", 1, 4, 3));
         
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Jonin", 5, 1, 4));
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Jonin", 5, 1, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 5, 1, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 5, 1, 4));
         
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 2, 3, 3));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 2, 3, 3));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 2, 3, 3));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 3, 2, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 3, 2, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 3, 2, 4));
         
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Hinata", 5, 2, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Hinata", 4, 2, 4));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Nagato", 1, 5, 4));
         
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Kakashi", 4, 2, 6, "Kakashi [Anbu]", 6, 6, Optional.of(new Armored())));
