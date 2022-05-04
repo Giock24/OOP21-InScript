@@ -45,6 +45,8 @@ public class CardGraficImpl implements CardGrafic {
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;"
+                + "-fx-font-family: Impact;\n"
+                + "-fx-font-size: 14;"
                 + (isCardToPlace == true ?  
                         "-fx-border-color: #a7ab7d;\n" 
                         + "-fx-border-width: 6;\n" 
@@ -67,10 +69,12 @@ public class CardGraficImpl implements CardGrafic {
         
         final Label cardName = new Label();
         cardName.setText(card.getName());
+        cardName.setPadding(new Insets(3));
         
         final Label cardMana = new Label();
         cardMana.setText("Mana: "+card.getMana());
-        
+        cardMana.setPadding(new Insets(3));
+
         final Label atkValue = new Label();
         atkValue.setText("ATK\n "+card.getAttack());
         atkValue.setPadding(new Insets(7));
