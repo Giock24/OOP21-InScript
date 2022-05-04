@@ -24,7 +24,7 @@ public abstract class AbstractEffect implements Effect {
     }
     
     public String getImageEffectURL() {
-        return effectDescription;    
+        return this.imageEffectURL;    
     }
     
     public void setImageEffectURL(final String newImageEffectURL) {
