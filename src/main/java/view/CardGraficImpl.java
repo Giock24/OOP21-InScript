@@ -128,7 +128,7 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"
                     + "-fx-font-family: Impact;\n"
-                    + "-fx-font-size: 16;");
+                    + "-fx-font-size: 15;");
             
             cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
             cardViewElement.setPadding(new Insets(10));
