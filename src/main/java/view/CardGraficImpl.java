@@ -74,7 +74,7 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-size: 100% 100%;");
         }
         // imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/4, ViewState.CARD_WIDTH.getValue()/3 ,0 ,ViewState.CARD_WIDTH.getValue()/3));
-        imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue()/2);
+        imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue(), ViewState.CARD_WIDTH.getValue());
 
         final Label cardName = new Label();
         cardName.setText(card.getName());
@@ -126,7 +126,9 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-image:url('cardBackgroud.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
-                    + "-fx-background-size: 100% 100%;");
+                    + "-fx-background-size: 100% 100%;"
+                    + "-fx-font-family: Impact;\n"
+                    + "-fx-font-size: 16;");
             
             cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
             cardViewElement.setPadding(new Insets(10));
@@ -147,23 +149,23 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
-            imageContainer.setPadding(new Insets(100));
+            imageContainer.setPadding(new Insets(95));
             
             final Label atkValue = new Label();
             atkValue.setText(" "+card.getAttack());
-            atkValue.setPadding(new Insets(10));
+            atkValue.setPadding(new Insets(15));
             
             final Label effectDescription = new Label();
             if (card.getEffect().isPresent()) {
             effectDescription.setText(card.getEffect().get().getNameEffect()+": "+card.getEffect().get().getDescriptionEffect());
             effectDescription.setWrapText(true);
             }else {
-                effectDescription.setText("No Effect");
+                effectDescription.setText(" ");
             }
             
             final Label lifeValue = new Label();
             lifeValue.setText(" "+card.getLifePoint());
-            lifeValue.setPadding(new Insets(10));
+            lifeValue.setPadding(new Insets(15));
             
             statsContainter.setLeft(atkValue);
             statsContainter.setCenter(effectDescription);

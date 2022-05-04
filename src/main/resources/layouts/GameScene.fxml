@@ -102,7 +102,7 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" GridPane.columnIndex="2" />
-                  <Label fx:id="currentPhase" text=""  styleClass="textStyle" stylesheets="@../default/application.css"  />
+                  <Label fx:id="currentPhase" styleClass="textStyle" stylesheets="@../default/application.css" text="" />
                </children>
             </GridPane>
          </top>
@@ -166,7 +166,7 @@
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            <Insets bottom="210.0" left="45.0" right="25.0" top="30.0" />
          </padding>
       </GridPane>
    </right>
