@@ -51,7 +51,7 @@ public class AppStateSingleton implements AppState {
     public List<Card> getHumanPlayerDeck() {
         final List<Card> humanPlayerDeckCopy = new ArrayList<>();
         List.copyOf(this.humanPlayerDeck).forEach(card -> {
-            humanPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getEffect()));
+            humanPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getImageURL(), card.getEffect()));
         });
         return humanPlayerDeckCopy;
     }
@@ -60,7 +60,7 @@ public class AppStateSingleton implements AppState {
     public List<Card> getAIPlayerDeck() {
         final List<Card> AiPlayerDeckCopy = new ArrayList<>();
         List.copyOf(this.aiPlayerDeck).forEach(card -> {
-            AiPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getEffect()));
+            AiPlayerDeckCopy.add(new BaseCard(card.getIdCard(), card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getImageURL(), card.getEffect()));
         });
         return AiPlayerDeckCopy;
     }

@@ -13,14 +13,16 @@ public class Growth extends AbstractEffect{
     int lifePoint;
     int attack;
     Optional<Effect> effect;
+    String imageURL;
     
-    public Growth(final String newName, final int newLifePoint, final int newAttack, final Optional<Effect> newEffect) {
+    public Growth(final String newName, final int newLifePoint, final int newAttack, final Optional<Effect> newEffect, final String newImageURL) {
         super("Growth", "Dopo un turno nel campo di gioco questa carta assume la sua vera forma");
         
         this.name = newName;
         this.lifePoint = newLifePoint;
         this.attack = newAttack;
         this.effect = newEffect;
+        this.imageURL = newImageURL;
                 
     }
 
@@ -37,6 +39,7 @@ public class Growth extends AbstractEffect{
         cardOwner.getCurrentBoard().get(boardPosition).get().setAttack(this.attack);
         cardOwner.getCurrentBoard().get(boardPosition).get().setEffect(this.effect);
         cardOwner.getCurrentBoard().get(boardPosition).get().setName(this.name);
+        cardOwner.getCurrentBoard().get(boardPosition).get().setImageURL(this.imageURL);
         
     }
 

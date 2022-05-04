@@ -12,11 +12,9 @@ public class BaseCard implements Card {
     int manaCost;
     int placementRounds;
     Optional<Effect> effect;
+    String imageURL;
     	
-    //file descrizione
-    //file immagine
-    	
-    public BaseCard(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final Optional<Effect> effect) {
+    public BaseCard(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final String imageURL, final Optional<Effect> effect) {
     	super();
     	this.idCard = idCard;
     	this.name = name;
@@ -25,6 +23,7 @@ public class BaseCard implements Card {
     	this.manaCost = manaCost;
     	this.effect = effect;
     	this.placementRounds = 0;
+    	this.imageURL = imageURL;
     }
     
     	
@@ -127,6 +126,20 @@ public class BaseCard implements Card {
         }
         final BaseCard other = (BaseCard) obj;
         return Objects.equals(idCard, other.idCard);
+    }
+
+
+    @Override
+    public String getImageURL() {
+        
+        return this.imageURL;
+    }
+
+
+    @Override
+    public void setImageURL(final String newImageURL) {
+        
+        this.imageURL = newImageURL;
     }
 	
 }

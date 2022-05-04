@@ -26,6 +26,7 @@ public class Rotten extends AbstractEffect {
         cardOwner.getCurrentBoard().get(boardPosition).get().setAttack(0);
         cardOwner.getCurrentBoard().get(boardPosition).get().setEffect(Optional.empty());
         cardOwner.getCurrentBoard().get(boardPosition).get().setName("Putridume");
+        cardOwner.getCurrentBoard().get(boardPosition).get().setImageURL("standarDeckImage/Putridume.png");
     }
 
 }

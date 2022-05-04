@@ -17,4 +17,6 @@ public interface Card {
     void setLifePoint(int newValue);
     void setName(String newName);
     void setEffect(Optional<Effect> newEffect);
+    String getImageURL();
+    void setImageURL(String newImageURL);
 }
