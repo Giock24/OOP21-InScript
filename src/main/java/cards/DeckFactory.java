@@ -1,8 +1,8 @@
 package cards;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DeckFactory {
-    List<Card> getPlayerDeck();
-    List<Card> getPlayerIADeck();
+    Map<String, List<Card>> getDecks();
 }

@@ -1,23 +1,24 @@
 package shared;
 
 import java.util.List;
+import java.util.Map;
 
 import cards.Card;
 
 public interface AppState {
     
-    List<List<Card>> getDecksList();
+    Map<String, List<Card>> getDecksList();
     
     List<Card> getHumanPlayerDeck();
     
     List<Card> getAIPlayerDeck();
     
-    boolean selectHumanPlayerDeck(int indexOfTheDeckList);
+    void selectHumanPlayerDeck(String deckName);
     
-    boolean selectAIPlayer(int indexOfTheDeckList);
+    void selectAIPlayer(String deckName);
     
-    boolean demoveDeck(int indexOfTheDeckList);
+    void demoveDeck(String deckName);
     
-    boolean addDeck(List<Card> newDeck);
+    void addDeck(String deckName,List<Card> newDeck);
     
 }

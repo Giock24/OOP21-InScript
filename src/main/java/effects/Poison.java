@@ -20,7 +20,7 @@ public class Poison extends AbstractEffect {
 	@Override
 	public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
 		
-	    enemy.getCurrentBoard().get(boardPosition).get().setLifePoint(0);	
+	    enemy.getCurrentBoard().get(boardPosition).get().setLifePoint(-100);	
 		
 	}
 
