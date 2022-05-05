@@ -154,23 +154,23 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Chunin", 1, 3, 3));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Chunin", 1, 3, 3));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Ninja della Sabbia", 1, 1, 2));
-        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Orochimaru", 1, 1, 2));
+        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Orochimaru", 2, 1, 2));
         
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 4, 0, 2));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 4, 0, 2));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 4, 2, 3));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Jonin", 4, 2, 3));
         
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 2, 2, 3));
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Ninja Traditore", 2, 2, 3));
         
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Hinata", 3, 1, 4));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Nagato", 1, 4, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Hinata", 4, 2, 4));
+        this.shinobiDeck.add(new CardFactoyImpl().rottenEffect(idGenerator.generateID(), "Nagato", 2, 4, 4));
         
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Kakashi", 4, 1, 5, "Kakashi [Anbu]", 4, 2, Optional.of(new Armored())));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Itachi", 4, 1, 5, "Itachi [Susanoo]", 1, 5, Optional.empty()));
         
         // Card-Bosses
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Boruto Uzumaki", 5, 5, 8, "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison())));
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Kaguya Otsutsuki", 10, 7, 10));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Kaguya Otsutsuki", 10, 7, 8));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Naruto Uzumaki", 4, 4, 7, "Naruto [Mod. Eremita]", 6, 6, 
                              Optional.of(new Growth("Naruto [Six-Path]", 8, 8, 
                              Optional.of(new Growth("Naruto [Mod. Bayron]", 10, 10, Optional.empty()))))));
