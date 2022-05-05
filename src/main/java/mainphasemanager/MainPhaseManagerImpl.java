@@ -85,7 +85,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
     private void activeEvent(final Player player) {
         final List<Optional<Card>> tmpBoard = player.getCurrentBoard();
         
-        IntStream.range(0, tmpBoard.size() - 1).forEach(index -> {
+        IntStream.range(0, tmpBoard.size()).forEach(index -> {
             if (tmpBoard.get(index).isPresent()) {
                 final Card cardSaved = tmpBoard.get(index).get();
                 
@@ -93,7 +93,7 @@ public class MainPhaseManagerImpl implements MainPhaseManager {
                     cardSaved.getEffect().get().getActivationEvent() == ActivationEvent.POSITIONING &&
                     cardSaved.getPlacementRounds() <= Effect.MAXIMUM_USE_EFFECT) {
                     
-                    if (this.isTheAITurn) {
+                    if (player.isAiPlayer()) {
                         cardSaved.getEffect().get().useEffect(this.playerAI, this.player, index);
                         cardSaved.setPlacementRounds(cardSaved.getPlacementRounds() + 1);
                     } else {

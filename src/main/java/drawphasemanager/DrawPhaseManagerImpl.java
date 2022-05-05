@@ -124,7 +124,7 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
               if (cardSaved.getEffect().isPresent() && 
                   cardSaved.getEffect().get().getActivationEvent() == event) {
                   
-                  if(this.isTheAIturn) {
+                  if(player.isAiPlayer()) {
                       cardSaved.getEffect().get().useEffect(this.playerAI, this.player, pos);
                   } else {
                       cardSaved.getEffect().get().useEffect(this.player, this.playerAI, pos);
