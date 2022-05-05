@@ -132,49 +132,49 @@ public class DeckFactoryImpl implements DeckFactory {
     
     private List<Card> getShinobiDeck() {
         
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja Medico.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja Medico.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia Sakura.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia Sakura.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia Sakura.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja della Sabbia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja_della_Sabbia.png"));
         this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 2, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja Traditore.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 2, 4, "shinobiDeckImage/Hinata.png"));
         this.shinobiDeck.add(new CardFactoyImpl().rottenEffect( "Nagato", 2, 4, 4, "shinobiDeckImage/Nagato.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi [Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi [Anbu].png"));
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi [Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi [Susanoo].png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi_[Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi [Anbu].png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi_[Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi [Susanoo].png"));
         
         // Card-Bosses
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Boruto Uzumaki", 5, 5, 8, "shinobiDeckImage/Boruto Uzumaki.png", "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison()), "shinobiDeckImage/Momoshiki Otsutsuki.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Kaguya Otsutsuki", 10, 7, 8, "shinobiDeckImage/Kaguya Otsutsuki.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Boruto Uzumaki", 5, 5, 8, "shinobiDeckImage/Boruto_Uzumaki.png", "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison()), "shinobiDeckImage/Momoshiki_Otsutsuki.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Kaguya Otsutsuki", 10, 7, 8, "shinobiDeckImage/Kaguya_Otsutsuki.png"));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( 
-                "Naruto Uzumaki", 4, 4, 7, "shinobiDeckImage/Naruto Uzumaki.png", 
+                "Naruto Uzumaki", 4, 4, 7, "shinobiDeckImage/Naruto_Uzumaki.png", 
                         "Naruto [Mod. Eremita]", 6, 6, Optional.of(new Growth(
                                 "Naruto [Six-Path]", 8, 8, Optional.of(new Growth(
                                         "Naruto [Mod. Bayron]", 10, 10, Optional.empty(), 
-                                            "shinobiDeckImage/Naruto [Mod. Bayron].png")), 
-                                                "shinobiDeckImage/Naruto [Six-Path].png")), 
-                                                    "shinobiDeckImage/Naruto [Mod. Eremita].png"));
+                                            "shinobiDeckImage/Naruto_[Mod.Bayron].png")), 
+                                                "shinobiDeckImage/Naruto_[Six-Path].png")), 
+                                                    "shinobiDeckImage/Naruto_[Mod.Eremita].png"));
         
         
         return this.shinobiDeck;
