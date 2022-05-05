@@ -20,7 +20,9 @@ public class Elusive extends AbstractEffect{
     @Override
     public void useEffect(final Player cardOwner, final Player enemy, final int boardPosition) {
         
-        if (enemy.getCurrentBoard().get(boardPosition).isPresent() && !enemy.getCurrentBoard().get(boardPosition).get().getEffect().equals(cardOwner.getCurrentBoard().get(boardPosition).get().getEffect())) {
+        if (enemy.getCurrentBoard().get(boardPosition).isPresent() &&
+                !(enemy.getCurrentBoard().get(boardPosition).get().getEffect().getClass().equals(cardOwner.getCurrentBoard().get(boardPosition).get().getEffect().getClass()))
+                ) {
             
             enemy.getCurrentBoard().get(boardPosition).get().setLifePoint(enemy.getCurrentBoard().get(boardPosition).get().getLifePoint()+cardOwner.getCurrentBoard().get(boardPosition).get().getAttack());
             
