@@ -150,7 +150,7 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja_della_Sabbia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 2, 1, 2, "shinobiDeckImage/Orochimaru.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
@@ -158,15 +158,15 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 2, 4, "shinobiDeckImage/Hinata.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().rottenEffect( "Nagato", 2, 4, 4, "shinobiDeckImage/Nagato.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 1, 4, "shinobiDeckImage/Hinata.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Nagato", 2, 4, 4, "shinobiDeckImage/Nagato.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi_[Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi [Anbu].png"));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi_[Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi [Susanoo].png"));
         
         // Card-Bosses
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Boruto Uzumaki", 5, 5, 8, "shinobiDeckImage/Boruto_Uzumaki.png", "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison()), "shinobiDeckImage/Momoshiki_Otsutsuki.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Kaguya Otsutsuki", 10, 7, 8, "shinobiDeckImage/Kaguya_Otsutsuki.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Kaguya Otsutsuki", 10, 7, 10, "shinobiDeckImage/Kaguya_Otsutsuki.png"));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( 
                 "Naruto Uzumaki", 4, 4, 7, "shinobiDeckImage/Naruto_Uzumaki.png", 
                         "Naruto [Mod. Eremita]", 6, 6, Optional.of(new Growth(
