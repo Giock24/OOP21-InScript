@@ -142,28 +142,28 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 2, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
         this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
         this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja_della_Sabbia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
+        //this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja_della_Sabbia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 2, 1, 2, "shinobiDeckImage/Orochimaru.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 2, 1, 2, "shinobiDeckImage/Orochimaru.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 2, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 0, 2, "shinobiDeckImage/Jonin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 0, 2, "shinobiDeckImage/Jonin.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 1, 2, "shinobiDeckImage/Jonin.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 1, 2, "shinobiDeckImage/Jonin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 3, 3, "shinobiDeckImage/Ninja_Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 3, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 2, 4, "shinobiDeckImage/Hinata.png"));
         this.shinobiDeck.add(new CardFactoyImpl().lastwillEffect("Nagato", 4, 4, 4, "shinobiDeckImage/Nagato.png", "Nagato [Reincarnation]", 1, 5, Optional.empty(), "shinobiDeckImage/Nagato_Reincarnation2.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi [Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi_Anbu.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 4, "shinobiDeckImage/Kakashi.png", "Kakashi [Anbu]", 4, 4, Optional.of(new Armored()), "shinobiDeckImage/Kakashi_Anbu.png"));
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi [Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi_Susanoo.png"));
         
         // Card-Bosses
@@ -176,8 +176,7 @@ public class DeckFactoryImpl implements DeckFactory {
                                         "Naruto [Mod. Bayron]", 10, 10, Optional.empty(), 
                                             "shinobiDeckImage/Naruto_Mod.Bayron.png")), 
                                                 "shinobiDeckImage/Naruto_Six_Path.png")), 
-                                                    "shinobiDeckImage/Naruto_Mod.Eremita.png"));
-        
+                                                    "shinobiDeckImage/Naruto_Mod.Eremita.png"));  
         
         return this.shinobiDeck;
     }
