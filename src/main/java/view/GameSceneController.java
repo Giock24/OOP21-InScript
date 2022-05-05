@@ -96,7 +96,7 @@ public class GameSceneController {
 
     private OnPhaseChange onPhaseChange = (String phase) -> {
         //try {
-            this.currentPhase.setText(phase);
+            //this.currentPhase.setText(phase);
             //System.out.print(phase+"\n");
             //Thread.sleep(500);
         //} catch (InterruptedException e) {
