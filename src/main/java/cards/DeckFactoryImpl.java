@@ -163,8 +163,8 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 1, 4, "shinobiDeckImage/Hinata.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Nagato", 2, 4, 4, "shinobiDeckImage/Nagato.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi_[Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi [Anbu].png"));
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi_[Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi [Susanoo].png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 4, 1, 5, "shinobiDeckImage/Kakashi.png", "Kakashi [Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi_Anbu.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi [Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi_Susanoo.png"));
         
         // Card-Bosses
         this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Boruto Uzumaki", 5, 5, 8, "shinobiDeckImage/Boruto_Uzumaki.png", "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison()), "shinobiDeckImage/Momoshiki_Otsutsuki.png"));
@@ -174,9 +174,9 @@ public class DeckFactoryImpl implements DeckFactory {
                         "Naruto [Mod. Eremita]", 6, 6, Optional.of(new Growth(
                                 "Naruto [Six-Path]", 8, 8, Optional.of(new Growth(
                                         "Naruto [Mod. Bayron]", 10, 10, Optional.empty(), 
-                                            "shinobiDeckImage/Naruto_[Mod.Bayron].png")), 
-                                                "shinobiDeckImage/Naruto_[Six-Path].png")), 
-                                                    "shinobiDeckImage/Naruto_[Mod.Eremita].png"));
+                                            "shinobiDeckImage/Naruto_Mod.Bayron.png")), 
+                                                "shinobiDeckImage/Naruto_Six_Path.png")), 
+                                                    "shinobiDeckImage/Naruto_Mod.Eremita.png"));
         
         
         return this.shinobiDeck;
