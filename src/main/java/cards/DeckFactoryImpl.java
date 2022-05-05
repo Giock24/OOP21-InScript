@@ -152,8 +152,8 @@ public class DeckFactoryImpl implements DeckFactory {
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 2, "shinobiDeckImage/Ninja_della_Sabbia.png"));
         this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 2, 3, "shinobiDeckImage/Jonin.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 0, 2, "shinobiDeckImage/Jonin.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 4, 0, 2, "shinobiDeckImage/Jonin.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 2, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
