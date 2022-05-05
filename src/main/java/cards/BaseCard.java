@@ -3,6 +3,9 @@ package cards;
 import java.util.Objects;
 import java.util.Optional;
 
+import shared.CardIDgenerator;
+import shared.CardIDgeneratorImpl;
+
 public class BaseCard implements Card {
 	
     String idCard;
@@ -16,9 +19,10 @@ public class BaseCard implements Card {
     //file descrizione
     //file immagine
     	
-    public BaseCard(final String idCard, final String name, final int lifeValue, final int attackValue, final int manaCost, final Optional<Effect> effect) {
+    public BaseCard(final String name, final int lifeValue, final int attackValue, final int manaCost, final Optional<Effect> effect) {
     	super();
-    	this.idCard = idCard;
+        final CardIDgenerator idGenerator = CardIDgeneratorImpl.getIntance();
+    	this.idCard = idGenerator.generateID();
     	this.name = name;
     	this.lifeValue = lifeValue;
     	this.attackValue = attackValue;
