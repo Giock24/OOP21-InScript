@@ -181,54 +181,54 @@ public class DeckFactoryImpl implements DeckFactory {
     
     private List<Card> getDuckDeck() {
         
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Guard", 2, 1, 2));
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Guard", 2, 1, 2));
+        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Guard", 2, 1, 2, "sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Guard", 2, 1, 2,"sampleCardImage.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Boss's Maiden", 2, 2, 3));
-        this.duckDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Boss's Maiden", 2, 2, 3));
+        this.duckDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Boss's Maiden", 2, 2, 3,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().healerEffect(idGenerator.generateID(), "Boss's Maiden", 2, 2, 3,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1));
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1));
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Tailor", 1, 1, 1,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Boss's Lil Fella", 2, 2, 3, "Boss's Acolytes", 3, 4, Optional.of(new Elusive())));
-        this.duckDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Boss's Lil Fella", 2, 2, 3, "Boss's Acolytes", 3, 4, Optional.of(new Elusive())));
+        this.duckDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Boss's Lil Fella", 2, 2, 3,"sampleCardImage.png", "Boss's Acolytes", 3, 4, Optional.of(new Elusive()),"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().growthEffect(idGenerator.generateID(), "Boss's Lil Fella", 2, 2, 3,"sampleCardImage.png", "Boss's Acolytes", 3, 4, Optional.of(new Elusive()),"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Statue", 2, 0, 1));
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Statue", 2, 0, 1));
+        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Statue", 2, 0, 1,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().armoredEffect(idGenerator.generateID(), "Boss's Statue", 2, 0, 1,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Right Hand", 3, 3, 4));
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Right Hand", 3, 3, 4));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Right Hand", 3, 3, 4,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Right Hand", 3, 3, 4,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Kitty", 4, 4, 5));
-        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Kitty", 4, 4, 5));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Kitty", 4, 4, 5,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect(idGenerator.generateID(), "Boss's Kitty", 4, 4, 5,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Boss's Heir", 5, 4, 6));
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Boss's Heir", 5, 4, 6));
+        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Boss's Heir", 5, 4, 6,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "Boss's Heir", 5, 4, 6,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Boss's Acolytes", 3, 4, 5));
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Boss's Acolytes", 3, 4, 5));
+        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Boss's Acolytes", 3, 4, 5,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "Boss's Acolytes", 3, 4, 5,"sampleCardImage.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect(idGenerator.generateID(), "Boss's Assassin", 1, 2, 1,"sampleCardImage.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktective Holmes", 3, 2, 3));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktective Holmes", 3, 2, 3));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktective Holmes", 3, 2, 3,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktective Holmes", 3, 2, 3,"sampleCardImage.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktor Watson", 2, 2, 2));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktor Watson", 2, 2, 2));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktor Watson", 2, 2, 2,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Ducktor Watson", 2, 2, 2,"sampleCardImage.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Garden's Sage", 3, 3, 4));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Garden's Sage", 3, 3, 4));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Garden's Sage", 3, 3, 4,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect(idGenerator.generateID(), "Garden's Sage", 3, 3, 4,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "The Impostor", 3, 4, 5));
+        this.duckDeck.add(new CardFactoyImpl().elusiveEffect(idGenerator.generateID(), "The Impostor", 3, 4, 5,"sampleCardImage.png"));
         
 
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "DuckPocalipse", 6, 5, 8));
+        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "DuckPocalipse", 6, 5, 8,"sampleCardImage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "The Boss", 7, 6, 9));
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "The Boss", 7, 6, 9));
+        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "The Boss", 7, 6, 9,"sampleCardImage.png"));
+        this.duckDeck.add(new CardFactoyImpl().exaltedEffect(idGenerator.generateID(), "The Boss", 7, 6, 9,"sampleCardImage.png"));
 
         // 32 carte.
         return this.duckDeck;
