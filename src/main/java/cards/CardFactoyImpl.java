@@ -8,6 +8,7 @@ import effects.Elusive;
 import effects.Exalted;
 import effects.Growth;
 import effects.Healer;
+import effects.LastWill;
 import effects.Poison;
 import effects.Rotten;
 
@@ -72,7 +73,7 @@ public class CardFactoyImpl implements CardFactory {
     public Card lastwillEffect( final String name, final int lifeValue, final int attackValue, final int manaCost, final String imageURL,
             final String lastwillName, final int lastwillLife, final int lastwillAttack, final Optional<Effect> lastwillEffect, final String lastwillImageURL) {
         
-        return new BaseCard( name, lifeValue, attackValue, manaCost, imageURL, Optional.of(new Growth(lastwillName, lastwillLife, lastwillAttack, lastwillEffect, lastwillImageURL)));
+        return new BaseCard( name, lifeValue, attackValue, manaCost, imageURL, Optional.of(new LastWill(lastwillName, lastwillLife, lastwillAttack, lastwillEffect, lastwillImageURL)));
     }
 
 }

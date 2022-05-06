@@ -40,6 +40,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                 tmp.add(Optional.empty());
             }
         }
+        
         return tmp;
     } 
                 
@@ -80,6 +81,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                         // il parametro i usato in questo scenario specifica solo come "bersaglio" quello immediatamente davanti alla carta morente/o la carta stessa.
                         antagonist.getCurrentBoard().get(i).get().getEffect().get().useEffect(antagonist, protagonist, i);
                         //System.out.println(i+1 + "° effetto Morte Difensore attivato: " + effectEnemy.get(i).get().getNameEffect());
+
                     }
                     //System.out.println(i+1 + "° scontro avvenuto tra " + protagonist.getCurrentBoard().get(i).get().getName() + " e " + antagonist.getCurrentBoard().get(i).get().getName());
                     tmp.add(antagonist.getCurrentBoard().get(i));
@@ -88,7 +90,7 @@ public class BattlePhaseManagerImpl implements BattlePhaseManager {
                     antagonist.setLifePoints(antagonist.getLifePoints() - protagonist.getCurrentBoard().get(i).get().getAttack());
                     protagonist.setLifePoints(protagonist.getLifePoints() + protagonist.getCurrentBoard().get(i).get().getAttack());
                     //System.out.println(i+1 + "° attacco diretto da parte di: " + protagonist.getCurrentBoard().get(i).get().getName());
-
+                    
                     tmp.add(Optional.empty());
                 }
             }
