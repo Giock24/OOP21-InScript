@@ -59,7 +59,13 @@ public class CardGraficImpl implements CardGrafic {
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 95% 95%;");
-        imageCard.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/1.90, ViewState.CARD_WIDTH.getValue()/2.2 ,0 ,ViewState.CARD_WIDTH.getValue()/2.2));
+        // imageCard.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/1.90, ViewState.CARD_WIDTH.getValue()/2.2 ,0 ,ViewState.CARD_WIDTH.getValue()/2.2));
+        imageCard.setPadding(new Insets(
+                ViewState.CARD_HEIGHT.getValue()/1.90, 
+                ViewState.CARD_WIDTH.getValue()/2.2, 
+                ViewState.CARD_HEIGHT.getValue()*0.0003, 
+                ViewState.CARD_WIDTH.getValue()/2.2));
+
         // imageCard.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue()/2);
                 
         imagecontainer.getChildren().add(imageCard);
@@ -72,9 +78,9 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
+            imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.0625, 0, ViewState.CARD_HEIGHT.getValue()*0.125, 0));
+            imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue());
         }
-        // imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/4, ViewState.CARD_WIDTH.getValue()/3 ,0 ,ViewState.CARD_WIDTH.getValue()/3));
-        imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue(), ViewState.CARD_WIDTH.getValue());
 
         final Label cardName = new Label();
         cardName.setText(card.getName());
@@ -86,15 +92,24 @@ public class CardGraficImpl implements CardGrafic {
 
         final Label atkValue = new Label();
         atkValue.setText("ATK\n "+card.getAttack());
-        atkValue.setPadding(new Insets(7));
-
+        atkValue.setPadding(new Insets(
+                -ViewState.CARD_HEIGHT.getValue()*0.0125, 
+                -ViewState.CARD_WIDTH.getValue()*0, 
+                ViewState.CARD_HEIGHT.getValue()*0.0125, 
+                ViewState.CARD_WIDTH.getValue()*0.0125));
+        
         final Label lifeValue = new Label();
         lifeValue.setText("HP\n "+card.getLifePoint());
-        lifeValue.setPadding(new Insets(7));
+        lifeValue.setPadding(new Insets(-ViewState.CARD_HEIGHT.getValue()*0.0125, 
+                -ViewState.CARD_WIDTH.getValue()*0, 
+                ViewState.CARD_HEIGHT.getValue()*0.0125, 
+                0));
+        // lifeValue.setPadding(new Insets(7));
         
         statsContainter.setLeft(atkValue);
         statsContainter.setCenter(imageEffect);
         statsContainter.setRight(lifeValue);
+        statsContainter.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, 10, 0, 10));
         
         BorderPane.setAlignment(atkValue, Pos.CENTER);
         BorderPane.setAlignment(imageEffect, Pos.CENTER);
