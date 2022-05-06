@@ -63,13 +63,13 @@ public class CardGraficImpl implements CardGrafic {
         imageCard.setPadding(new Insets(
                 ViewState.CARD_HEIGHT.getValue()/1.90, 
                 ViewState.CARD_WIDTH.getValue()/2.2, 
-                ViewState.CARD_HEIGHT.getValue()*0.0003, 
+                ViewState.CARD_HEIGHT.getValue()*0.0000, 
                 ViewState.CARD_WIDTH.getValue()/2.2));
 
         // imageCard.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue()/2);
                 
         imagecontainer.getChildren().add(imageCard);
-        imagecontainer.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/20.9, 0, 0, ViewState.CARD_HEIGHT.getValue()/30));
+        imagecontainer.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()/20.9, 0, ViewState.CARD_HEIGHT.getValue()*0.03, ViewState.CARD_HEIGHT.getValue()/30));
         imagecontainer.setAlignment(Pos.CENTER);
         
         if(card.getEffect().isPresent()) {
@@ -78,7 +78,7 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
-            imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.0625, 0, ViewState.CARD_HEIGHT.getValue()*0.125, 0));
+            imageEffect.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.001, 0, ViewState.CARD_HEIGHT.getValue()*0.125, 0));
             imageEffect.setMaxSize(ViewState.CARD_HEIGHT.getValue()/2, ViewState.CARD_WIDTH.getValue());
         }
 
@@ -109,11 +109,12 @@ public class CardGraficImpl implements CardGrafic {
         statsContainter.setLeft(atkValue);
         statsContainter.setCenter(imageEffect);
         statsContainter.setRight(lifeValue);
-        statsContainter.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, 10, 0, 10));
+        statsContainter.setPadding(new Insets(0, ViewState.CARD_HEIGHT.getValue()*0.001, 0, ViewState.CARD_HEIGHT.getValue()*0.001));
         
         BorderPane.setAlignment(atkValue, Pos.CENTER);
         BorderPane.setAlignment(imageEffect, Pos.CENTER);
         BorderPane.setAlignment(lifeValue, Pos.CENTER);
+        // imagecontainer.setMinSize(ViewState.CARD_WIDTH.getValue()/1.75, ViewState.CARD_HEIGHT.getValue()/1.65);
 
         nameContainer.setLeft(cardName);
         nameContainer.setRight(cardMana);
