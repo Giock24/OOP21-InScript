@@ -14,7 +14,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public enum Music {
 
-    MENU_THEME("MainMenuTheme.wav");
+    MENU_THEME("MainMenuTheme.wav"),
+    BOARD_THEME("BoardTheme.wav");
     
     private Clip clip;
     private int currentFrame;

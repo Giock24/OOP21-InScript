@@ -42,6 +42,7 @@ public class GameSceneController {
     @FXML private BorderPane root;
 
     @FXML private Label currentPhase; 
+    @FXML private Button musicButton;
     
     ////player info/////
     @FXML private Label lifePointsPlayer;
@@ -70,6 +71,16 @@ public class GameSceneController {
         this.cardGrafic = new CardGraficImpl();
         inizializeEndTurnButton();
         updateBoardView.update();
+        
+        musicButton.setOnAction(e -> {
+            Music.BOARD_THEME.pauseAndResumeMusic();
+            if (Music.BOARD_THEME.musicIsActive()) {
+                musicButton.setText("VOLUME ON");
+            } else {
+                musicButton.setText("VOLUME OFF");
+            }
+           }
+        );
     }
     
     private UpdateView updateBoardView = () -> {
@@ -215,6 +226,9 @@ public class GameSceneController {
     }
     
     private void returnToMenu() {
+        
+        Music.BOARD_THEME.stopMusic();
+        
         final Stage primaryStage = (Stage)root.getScene().getWindow();
         final Showable menuGUI = new MenuGUI(primaryStage);
         
