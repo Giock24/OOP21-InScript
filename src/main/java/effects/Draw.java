@@ -8,7 +8,7 @@ import shared.Player;
 public class Draw extends AbstractEffect{
 
     public Draw() {
-        super("Draw", "When he enters the battlefield, he draws a card", "effects/effect_draw.png");
+        super("Draw", "When this card enters the battlefield, the owner draws a card", "effects/effect_draw.png");
         
     }
 

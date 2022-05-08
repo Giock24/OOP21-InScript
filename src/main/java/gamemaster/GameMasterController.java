@@ -6,9 +6,9 @@ import shared.Player;
 
 public interface GameMasterController {
     
-    String GameOverWinMessage="Hai vinto";
-    String GameOverLoseMessage="Hai Perso";
-    String GameOverTieMessage="Pareggio - non ci sono piu carte da pescare";
+    String GameOverWinMessage="You Win";
+    String GameOverLoseMessage="You Lose";
+    String GameOverTieMessage="Tie - there are no more cards to draw";
     
     String DrawPhaseAIMessage = "Fase di pescata del nemico";
     String DrawPhaseMessage = "Fase di pescata del giocatore";
