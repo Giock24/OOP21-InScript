@@ -121,7 +121,7 @@ public class DeckFactoryImpl implements DeckFactory {
         this.maisDeck.add(new CardFactoyImpl().exaltedEffect( "Scarecrow", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
         this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
         this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
-        this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais kngiht", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
+        this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
         
         this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png", "Giant", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
         this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png","Giant", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
