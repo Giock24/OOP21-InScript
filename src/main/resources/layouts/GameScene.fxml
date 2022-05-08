@@ -20,60 +20,56 @@
             <Insets bottom="4.0" left="15.0" right="4.0" top="35.0" />
          </padding>
          <children>
-            <HBox alignment="CENTER">
-               <children>
-                  <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
-               </children>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-            </HBox>
-            <Label styleClass="textStyle" stylesheets="@../default/application.css" text="INFO PLAYER:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
             <HBox prefHeight="19.0" prefWidth="146.0" spacing="4.0">
                <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="LP :" />
-                  <Label fx:id="lifePointsPlayer" styleClass="textStyle" stylesheets="@../default/application.css" />
+                  <Label styleClass="manaTextStyle" stylesheets="@../default/application.css" text="Mana:" />
+                  <Label fx:id="currentManaPlayer" styleClass="manaTextStyle" stylesheets="@../default/application.css" />
                </children>
             </HBox>
-            <HBox prefHeight="19.0" prefWidth="146.0" spacing="4.0">
+            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="224.0">
                <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="CurrentMana:" />
-                  <Label fx:id="currentManaPlayer" styleClass="textStyle" stylesheets="@../default/application.css" />
+                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="Life Points">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </HBox>
-            <HBox prefHeight="15.0" prefWidth="146.0" spacing="4.0">
+            <GridPane>
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="TotalMana :" />
-                  <Label fx:id="manaPlayer" styleClass="textStyle" stylesheets="@../default/application.css" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="textStyle" stylesheets="@../default/application.css" text="Player" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+                     <children>
+                        <Label styleClass="textStyle" text="AI" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Label styleClass="textStyle" stylesheets="@../default/application.css" text="INFO AI:">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <HBox prefHeight="10.0" prefWidth="146.0" spacing="4.0">
+            </GridPane>
+            <HBox fx:id="balance" alignment="CENTER" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="LP_AI :" />
-                  <Label fx:id="lifePointsIA" styleClass="textStyle" stylesheets="@../default/application.css" />
+                  <HBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="10.0" prefWidth="146.0" spacing="4.0">
-               <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="CurrentMana_AI :" />
-                  <Label fx:id="currentManaIA" styleClass="textStyle" stylesheets="@../default/application.css" />
-               </children>
-            </HBox>
-            <HBox prefHeight="10.0" prefWidth="146.0" spacing="4.0">
-               <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="TotalMana_AI :" />
-                  <Label fx:id="manaIA" styleClass="textStyle" stylesheets="@../default/application.css" />
-               </children>
-            </HBox>
+            </VBox>
          </children>
       </VBox>
    </left>
@@ -103,7 +99,7 @@
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" GridPane.columnIndex="2" />
                   <Label fx:id="currentPhase" styleClass="textStyle" stylesheets="@../default/application.css" text="" />
-                  <Button fx:id="musicButton" text="VOLUME ON" styleClass="buttonBoard" stylesheets="@../default/application.css"/>
+                  <Button fx:id="musicButton" styleClass="buttonBoard" stylesheets="@../default/application.css" text="VOLUME ON" />
                </children>
             </GridPane>
          </top>

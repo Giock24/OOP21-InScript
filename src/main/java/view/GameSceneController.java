@@ -1,6 +1,5 @@
 package view;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -10,11 +9,7 @@ import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
 import gamemaster.OnPhaseChange;
 import gamemaster.UpdateView;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -22,11 +17,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -37,6 +29,7 @@ public class GameSceneController {
     
     GameMasterControllerImpl gameMasterController;
     CardGrafic cardGrafic;
+    BalanceOfLifeGrafic balanceGrafic;
     private int colomn; // TODO campo che può essere omesso se il metodo updateBoardIA usasse un IntStream
     
     @FXML private BorderPane root;
@@ -44,15 +37,10 @@ public class GameSceneController {
     @FXML private Label currentPhase; 
     @FXML private Button musicButton;
     
-    ////player info/////
-    @FXML private Label lifePointsPlayer;
+    ////info/////
     @FXML private Label currentManaPlayer;
-    @FXML private Label manaPlayer;
-    
-    ////player IA info////
-    @FXML private Label lifePointsIA;
-    @FXML private Label currentManaIA;
-    @FXML private Label manaIA;
+    ////balance of life////
+    @FXML private HBox balance;
     
     ////cards//////
     @FXML private GridPane boardIA;
@@ -69,31 +57,19 @@ public class GameSceneController {
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
         this.cardGrafic = new CardGraficImpl();
+        this.balanceGrafic = new BalanceOfLifeGrafic(this.gameMasterController.getHumanPlayer(),this.gameMasterController.getIAPlayer());
         inizializeEndTurnButton();
+        inizilizeMusicButton();
         updateBoardView.update();
         
-        musicButton.setOnAction(e -> {
-            Music.BOARD_THEME.pauseAndResumeMusic();
-            if (Music.BOARD_THEME.musicIsActive()) {
-                musicButton.setText("VOLUME ON");
-            } else {
-                musicButton.setText("VOLUME OFF");
-            }
-           }
-        );
+       
     }
     
     private UpdateView updateBoardView = () -> {
 
         ////player info/////
-        lifePointsPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getLifePoints()));
         currentManaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getCurrentMana()));
-        manaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getMana()));
-        
-        ////player IA info////
-        lifePointsIA.setText(Integer.toString(gameMasterController.getIAPlayer().getLifePoints()));
-        currentManaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getCurrentMana()));
-        manaIA.setText(Integer.toString(gameMasterController.getIAPlayer().getMana()));
+        updateBalance();
         
         ////cards////
         updateBoardIA();
@@ -129,6 +105,24 @@ public class GameSceneController {
     private void inizializeEndTurnButton() {
         battlePhaseButton.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_WIDTH.getValue());
         battlePhaseButton.setOnMousePressed(event -> gameMasterController.onEndTurn());
+    }
+    
+    
+    private void inizilizeMusicButton() {
+        musicButton.setOnAction(e -> {
+            Music.BOARD_THEME.pauseAndResumeMusic();
+            if (Music.BOARD_THEME.musicIsActive()) {
+                musicButton.setText("VOLUME ON");
+            } else {
+                musicButton.setText("VOLUME OFF");
+            }
+           }
+        );
+    }
+    
+    private void updateBalance() {
+        balance.getChildren().clear();
+        balance.getChildren().add(balanceGrafic.generateBalanceOfLife());
     }
 
     /**

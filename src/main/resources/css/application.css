@@ -31,6 +31,12 @@
 	-fx-text-fill: white;
 }
 
+.manaTextStyle{
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-text-fill: white;
+	-fx-font-size: 20;
+}
+
 .buttonSelection{
 	-fx-background-color: #eff9ba;
 	-fx-font-family: "Press Start 2P", cursive;
