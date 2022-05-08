@@ -133,7 +133,7 @@ public class CardGraficImpl implements CardGrafic {
     @Override
     public BorderPane generateCardViewElement(final Optional<Card> selectedCardToShow) {
         final BorderPane cardViewElement = new BorderPane();
-        cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
+        cardViewElement.setMaxSize(ViewState.CARD_WIDTH.getValue()*1.7, ViewState.CARD_HEIGHT.getValue()*1.7);
         
         if(selectedCardToShow.isPresent()) {
             
