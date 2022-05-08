@@ -134,31 +134,31 @@ public class DeckFactoryImpl implements DeckFactory {
     
     private List<Card> getShinobiDeck() {
         
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Studente Accademia", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Ninja Medico", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Medical Ninja", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Medical Ninja", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Copia Sakura", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Sakura's Copy", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Sakura's Copy", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Ninja della Sabbia", 1, 1, 1, "shinobiDeckImage/Ninja_della_Sabbia.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Sand Ninja", 1, 1, 1, "shinobiDeckImage/Ninja_della_Sabbia.png"));
         this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 3, 1, 3, "shinobiDeckImage/Jonin.png"));
         this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 3, 1, 3, "shinobiDeckImage/Jonin.png"));
         
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Ninja Traditore", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Traitor Ninja", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
+        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Traitor Ninja", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
         
         this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 1, 4, "shinobiDeckImage/Hinata.png"));
         this.shinobiDeck.add(new CardFactoyImpl().lastwillEffect("Nagato", 4, 4, 4, "shinobiDeckImage/Nagato.png", "Nagato [Reincarnation]", 2, 2, Optional.of(new Elusive()), "shinobiDeckImage/Nagato_Reincarnation2.png"));
