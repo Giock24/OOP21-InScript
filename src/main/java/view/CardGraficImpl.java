@@ -140,30 +140,35 @@ public class CardGraficImpl implements CardGrafic {
             final Card card = selectedCardToShow.get();
             
             cardViewElement.setStyle(" "
-                    + "-fx-background-image:url('cardBackgroud.png'); "
-                    + "-fx-background-repeat: no-repeat;\n"
-                    + "-fx-background-size: contain;\n"
-                    + "-fx-background-size: 100% 100%;"
                     + "-fx-font-family: Impact;\n"
-                    + "-fx-font-size: 13;"
-                    + "-fx-text-fill: white;");
+                    );
+            
             
             //top layout
             final GridPane topLay = new GridPane();
+            
+            topLay.setStyle(" "
+                    + "-fx-background-image:url('cardBackgroudTop.png'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;"
+                    + "-fx-font-size: 16;"
+                    );
             
             final HBox nameLay = new HBox();
             final Label nameText = new Label(card.getName());
             nameText.setWrapText(true);
             
             final HBox manaLay = new HBox();
-            final Label manaText = new Label(Integer.toString(card.getMana()));
+            final Label manaText = new Label("Mana: " + card.getMana());
             
-            nameLay.setAlignment(Pos.TOP_LEFT);
-            nameLay.setPadding(new Insets(10, 0, 0, 10));
+            nameLay.setAlignment(Pos.CENTER);
+            nameLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, 0, 0, ViewState.CARD_WIDTH.getValue()*0.15));
             nameLay.getChildren().add(nameText);
             
+            
             manaLay.setAlignment(Pos.TOP_RIGHT);
-            manaLay.setPadding(new Insets(10, 10, 0, 0));
+            manaLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.05, 0, 0));
             manaLay.getChildren().add(manaText);
             
             GridPane.setConstraints(nameLay, 0, 0);
@@ -177,13 +182,32 @@ public class CardGraficImpl implements CardGrafic {
             
             //center layout
             final HBox imageLay = new HBox();
-            BorderPane.setMargin(imageLay, new Insets(20, 20, 5, 20));
+            //BorderPane.setMargin(imageLay, new Insets(ViewState.CARD_HEIGHT.getValue()*0.1, ViewState.CARD_WIDTH.getValue()*0.05, ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.1));
+            final VBox image = new VBox();
+            
+            image.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            
+            
             
             imageLay.setStyle(" "
+                    + "-fx-background-image:url('cardBackgroudCenter.png'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;"
+                    );
+            
+            
+            
+            image.setStyle(" "
                     + "-fx-background-image:url('"+card.getImageURL()+"'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
-                    + "-fx-background-size: 100% 100%;");
+                    + "-fx-background-size: 100% 100%;"
+                    );
+            image.setAlignment(Pos.CENTER);
+            image.setPadding(new Insets(0,ViewState.CARD_WIDTH.getValue()*1.5, 0,ViewState.CARD_WIDTH.getValue()*0.1));
+            imageLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1, ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1));
+            imageLay.getChildren().add(image);
             
             
             cardViewElement.setCenter(imageLay);
@@ -191,21 +215,29 @@ public class CardGraficImpl implements CardGrafic {
             // BOTTOM layouts
             final GridPane bottomLay = new GridPane();
             
+            bottomLay.setStyle(" "
+                    + "-fx-background-image:url('cardBackgroudBot.png'); "
+                    + "-fx-background-repeat: no-repeat;\n"
+                    + "-fx-background-size: contain;\n"
+                    + "-fx-background-size: 100% 100%;"
+                    + "-fx-font-size: 14;"
+                    );
+            
             final VBox atkLay = new VBox();
             final Label atk = new Label("ATK");
-            final Label intAtk = new Label(Integer.toString(card.getAttack()));
+            final Label intAtk = new Label(" "+ card.getAttack());
             
-            atkLay.setAlignment(Pos.BOTTOM_LEFT);
-            atkLay.setPadding(new Insets(0, 0, 10, 12));
+            atkLay.setAlignment(Pos.TOP_LEFT);
+            atkLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.1, 0, ViewState.CARD_HEIGHT.getValue()*0.12, ViewState.CARD_WIDTH.getValue()*0.12));
             atkLay.setSpacing(2);
             atkLay.getChildren().addAll(atk, intAtk);
             
             final VBox hpLay = new VBox();
             final Label hp = new Label("HP");
-            final Label intHP = new Label(Integer.toString(card.getLifePoint()));
+            final Label intHP = new Label(" "+ card.getLifePoint());
             
             hpLay.setAlignment(Pos.BOTTOM_RIGHT);
-            hpLay.setPadding(new Insets(0, 10, 12, 0));
+            hpLay.setPadding(new Insets(0, 0, ViewState.CARD_HEIGHT.getValue()*0.1, 0));
             hpLay.setSpacing(2);
             hpLay.getChildren().addAll(hp, intHP);
             
@@ -215,7 +247,7 @@ public class CardGraficImpl implements CardGrafic {
                 effectDescription.setWrapText(true);
                 
                 descLay.setAlignment(Pos.CENTER);
-                descLay.setPadding(new Insets(0, 0, 10, 0));
+                descLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, 0, ViewState.CARD_HEIGHT.getValue()*0.08, ViewState.CARD_WIDTH.getValue()*0.1));
                 descLay.getChildren().add(effectDescription);
             }
             
