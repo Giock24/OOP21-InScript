@@ -133,6 +133,7 @@ public class CardGraficImpl implements CardGrafic {
     @Override
     public BorderPane generateCardViewElement(final Optional<Card> selectedCardToShow) {
         final BorderPane cardViewElement = new BorderPane();
+        cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
         
         if(selectedCardToShow.isPresent()) {
             
@@ -214,7 +215,7 @@ public class CardGraficImpl implements CardGrafic {
                 effectDescription.setWrapText(true);
                 
                 descLay.setAlignment(Pos.CENTER);
-                hpLay.setPadding(new Insets(0, 0, 10, 0));
+                descLay.setPadding(new Insets(0, 0, 10, 0));
                 descLay.getChildren().add(effectDescription);
             }
             

@@ -166,7 +166,7 @@
             <Insets />
          </BorderPane.margin>
          <padding>
-            <Insets bottom="210.0" left="45.0" right="25.0" top="30.0" />
+            <Insets bottom="25.0" left="45.0" right="25.0" top="30.0" />
          </padding>
       </GridPane>
    </right>
