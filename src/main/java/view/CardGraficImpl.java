@@ -5,6 +5,7 @@ import java.util.Optional;
 import cards.Card;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -162,7 +163,7 @@ public class CardGraficImpl implements CardGrafic {
             final HBox manaLay = new HBox();
             final Label manaText = new Label("Mana: " + card.getMana());
             
-            nameLay.setAlignment(Pos.CENTER);
+            nameLay.setAlignment(Pos.TOP_LEFT);
             nameLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, 0, 0, ViewState.CARD_WIDTH.getValue()*0.15));
             nameLay.getChildren().add(nameText);
             
@@ -173,7 +174,7 @@ public class CardGraficImpl implements CardGrafic {
             
             GridPane.setConstraints(nameLay, 0, 0);
             GridPane.setConstraints(manaLay, 1, 0);
-            topLay.getColumnConstraints().add(new ColumnConstraints(100));
+            topLay.getColumnConstraints().add(new ColumnConstraints(130));
             topLay.getColumnConstraints().add(new ColumnConstraints(100));
             
             topLay.getChildren().addAll(nameLay, manaLay);
@@ -181,13 +182,9 @@ public class CardGraficImpl implements CardGrafic {
             cardViewElement.setTop(topLay);
             
             //center layout
-            final HBox imageLay = new HBox();
-            //BorderPane.setMargin(imageLay, new Insets(ViewState.CARD_HEIGHT.getValue()*0.1, ViewState.CARD_WIDTH.getValue()*0.05, ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.1));
+            final BorderPane imageLay = new BorderPane();
             final VBox image = new VBox();
-            
-            image.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-            
-            
+            BorderPane.setMargin(image, new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.10, ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.10));
             
             imageLay.setStyle(" "
                     + "-fx-background-image:url('cardBackgroudCenter.png'); "
@@ -205,9 +202,9 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-size: 100% 100%;"
                     );
             image.setAlignment(Pos.CENTER);
-            image.setPadding(new Insets(0,ViewState.CARD_WIDTH.getValue()*1.5, 0,ViewState.CARD_WIDTH.getValue()*0.1));
-            imageLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1, ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1));
-            imageLay.getChildren().add(image);
+            //image.setPadding(new Insets(0,ViewState.CARD_WIDTH.getValue()*1.5, 0,ViewState.CARD_WIDTH.getValue()*0.1));
+            //imageLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1, ViewState.CARD_HEIGHT.getValue()*0.01, ViewState.CARD_WIDTH.getValue()*0.1));
+            imageLay.setCenter(image);
             
             
             cardViewElement.setCenter(imageLay);
@@ -254,9 +251,9 @@ public class CardGraficImpl implements CardGrafic {
             GridPane.setConstraints(atkLay, 0, 0);
             GridPane.setConstraints(descLay, 1, 0);
             GridPane.setConstraints(hpLay, 2, 0);
-            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
-            bottomLay.getColumnConstraints().add(new ColumnConstraints(100));
-            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(40));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(140));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(40));
             
             bottomLay.getChildren().addAll(atkLay, descLay, hpLay);
             
