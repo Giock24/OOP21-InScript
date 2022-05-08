@@ -39,7 +39,7 @@ public class DeckFactoryImpl implements DeckFactory {
 
 
     private List<Card> getPlayerDeck() {
-        
+       
         this.playerDeck.add(new CardFactoyImpl().noEffect( "Cane", 1, 1, 1, "standardDeckImage/Cane.png"));
         this.playerDeck.add(new CardFactoyImpl().noEffect( "Cane", 1, 1, 1, "standardDeckImage/Cane.png"));
         this.playerDeck.add(new CardFactoyImpl().poisonEffect( "Vipera", 1, 1, 2, "standardDeckImage/Vipera.png"));
@@ -250,18 +250,18 @@ public class DeckFactoryImpl implements DeckFactory {
         this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 2, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
         this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 2, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
         this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 2, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 3, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 3, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 3, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 4, 3, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 4, 3, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 4, 3, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().healerEffect( "Tower of The Pit", 5, 1, 3, "deckOfThePitImage/Tower_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 2, 2, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 4, 4, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 2, 2, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 4, 4, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().armoredEffect( "Lawyer of The Pit", 3, 5, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().armoredEffect( "Lawyer of The Pit", 3, 5, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Seo", 2, 4, 6, "deckOfThePitImage/Seo.png", "Herald of The Pit", 6, 6, Optional.of(new Armored()), "deckOfThePitImage/Herald_Of_The_Pit.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 3, "deckOfThePitImage/Faxen_Shadow.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 3, "deckOfThePitImage/Faxen_Shadow.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 3, "deckOfThePitImage/Faxen_Shadow.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().healerEffect( "Tower of The Pit", 4, 1, 3, "deckOfThePitImage/Tower_Of_The_Pit.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 4, 4, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 2, 2, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 4, 4, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 2, 2, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Lawyer of The Pit", 2, 4, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Lawyer of The Pit", 2, 4, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
+        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Herald of The Pit", 6, 6, 6, "deckOfThePitImage/Herald_Of_The_Pit.png", "Seo", 2, 1, Optional.of(new Armored()), "deckOfThePitImage/Seo.png"));
         this.deckOfThePit.add(new CardFactoyImpl().exaltedEffect( "Lord of The Pit", 7, 7, 7, "deckOfThePitImage/Lord_Of_The_Pit.png"));
         
         return this.deckOfThePit;
