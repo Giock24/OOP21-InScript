@@ -27,7 +27,8 @@ public class Elusive extends AbstractEffect{
             
             enemy.getCurrentBoard().get(boardPosition).get().setLifePoint(enemy.getCurrentBoard().get(boardPosition).get().getLifePoint()+cardOwner.getCurrentBoard().get(boardPosition).get().getAttack());
             
-            enemy.setLifePoints(enemy.getLifePoints()-cardOwner.getCurrentBoard().get(boardPosition).get().getAttack());    
+            enemy.setLifePoints(enemy.getLifePoints()-cardOwner.getCurrentBoard().get(boardPosition).get().getAttack());  
+            cardOwner.setLifePoints(cardOwner.getLifePoints()+cardOwner.getCurrentBoard().get(boardPosition).get().getAttack());
             
         }
         
