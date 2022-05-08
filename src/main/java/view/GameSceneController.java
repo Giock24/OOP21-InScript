@@ -207,7 +207,7 @@ public class GameSceneController {
      */
     private void updateCardViewElement() {
         
-        final VBox cardViewElement = this.cardGrafic.generateCardViewElement(gameMasterController.getCardToShow());
+        final BorderPane cardViewElement = this.cardGrafic.generateCardViewElement(gameMasterController.getCardToShow());
         
         cardView.getChildren().clear();
         cardView.getChildren().add(cardViewElement);
@@ -240,7 +240,7 @@ public class GameSceneController {
      * 
      * @return game over dialog
      */
-    private void showGameOverDialog(String endMessage) {
+    private void showGameOverDialog(final String endMessage) {
         final Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Game Over");
         alert.setHeaderText(endMessage);

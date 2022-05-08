@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import cards.Card;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 public interface CardGrafic {
@@ -12,6 +13,6 @@ public interface CardGrafic {
     
     VBox generateCardElement(Card card,Optional<Card> cardToPlace);
     
-    VBox generateCardViewElement(Optional<Card> selectedCardToShow);
+    BorderPane generateCardViewElement(Optional<Card> selectedCardToShow);
     
 }

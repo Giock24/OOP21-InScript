@@ -7,6 +7,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -128,11 +131,8 @@ public class CardGraficImpl implements CardGrafic {
     }
 
     @Override
-    public VBox generateCardViewElement(final Optional<Card> selectedCardToShow) {
-        final VBox cardViewElement = new VBox();
-        final BorderPane nameContainer = new BorderPane();
-        final Pane imageContainer = new Pane();
-        final BorderPane statsContainter = new BorderPane();
+    public BorderPane generateCardViewElement(final Optional<Card> selectedCardToShow) {
+        final BorderPane cardViewElement = new BorderPane();
         
         if(selectedCardToShow.isPresent()) {
             
@@ -144,52 +144,90 @@ public class CardGraficImpl implements CardGrafic {
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"
                     + "-fx-font-family: Impact;\n"
-                    + "-fx-font-size: 15;");
+                    + "-fx-font-size: 13;"
+                    + "-fx-text-fill: white;");
             
-            cardViewElement.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_HEIGHT.getValue());
-            cardViewElement.setPadding(new Insets(10));
+            //top layout
+            final GridPane topLay = new GridPane();
             
-            final Label cardName = new Label();
-            cardName.setText(card.getName());
-            cardName.setPadding(new Insets(5));
+            final HBox nameLay = new HBox();
+            final Label nameText = new Label(card.getName());
+            nameText.setWrapText(true);
             
-            final Label cardMana = new Label();
-            cardMana.setText(" "+card.getMana());
-            cardMana.setPadding(new Insets(5));
+            final HBox manaLay = new HBox();
+            final Label manaText = new Label(Integer.toString(card.getMana()));
             
-            nameContainer.setLeft(cardName);
-            nameContainer.setRight(cardMana);
+            nameLay.setAlignment(Pos.TOP_LEFT);
+            nameLay.setPadding(new Insets(10, 0, 0, 10));
+            nameLay.getChildren().add(nameText);
             
-            imageContainer.setStyle(" "
+            manaLay.setAlignment(Pos.TOP_RIGHT);
+            manaLay.setPadding(new Insets(10, 10, 0, 0));
+            manaLay.getChildren().add(manaText);
+            
+            GridPane.setConstraints(nameLay, 0, 0);
+            GridPane.setConstraints(manaLay, 1, 0);
+            topLay.getColumnConstraints().add(new ColumnConstraints(100));
+            topLay.getColumnConstraints().add(new ColumnConstraints(100));
+            
+            topLay.getChildren().addAll(nameLay, manaLay);
+            
+            cardViewElement.setTop(topLay);
+            
+            //center layout
+            final HBox imageLay = new HBox();
+            BorderPane.setMargin(imageLay, new Insets(20, 20, 5, 20));
+            
+            imageLay.setStyle(" "
                     + "-fx-background-image:url('"+card.getImageURL()+"'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;");
-            imageContainer.setPadding(new Insets(95));
             
-            final Label atkValue = new Label();
-            atkValue.setText(" "+card.getAttack());
-            atkValue.setPadding(new Insets(15));
             
-            final Label effectDescription = new Label();
+            cardViewElement.setCenter(imageLay);
+            
+            // BOTTOM layouts
+            final GridPane bottomLay = new GridPane();
+            
+            final VBox atkLay = new VBox();
+            final Label atk = new Label("ATK");
+            final Label intAtk = new Label(Integer.toString(card.getAttack()));
+            
+            atkLay.setAlignment(Pos.BOTTOM_LEFT);
+            atkLay.setPadding(new Insets(0, 0, 10, 12));
+            atkLay.setSpacing(2);
+            atkLay.getChildren().addAll(atk, intAtk);
+            
+            final VBox hpLay = new VBox();
+            final Label hp = new Label("HP");
+            final Label intHP = new Label(Integer.toString(card.getLifePoint()));
+            
+            hpLay.setAlignment(Pos.BOTTOM_RIGHT);
+            hpLay.setPadding(new Insets(0, 10, 12, 0));
+            hpLay.setSpacing(2);
+            hpLay.getChildren().addAll(hp, intHP);
+            
+            final VBox descLay = new VBox();
             if (card.getEffect().isPresent()) {
-            effectDescription.setText(card.getEffect().get().getNameEffect()+": "+card.getEffect().get().getDescriptionEffect());
-            effectDescription.setWrapText(true);
-            }else {
-                effectDescription.setText(" ");
+                final Label effectDescription = new Label(card.getEffect().get().getNameEffect()+": "+card.getEffect().get().getDescriptionEffect());
+                effectDescription.setWrapText(true);
+                
+                descLay.setAlignment(Pos.CENTER);
+                hpLay.setPadding(new Insets(0, 0, 10, 0));
+                descLay.getChildren().add(effectDescription);
             }
             
-            final Label lifeValue = new Label();
-            lifeValue.setText(" "+card.getLifePoint());
-            lifeValue.setPadding(new Insets(15));
+            GridPane.setConstraints(atkLay, 0, 0);
+            GridPane.setConstraints(descLay, 1, 0);
+            GridPane.setConstraints(hpLay, 2, 0);
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(100));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
             
-            statsContainter.setLeft(atkValue);
-            statsContainter.setCenter(effectDescription);
-            statsContainter.setRight(lifeValue);
+            bottomLay.getChildren().addAll(atkLay, descLay, hpLay);
             
-            cardViewElement.getChildren().add(nameContainer);
-            cardViewElement.getChildren().add(imageContainer);
-            cardViewElement.getChildren().add(statsContainter);
+            cardViewElement.setBottom(bottomLay);
             
         } 
         
