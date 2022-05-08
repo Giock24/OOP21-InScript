@@ -7,7 +7,7 @@ import shared.Player;
 public class Elusive extends AbstractEffect{
 
     public Elusive() {
-        super("Elusive", "Elude le carte avversarie, evitandone la difesa, a meno che non combatta con un altra carta Elusive", "effects/effect_elusive.png");
+        super("Elusive", "it evades the opponent's cards, avoiding their defense, unless he is fighting with another Elusive card", "effects/effect_elusive.png");
         
     }
 

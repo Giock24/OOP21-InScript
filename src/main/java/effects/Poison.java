@@ -8,7 +8,7 @@ public class Poison extends AbstractEffect {
 	
 
 	public Poison() {
-		super("Poison", "Se questa carta danneggia una carta dell' avversario i punti vita di quella carta diventano 0", "effects/effect_poison.png");
+		super("Poison", "If this card damages an opponent's card, that card's life total becomes 0", "effects/effect_poison.png");
 		
 	}
 

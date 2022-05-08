@@ -7,7 +7,7 @@ import shared.Player;
 public class Armored extends AbstractEffect {
 
     public Armored() {
-        super("Armored", "Questa carta quando subisce danno da combattimento lo dimezza", "effects/effect_armored.png");
+        super("Armored", "When this card takes combat damage, it halves it", "effects/effect_armored.png");
     
     }
 

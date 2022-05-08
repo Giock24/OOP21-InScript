@@ -7,7 +7,7 @@ import shared.Player;
 public class Healer extends AbstractEffect{
 
     public Healer() {
-        super("Healer", "A fine turno aumenta la vita massima degli alleati adicenti a questa carta di 1", "effects/effect_healer.png");
+        super("Healer", "At the end of the turn, increase the maximum health of allies adjacent to this card by 1", "effects/effect_healer.png");
         
     }
 
