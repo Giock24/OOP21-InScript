@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 
 import cards.ActivationEvent;
 import cards.Card;
-import cards.Effect;
 import gamemaster.GameMaster;
 import shared.Player;
 

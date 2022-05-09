@@ -65,7 +65,7 @@ public class GameSceneController {
        
     }
     
-    private UpdateView updateBoardView = () -> {
+    private final UpdateView updateBoardView = () -> {
 
         ////player info/////
         currentManaPlayer.setText(Integer.toString(gameMasterController.getHumanPlayer().getCurrentMana()));
@@ -81,7 +81,7 @@ public class GameSceneController {
     
 };
 
-    private OnPhaseChange onPhaseChange = (String phase) -> {
+    private final OnPhaseChange onPhaseChange = (String phase) -> {
         //try {
             //this.currentPhase.setText(phase);
             //System.out.print(phase+"\n");
@@ -93,7 +93,7 @@ public class GameSceneController {
 
     };
  
-    private OnGameEnd onGameEnd = (String endMessage) -> {
+    private final OnGameEnd onGameEnd = (String endMessage) -> {
         showGameOverDialog(endMessage);
     };
     
