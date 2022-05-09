@@ -54,11 +54,11 @@ public class MenuGUI implements Showable {
         centralPanel.setSpacing(MenuGUI.SPACING);
         
         final Button startB = new Button("START GAME");
-        final Button optionB = new Button("OPTIONS");
+        final Button ruleB = new Button("RULES");
         final Button quitB = new Button("QUIT");
         
         startB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
-        optionB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
+        ruleB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         quitB.getStyleClass().add(MenuGUI.STYLE_MENU_BUTTON);
         
         startB.setOnAction(e -> {
@@ -72,11 +72,21 @@ public class MenuGUI implements Showable {
             this.stage.show();
         });
         
+        ruleB.setOnAction(e -> {
+            
+            WIDTH.setCurrentValue(this.scene.getWidth());
+            HEIGHT.setCurrentValue(this.scene.getHeight());
+            
+            final Showable rule = new RuleGUI();
+            this.stage.setScene(rule.getScene());
+            this.stage.show();
+        });
+        
         quitB.setOnAction(e -> {
             Platform.exit();
         });
         
-        centralPanel.getChildren().addAll(startB, optionB, quitB);
+        centralPanel.getChildren().addAll(startB, ruleB, quitB);
         
         return centralPanel;
     }

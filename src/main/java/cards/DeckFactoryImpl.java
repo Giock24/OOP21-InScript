@@ -124,8 +124,8 @@ public class DeckFactoryImpl implements DeckFactory {
         
         this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png", "Giant", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
         this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png","Giant", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
-        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 3, 4, "maisDeckImage/khael_mais_lich.png"));
+        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 2, 4, "maisDeckImage/khael_mais_lich.png"));
+        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 2, 4, "maisDeckImage/khael_mais_lich.png"));
         this.maisDeck.add(new CardFactoyImpl().growthEffect( "Church of Mais", 5, 0, 4, "maisDeckImage/chiesa_del_mais.png", "Mais Cathedral", 10, 0, Optional.of(new Healer()), "maisDeckImage/cattedrale_del_mais.png"));
         
         this.maisDeck.add(new CardFactoyImpl().armoredEffect( "The Farmer", 5, 2, 5, "maisDeckImage/il_fattore.png"));
