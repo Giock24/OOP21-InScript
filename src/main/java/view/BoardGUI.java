@@ -24,7 +24,7 @@ public class BoardGUI implements Showable{
         try {
             final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("GameScene.fxml"));
             this.scene = new Scene(root, WIDTH.getValue(), HEIGHT.getValue());
-            Music.BOARD_THEME.startMusic();
+            Music.BOARD_THEME.loopMusic();
         } catch (IOException e) {
             e.printStackTrace();
         }

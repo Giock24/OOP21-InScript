@@ -15,6 +15,7 @@ public class SelectionGUI implements Showable {
     
     public SelectionGUI() {
         this.loadFXML();
+        Music.SELECTION_THEME.loopMusic();
     }
 
     /**

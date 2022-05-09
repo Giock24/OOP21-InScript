@@ -47,6 +47,7 @@ public class SelectionSceneController {
      */
     @FXML
     public void switchToMenuScene(final MouseEvent event) {
+        Music.SELECTION_THEME.stopMusic();
         final Stage primaryStage = (Stage)root.getScene().getWindow();
         final Showable menuGUI = new MenuGUI(primaryStage);
         
@@ -65,6 +66,7 @@ public class SelectionSceneController {
      */
     @FXML
     public void onPlayPressed (final MouseEvent event) {
+        Music.SELECTION_THEME.stopMusic();
         appState.selectHumanPlayerDeck(selectedPlayerDeck.getValue());
         appState.selectAIPlayer(selectedAIDeck.getValue());
         

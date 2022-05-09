@@ -15,7 +15,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public enum Music {
 
     MENU_THEME("MainMenuTheme.wav"),
-    BOARD_THEME("BoardTheme.wav");
+    BOARD_THEME("BoardTheme.wav"),
+    SELECTION_THEME("SelectionTheme.wav");
     
     private Clip clip;
     private int currentFrame;
@@ -47,7 +48,7 @@ public enum Music {
      * Start and Loop the current music
      */
     public void loopMusic() {
-        this.clip.start();
+        this.clip.setFramePosition(0);
         this.clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     
@@ -74,7 +75,7 @@ public enum Music {
             this.stopMusic();
         } else {
             this.clip.setFramePosition(this.currentFrame);
-            this.loopMusic();
+            this.startMusic();
         }
     }
     
