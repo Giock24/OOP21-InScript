@@ -7,7 +7,6 @@ import java.util.Optional;
 import cards.ActivationEvent;
 import cards.Card;
 import cards.Effect;
-import gamemaster.GameMaster;
 import shared.Player;
 
 public class BattlePhaseManagerImpl implements BattlePhaseManager {

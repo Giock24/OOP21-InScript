@@ -3,8 +3,6 @@ package view;
 import static view.ViewState.HEIGHT;
 import static view.ViewState.WIDTH;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 

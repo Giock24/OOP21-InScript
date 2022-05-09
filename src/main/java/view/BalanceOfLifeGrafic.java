@@ -8,18 +8,18 @@ import shared.Player;
 
 public class BalanceOfLifeGrafic {
     
-    private Player player;
-    private Player AI;
+    private final Player player;
+    private final Player aI;
     
-    public BalanceOfLifeGrafic(Player player, Player AI) {
+    public BalanceOfLifeGrafic(final Player player, final  Player aI) {
         this.player = player;
-        this.AI = AI;
+        this.aI = aI;
     }
     
     private String getBalanceURL() {
-        if(player.getLifePoints()>AI.getLifePoints()) {
+        if(player.getLifePoints()>aI.getLifePoints()) {
             return "Balance-icon-left-heavy.png";
-        } else if (player.getLifePoints()<AI.getLifePoints()) {
+        } else if (player.getLifePoints()<aI.getLifePoints()) {
             return "Balance-icon-right-heavy.png";
         } else {
             return "Balance-icon-equity.png";
@@ -30,10 +30,10 @@ public class BalanceOfLifeGrafic {
         final HBox balance = new HBox();
         final Pane imageBalace = new Pane();
         
-        final Label playerLife= new Label(""+this.player.getLifePoints());
+        final Label playerLife= new Label(" "+this.player.getLifePoints());
         playerLife.setStyle("-fx-text-fill: white;");
-        final Label AILife= new Label(""+this.AI.getLifePoints());
-        AILife.setStyle("-fx-text-fill: white;");
+        final Label aILife= new Label(" "+this.aI.getLifePoints());
+        aILife.setStyle("-fx-text-fill: white;");
         
         imageBalace.setStyle(" "
                 + "-fx-background-image:url('"+getBalanceURL()+"'); "
@@ -45,7 +45,7 @@ public class BalanceOfLifeGrafic {
         
         balance.getChildren().add(playerLife);
         balance.getChildren().add(imageBalace);
-        balance.getChildren().add(AILife);
+        balance.getChildren().add(aILife);
         
         
         return balance;

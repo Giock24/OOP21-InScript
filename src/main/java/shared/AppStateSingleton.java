@@ -16,13 +16,13 @@ public class AppStateSingleton implements AppState {
  
     private AppStateSingleton() {
         
-        DeckFactory deckFactory = new DeckFactoryImpl();
+        final DeckFactory deckFactory = new DeckFactoryImpl();
         
-        DecksList = new HashMap<String, List<Card>>();
-        DecksList.putAll(deckFactory.getDecks());
+        decksList = new HashMap<>();
+        decksList.putAll(deckFactory.getDecks());
         
-        humanPlayerDeck = DecksList.get("deck-standard");
-        aiPlayerDeck =  DecksList.get("deck-standard-IA");
+        humanPlayerDeck = decksList.get("deck-standard");
+        aiPlayerDeck =  decksList.get("deck-standard-IA");
     } 
  
     public static AppStateSingleton getInstance() {
@@ -35,7 +35,7 @@ public class AppStateSingleton implements AppState {
  
     
     
-    private Map<String, List<Card>> DecksList;
+    private Map<String, List<Card>> decksList;
     
     private List<Card> humanPlayerDeck;
     
@@ -44,7 +44,7 @@ public class AppStateSingleton implements AppState {
 
     @Override
     public  Map<String, List<Card>> getDecksList() {
-        return  this.DecksList;
+        return  this.decksList;
     }
 
     @Override
@@ -58,31 +58,31 @@ public class AppStateSingleton implements AppState {
 
     @Override
     public List<Card> getAIPlayerDeck() {
-        final List<Card> AiPlayerDeckCopy = new ArrayList<>();
+        final List<Card> aiPlayerDeckCopy = new ArrayList<>();
         List.copyOf(this.aiPlayerDeck).forEach(card -> {
-            AiPlayerDeckCopy.add(new BaseCard(card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getImageURL(), card.getEffect()));
+            aiPlayerDeckCopy.add(new BaseCard(card.getName(), card.getLifePoint(), card.getAttack(), card.getMana(), card.getImageURL(), card.getEffect()));
         });
-        return AiPlayerDeckCopy;
+        return aiPlayerDeckCopy;
     }
 
     @Override
     public void selectHumanPlayerDeck(final String deckName) {
-       humanPlayerDeck = DecksList.get(deckName);
+       humanPlayerDeck = decksList.get(deckName);
     }
 
     @Override
     public void selectAIPlayer(final String deckName) {
-       aiPlayerDeck = DecksList.get(deckName);
+       aiPlayerDeck = decksList.get(deckName);
     }
 
     @Override
     public void demoveDeck(final String deckName) {
-       aiPlayerDeck = DecksList.remove(deckName);
+       aiPlayerDeck = decksList.remove(deckName);
     }
 
     @Override
-    public void addDeck(String deckName,List<Card> newDeck) {
-        DecksList.put(deckName,newDeck);
+    public void addDeck(final String deckName, final List<Card> newDeck) {
+        decksList.put(deckName,newDeck);
     } 
  
 }

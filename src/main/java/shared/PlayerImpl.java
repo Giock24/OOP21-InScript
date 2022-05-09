@@ -9,14 +9,14 @@ import cards.Card;
 public class PlayerImpl implements Player {
     
     private final boolean isAiPlayer;
-    private List<Card> deck;
+    private final List<Card> deck;
     private int lifePoints;
     private int mana;
     private int currentMana;
     private List<Optional<Card>> currentBoard;
-    private List<Card> hand;
+    private final List<Card> hand;
     
-    public PlayerImpl(boolean isAiplayer,List<Card> deck, int lifePoints, int mana, int currentMana,List<Optional<Card>> currentBoard, List<Card> hand) {
+    public PlayerImpl(final boolean isAiplayer, final List<Card> deck, final int lifePoints, final int mana, final int currentMana, final List<Optional<Card>> currentBoard, final List<Card> hand) {
         super();
         this.isAiPlayer= isAiplayer;
         this.deck = deck;
