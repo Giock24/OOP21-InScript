@@ -23,7 +23,7 @@ public class SelectionGUI implements Showable {
      */
     private void loadFXML() {
         try {
-            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("SelectionScene.fxml"));
+            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/SelectionScene.fxml"));
             this.scene = new Scene(root, WIDTH.getValue(), HEIGHT.getValue());
         } catch (IOException e) {
             e.printStackTrace();

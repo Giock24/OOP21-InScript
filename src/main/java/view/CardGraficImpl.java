@@ -22,7 +22,7 @@ public class CardGraficImpl implements CardGrafic {
         final String image = inTheAIBoard? "emptyCardCellAI.png" : "emptyCardCell.png";
         
         emptyCardCell.setStyle(" "
-                + "-fx-background-image:url('"+ image +"'); "
+                + "-fx-background-image:url('image/"+ image +"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;");
@@ -45,7 +45,7 @@ public class CardGraficImpl implements CardGrafic {
         final boolean isCardToPlace = cardToPlace.isPresent() && cardToPlace.get().equals(card);
         
         cardElement.setStyle(" "
-                + "-fx-background-image:url('cardBackgroud.png'); "
+                + "-fx-background-image:url('image/cardBackgroud.png'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 100% 100%;"
@@ -58,7 +58,7 @@ public class CardGraficImpl implements CardGrafic {
                );
                 
         imageCard.setStyle(" "
-                + "-fx-background-image:url('"+card.getImageURL()+"'); "
+                + "-fx-background-image:url('image/"+card.getImageURL()+"'); "
                 + "-fx-background-repeat: no-repeat;\n"
                 + "-fx-background-size: contain;\n"
                 + "-fx-background-size: 95% 95%;");
@@ -148,7 +148,7 @@ public class CardGraficImpl implements CardGrafic {
             final GridPane topLay = new GridPane();
             
             topLay.setStyle(" "
-                    + "-fx-background-image:url('cardBackgroudTop.png'); "
+                    + "-fx-background-image:url('image/cardBackgroudTop.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"
@@ -186,7 +186,7 @@ public class CardGraficImpl implements CardGrafic {
             BorderPane.setMargin(image, new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.10, ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.10));
             
             imageLay.setStyle(" "
-                    + "-fx-background-image:url('cardBackgroudCenter.png'); "
+                    + "-fx-background-image:url('image/cardBackgroudCenter.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"
@@ -195,7 +195,7 @@ public class CardGraficImpl implements CardGrafic {
             
             
             image.setStyle(" "
-                    + "-fx-background-image:url('"+card.getImageURL()+"'); "
+                    + "-fx-background-image:url('image/"+card.getImageURL()+"'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"
@@ -212,7 +212,7 @@ public class CardGraficImpl implements CardGrafic {
             final GridPane bottomLay = new GridPane();
             
             bottomLay.setStyle(" "
-                    + "-fx-background-image:url('cardBackgroudBot.png'); "
+                    + "-fx-background-image:url('image/cardBackgroudBot.png'); "
                     + "-fx-background-repeat: no-repeat;\n"
                     + "-fx-background-size: contain;\n"
                     + "-fx-background-size: 100% 100%;"

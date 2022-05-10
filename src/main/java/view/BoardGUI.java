@@ -22,7 +22,7 @@ public class BoardGUI implements Showable{
      */
     private void loadFXML() {
         try {
-            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("GameScene.fxml"));
+            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/GameScene.fxml"));
             this.scene = new Scene(root, WIDTH.getValue(), HEIGHT.getValue());
             Music.BOARD_THEME.loopMusic();
         } catch (IOException e) {
