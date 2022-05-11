@@ -1,5 +1,10 @@
 package json;
 
+import java.util.Optional;
+
+import cards.Card;
+import cards.Effect;
+
 public interface InfoCard {
     
     String getName();
@@ -10,6 +15,8 @@ public interface InfoCard {
 
     int getManaCost();
     
-    InfoEffect getEffect();
+    ChangeEffect getEffect();
+            
+    Card generateCard(final InfoCard card);
     
 }
