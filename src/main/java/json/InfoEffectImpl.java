@@ -1,4 +1,4 @@
-package Json;
+package json;
 
 public class InfoEffectImpl implements InfoEffect {
 
@@ -12,6 +12,5 @@ public class InfoEffectImpl implements InfoEffect {
     public String getName() {
         return this.name;
     }
-    
     
 }

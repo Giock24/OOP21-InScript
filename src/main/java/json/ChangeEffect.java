@@ -1,4 +1,4 @@
-package Json;
+package json;
 
 public interface ChangeEffect {
 
