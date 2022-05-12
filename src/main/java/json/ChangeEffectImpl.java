@@ -41,14 +41,24 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     @Override
     public Optional<Effect> generateComplexEffect(final ChangeEffect complex) {
         if(complex.getName() == "Growth") {
-            // return Optional.of(new Growth(name, lifePoints, attack, imageURL, effect));
-            return Optional.empty();
+            // Se il nome dell'effetto è growth e la carta in cui si deve transformare ha un effetto non growth allora il generateSimpleEffect ritorna un Optional di qualcosa.
+            // Se invece l'effetto della carta in cui si deve transformare è di nuovo Growth o LastWill GenerateSimpleEffect ritorna un Optional.Empty().
+            if(complex.generateSimpleEffect((InfoEffect)complex).isPresent()) {
+                return Optional.of(new Growth(name, lifePoints, attack, complex.generateSimpleEffect((InfoEffect)complex), imageURL));
+            }
+            else {
+                // Parte ricorsiva che non mi viene...
+                // Dovrei richiamare generateComplexEffect passandogli l'effetto della carta in cui si transforma.
+            }
+            
+            // return Optional.of(new Growth(name, lifePoints, attack, effect.get));
+            // return Optional.empty();
         }
+        // Una volta fatto la parte per Growth, la parte di LastWill è letteralmente un copia incolla.
         if(complex.getName() == "LastWill") {
             return Optional.empty();
-
         }
-        return Optional.empty();
+        return generateSimpleEffect((InfoEffect)complex);
     }
 
 }

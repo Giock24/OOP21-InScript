@@ -1,6 +1,10 @@
 package json;
 
+import java.util.Optional;
+
 import cards.Card;
+import cards.Effect;
+import cards.BaseCard;
 
 public class InfoCardImpl implements InfoCard {
 
@@ -8,14 +12,17 @@ public class InfoCardImpl implements InfoCard {
     private final int lifeValue;
     private final int attackValue;
     private final int manaCost;
-    private final ChangeEffect effect;
+    private final Optional<Effect> effect;
+    private final String imageURL;
+
     
-    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ChangeEffect effect) {
+    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ChangeEffect effect, final String imageURL) {
         this.name = name;
         this.lifeValue = lifeValue;
         this.attackValue = attackValue;
         this.manaCost = manaCost;
-        this.effect = effect;
+        this.effect = effect.generateComplexEffect(effect);
+        this.imageURL = imageURL;
     }
     
     @Override
@@ -39,14 +46,13 @@ public class InfoCardImpl implements InfoCard {
     }
 
     @Override
-    public ChangeEffect getEffect() {
+    public Optional<Effect> getEffect() {
         return this.effect;
     }
 
     @Override
     public Card generateCard(final InfoCard card) {
-        // TODO Auto-generated method stub
-        return null;
+        return new BaseCard(name, lifeValue, attackValue, manaCost, imageURL, effect);
     }
 
 }

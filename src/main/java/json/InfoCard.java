@@ -15,7 +15,7 @@ public interface InfoCard {
 
     int getManaCost();
     
-    ChangeEffect getEffect();
+    Optional<Effect> getEffect();
             
     Card generateCard(final InfoCard card);
     
