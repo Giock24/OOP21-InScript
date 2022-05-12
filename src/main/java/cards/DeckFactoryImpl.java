@@ -210,17 +210,17 @@ public class DeckFactoryImpl implements DeckFactory {
         this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Tailor", 1, 1, 1,"DuckDeckImage/Bosss_Tailor.png"));
         this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Tailor", 1, 1, 1,"DuckDeckImage/Bosss_Tailor.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 2, 1, 2,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
-        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 2, 1, 2,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
+        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 1, 1, 3,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
+        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 1, 1, 3,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect( "Boss's Statue", 2, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect( "Boss's Statue", 2, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Statue", 3, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Statue", 3, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 3, 3, 4, "DuckDeckImage/Bosss_Right_Hand.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 3, 3, 4, "DuckDeckImage/Bosss_Right_Hand.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 1, 2, 3, "DuckDeckImage/Bosss_Right_Hand.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 1, 2, 3, "DuckDeckImage/Bosss_Right_Hand.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 3, 4, 5, "DuckDeckImage/Bosss_Kitty.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 3, 4, 5, "DuckDeckImage/Bosss_Kitty.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 2, 3, 4, "DuckDeckImage/Bosss_Kitty.png"));
+        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 2, 3, 4, "DuckDeckImage/Bosss_Kitty.png"));
 
         this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "Boss's Heir", 5, 3, 7, "DuckDeckImage/Bosss_Heir.png"));
         this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "Boss's Heir", 5, 3, 7, "DuckDeckImage/Bosss_Heir.png"));
@@ -228,24 +228,22 @@ public class DeckFactoryImpl implements DeckFactory {
         this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "Boss's Acolytes", 3, 2, 4,"DuckDeckImage/Bosss_Acolytes.png"));
         this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "Boss's Acolytes", 3, 2, 4,"DuckDeckImage/Bosss_Acolytes.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 2, 1,"DuckDeckImage/Bosss_Assassin.png"));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 2, 1,"DuckDeckImage/Bosss_Assassin.png"));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 2, 1,"DuckDeckImage/Bosss_Assassin.png"));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
+        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 3, 2, 4,"DuckDeckImage/Ducktective_Holmes.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 3, 2, 4,"DuckDeckImage/Ducktective_Holmes.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 2, 1, 4,"DuckDeckImage/Ducktective_Holmes.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 2, 1, 4,"DuckDeckImage/Ducktective_Holmes.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 2, 2, 3,"DuckDeckImage/Ducktor_Watson.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 2, 2, 3,"DuckDeckImage/Ducktor_Watson.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 1, 1, 3,"DuckDeckImage/Ducktor_Watson.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 1, 1, 3,"DuckDeckImage/Ducktor_Watson.png"));
         
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 4,"DuckDeckImage/Gardens_Sage.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 4,"DuckDeckImage/Gardens_Sage.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 5,"DuckDeckImage/Gardens_Sage.png"));
+        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 5,"DuckDeckImage/Gardens_Sage.png"));
 
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "The Impostor", 3, 2, 3,"DuckDeckImage/The_Impostor.png"));
-        
+        this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "The Impostor", 3, 2, 4,"DuckDeckImage/The_Impostor.png"));
 
         this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "DuckPocalipse", 6, 5, 8,"DuckDeckImage/DuckPocalipse.png"));
-
         this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "The Boss", 7, 6, 9,"DuckDeckImage/The_Boss.png"));
         this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "The Boss", 7, 6, 9,"DuckDeckImage/The_Boss.png"));
 
