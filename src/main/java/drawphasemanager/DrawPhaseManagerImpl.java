@@ -47,6 +47,9 @@ public class DrawPhaseManagerImpl implements DrawPhaseManager {
     @Override
     public void firstDraw() {
         
+        this.restoreMana(this.playerAI);
+        this.restoreMana(this.player);
+        
             IntStream.range(0, DrawPhaseManager.INITAL_CARD_IN_THE_HAND).forEach(index -> {
                 this.generalDraw(this.playerAI);
                 this.generalDraw(this.player);

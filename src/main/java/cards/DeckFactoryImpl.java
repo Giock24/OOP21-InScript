@@ -1,7 +1,6 @@
 package cards;
 
 
-import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,21 +22,17 @@ public class DeckFactoryImpl implements DeckFactory {
     final List<Card> shinobiDeck = new ArrayList<>();    
     final List<Card> duckDeck = new ArrayList<>();
     final Map<String, List<Card>> deckList = new HashMap<>();
-    
-    final String fileSeparator = FileSystems.getDefault().getSeparator();
   
     
     @Override
     public Map<String, List<Card>> getDecks() {
         
-        System.out.print(fileSeparator);
         this.deckList.put("deck-standard", getPlayerDeck());
         this.deckList.put("deck-standard-IA", getPlayerIADeck());
         this.deckList.put("deck-mais", getMaisDeck());
         this.deckList.put("deck-shinobi", getShinobiDeck());
         this.deckList.put("deck-duck", getDuckDeck());
         this.deckList.put("deck-ofThePit", getdeckOfThePit());
-
         
         return deckList;
     }
