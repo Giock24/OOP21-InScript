@@ -39,8 +39,8 @@ class DrawPhaseManagerTests {
         
         this.drawPhase.firstDraw();
         
-        assertEquals(22, this.humanPlayer.getDeck().size());
-        assertEquals(22, this.aiPlayer.getDeck().size());
+        assertEquals(23, this.humanPlayer.getDeck().size());
+        assertEquals(23, this.aiPlayer.getDeck().size());
     }
     
     @Test
@@ -59,8 +59,14 @@ class DrawPhaseManagerTests {
     void manaRestored() {
         this.drawPhase.firstDraw();
         
-        assertEquals(1, this.humanPlayer.getMana());
+        assertEquals(0, this.humanPlayer.getMana());
+        assertEquals(0, this.aiPlayer.getMana());
+        
+        this.drawPhase.draw(DrawPhaseManagerTests.AI_TURN);
         assertEquals(1, this.aiPlayer.getMana());
+        
+        this.drawPhase.draw(DrawPhaseManagerTests.PLAYER_TURN);
+        assertEquals(1, this.humanPlayer.getMana());
         
         this.drawPhase.draw(DrawPhaseManagerTests.AI_TURN);
         assertEquals(2, this.aiPlayer.getMana());
