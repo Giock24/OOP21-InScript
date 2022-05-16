@@ -162,7 +162,7 @@ public class GameSceneController {
         boardPlayer.getChildren().clear();
         
         final List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
- 
+        
         IntStream.range(0, userBoard.size()).forEach(index -> {
             VBox cardCell = null;
             
