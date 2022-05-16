@@ -17,6 +17,6 @@ public interface InfoCard {
     
     Optional<Effect> getEffect();
             
-    Card generateCard(final InfoCard card);
+    Card generateCard();
     
 }

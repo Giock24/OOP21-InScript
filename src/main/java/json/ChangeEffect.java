@@ -12,6 +12,6 @@ public interface ChangeEffect extends InfoEffect {
     
     String getImageURL();
     
-    Optional<Effect> generateComplexEffect(final ChangeEffect complex);
+    Optional<Effect> generateComplexEffect();
     
 }

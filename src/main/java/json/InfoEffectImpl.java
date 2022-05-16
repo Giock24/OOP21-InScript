@@ -1,6 +1,5 @@
 package json;
 
-import java.util.List;
 import java.util.Optional;
 
 import cards.Effect;
@@ -26,26 +25,26 @@ public class InfoEffectImpl implements InfoEffect {
     }
 
     @Override
-    public Optional<Effect> generateSimpleEffect(final InfoEffect simple) {
-        if(simple.getName() == "Armored") {
+    public Optional<Effect> generateSimpleEffect() {
+        if(name == "Armored") {
             return Optional.of(new Armored());
         }
-        if(simple.getName() == "Draw") {
+        if(name == "Draw") {
             return Optional.of(new Draw());
         }
-        if(simple.getName() == "Elusive") {
+        if(name == "Elusive") {
             return Optional.of(new Elusive());
         }
-        if(simple.getName() == "Exalted") {
+        if(name == "Exalted") {
             return Optional.of(new Exalted());
         }
-        if(simple.getName() == "Healer") {
+        if(name == "Healer") {
             return Optional.of(new Healer());
         }
-        if(simple.getName() == "Poison") {
+        if(name == "Poison") {
             return Optional.of(new Poison());
         }
-        if(simple.getName() == "Rotten") {
+        if(name == "Rotten") {
             return Optional.of(new Rotten());
         }
         return Optional.empty();

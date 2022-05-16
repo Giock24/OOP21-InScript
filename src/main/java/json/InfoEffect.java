@@ -8,6 +8,6 @@ public interface InfoEffect {
 
     String getName();
     
-    Optional<Effect> generateSimpleEffect(final InfoEffect simple);
+    Optional<Effect> generateSimpleEffect();
 
 }

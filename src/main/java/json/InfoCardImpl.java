@@ -21,7 +21,7 @@ public class InfoCardImpl implements InfoCard {
         this.lifeValue = lifeValue;
         this.attackValue = attackValue;
         this.manaCost = manaCost;
-        this.effect = effect.generateComplexEffect(effect);
+        this.effect = effect.generateComplexEffect();
         this.imageURL = imageURL;
     }
     
@@ -51,7 +51,7 @@ public class InfoCardImpl implements InfoCard {
     }
 
     @Override
-    public Card generateCard(final InfoCard card) {
+    public Card generateCard() {
         return new BaseCard(name, lifeValue, attackValue, manaCost, imageURL, effect);
     }
 

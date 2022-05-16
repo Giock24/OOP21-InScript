@@ -11,8 +11,8 @@ public interface InfoDeck {
     
     List<InfoCard> getCards();
     
-    List<Card> generateDeck(InfoDeck deck);
+    List<Card> generateDeck();
     
-    Map<String, List<Card>> generateDeckList(final List<InfoDeck> decks, final List<String> names);
+    Map<String, List<Card>> generateDeckList(final List<String> names);
     
 }

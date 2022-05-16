@@ -14,11 +14,11 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     private final String imageURL;
     private final ChangeEffect effect;
     
-    public ChangeEffectImpl(final String effectName, final String cardName, final int lifePoints, final int attack, final String imageURL, final ChangeEffect effect) {
+    public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
         super(effectName);
         this.name = cardName;
-        this.lifePoints = lifePoints;
-        this.attack = attack;
+        this.lifePoints = lifeValue;
+        this.attack = attackValue;
         this.imageURL = imageURL;
         this.effect = effect;
     }
@@ -39,26 +39,25 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     }
 
     @Override
-    public Optional<Effect> generateComplexEffect(final ChangeEffect complex) {
-        if(complex.getName() == "Growth") {
+    public Optional<Effect> generateComplexEffect() {
+        if(effect.getName() == "Growth" || effect.getName() == "LastWill" ) {
             // Se il nome dell'effetto è growth e la carta in cui si deve transformare ha un effetto non growth allora il generateSimpleEffect ritorna un Optional di qualcosa.
             // Se invece l'effetto della carta in cui si deve transformare è di nuovo Growth o LastWill GenerateSimpleEffect ritorna un Optional.Empty().
-            if(complex.generateSimpleEffect((InfoEffect)complex).isPresent()) {
-                return Optional.of(new Growth(name, lifePoints, attack, complex.generateSimpleEffect((InfoEffect)complex), imageURL));
+            if(effect.generateSimpleEffect().isPresent()) {
+                return Optional.of(new Growth(name, lifePoints, attack, effect.generateSimpleEffect(), imageURL));
             }
             else {
                 // Parte ricorsiva che non mi viene...
                 // Dovrei richiamare generateComplexEffect passandogli l'effetto della carta in cui si transforma.
-            }
-            
+                
+                // NON SO SE COSì FACENDO PRENDO IL ChangeEffect PIù INTENRO.
+                return Optional.of(new Growth(name, lifePoints, attack, effect.generateComplexEffect(), imageURL));
+            }            
             // return Optional.of(new Growth(name, lifePoints, attack, effect.get));
-            // return Optional.empty();
         }
-        // Una volta fatto la parte per Growth, la parte di LastWill è letteralmente un copia incolla.
-        if(complex.getName() == "LastWill") {
-            return Optional.empty();
+        else {
+            return effect.generateSimpleEffect();
         }
-        return generateSimpleEffect((InfoEffect)complex);
     }
 
 }
