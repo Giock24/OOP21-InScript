@@ -2,6 +2,7 @@ package in_script;
 
 import org.junit.jupiter.api.Test;
 
+import cards.Card;
 import drawphasemanager.DrawPhaseManager;
 import gamemaster.GameMaster;
 import gamemaster.GameMasterImpl;
@@ -82,6 +83,35 @@ class DrawPhaseManagerTests {
         
         this.drawPhase.drawWithoutMana(this.humanPlayer);
         assertEquals(0, this.humanPlayer.getMana());
+    }
+    
+    @Test
+    void placeADrawEffectCard() {
+        
+        Card drawCard = null;
+        boolean stop = false;
+        this.drawPhase.firstDraw();
+        this.humanPlayer.setCurrentMana(GameMaster.MAXIMUM_MANA);
+        this.humanPlayer.setMana(GameMaster.MAXIMUM_MANA);
+        
+        do {
+            
+            for(final var cardSaved : this.humanPlayer.getHand()) {
+                if (cardSaved.getEffect().isPresent() && cardSaved.getEffect().get().getNameEffect() == "Draw") {
+                    drawCard = cardSaved;
+                    stop = true;
+                    break;
+                }
+            }
+            
+            this.drawPhase.draw(DrawPhaseManagerTests.PLAYER_TURN);
+            
+        } while (!stop);
+        
+        final int actualDeckSize = this.humanPlayer.getDeck().size();
+        
+        this.gameMaster.getMainPhaseManager().positioning(drawCard, 1, DrawPhaseManagerTests.PLAYER_TURN);
+        assertEquals(actualDeckSize - 1, this.humanPlayer.getDeck().size());
     }
 
 }
