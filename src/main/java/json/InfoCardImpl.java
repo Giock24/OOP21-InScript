@@ -21,7 +21,7 @@ public class InfoCardImpl implements InfoCard {
         this.lifeValue = lifeValue;
         this.attackValue = attackValue;
         this.manaCost = manaCost;
-        this.effect = effect.generateComplexEffect();
+        this.effect = effect.generateChangeEffect();
         this.imageURL = imageURL;
     }
     

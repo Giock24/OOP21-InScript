@@ -39,25 +39,24 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     }
 
     @Override
-    public Optional<Effect> generateComplexEffect() {
-        if(effect.getName() == "Growth" || effect.getName() == "LastWill" ) {
-            // Se il nome dell'effetto è growth e la carta in cui si deve transformare ha un effetto non growth allora il generateSimpleEffect ritorna un Optional di qualcosa.
-            // Se invece l'effetto della carta in cui si deve transformare è di nuovo Growth o LastWill GenerateSimpleEffect ritorna un Optional.Empty().
-            if(effect.generateSimpleEffect().isPresent()) {
-                return Optional.of(new Growth(name, lifePoints, attack, effect.generateSimpleEffect(), imageURL));
+    public Optional<Effect> generateChangeEffect() {
+        // [ REMINDER ] fare la condizione dell'if in modo che controlli se è effettivamente diverso da null.
+        if(effect != null) {
+                if(effect.getName() == "Growth") {
+                    return Optional.of(new Growth(name, lifePoints, attack, effect.generateChangeEffect(), imageURL));
+                }
+                else if(effect.getName() == "Last Will") {
+                    return Optional.of(new LastWill(name, lifePoints, attack, effect.generateChangeEffect(), imageURL));
+                }
+                else 
+                {
+                    return effect.generateInfoEffect();
+                }
             }
-            else {
-                // Parte ricorsiva che non mi viene...
-                // Dovrei richiamare generateComplexEffect passandogli l'effetto della carta in cui si transforma.
-                
-                // NON SO SE COSì FACENDO PRENDO IL ChangeEffect PIù INTENRO.
-                return Optional.of(new Growth(name, lifePoints, attack, effect.generateComplexEffect(), imageURL));
-            }            
-            // return Optional.of(new Growth(name, lifePoints, attack, effect.get));
-        }
         else {
-            return effect.generateSimpleEffect();
+            return Optional.empty();
         }
     }
-
 }
+
+

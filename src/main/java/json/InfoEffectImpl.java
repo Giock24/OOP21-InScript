@@ -25,7 +25,7 @@ public class InfoEffectImpl implements InfoEffect {
     }
 
     @Override
-    public Optional<Effect> generateSimpleEffect() {
+    public Optional<Effect> generateInfoEffect() {
         if(name == "Armored") {
             return Optional.of(new Armored());
         }
