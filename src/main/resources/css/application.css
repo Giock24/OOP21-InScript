@@ -85,3 +85,39 @@
 	-fx-border-width: 2;
 }
 
+.ruleTopBotton{
+	-fx-background-image: url("/image/rule-background-top-bottom.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+}
+
+.ruleCenter{
+	-fx-background-image: url("/image/rule-background-center.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+	-fx-padding: 40;
+}
+
+.styleRuleTITLE{
+	-fx-font-family: 'Rubik Glitch', cursive;
+	-fx-text-fill: #04efff;
+	-fx-font-size: 40;
+}
+
+.ruleSectionStyle{
+	-fx-padding: 0 0 40 0;
+}
+
+.sectionTileStyle{
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-text-fill: white;
+	-fx-font-size: 20;
+}
+
+.sectionDecriptionStyle{
+	-fx-font-family: "Press Start 2P", cursive;
+	-fx-text-fill: white;
+}
+

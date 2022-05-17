@@ -40,7 +40,7 @@ public class RuleSceneController {
     }
     
     private void setText() {
-        board_description.setText("the game table is divided is 4 main-zone\n "
+        board_description.setText("the game table is divided is 4 main-zone\n"
                 + "on the left - there is the 'info-zone' this zone display the information about the curret 'mana' the player posses and the current life of the player and of the enemy\n"
                 + "on the center - there is the 'board-zone' this zone show the player and the enemy field and the card placed on it. the cards on the row on the top are the enemy's card\n"
                 + "on the right - there is the 'card-detail-zone' this zone will display more detail of a card if you click on it\n"
