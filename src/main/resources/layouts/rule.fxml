@@ -7,12 +7,13 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="root" prefHeight="294.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RuleSceneController">
+<BorderPane fx:id="root" prefHeight="294.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.1.0.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RuleSceneController">
    <top>
-      <GridPane minHeight="50.0" styleClass="ruleTopBotton" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
+      <GridPane minHeight="50.0" styleClass="ruleTop" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -32,47 +33,54 @@
          <content>
             <HBox alignment="TOP_CENTER" styleClass="ruleCenter" stylesheets="@../css/application.css">
                <children>
-                  <VBox >
+                  <VBox>
                      <children>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Board Description" />
+                              <Pane  />
                               <Label fx:id="board_description" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Victory condition" />
+                              <Pane  />
                               <Label fx:id="victory_condition" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Game Phases" />
+                              <Pane  />
                               <Label fx:id="game_phases" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="DrawPhase" />
+                              <Pane  />
                               <Label fx:id="draw_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="MainPhase" />
+                              <Pane  />
                               <Label fx:id="main_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Battle Phase" />
+                              <Pane  />
                               <Label fx:id="battle_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Effects" />
+                              <Pane/>
                               <Label fx:id="effects" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
@@ -84,6 +92,6 @@
       </ScrollPane>
    </center>
    <bottom>
-      <HBox prefHeight="50.0" styleClass="ruleTopBotton" stylesheets="@../css/application.css" BorderPane.alignment="CENTER" />
+      <HBox prefHeight="50.0" styleClass="ruleBotton" stylesheets="@../css/application.css" BorderPane.alignment="CENTER" />
    </bottom>
 </BorderPane>

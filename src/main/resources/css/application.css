@@ -85,8 +85,8 @@
 	-fx-border-width: 2;
 }
 
-.ruleTopBotton{
-	-fx-background-image: url("/image/rule-background-top-bottom.png");
+.ruleTop{
+	-fx-background-image: url("/image/rule-background-top.png");
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: contain;
 	-fx-background-size: 100% 100%;
@@ -98,6 +98,13 @@
 	-fx-background-size: contain;
 	-fx-background-size: 100% 100%;
 	-fx-padding: 40;
+}
+
+.ruleBotton{
+	-fx-background-image: url("/image/rule-background-botton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
 }
 
 .styleRuleTITLE{

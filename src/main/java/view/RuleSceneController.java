@@ -3,6 +3,7 @@ package view;
 import static view.ViewState.HEIGHT;
 import static view.ViewState.WIDTH;
 
+import gamemaster.GameMaster;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -46,6 +47,20 @@ public class RuleSceneController {
                 + "on the center - there is the 'board-zone' this zone show the player and the enemy field and the card placed on it. the cards on the row on the top are the enemy's card\n"
                 + "on the right - there is the 'card-detail-zone' this zone will display more detail of a card if you click on it\n"
                 + "on the botton - there is the 'hand-zone' this zone show the card in the player hand\n");
+        
+        victory_condition.setWrapText(true);
+        victory_condition.setText("the scope of the game is inflict damage to the AI until it's life reach: "+GameMaster.MIN_PLAYER_LIFE+"\n"
+                + "the life is a balance. if you inflict damage to the AI you will steal it's life.");
+        
+        game_phases.setWrapText(true);
+        game_phases.setText("the game is exectially divided in 3 phase: drawPhase mainPhase battlePhase\n" 
+                +"on the start on your turn the draw-phase is automatically done, than you are in the mainphase until you click the battlephase button\n"
+                +"the AI always play the first turn before you");
+        
+        draw_phase.setWrapText(true);
+        main_phase.setWrapText(true);
+        battle_phase.setWrapText(true);
+        effects.setWrapText(true);
     }
     
 
