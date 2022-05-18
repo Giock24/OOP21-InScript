@@ -30,9 +30,9 @@
    <center>
       <ScrollPane fitToHeight="true" fitToWidth="true" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
          <content>
-            <HBox alignment="TOP_CENTER">
+            <HBox alignment="TOP_CENTER" styleClass="ruleCenter" stylesheets="@../css/application.css">
                <children>
-                  <VBox styleClass="ruleCenter" stylesheets="@../css/application.css">
+                  <VBox >
                      <children>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
