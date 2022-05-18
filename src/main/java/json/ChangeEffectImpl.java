@@ -14,6 +14,13 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     private final String imageURL;
     private final ChangeEffect effect;
     
+    // Devo aggiungere un nuovo costruttore per gestire la creazione di un ChangeEffect con solo il nome;
+    // - In questo modo la classe InfoEffectImpl non mi serve a niente in quanto avendo un altro costruttore 
+    //   posso creare un nuovo oggetto ChangeEffect con solo il nome dell'effetto;
+    // - Spostiamo il metodo generateInfoEffect dentro a ChangeEffectImpl e lo trattiamo come metodo privato;
+    // - Aggiungiamo un nuovo campo privato(eventualmente Optional), per salvarci il nome dell'effetto in 
+    //   ChangeEffectImpl, invece che doverlo passare al costruttore di InfoEffectImpl;
+    
     public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
         super(effectName);
         this.name = cardName;
@@ -22,6 +29,15 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
         this.imageURL = imageURL;
         this.effect = effect;
     }
+    
+    /*public ChangeEffectImpl(final String effectName) {
+        super(effectName);
+        name = effectName;
+        this.lifePoints = 0;
+        this.attack = 0;
+        this.imageURL = "";
+        this.effect = null;
+    }*/
 
     @Override
     public int getAttack() {

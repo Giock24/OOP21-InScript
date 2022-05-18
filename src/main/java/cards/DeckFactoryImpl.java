@@ -14,14 +14,6 @@ import effects.Growth;
 import effects.Healer;
 import effects.Poison;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
- 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 
 public class DeckFactoryImpl implements DeckFactory {
@@ -293,27 +285,5 @@ public class DeckFactoryImpl implements DeckFactory {
         return this.deckOfThePit;
     }
     
-    // Metodo di testing
-    public static void JsonParsing() {
-        final JSONParser jsonParser = new JSONParser();
-        
-        try(FileReader reader = new FileReader("C:\\Users\\User\\Desktop\\Json testing\\test1.json")){
-            final Object obj = jsonParser.parse(reader);
-            final JSONArray employeeList = (JSONArray) obj;
-            System.out.println(employeeList);
-            
-        }
-        catch(FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
-        catch(ParseException e) {
-            e.printStackTrace();
-        }
-    }
-    // con la struttura attuale durante il print del contenuto del JSON da priorità agli eventuali campi composti piuttosto all'ordine in cui sono disposti,
-    // Cioè se prima di un campo composto c'era un'altro campo, stampa prima il campo composto invece che il campo prima di quello composto
 
 }
