@@ -8,11 +8,18 @@ import effects.LastWill;
 
 public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
-    private final String name;
+    /*private final String name;
     private final int lifePoints;
     private final int attack;
     private final String imageURL;
-    private final ChangeEffect effect;
+    private final ChangeEffect effect;*/
+    
+    private final Optional<String> name;
+    private final Optional<Integer> lifePoints;
+    private final Optional<Integer> attack;
+    private final Optional<String> imageURL;
+    private final Optional<ChangeEffect> effect;
+
     
     // Devo aggiungere un nuovo costruttore per gestire la creazione di un ChangeEffect con solo il nome;
     // - In questo modo la classe InfoEffectImpl non mi serve a niente in quanto avendo un altro costruttore 
@@ -23,54 +30,53 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
     public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
         super(effectName);
-        this.name = cardName;
-        this.lifePoints = lifeValue;
-        this.attack = attackValue;
-        this.imageURL = imageURL;
-        this.effect = effect;
+        this.name = Optional.of(cardName);
+        this.lifePoints = Optional.of(lifeValue);
+        this.attack = Optional.of(attackValue);
+        this.imageURL = Optional.of(imageURL);
+        this.effect = Optional.of(effect);
     }
     
-    /*public ChangeEffectImpl(final String effectName) {
+    public ChangeEffectImpl(final String effectName) {
         super(effectName);
-        name = effectName;
-        this.lifePoints = 0;
-        this.attack = 0;
-        this.imageURL = "";
-        this.effect = null;
-    }*/
+        this.name = Optional.empty();
+        this.lifePoints = Optional.empty();
+        this.attack = Optional.empty();
+        this.imageURL = Optional.empty();
+        this.effect = Optional.empty();
+    }
 
     @Override
     public int getAttack() {
-        return this.attack;
+        return this.attack.get();
     }
 
     @Override
     public int getLifePoints() {
-        return this.lifePoints;
+        return this.lifePoints.get();
     }
 
     @Override
     public String getImageURL() {
-        return this.imageURL;
+        return this.imageURL.get();
     }
 
     @Override
-    public Optional<Effect> generateChangeEffect() {
-        // [ REMINDER ] fare la condizione dell'if in modo che controlli se è effettivamente diverso da null.
-        if(effect != null) {
-                if(effect.getName() == "Growth") {
-                    return Optional.of(new Growth(name, lifePoints, attack, effect.generateChangeEffect(), imageURL));
+    public Optional<Effect> generateChangeEffect() { 
+        if(effect.isPresent()) {
+                if(effect.get().getName() == "Growth") {
+                    return Optional.of(new Growth(name.get(), lifePoints.get(), attack.get(), effect.get().generateChangeEffect(), imageURL.get()));
                 }
-                else if(effect.getName() == "Last Will") {
-                    return Optional.of(new LastWill(name, lifePoints, attack, effect.generateChangeEffect(), imageURL));
+                else if(effect.get().getName() == "LastWill") {
+                    return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), effect.get().generateChangeEffect(), imageURL.get()));
                 }
-                else 
+                else
                 {
-                    return effect.generateInfoEffect();
+                    return effect.get().generateInfoEffect();
                 }
             }
         else {
-            return Optional.empty();
+            return this.generateInfoEffect();
         }
     }
 }
