@@ -168,13 +168,13 @@ public class CardGraficImpl implements CardGrafic {
             
             
             manaLay.setAlignment(Pos.TOP_RIGHT);
-            manaLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.05, 0, 0));
+            manaLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.05, ViewState.CARD_WIDTH.getValue()*0.15, 0, 0));
             manaLay.getChildren().add(manaText);
             
             GridPane.setConstraints(nameLay, 0, 0);
             GridPane.setConstraints(manaLay, 1, 0);
-            topLay.getColumnConstraints().add(new ColumnConstraints(130));
-            topLay.getColumnConstraints().add(new ColumnConstraints(100));
+            topLay.getColumnConstraints().add(new ColumnConstraints(120));
+            topLay.getColumnConstraints().add(new ColumnConstraints(120));
             
             topLay.getChildren().addAll(nameLay, manaLay);
             
@@ -224,7 +224,7 @@ public class CardGraficImpl implements CardGrafic {
             final Label intAtk = new Label(" "+ card.getAttack());
             
             atkLay.setAlignment(Pos.TOP_LEFT);
-            atkLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.1, 0, ViewState.CARD_HEIGHT.getValue()*0.12, ViewState.CARD_WIDTH.getValue()*0.12));
+            atkLay.setPadding(new Insets(ViewState.CARD_HEIGHT.getValue()*0.01, 0, 0, ViewState.CARD_WIDTH.getValue()*0.15));
             atkLay.setSpacing(2);
             atkLay.getChildren().addAll(atk, intAtk);
             
@@ -233,7 +233,7 @@ public class CardGraficImpl implements CardGrafic {
             final Label intHP = new Label(" "+ card.getLifePoint());
             
             hpLay.setAlignment(Pos.BOTTOM_RIGHT);
-            hpLay.setPadding(new Insets(0, 0, ViewState.CARD_HEIGHT.getValue()*0.1, 0));
+            hpLay.setPadding(new Insets(0, ViewState.CARD_WIDTH.getValue()*0.15, ViewState.CARD_HEIGHT.getValue()*0.1, 0));
             hpLay.setSpacing(2);
             hpLay.getChildren().addAll(hp, intHP);
             
@@ -250,9 +250,9 @@ public class CardGraficImpl implements CardGrafic {
             GridPane.setConstraints(atkLay, 0, 0);
             GridPane.setConstraints(descLay, 1, 0);
             GridPane.setConstraints(hpLay, 2, 0);
-            bottomLay.getColumnConstraints().add(new ColumnConstraints(40));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
             bottomLay.getColumnConstraints().add(new ColumnConstraints(140));
-            bottomLay.getColumnConstraints().add(new ColumnConstraints(40));
+            bottomLay.getColumnConstraints().add(new ColumnConstraints(50));
             
             bottomLay.getChildren().addAll(atkLay, descLay, hpLay);
             

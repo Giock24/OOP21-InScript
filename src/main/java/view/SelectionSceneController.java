@@ -16,6 +16,8 @@ import shared.AppStateSingleton;
 
 public class SelectionSceneController {
     
+    Stage primaryStage;
+    Showable gui;
     final AppState appState =  AppStateSingleton.getInstance();
     
     @FXML
@@ -48,13 +50,13 @@ public class SelectionSceneController {
     @FXML
     public void switchToMenuScene(final MouseEvent event) {
         Music.SELECTION_THEME.stopMusic();
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        final Showable menuGUI = new MenuGUI(primaryStage);
         
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
+        this.primaryStage = (Stage)root.getScene().getWindow();
+        WIDTH.setCurrentValue(this.primaryStage.getScene().getWidth());
+        HEIGHT.setCurrentValue(this.primaryStage.getScene().getHeight());
         
-        primaryStage.setScene(menuGUI.getScene());
+        this.gui = new MenuGUI(primaryStage);
+        primaryStage.setScene(this.gui.getScene());
         primaryStage.show();
     }
     
@@ -70,12 +72,12 @@ public class SelectionSceneController {
         appState.selectHumanPlayerDeck(selectedPlayerDeck.getValue());
         appState.selectAIPlayer(selectedAIDeck.getValue());
         
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
+        this.primaryStage = (Stage)root.getScene().getWindow();
+        WIDTH.setCurrentValue(this.primaryStage.getScene().getWidth());
+        HEIGHT.setCurrentValue(this.primaryStage.getScene().getHeight());
         
-        final BoardGUI board = new BoardGUI();
-        primaryStage.setScene(board.getScene());
+        this.gui = new BoardGUI();
+        primaryStage.setScene(this.gui.getScene());
         primaryStage.show();
     }
     

@@ -224,11 +224,10 @@ public class GameSceneController {
         Music.BOARD_THEME.stopMusic();
         
         final Stage primaryStage = (Stage)root.getScene().getWindow();
-        final Showable menuGUI = new MenuGUI(primaryStage);
-        
         WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
         HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
         
+        final Showable menuGUI = new MenuGUI(primaryStage);
         primaryStage.setScene(menuGUI.getScene());
         primaryStage.show();
     }
