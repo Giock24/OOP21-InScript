@@ -38,49 +38,49 @@
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Board Description" />
-                              <Pane  />
+                              <Pane fx:id="board_description_image" />
                               <Label fx:id="board_description" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Victory condition" />
-                              <Pane  />
+                              <Pane fx:id="victory_condition_image" />
                               <Label fx:id="victory_condition" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Game Phases" />
-                              <Pane  />
+                              <Pane fx:id="game_phases_image" />
                               <Label fx:id="game_phases" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="DrawPhase" />
-                              <Pane  />
+                              <Pane fx:id="draw_phase_image" />
                               <Label fx:id="draw_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="MainPhase" />
-                              <Pane  />
+                              <Pane fx:id="main_phase_image" />
                               <Label fx:id="main_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Battle Phase" />
-                              <Pane  />
+                              <Pane fx:id="battle_phase_image" />
                               <Label fx:id="battle_phase" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
                         <VBox styleClass="ruleSectionStyle" stylesheets="@../css/application.css">
                            <children>
                               <Label styleClass="sectionTileStyle" stylesheets="@../css/application.css" text="Effects" />
-                              <Pane/>
+                              <Pane fx:id="effects_image"/>
                               <Label fx:id="effects" styleClass="textStyle" stylesheets="@../css/application.css" text="Label" />
                            </children>
                         </VBox>
