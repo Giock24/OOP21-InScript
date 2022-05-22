@@ -2,6 +2,7 @@ package in_script;
 
 import org.junit.jupiter.api.Test;
 
+import cards.Card;
 import drawphasemanager.DrawPhaseManager;
 import gamemaster.GameMaster;
 import gamemaster.GameMasterImpl;
@@ -39,8 +40,8 @@ class DrawPhaseManagerTests {
         
         this.drawPhase.firstDraw();
         
-        assertEquals(22, this.humanPlayer.getDeck().size());
-        assertEquals(22, this.aiPlayer.getDeck().size());
+        assertEquals(23, this.humanPlayer.getDeck().size());
+        assertEquals(23, this.aiPlayer.getDeck().size());
     }
     
     @Test
@@ -59,8 +60,14 @@ class DrawPhaseManagerTests {
     void manaRestored() {
         this.drawPhase.firstDraw();
         
-        assertEquals(1, this.humanPlayer.getMana());
+        assertEquals(0, this.humanPlayer.getMana());
+        assertEquals(0, this.aiPlayer.getMana());
+        
+        this.drawPhase.draw(DrawPhaseManagerTests.AI_TURN);
         assertEquals(1, this.aiPlayer.getMana());
+        
+        this.drawPhase.draw(DrawPhaseManagerTests.PLAYER_TURN);
+        assertEquals(1, this.humanPlayer.getMana());
         
         this.drawPhase.draw(DrawPhaseManagerTests.AI_TURN);
         assertEquals(2, this.aiPlayer.getMana());
@@ -76,6 +83,35 @@ class DrawPhaseManagerTests {
         
         this.drawPhase.drawWithoutMana(this.humanPlayer);
         assertEquals(0, this.humanPlayer.getMana());
+    }
+    
+    @Test
+    void placeADrawEffectCard() {
+        
+        Card drawCard = null;
+        boolean stop = false;
+        this.drawPhase.firstDraw();
+        this.humanPlayer.setCurrentMana(GameMaster.MAXIMUM_MANA);
+        this.humanPlayer.setMana(GameMaster.MAXIMUM_MANA);
+        
+        do {
+            
+            for(final var cardSaved : this.humanPlayer.getHand()) {
+                if (cardSaved.getEffect().isPresent() && cardSaved.getEffect().get().getNameEffect() == "Draw") {
+                    drawCard = cardSaved;
+                    stop = true;
+                    break;
+                }
+            }
+            
+            this.drawPhase.draw(DrawPhaseManagerTests.PLAYER_TURN);
+            
+        } while (!stop);
+        
+        final int actualDeckSize = this.humanPlayer.getDeck().size();
+        
+        this.gameMaster.getMainPhaseManager().positioning(drawCard, 1, DrawPhaseManagerTests.PLAYER_TURN);
+        assertEquals(actualDeckSize - 1, this.humanPlayer.getDeck().size());
     }
 
 }

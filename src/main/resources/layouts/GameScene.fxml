@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
       <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
          <padding>
