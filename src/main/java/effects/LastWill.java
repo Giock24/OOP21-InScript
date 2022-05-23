@@ -16,7 +16,7 @@ public class LastWill extends AbstractEffect{
     String imageURL;
     
     public LastWill(final String newName, final int newLifePoint, final int newAttack, final Optional<Effect> newEffect, final String newImageURL) {
-        super("LastWill", "After this card dies, it expresses its last wishes by transforming itself", "effects/effect_lastwill");
+        super("LastWill", "After this card dies, it expresses its last wishes by transforming itself", "effects/effect_lastwill.png");
         
         this.name = newName;
         this.lifePoint = newLifePoint;
