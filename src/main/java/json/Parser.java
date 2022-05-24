@@ -1,12 +1,14 @@
 package json;
 
+import org.json.simple.JSONArray;
+
 public interface Parser {
     
     // InfoCard simpleParser();
     
     // InfoCard complexParser();
     
-    InfoDeck deckParser();
+    InfoDeck deckParser(JSONArray listDeck, String nameDeck);
     
 }
     

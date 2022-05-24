@@ -3,6 +3,8 @@ package json;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.json.simple.JSONArray;
@@ -73,9 +75,31 @@ public class ParserImpl implements Parser {
     // la classe specializzata per la conversione del JSON.
     // - in caso, bisogna modificare interfaccia.
     @Override
-    public InfoDeck deckParser() {
-        // TODO Auto-generated method stub
-        return null;
+    public InfoDeck deckParser(final JSONArray listDeck, final String nameDeck) {
+        final List<InfoCard> cards = new ArrayList<>();
+        String nameSelected = null;
+        JSONObject deckSelected = null;
+        
+        for(final var decks :  listDeck) {
+            final JSONObject deck1 = (JSONObject) decks;
+            final String name = (String) deck1.get("name");
+            if (nameDeck.equals(name)) {
+                nameSelected = name;
+                deckSelected = deck1;
+                break;
+            }
+        }
+        
+        try {
+            final JSONArray cards2 = (JSONArray) deckSelected.get("cards");
+            cards2.forEach(card -> {
+                cards.add(this.cardParser((JSONObject) card));
+            });
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+        
+        return new InfoDeckImpl(nameSelected, cards);
     }
     
     /*@Override
