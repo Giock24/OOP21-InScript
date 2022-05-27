@@ -1,6 +1,11 @@
 package json;
 
-import org.json.simple.JSONArray;
+import java.util.List;
+import java.util.Map;
+
+import org.json.simple.JSONObject;
+
+import cards.Card;
 
 public interface Parser {
     
@@ -8,7 +13,9 @@ public interface Parser {
     
     // InfoCard complexParser();
     
-    InfoDeck deckParser(JSONArray listDeck, String nameDeck);
+    InfoDeck deckParser(final JSONObject deck);
+    
+    Map<String, List<Card>> deckListParser();
     
 }
     

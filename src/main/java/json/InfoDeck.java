@@ -1,7 +1,6 @@
 package json;
 
 import java.util.List;
-import java.util.Map;
 
 import cards.Card;
 
@@ -12,7 +11,5 @@ public interface InfoDeck {
     List<InfoCard> getCards();
     
     List<Card> generateDeck();
-    
-    Map<String, List<Card>> generateDeckList(final List<String> names);
     
 }

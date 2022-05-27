@@ -26,25 +26,25 @@ public class InfoEffectImpl implements InfoEffect {
 
     @Override
     public Optional<Effect> generateInfoEffect() {
-        if(name == "Armored") {
+        if("Armored".equals(name)) {
             return Optional.of(new Armored());
         }
-        if(name == "Draw") {
+        if("Draw".equals(name)) {
             return Optional.of(new Draw());
         }
-        if(name == "Elusive") {
+        if("Elusive".equals(name)) {
             return Optional.of(new Elusive());
         }
-        if(name == "Exalted") {
+        if("Exalted".equals(name)) {
             return Optional.of(new Exalted());
         }
-        if(name == "Healer") {
+        if("Healer".equals(name)) {
             return Optional.of(new Healer());
         }
-        if(name == "Poison") {
+        if("Poison".equals(name)) {
             return Optional.of(new Poison());
         }
-        if(name == "Rotten") {
+        if("Rotten".equals(name)) {
             return Optional.of(new Rotten());
         }
         return Optional.empty();
