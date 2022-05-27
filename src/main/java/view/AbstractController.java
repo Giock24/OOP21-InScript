@@ -18,21 +18,28 @@ public abstract class AbstractController {
     public abstract void initialize();
     
     /**
+     *     decide which scene to go to
+     *     
+     * @param scene is new scene to switch
+     */
+    public void switchToAnotherScene(final Showable scene) {
+        final Stage primaryStage = (Stage)root.getScene().getWindow();
+        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
+        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
+        
+        primaryStage.setScene(scene.getScene());
+        primaryStage.show();
+    }
+    
+    /**
      *     when this method is called you can return to menu
      *     
      * @param event active when is clicked a button
      * 
      */
-    @FXML
     public void switchToMenuScene(final MouseEvent event) {
-        
         final Stage primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
-        
-        final Showable menuGUI = new MenuGUI(primaryStage);
-        primaryStage.setScene(menuGUI.getScene());
-        primaryStage.show();
+        this.switchToAnotherScene(new MenuGUI(primaryStage));
     }
     
 }

@@ -53,14 +53,7 @@ public class SelectionSceneController extends AbstractController{
         appState.selectHumanPlayerDeck(selectedPlayerDeck.getValue());
         appState.selectAIPlayer(selectedAIDeck.getValue());
         
-        this.primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(this.primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(this.primaryStage.getScene().getHeight());
-        
-        this.gui = new BoardGUI();
-        primaryStage.setScene(this.gui.getScene());
-        primaryStage.show();
+        super.switchToAnotherScene(new BoardGUI());
     }
-    
 
 }
