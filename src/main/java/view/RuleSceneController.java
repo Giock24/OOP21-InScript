@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class RuleSceneController {
+public class RuleSceneController extends AbstractController{
     
     @FXML BorderPane root;
     @FXML Label board_description;
@@ -31,23 +31,10 @@ public class RuleSceneController {
     @FXML Pane battle_phase_image;
     @FXML Pane effects_image;
     
-    
+    @Override
     public void initialize(){
         setText();
         setImages();
-    }
-    
-    
-    @FXML
-    public final void switchToMenuScene(final MouseEvent event) {
-        
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
-        
-        final Showable menuGUI = new MenuGUI(primaryStage);
-        primaryStage.setScene(menuGUI.getScene());
-        primaryStage.show();
     }
     
     private void setText() {

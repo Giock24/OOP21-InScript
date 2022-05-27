@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import shared.AppState;
 import shared.AppStateSingleton;
 
-public class SelectionSceneController {
+public class SelectionSceneController extends AbstractController{
     
     Stage primaryStage;
     Showable gui;
@@ -29,7 +29,7 @@ public class SelectionSceneController {
     @FXML
     private ChoiceBox<String> selectedAIDeck;
     
-    
+    @Override
     public void initialize(){
         
         final Set<String> setDeckNames = appState.getDecksList().keySet().stream().sorted().collect(Collectors.toSet());
@@ -39,25 +39,6 @@ public class SelectionSceneController {
         
         selectedPlayerDeck.setValue("deck-standard");
         selectedAIDeck.setValue("deck-standard-IA");
-    }
-    
-    /**
-     * 
-     *     when this method is called you can return to menu
-     * 
-     * @param event active when is clicked a button
-     */
-    @FXML
-    public void switchToMenuScene(final MouseEvent event) {
-        Music.SELECTION_THEME.stopMusic();
-        
-        this.primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(this.primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(this.primaryStage.getScene().getHeight());
-        
-        this.gui = new MenuGUI(primaryStage);
-        primaryStage.setScene(this.gui.getScene());
-        primaryStage.show();
     }
     
     /**

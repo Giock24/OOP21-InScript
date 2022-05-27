@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import static view.ViewState.WIDTH;
 import static view.ViewState.HEIGHT;
 
-public class GameSceneController {
+public class GameSceneController extends AbstractController{
     
     GameMasterControllerImpl gameMasterController;
     CardGrafic cardGrafic;
@@ -53,7 +53,7 @@ public class GameSceneController {
     ////battle phase button////
     @FXML private Button battlePhaseButton;
     
-   
+    @Override
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
         this.cardGrafic = new CardGraficImpl();
@@ -233,11 +233,10 @@ public class GameSceneController {
     }
     
     /**
-     * @param event active when is clicked a button
-     *          when this method is called you can return to menu
+     * {@inheritDoc}
      */
-    @FXML
-    public final void switchToMenuScene(final MouseEvent event) {
+    @Override
+    public void switchToMenuScene(final MouseEvent event) {
         returnToMenu();
     }
     
