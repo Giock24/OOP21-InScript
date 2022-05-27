@@ -60,25 +60,32 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     public String getImageURL() {
         return this.imageURL.get();
     }
+    
+    @Override
+    public Optional<ChangeEffect> getInnerEffect() {
+        return this.effect;
+    }
 
     @Override
     public Optional<Effect> generateChangeEffect() { 
         if(effect.isPresent()) {
-                if(effect.get().getName() == "Growth") {
-                    return Optional.of(new Growth(name.get(), lifePoints.get(), attack.get(), effect.get().generateChangeEffect(), imageURL.get()));
+            System.out.println("è presente ed è: " + effect.get().getName());
+                if("Growth".equals(this.effect.get().getName())) {
+                    return Optional.of(new Growth(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateChangeEffect(), imageURL.get()));
                 }
-                else if(effect.get().getName() == "LastWill") {
-                    return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), effect.get().generateChangeEffect(), imageURL.get()));
+                else if("LastWill".equals(this.effect.get().getName())) {
+                    return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateChangeEffect(), imageURL.get()));
                 }
                 else
                 {
-                    return effect.get().generateInfoEffect();
+                    return this.effect.get().generateInfoEffect();
                 }
             }
         else {
             return this.generateInfoEffect();
         }
     }
+
 }
 
 

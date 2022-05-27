@@ -28,34 +28,58 @@ public class ParserImpl implements Parser {
     private InfoCard cardParser(final JSONObject card) {
         final JSONObject cardObject = (JSONObject) card.get("card");        
         final String name = (String) cardObject.get("name");
-        final int lifeValue = (int) cardObject.get("lifeValue");
-        final int attackValue = (int) cardObject.get("attackValue");
-        final int manaCost = (int) cardObject.get("manaCost");        
-        final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));        
+        
+        // ho dovuto ricorrere a un doppio cast, da object a long, e da long a int;
+        // di per se funziona, ma fa schifo da vedere, l'esempio di lifevalue dovrebbe essere più pertinente, ma impone che tutti i valori interi siano espressi nel json come stringhe, in quanto
+        // faccio un parse a string a int;
+        final int lifeValue = Integer.parseInt((String)cardObject.get("lifeValue"));        
+        final int attackValue = (int)(long) cardObject.get("attackValue");
+        final int manaCost = (int)(long) cardObject.get("manaCost");        
+        final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
+        // System.out.println(effect.getName());
+        
+
         final String imageURL = (String) cardObject.get("imageURL");
         
         return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL);
     }
     
     private ChangeEffect simpleEffectParser(final JSONObject effect) {
-        return new ChangeEffectImpl((String) effect.get("nameEffect"));
+        return new ChangeEffectImpl((String) effect.get("effectName"));
     }
     
     // Costruttore ChangeEffectImpl: final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect
     private ChangeEffect complexEffectParser(final JSONObject effect) {
         // If se effect è un effetto composto(alias Growth o LastWill)
-        if(effect.get("nameEffect") == "Growth" || effect.get("nameEffect") == "LastWill") {
-            final String effectName = (String) effect.get("nameEffect");
-            final String name = (String) effect.get("name");
-            final int lifeValue = (int) effect.get("lifeValue");
-            final int attackValue = (int) effect.get("attackValue");
-            final ChangeEffect innerEffect = complexEffectParser((JSONObject)effect.get("effect"));
+        final String effectName = (String) effect.get("effectName");        
+        
+        if("Growth".equals(effectName) || "LastWill".equals(effectName)) {
+            final String name = (String) effect.get("cardName");
+            final int lifeValue = Integer.parseInt((String)effect.get("lifeValue"));
+            // final int lifeValue = (int)(long) effect.get("lifeValue");
+            final int attackValue = (int)(long) effect.get("attackValue");
+            final JSONObject innerInnerEffect = (JSONObject) effect.get("innerEffect");
+            final ChangeEffect innerEffect = complexEffectParser(innerInnerEffect);
+            
+            //System.out.println(innerEffect.getName());
+            
             final String imageURL = (String) effect.get("imageURL");
+            
+            /*System.out.println(effectName);
+            System.out.println(name);
+            System.out.println(lifeValue);
+            System.out.println(attackValue);
+            System.out.println(imageURL);
+            System.out.println(innerEffect.getName());
+            System.out.println();*/
+            //System.out.println(effectName);
+
             return new ChangeEffectImpl(effectName, name, lifeValue, attackValue, imageURL, innerEffect);
         }
         //  else nel caso effect è una stringa vuota o se effect è un effetto semplice(alias armored, etc...)
         else 
         {
+            // System.out.println(effectName);
             return simpleEffectParser(effect);
         }
     }
@@ -66,19 +90,29 @@ public class ParserImpl implements Parser {
     @SuppressWarnings("unchecked")
     @Override
     public InfoDeck deckParser(final JSONObject deck) {
-        
-        final JSONObject deckObject = (JSONObject) deck.get("card");
+        final JSONObject deckObject = (JSONObject) deck.get("Deck");
         final String deckName = (String) deckObject.get("name");
         final JSONArray jCardList = (JSONArray) deckObject.get("cards");
         final List<InfoCard> cardList = new ArrayList<>();
-        jCardList.forEach( card -> {  cardList.add( (InfoCard) cardParser((JSONObject) card)); });
+        jCardList.forEach( card -> {  cardList.add( cardParser((JSONObject) card)); });
+        /*for(InfoCard tmp : cardList) {
+            System.out.println(tmp.getName());
+            System.out.println(tmp);
+        }*/
+        // final JSONObject deckObject = (JSONObject) deck.get("card");
+        /*final String deckName = (String) deck.get("name");
+        final JSONArray jCardList = (JSONArray) deck.get("cards");
+        System.out.println(deckName);
+        final List<InfoCard> cardList = new ArrayList<>();
+        jCardList.forEach( card -> {  cardList.add( cardParser((JSONObject) card)); });*/
         return new InfoDeckImpl(deckName, cardList);
     }
     
     @SuppressWarnings("unchecked")
     @Override
     public Map<String, List<Card>> deckListParser() {
-        // Object obj = null;
+        final Map<String, List<Card>> deckMap = new HashMap<>();
+
         try (FileReader reader = new FileReader(path)){
             
             final JSONParser jsonParser = new JSONParser();
@@ -86,14 +120,11 @@ public class ParserImpl implements Parser {
             final Object obj = jsonParser.parse(reader);
             final JSONArray deckList = (JSONArray) obj;
             
-            final Map<String, List<Card>> deckMap = new HashMap<>();
-            
             // print per il controllo del corretto parsing da parte del JsonParser;
-            System.out.println(deckList);
+            // System.out.println(deckList);
             
             // RIGA MOLTO PERICOLOSA -> Utilizza tutto il parsing eseguito adesso + Genera il deck partendo dal parsing eseguito, e lo mette dentro a una mappa<Stringa, Lista<Carta>>;
-            deckList.forEach(deck -> {deckMap.put(deckParser((JSONObject) deck).getName(), deckParser((JSONObject) deck).generateDeck()); });
-            return deckMap;
+            deckList.forEach(deck -> {final InfoDeck tmp = deckParser((JSONObject) deck); deckMap.put(tmp.getName(), tmp.generateDeck()); });
         }
         catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -104,7 +135,7 @@ public class ParserImpl implements Parser {
         catch(ParseException e) {
             e.printStackTrace();
         }
-        return Map.of();
+        return deckMap;
 
     }
 

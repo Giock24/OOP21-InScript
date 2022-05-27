@@ -12,6 +12,8 @@ public interface ChangeEffect extends InfoEffect {
     
     String getImageURL();
     
+    Optional<ChangeEffect> getInnerEffect();
+    
     Optional<Effect> generateChangeEffect();
     
 }

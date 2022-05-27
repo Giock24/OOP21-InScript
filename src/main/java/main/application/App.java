@@ -4,7 +4,13 @@
 package main.application;
 
 
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import cards.Card;
 import javafx.application.Application;
+import json.ParserImpl;
 import view.MainApplication;
 import shared.AppStateSingleton;
 // import cards.DeckFactoryImpl;
@@ -13,11 +19,30 @@ import shared.AppStateSingleton;
 /** Main application entry-point. */
 
 public final class App {
+
     private App() { }
 
     public static void main(final String[] args) {
         AppStateSingleton.getInstance(); // initialization of the appState
         Application.launch(MainApplication.class, args);
+        final ParserImpl parser = new ParserImpl("C:\\Users\\User\\Desktop\\test1.json");
+        final Set<Entry<String, List<Card>>> tmp = parser.deckListParser().entrySet();
+        /*for (final Entry<String, List<Card>> tmp1 : tmp) {
+            System.out.println(tmp1.getKey());
+            for(final Card tmp2 : tmp1.getValue()) {
+                System.out.println(tmp2.getName());
+                System.out.println(tmp2.getLifePoint());
+                System.out.println(tmp2.getAttack());
+                System.out.println(tmp2.getMana());
+                System.out.println(tmp2.getImageURL());
+                if(tmp2.getEffect().isPresent()) {
+                    System.out.println(tmp2.getEffect().get().getImageEffectURL());
+                }
+                System.out.println();
+            }
+            System.out.println();
+
+        }*/
         // DeckFactoryImpl.JsonParsing();
         // The following line raises: Error: class it.unibo.samplejavafx.App is not a subclass of javafx.application.Application
         //JavaFXApp.launch(args);
