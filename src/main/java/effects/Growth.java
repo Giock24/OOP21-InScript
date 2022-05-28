@@ -17,7 +17,8 @@ public class Growth extends AbstractEffect{
     
     public Growth(final String newName, final int newLifePoint, final int newAttack, final Optional<Effect> newEffect, final String newImageURL) {
         super("Growth", "After a turn on the playing field this card takes its true form", "effects/effect_growth");
-        
+        System.out.println("\n Nuovo Effetto : " + newEffect.get().getNameEffect() + "\n");
+        System.out.println("\n Nuova Vita : " + newLifePoint + "\n");
         this.name = newName;
         this.lifePoint = newLifePoint;
         this.attack = newAttack;
@@ -41,6 +42,20 @@ public class Growth extends AbstractEffect{
         cardOwner.getCurrentBoard().get(boardPosition).get().setName(this.name);
         cardOwner.getCurrentBoard().get(boardPosition).get().setImageURL(this.imageURL);
         
+    }
+    
+    @Override
+    public String toString() {
+        if (this.effect.isPresent()) {
+            return " Growth \n"
+                    + "newEffect : " + this.effect.get().getNameEffect() + "\n"
+                    + "newURL :" + this.imageURL;
+        } else {
+            return "\n"
+                    + "Effect Name : " + this.name + "\n"
+                    + "newEffect : NoEffect\n";
+        }
+
     }
 
 }

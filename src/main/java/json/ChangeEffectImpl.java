@@ -30,6 +30,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
     public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
         super(effectName);
+        //System.out.println("\n Name Effect : " + effectName + "\n");
         this.name = Optional.of(cardName);
         this.lifePoints = Optional.of(lifeValue);
         this.attack = Optional.of(attackValue);
@@ -39,6 +40,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
     public ChangeEffectImpl(final String effectName) {
         super(effectName);
+        //System.out.println("\n Name Effect : " + effectName + "\n");
         this.name = Optional.empty();
         this.lifePoints = Optional.empty();
         this.attack = Optional.empty();
@@ -69,7 +71,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     @Override
     public Optional<Effect> generateChangeEffect() { 
         if(effect.isPresent()) {
-            System.out.println("è presente ed è: " + effect.get().getName());
+            //System.out.println("è presente ed è: " + effect.get().getName());
                 if("Growth".equals(this.effect.get().getName())) {
                     return Optional.of(new Growth(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateChangeEffect(), imageURL.get()));
                 }
