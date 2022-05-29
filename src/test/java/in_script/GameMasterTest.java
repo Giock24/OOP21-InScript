@@ -1,7 +1,6 @@
-package game_master;
+package in_script;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,9 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cards.Card;
@@ -22,9 +19,7 @@ import shared.AppStateSingleton;
 import shared.Player;
 
 public class GameMasterTest {
-    final static boolean PLAYER_TURN = false;
-    final static boolean AI_TURN = true;
-    
+
     final AppState appState = AppStateSingleton.getInstance();
     GameMaster gameMaster;
     Player humanPlayer;
@@ -52,13 +47,17 @@ public class GameMasterTest {
         assertEquals(false, this.humanPlayer.isAiPlayer());
         assertEquals(true, this.aiPlayer.isAiPlayer());
         
-        final List<Optional<Card>> emptyBoard = new ArrayList<Optional<Card>>();
-        IntStream.range(0, Player.NUM_CARD_BOARD).forEach( index -> {
+        if(Player.NUM_CARD_BOARD == 5) {
+            final List<Optional<Card>> emptyBoard = new ArrayList<Optional<Card>>();
             emptyBoard.add(Optional.empty());
-        });
-        
-        assertEquals(new ArrayList<Optional<Card>>(emptyBoard), this.humanPlayer.getCurrentBoard());
-        assertEquals(new ArrayList<Optional<Card>>(emptyBoard), this.aiPlayer.getCurrentBoard());
+            emptyBoard.add(Optional.empty());
+            emptyBoard.add(Optional.empty());
+            emptyBoard.add(Optional.empty());
+            emptyBoard.add(Optional.empty());
+            
+            assertEquals(new ArrayList<Optional<Card>>(emptyBoard), this.humanPlayer.getCurrentBoard());
+            assertEquals(new ArrayList<Optional<Card>>(emptyBoard), this.aiPlayer.getCurrentBoard());
+        }
         
         assertEquals(new ArrayList<Card>(), this.humanPlayer.getHand());
         assertEquals(new ArrayList<Card>(), this.aiPlayer.getHand());
@@ -81,10 +80,14 @@ public class GameMasterTest {
         assertNotNull( this.gameMaster.getBattlePhaseManager());
     }
     
-    
     @Test
     void StartGame() {
-        
+        this.gameMaster = new GameMasterImpl(appState.getHumanPlayerDeck(),appState.getAIPlayerDeck());
+        this.humanPlayer = this.gameMaster.getHumanPlayer();
+        this.aiPlayer = this.gameMaster.getIAPlayer();
+        this.gameMaster.startGame();
+        assertEquals(GameMaster.INTIAL_NUM_CARDS_IN_HAND+1,this.humanPlayer.getHand().size()+this.humanPlayer.getCurrentBoard().stream().filter(element -> element.isPresent()).count());
+        assertEquals(GameMaster.INTIAL_NUM_CARDS_IN_HAND+1,this.aiPlayer.getHand().size()+this.aiPlayer.getCurrentBoard().stream().filter(element -> element.isPresent()).count());
     }
     
 }
