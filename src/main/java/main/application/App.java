@@ -23,25 +23,26 @@ public final class App {
     private App() { }
 
     public static void main(final String[] args) {
-        //AppStateSingleton.getInstance(); // initialization of the appState
-        //Application.launch(MainApplication.class, args);
-        final ParserImpl parser = new ParserImpl("C:\\Users\\utente1\\Desktop\\test1.json");
-        final Set<Entry<String, List<Card>>> tmp = parser.deckListParser().entrySet();
-        
+        AppStateSingleton.getInstance(); // initialization of the appState
+        Application.launch(MainApplication.class, args);
+        //final ParserImpl parser = new ParserImpl("C:\\Users\\utente1\\Desktop\\test1.json");
+        //final Set<Entry<String, List<Card>>> tmp = parser.deckListParser().entrySet();
+        /*
         for (final Entry<String, List<Card>> tmp1 : tmp) {
             System.out.println(tmp1.getKey());
             for(final Card tmp2 : tmp1.getValue()) {
-                System.out.println(tmp2.toString());
-                /*
+                //System.out.println(tmp2.toString());
+                
                 if(tmp2.getEffect().isPresent()) {
                     System.out.println(tmp2.getEffect().get().getNameEffect());
                 }
-                */
+                
                 System.out.println();
             }
             System.out.println();
 
         }
+        */
         
         // DeckFactoryImpl.JsonParsing();
         // The following line raises: Error: class it.unibo.samplejavafx.App is not a subclass of javafx.application.Application

@@ -62,37 +62,37 @@ public class InfoCardImpl implements InfoCard {
 
     @Override
     public Card generateCard() {
-        if (effect.generateChangeEffect().isPresent()) {
-            if ("Growth".equals(effectName)) {
-                return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
-            }
-            if ("LastWill".equals(effectName)) {
-                return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
-            }
-            if ("Elusive".equals(effectName)) {
-                return new CardFactoyImpl().elusiveEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Exalted".equals(effectName)) {
-                return new CardFactoyImpl().exaltedEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Healer".equals(effectName)) {
-                return new CardFactoyImpl().healerEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Poison".equals(effectName)) {
-                return new CardFactoyImpl().poisonEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Rotten".equals(effectName)) {
-                return new CardFactoyImpl().rottenEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Draw".equals(effectName)) {
-                return new CardFactoyImpl().drawEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
-            if ("Armored".equals(effectName)) {
-                return new CardFactoyImpl().armoredEffect(name, lifeValue, attackValue, manaCost, imageURL);
-            }
+        if ("Growth".equals(effectName)) {
+            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+        }
+        if ("LastWill".equals(effectName)) {
+            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+        }
+        if ("Elusive".equals(effectName)) {
+            return new CardFactoyImpl().elusiveEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Exalted".equals(effectName)) {
+            return new CardFactoyImpl().exaltedEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Healer".equals(effectName)) {
+            return new CardFactoyImpl().healerEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Poison".equals(effectName)) {
+            return new CardFactoyImpl().poisonEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Rotten".equals(effectName)) {
+            return new CardFactoyImpl().rottenEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Draw".equals(effectName)) {
+            return new CardFactoyImpl().drawEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        if ("Armored".equals(effectName)) {
+             return new CardFactoyImpl().armoredEffect(name, lifeValue, attackValue, manaCost, imageURL);
+        }
+        else {
+            return new CardFactoyImpl().noEffect(name, lifeValue, attackValue, manaCost, imageURL);
         }
         
-        return new CardFactoyImpl().noEffect(name, lifeValue, attackValue, manaCost, imageURL);
         
         //return new BaseCard(name, lifeValue, attackValue, manaCost, imageURL, effect);
     }

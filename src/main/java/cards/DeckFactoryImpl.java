@@ -1,18 +1,27 @@
 package cards;
 
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.nio.file.FileSystems;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+
+import javax.print.DocFlavor.URL;
+
+import java.util.Map.Entry;
 
 import effects.Armored;
 import effects.Elusive;
 import effects.Growth;
 import effects.Healer;
 import effects.Poison;
+import json.ParserImpl;
 
 
 
@@ -32,16 +41,27 @@ public class DeckFactoryImpl implements DeckFactory {
     @Override
     public Map<String, List<Card>> getDecks() {
         
+        ParserImpl parser =  new ParserImpl("");
         // System.out.print(fileSeparator);
-        this.deckList.put("deck-standard", getPlayerDeck());
-        this.deckList.put("deck-standard-IA", getPlayerIADeck());
-        this.deckList.put("deck-mais", getMaisDeck());
-        this.deckList.put("deck-shinobi", getShinobiDeck());
-        this.deckList.put("deck-duck", getDuckDeck());
-        this.deckList.put("deck-ofThePit", getdeckOfThePit());
+//        this.deckList.put("deck-standard", getPlayerDeck());
+//        this.deckList.put("deck-standard-IA", getPlayerIADeck());
+//        this.deckList.put("deck-mais", getMaisDeck());
+//        this.deckList.put("deck-shinobi", getShinobiDeck());
+//        this.deckList.put("deck-duck", getDuckDeck());
+//        this.deckList.put("deck-ofThePit", getdeckOfThePit());
+        final java.net.URL res = Thread.currentThread().getContextClassLoader().getResource("json/decks.json");
+        File file;
+        try {
+            file = Paths.get(res.toURI()).toFile();
+            final String absolutePath = file.getAbsolutePath();
+            parser = new ParserImpl(absolutePath);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        //final Map<String, List<Card>> deckList = parser.deckListParser();
 
         
-        return deckList;
+        return parser.deckListParser();
     }    
     
     private List<Card> getPlayerDeck() {

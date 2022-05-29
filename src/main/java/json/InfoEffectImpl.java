@@ -7,6 +7,7 @@ import effects.Armored;
 import effects.Draw;
 import effects.Elusive;
 import effects.Exalted;
+import effects.Growth;
 import effects.Healer;
 import effects.Poison;
 import effects.Rotten;

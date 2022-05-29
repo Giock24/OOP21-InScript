@@ -32,13 +32,12 @@ public class ParserImpl implements Parser {
         // ho dovuto ricorrere a un doppio cast, da object a long, e da long a int;
         // di per se funziona, ma fa schifo da vedere, l'esempio di lifevalue dovrebbe essere più pertinente, ma impone che tutti i valori interi siano espressi nel json come stringhe, in quanto
         // faccio un parse a string a int;
-        final int lifeValue = Integer.parseInt((String)cardObject.get("lifeValue"));        
+        final int lifeValue = (int)(long) cardObject.get("lifeValue");        
         final int attackValue = (int)(long) cardObject.get("attackValue");
         final int manaCost = (int)(long) cardObject.get("manaCost");
         final String imageURL = (String) cardObject.get("imageURL");
         final int copies = (int)(long) cardObject.get("copies");
         final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
-        // System.out.println(effect.getName());
         
         return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL, copies);
     }
@@ -53,32 +52,19 @@ public class ParserImpl implements Parser {
         final String effectName = (String) effect.get("effectName");        
         
         if("Growth".equals(effectName) || "LastWill".equals(effectName)) {
+            //System.out.println(effectName);
             final String name = (String) effect.get("cardName");
-            final int lifeValue = Integer.parseInt((String)effect.get("lifeValue"));
-            // final int lifeValue = (int)(long) effect.get("lifeValue");
+            final int lifeValue = (int)(long) effect.get("lifeValue");
             final int attackValue = (int)(long) effect.get("attackValue");
+            final String imageURL = (String) effect.get("imageURL");
             final JSONObject innerInnerEffect = (JSONObject) effect.get("innerEffect");
             final ChangeEffect innerEffect = complexEffectParser(innerInnerEffect);
-            
-            //System.out.println(innerEffect.getName());
-            
-            final String imageURL = (String) effect.get("imageURL");
-            
-            /*System.out.println(effectName);
-            System.out.println(name);
-            System.out.println(lifeValue);
-            System.out.println(attackValue);
-            System.out.println(imageURL);
-            System.out.println(innerEffect.getName());
-            System.out.println();*/
-            //System.out.println(effectName);
 
             return new ChangeEffectImpl(effectName, name, lifeValue, attackValue, imageURL, innerEffect);
         }
         //  else nel caso effect è una stringa vuota o se effect è un effetto semplice(alias armored, etc...)
         else 
         {
-            // System.out.println(effectName);
             return simpleEffectParser(effect);
         }
     }
