@@ -15,24 +15,19 @@ public class InfoCardImpl implements InfoCard {
     private final int manaCost;
     private final ChangeEffect effect;
     private final String imageURL;
+    private final int copies;
     String effectName; 
 
     
-    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ChangeEffect effect, final String imageURL) {
+    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ChangeEffect effect, final String imageURL, final int copies) {
         this.name = name;
         this.lifeValue = lifeValue;
         this.attackValue = attackValue;
         this.manaCost = manaCost;
-        
         this.effectName = effect.getName();
-        //System.out.println(effect.getName()); // info derivante da InfoEffect
         this.effect = effect;
-        //System.out.println(this.effect.toString());
-        /*if(this.effect.isPresent()) {
-            System.out.println(this.effect.get().getNameEffect());
-        }*/
-        System.out.println();
         this.imageURL = imageURL;
+        this.copies = copies;
     }
     
     @Override
@@ -53,6 +48,11 @@ public class InfoCardImpl implements InfoCard {
     @Override
     public int getManaCost() {
         return this.manaCost;
+    }
+    
+    @Override
+    public int getCopies() {
+        return this.copies;
     }
     
     @Override

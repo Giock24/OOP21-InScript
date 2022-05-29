@@ -34,14 +34,13 @@ public class ParserImpl implements Parser {
         // faccio un parse a string a int;
         final int lifeValue = Integer.parseInt((String)cardObject.get("lifeValue"));        
         final int attackValue = (int)(long) cardObject.get("attackValue");
-        final int manaCost = (int)(long) cardObject.get("manaCost");        
+        final int manaCost = (int)(long) cardObject.get("manaCost");
+        final String imageURL = (String) cardObject.get("imageURL");
+        final int copies = (int)(long) cardObject.get("copies");
         final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
         // System.out.println(effect.getName());
         
-
-        final String imageURL = (String) cardObject.get("imageURL");
-        
-        return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL);
+        return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL, copies);
     }
     
     private ChangeEffect simpleEffectParser(final JSONObject effect) {

@@ -2,6 +2,7 @@ package json;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import cards.Card;
 
@@ -29,7 +30,7 @@ public class InfoDeckImpl implements InfoDeck {
     public List<Card> generateDeck() {
         final List<Card> tmpCardList = new ArrayList<>();
         for(final InfoCard card : cardList) {
-            tmpCardList.add(card.generateCard());
+            IntStream.range(0, card.getCopies()).forEach(i -> { tmpCardList.add(card.generateCard()); });    
         }
         return tmpCardList;
     }
