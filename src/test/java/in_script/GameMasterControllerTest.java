@@ -21,8 +21,6 @@ import shared.Player;
 
 public class GameMasterControllerTest {
     
-    final AppState appState = AppStateSingleton.getInstance();
-    DrawPhaseManager drawPhase;
     GameMasterControllerImpl gameMasterController;
     
     @BeforeEach
@@ -61,7 +59,14 @@ public class GameMasterControllerTest {
     }
     
     @Test
-    void TestCardToShow() {}  
+    void TestCardToShow() {
+        
+        assertEquals(Optional.empty(),this.gameMasterController.getCardToShow());
+        final Card cardToShow = this.gameMasterController.getHumanPlayer().getHand().get(0);
+        this.gameMasterController.onSelectCardToShow(cardToShow);
+        assertEquals(cardToShow.getIdCard(),this.gameMasterController.getCardToShow().get().getIdCard());
+    
+    }  
     
     @Test
     void TestOnEndTurn() {} 
