@@ -838,9 +838,9 @@
 						"name":"The Pit",
 						"lifeValue":4,
 						"attackValue":0,
-						"manaCost":1,
+						"manaCost":2,
 						"imageURL":"deckOfThePitImage/The_Pit.png",
-						"copies":3,
+						"copies":1,
 						"effect":{
 							"effectName":"Draw"
 						}
@@ -911,7 +911,7 @@
 							"cardName":"Corupted Paladin",
 							"lifeValue":2,
 							"attackValue":2,
-							"imageURL":"DuckDeckImage/Corrupted_Paladin.png",
+							"imageURL":"deckOfThePitImage/Corrupted_Paladin.png",
 							"innerEffect":{
 								"effectName":""
 							}
@@ -944,7 +944,7 @@
 							"cardName":"Seo",
 							"lifeValue":2,
 							"attackValue":1,
-							"imageURL":"DuckDeckImage/Seo.png",
+							"imageURL":"deckOfThePitImage/Seo.png",
 							"innerEffect":{
 								"effectName":"Armored"
 							}
