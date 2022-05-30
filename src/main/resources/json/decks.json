@@ -202,44 +202,186 @@
 			"cards":[
 				{
 					"card" : {
-						"name": "Red Lizard",
+						"name": "Dog",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 1,
+						"imageURL": "standardDeckImage/Cane.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": ""
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Calendula",
 						"lifeValue": 2,
 						"attackValue": 0,
-						"manaCost": 0,
-						"imageURL": "standardDeckImage/Lucertola_rossa.png",
-						"copies" : 10,                                        
+						"manaCost": 1,
+						"imageURL": "standardDeckImage/Calendula.png",
+						"copies" : 3,                                        
 						"effect": {
-							"effectName": "Growth",
-							"cardName": "Red Crocodile",
-							"lifeValue": 3,
-							"attackValue": 1,
-							"imageURL": "standardDeckImage/Coccodrillo_rosso.png",
+							"effectName": "Healer"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Stone",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Sasso.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": ""
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Flat-earther",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Terrapiattista.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Rat",
+						"lifeValue": 2,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Ratto.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Poison"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Academic",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Studiato.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Peach",
+						"lifeValue": 1,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Pesca.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Mummy",
+						"lifeValue": 1,
+						"attackValue": 4,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Mummia.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Rotten"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Mimic",
+						"lifeValue": 3,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Mimic.png",
+						"copies" : 1,                                        
+						"effect": {
+							"effectName": "Elusive"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Slime",
+						"lifeValue": 4,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Melma.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Rotten"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "No Vax Parade",
+						"lifeValue": 1,
+						"attackValue": 3,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Corteo_No_Vax.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Guts",
+						"lifeValue": 1,
+						"attackValue": 3,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Guts.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Berserk",
+							"lifeValue":2,
+							"attackValue":5,
+							"imageURL":"standardDeckImage/Berserk.png",
 							"innerEffect": {
-								"effectName": "Growth",
-								"cardName": "Saxo",
-								"lifeValue": 4,
-								"attackValue": 1,
-								"imageURL": "standardDeckImage/Cane.png",
-								"innerEffect": {
-									"effectName": "Growth",
-									"cardName": "Saxo",
-									"lifeValue": 1,
-									"attackValue": 1,
-									"imageURL": "standardDeckImage/Coccodrillo_rosso.png",
-									"innerEffect": {
-										"effectName": "LastWill",
-										"cardName": "Libertà",
-										"lifeValue": 10,
-										"attackValue": 0,
-										"imageURL": "standardDeckImage/Cane.png",
-										"innerEffect": {
-											"effectName": "Poison"
-										}
-									}
-								}
+								"effectName":"Elusive"
 							}
 						}
-					}	
+					}
+				},
+				{
+					"card" : {
+						"name": "Egg",
+						"lifeValue": 8,
+						"attackValue": 0,
+						"manaCost": 8,
+						"imageURL": "standardDeckImage/Uovo.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Fafnir Ancient Dragon",
+							"lifeValue":8,
+							"attackValue":8,
+							"imageURL":"standardDeckImage/Fafnir.png",
+							"innerEffect": {
+								"effectName":"Armored"
+							}
+						}
+					}
 				}
 			]
         }
@@ -283,7 +425,7 @@
 						"imageURL": "maisDeckImage/doppleganger_mais.png",
 						"copies" : 2,                                        
 						"effect": {
-							"effectName": "Healer"
+							"effectName": "Elusive"
 						}
 					}	
 				},
@@ -294,11 +436,123 @@
 						"attackValue": 2,
 						"manaCost": 3,
 						"imageURL": "maisDeckImage/spaventapasseri.png",
-						"copies" : 2,                                        
+						"copies" : 3,                                        
 						"effect": {
 							"effectName": "Exalted"
 						}
 					}	
+				},
+				{
+					"card" : {
+						"name": "Mais knight",
+						"lifeValue": 3,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "maisDeckImage/mais_cavaliere.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Mill",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/mulino.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Giant",
+							"lifeValue":4,
+							"attackValue":4,
+							"imageURL":"maisDeckImage/gigante.png",
+							"innerEffect": {
+								"effectName":""
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Khael Mais Lich",
+						"lifeValue": 4,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/khael_mais_lich.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Church of Mais",
+						"lifeValue": 5,
+						"attackValue": 0,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/chiesa_del_mais.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Mais Cathedral",
+							"lifeValue":10,
+							"attackValue":0,
+							"imageURL":"maisDeckImage/cattedrale_del_mais.png",
+							"innerEffect": {
+								"effectName":"Healer"
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "The Farmer",
+						"lifeValue": 5,
+						"attackValue": 2,
+						"manaCost": 5,
+						"imageURL": "maisDeckImage/il_fattore.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Harvester",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 7,
+						"imageURL": "maisDeckImage/mietitrebbia.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Grim Reaper",
+							"lifeValue":8,
+							"attackValue":8,
+							"imageURL":"maisDeckImage/cupo_mietitore.png",
+							"innerEffect": {
+								"effectName":"Poison"
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "MAISxodia the forbidden one",
+						"lifeValue": 10,
+						"attackValue": 10,
+						"manaCost": 10,
+						"imageURL": "maisDeckImage/MAISxodia.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":""
+						}
+					}
 				}
 			]
         }
@@ -966,47 +1220,6 @@
 				}
 			]
         }
-    },
-	{
-		"Deck":{
-            "name": "deck-testing",     
-			"cards":[
-				{
-					"card":{
-						"name":"Saxo",
-						"lifeValue":10,
-						"attackValue":0,
-						"manaCost":0,
-						"imageURL":"standardDeckImage/Cane.png",
-						"copies":20,
-						"effect":{
-							"effectName":"Growth",
-							"cardName":"Egg",
-							"lifeValue":30,
-							"attackValue":0,
-							"imageURL":"standardDeckImage/Uovo.png",
-							"innerEffect": {
-								"effectName":"Growth",
-								"cardName":"MAISxodia the forbidden one",
-								"lifeValue":8,
-								"attackValue":8,
-								"imageURL":"maisDeckImage/MAISxodia.png",
-								"innerEffect": {
-									"effectName":"Growth",
-									"cardName":"Sample",
-									"lifeValue":10,
-									"attackValue":10,
-									"imageURL":"SampleCardImage.png",
-									"innerEffect": {
-										"effectName":"Poison"
-									}
-								}
-							}
-						}
-					}
-				}
-			]
-        }
-	}
+    }
     
 ]
