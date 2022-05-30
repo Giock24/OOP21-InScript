@@ -42,7 +42,7 @@ class MainPhaseManagerTests {
         
         this.mainPhase.positioning(this.humanPlayer.getHand().get(0), 1, MainPhaseManagerTests.PLAYER_TURN);
         
-        assertEquals(2, this.humanPlayer.getHand().size());
+        assertEquals(2,  this.gameMaster.getHumanPlayer().getHand().size());
     }
     
     @Test

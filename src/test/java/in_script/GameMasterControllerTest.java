@@ -69,7 +69,20 @@ public class GameMasterControllerTest {
     }  
     
     @Test
-    void TestOnEndTurn() {} 
+    void TestOnEndTurn() {
+        // this test is impossibile to write becouse the conditions are subject to change depending on AI choices,
+        // card drawed stats and effect 
+        
+        /*
+        while(this.gameMasterController.getIAPlayer().getHand().stream().filter(card -> card.getMana()<=
+                this.gameMasterController.getIAPlayer().getCurrentMana()).count()<=0) {
+            this.gameMasterController.onEndTurn();
+        }
+        
+        final int currentHumanLife = this.gameMasterController.getHumanPlayer().getLifePoints();
+        */
+        
+    } 
     
     
 }
