@@ -1,4 +1,4 @@
-package json;
+package jsonparser;
 
 import java.util.Optional;
 
@@ -59,14 +59,33 @@ public class InfoCardImpl implements InfoCard {
     public Optional<Effect> getEffect() {
         return this.effect.generateChangeEffect();
     }
+    
+    @Override
+    public String toString() {
+        return " Info Card : \n"
+              + "Attack : " + this.attackValue +"\n"
+              + "life : " + this.lifeValue + "\n"
+              + "URL :" + this.imageURL + "\n"
+              + "effect : " + this.effect.toString();
+
+    }
 
     @Override
     public Card generateCard() {
         if ("Growth".equals(effectName)) {
-            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+            //System.out.println(this.name);
+            //System.out.println(effect.getNameCard());
+            //System.out.println(effect.getName());
+            System.out.println("GENERAZIONE CARTA GROWTH ....\n"
+                    + "Name: " + name + "\n"
+                    + "life: " + lifeValue + "\n"
+                    + "atk: " + attackValue +"\n"
+                    /*+ "EFFECT INCASTONATO: " + effect.generateChangeEffect().get().toString()*/);
+            
+            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
         }
         if ("LastWill".equals(effectName)) {
-            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getInnerEffect().get().getName(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
         }
         if ("Elusive".equals(effectName)) {
             return new CardFactoyImpl().elusiveEffect(name, lifeValue, attackValue, manaCost, imageURL);

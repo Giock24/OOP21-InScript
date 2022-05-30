@@ -10,7 +10,7 @@ import java.util.Set;
 
 import cards.Card;
 import javafx.application.Application;
-import json.ParserImpl;
+import jsonparser.ParserImpl;
 import view.MainApplication;
 import shared.AppStateSingleton;
 // import cards.DeckFactoryImpl;

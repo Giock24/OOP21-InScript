@@ -1,4 +1,4 @@
-package json;
+package jsonparser;
 
 import java.util.List;
 import java.util.Map;

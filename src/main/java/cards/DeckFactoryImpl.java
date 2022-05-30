@@ -21,7 +21,7 @@ import effects.Elusive;
 import effects.Growth;
 import effects.Healer;
 import effects.Poison;
-import json.ParserImpl;
+import jsonparser.ParserImpl;
 
 
 
@@ -55,6 +55,23 @@ public class DeckFactoryImpl implements DeckFactory {
             file = Paths.get(res.toURI()).toFile();
             final String absolutePath = file.getAbsolutePath();
             parser = new ParserImpl(absolutePath);
+            
+//            final Set<Entry<String, List<Card>>> tmp = parser.deckListParser().entrySet();
+//            
+//            for (final Entry<String, List<Card>> tmp1 : tmp) {
+//                System.out.println(tmp1.getKey());
+//                for(final Card tmp2 : tmp1.getValue()) {
+//                    System.out.println(tmp2.toString());
+//                    /*
+//                    if(tmp2.getEffect().isPresent()) {
+//                        System.out.println(tmp2.getEffect().get().getNameEffect());
+//                    }
+//                    */
+//                    System.out.println();
+//                }
+//                System.out.println();
+//
+//            }
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

@@ -19,6 +19,7 @@ public class Growth extends AbstractEffect{
         super("Growth", "After a turn on the playing field this card takes its true form", "effects/effect_growth");
         //System.out.println("\n Nuovo Effetto : " + newEffect.get().getNameEffect() + "\n");
         //System.out.println("\n Nuova Vita : " + newLifePoint + "\n");
+        //System.out.println(newEffect.toString());
         this.name = newName;
         this.lifePoint = newLifePoint;
         this.attack = newAttack;
@@ -48,11 +49,15 @@ public class Growth extends AbstractEffect{
     public String toString() {
         if (this.effect.isPresent()) {
             return " Growth \n"
+                    + "newAttack : " + this.attack +"\n"
+                    + "newLife : " + this.lifePoint + "\n"
                     + "newEffect : " + this.effect.get().getNameEffect() + "\n"
                     + "newURL :" + this.imageURL;
         } else {
             return "\n"
                     + "Effect Name : " + this.name + "\n"
+                    + "newAttack : " + this.attack +"\n"
+                    + "newLife : " + this.lifePoint + "\n"
                     + "newEffect : NoEffect\n";
         }
 

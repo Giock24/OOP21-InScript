@@ -1,4 +1,4 @@
-package json;
+package jsonparser;
 
 import java.util.Optional;
 
@@ -20,5 +20,7 @@ public interface InfoCard {
     Optional<Effect> getEffect();
             
     Card generateCard();
+    
+    String toString();
     
 }

@@ -1,4 +1,4 @@
-package json;
+package jsonparser;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -39,10 +39,12 @@ public class ParserImpl implements Parser {
         final int copies = (int)(long) cardObject.get("copies");
         final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
         
+        
         return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL, copies);
     }
     
     private ChangeEffect simpleEffectParser(final JSONObject effect) {
+        //System.out.println("è passato qui dentro");
         return new ChangeEffectImpl((String) effect.get("effectName"));
     }
     
@@ -54,9 +56,16 @@ public class ParserImpl implements Parser {
         if("Growth".equals(effectName) || "LastWill".equals(effectName)) {
             //System.out.println(effectName);
             final String name = (String) effect.get("cardName");
+            //System.out.println(name);
             final int lifeValue = (int)(long) effect.get("lifeValue");
+            //System.out.println(lifeValue);
             final int attackValue = (int)(long) effect.get("attackValue");
+            //System.out.println(attackValue);
             final String imageURL = (String) effect.get("imageURL");
+//            System.out.println("CREAZIONE EFFETTO GROWTH CON NUOVI PARAMETRI....\n"
+//                    + "Name: " + name + "\n"
+//                    + "life: " + lifeValue + "\n"
+//                    + "atk: " + attackValue );
             final JSONObject innerInnerEffect = (JSONObject) effect.get("innerEffect");
             final ChangeEffect innerEffect = complexEffectParser(innerInnerEffect);
 
@@ -65,6 +74,7 @@ public class ParserImpl implements Parser {
         //  else nel caso effect è una stringa vuota o se effect è un effetto semplice(alias armored, etc...)
         else 
         {
+            //System.out.println("è stato richiamato un simple effect" + effect.get("effectName"));
             return simpleEffectParser(effect);
         }
     }
