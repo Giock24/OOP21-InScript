@@ -13,22 +13,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameSceneController">
    <left>
-      <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="240.0" prefWidth="279.0" spacing="4.0" styleClass="boardBG" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="4.0" left="15.0" right="4.0" top="35.0" />
          </padding>
          <children>
             <HBox prefHeight="19.0" prefWidth="146.0" spacing="4.0">
                <children>
-                  <Label styleClass="manaTextStyle" stylesheets="@../default/application.css" text="Mana:" />
-                  <Label fx:id="currentManaPlayer" styleClass="manaTextStyle" stylesheets="@../default/application.css" />
+                  <Label styleClass="manaTextStyle" stylesheets="@../css/application.css" text="Mana:" />
+                  <Label fx:id="currentManaPlayer" styleClass="manaTextStyle" stylesheets="@../css/application.css" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="29.0" prefWidth="224.0">
                <children>
-                  <Label styleClass="textStyle" stylesheets="@../default/application.css" text="Life Points">
+                  <Label styleClass="textStyle" stylesheets="@../css/application.css" text="Life Points">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -47,7 +47,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label styleClass="textStyle" stylesheets="@../default/application.css" text="Player" />
+                        <Label styleClass="textStyle" stylesheets="@../css/application.css" text="Player" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
@@ -62,7 +62,7 @@
                <children>
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../default/application.css" />
+                        <Button fx:id="battlePhaseButton" mnemonicParsing="false" styleClass="battlePhaseButton" stylesheets="@../css/application.css" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" />
@@ -74,11 +74,11 @@
       </VBox>
    </left>
    <top>
-      <BorderPane prefHeight="113.0" prefWidth="595.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="113.0" prefWidth="595.0" styleClass="boardBG" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
          <center>
             <HBox alignment="CENTER" prefHeight="30.0" prefWidth="459.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label styleClass="styleTITLE" stylesheets="@../default/application.css" text="INSCRIPT">
+                  <Label styleClass="styleTITLE" stylesheets="@../css/application.css" text="INSCRIPT">
                      <font>
                         <Font size="48.0" />
                      </font>
@@ -97,16 +97,16 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../default/application.css" text="Return to Menu" GridPane.columnIndex="2" />
-                  <Label fx:id="currentPhase" styleClass="textStyle" stylesheets="@../default/application.css" text="" />
-                  <Button fx:id="musicButton" styleClass="buttonBoard" stylesheets="@../default/application.css" text="VOLUME ON" />
+                  <Button mnemonicParsing="false" onMouseClicked="#switchToMenuScene" prefHeight="25.0" prefWidth="191.0" styleClass="buttonBoard" stylesheets="@../css/application.css" text="Return to Menu" GridPane.columnIndex="2" />
+                  <Label fx:id="currentPhase" styleClass="textStyle" stylesheets="@../css/application.css" text="" />
+                  <Button fx:id="musicButton" styleClass="buttonBoard" stylesheets="@../css/application.css" text="VOLUME ON" />
                </children>
             </GridPane>
          </top>
       </BorderPane>
    </top>
    <center>
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" styleClass="boardBG" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
         <items>
             <GridPane fx:id="boardIA" alignment="CENTER" hgap="4.0">
               <columnConstraints>
@@ -144,7 +144,7 @@
    <bottom>
       <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" prefHeight="260.0" prefWidth="796.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="132.0" prefWidth="690.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../default/application.css">
+            <HBox fx:id="handPlayer" alignment="CENTER" prefHeight="132.0" prefWidth="690.0" spacing="4.0" styleClass="handBoardBG" stylesheets="@../css/application.css">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding></HBox>
@@ -152,7 +152,7 @@
       </ScrollPane>
    </bottom>
    <right>
-      <GridPane fx:id="cardView" prefHeight="240.0" prefWidth="279.0" styleClass="boardBG" stylesheets="@../default/application.css" BorderPane.alignment="CENTER">
+      <GridPane fx:id="cardView" prefHeight="240.0" prefWidth="279.0" styleClass="boardBG" stylesheets="@../css/application.css" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>

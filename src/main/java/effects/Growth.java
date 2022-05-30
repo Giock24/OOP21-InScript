@@ -17,9 +17,6 @@ public class Growth extends AbstractEffect{
     
     public Growth(final String newName, final int newLifePoint, final int newAttack, final Optional<Effect> newEffect, final String newImageURL) {
         super("Growth", "After a turn on the playing field this card takes its true form", "effects/effect_growth");
-        //System.out.println("\n Nuovo Effetto : " + newEffect.get().getNameEffect() + "\n");
-        //System.out.println("\n Nuova Vita : " + newLifePoint + "\n");
-        //System.out.println(newEffect.toString());
         this.name = newName;
         this.lifePoint = newLifePoint;
         this.attack = newAttack;

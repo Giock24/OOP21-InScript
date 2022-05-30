@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 import static view.ViewState.WIDTH;
 import static view.ViewState.HEIGHT;
 
-public class GameSceneController {
+public class GameSceneController extends AbstractController{
     
     GameMasterControllerImpl gameMasterController;
     CardGrafic cardGrafic;
@@ -53,7 +53,7 @@ public class GameSceneController {
     ////battle phase button////
     @FXML private Button battlePhaseButton;
     
-   
+    @Override
     public void initialize(){
         this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
         this.cardGrafic = new CardGraficImpl();
@@ -162,7 +162,7 @@ public class GameSceneController {
         boardPlayer.getChildren().clear();
         
         final List<Optional<Card>> userBoard = gameMasterController.getHumanPlayer().getCurrentBoard();    
- 
+        
         IntStream.range(0, userBoard.size()).forEach(index -> {
             VBox cardCell = null;
             
@@ -224,21 +224,19 @@ public class GameSceneController {
         Music.BOARD_THEME.stopMusic();
         
         final Stage primaryStage = (Stage)root.getScene().getWindow();
-        final Showable menuGUI = new MenuGUI(primaryStage);
-        
         WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
         HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
         
+        final Showable menuGUI = new MenuGUI(primaryStage);
         primaryStage.setScene(menuGUI.getScene());
         primaryStage.show();
     }
     
     /**
-     * @param event active when is clicked a button
-     *          when this method is called you can return to menu
+     * {@inheritDoc}
      */
-    @FXML
-    public final void switchToMenuScene(final MouseEvent event) {
+    @Override
+    public void switchToMenuScene(final MouseEvent event) {
         returnToMenu();
     }
     

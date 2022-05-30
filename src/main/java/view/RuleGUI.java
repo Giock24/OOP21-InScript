@@ -22,7 +22,7 @@ public class RuleGUI implements Showable {
      */
     private void loadFXML() {
         try {
-            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("rule.fxml"));
+            final Parent root = FXMLLoader.load(ClassLoader.getSystemResource("layouts/rule.fxml"));
             this.scene = new Scene(root, WIDTH.getValue(), HEIGHT.getValue());
         } catch (IOException e) {
             e.printStackTrace();

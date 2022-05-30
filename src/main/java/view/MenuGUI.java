@@ -33,6 +33,10 @@ public class MenuGUI implements Showable {
      */
     private void createGUI() {
         final BorderPane layout = new BorderPane();
+        layout.setStyle( " -fx-background-image: url('image/menu_background.png');\n"
+                + " -fx-background-repeat: no-repeat;\n"
+                + " -fx-background-size: contain;\n"
+                + " -fx-background-size: 100% 100%;");
         this.scene = new Scene(layout, WIDTH.getValue(), HEIGHT.getValue());
         
         this.stage.setMinWidth(WIDTH.getMinValue());
@@ -41,7 +45,7 @@ public class MenuGUI implements Showable {
         layout.setCenter(this.centerNode());
         layout.setBottom(this.bottomNode());
         
-        this.scene.getStylesheets().add("application.css");
+        this.scene.getStylesheets().add("css/application.css");
     }
     
     /**

@@ -17,7 +17,7 @@ public interface DrawPhaseManager extends PhaseManager {
     void draw(boolean isTheAIturn);
     
     /**
-     *     adds 4 card on the player's hand and increases the mana
+     *     adds 3 cards on each player's hand
      * 
      * @param isTheAIturn
      */

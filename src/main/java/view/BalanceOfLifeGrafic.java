@@ -18,11 +18,11 @@ public class BalanceOfLifeGrafic {
     
     private String getBalanceURL() {
         if(player.getLifePoints()>aI.getLifePoints()) {
-            return "Balance-icon-left-heavy.png";
+            return "image/Balance-icon-left-heavy.png";
         } else if (player.getLifePoints()<aI.getLifePoints()) {
-            return "Balance-icon-right-heavy.png";
+            return "image/Balance-icon-right-heavy.png";
         } else {
-            return "Balance-icon-equity.png";
+            return "image/Balance-icon-equity.png";
         }
     }
     

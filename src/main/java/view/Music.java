@@ -22,7 +22,7 @@ public enum Music {
     private int currentFrame;
     
     Music(final String musicName) {
-        final InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream(musicName); 
+        final InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("sound/"+musicName); 
         try (AudioInputStream audioStream = AudioSystem.getAudioInputStream(new BufferedInputStream(input))){
             
             this.clip = AudioSystem.getClip();

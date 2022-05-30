@@ -14,8 +14,10 @@ import javafx.stage.Stage;
 import shared.AppState;
 import shared.AppStateSingleton;
 
-public class SelectionSceneController {
+public class SelectionSceneController extends AbstractController{
     
+    Stage primaryStage;
+    Showable gui;
     final AppState appState =  AppStateSingleton.getInstance();
     
     @FXML
@@ -27,7 +29,7 @@ public class SelectionSceneController {
     @FXML
     private ChoiceBox<String> selectedAIDeck;
     
-    
+    @Override
     public void initialize(){
         
         final Set<String> setDeckNames = appState.getDecksList().keySet().stream().sorted().collect(Collectors.toSet());
@@ -37,25 +39,6 @@ public class SelectionSceneController {
         
         selectedPlayerDeck.setValue("deck-standard");
         selectedAIDeck.setValue("deck-standard-IA");
-    }
-    
-    /**
-     * 
-     *     when this method is called you can return to menu
-     * 
-     * @param event active when is clicked a button
-     */
-    @FXML
-    public void switchToMenuScene(final MouseEvent event) {
-        Music.SELECTION_THEME.stopMusic();
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        final Showable menuGUI = new MenuGUI(primaryStage);
-        
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
-        
-        primaryStage.setScene(menuGUI.getScene());
-        primaryStage.show();
     }
     
     /**
@@ -70,14 +53,7 @@ public class SelectionSceneController {
         appState.selectHumanPlayerDeck(selectedPlayerDeck.getValue());
         appState.selectAIPlayer(selectedAIDeck.getValue());
         
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
-        
-        final BoardGUI board = new BoardGUI();
-        primaryStage.setScene(board.getScene());
-        primaryStage.show();
+        super.switchToAnotherScene(new BoardGUI());
     }
-    
 
 }
