@@ -590,32 +590,32 @@
 			"cards":[
 				{
 					"card":{
-						"name":"Naruto Uzumaki",
-						"lifeValue":4,
-						"attackValue":4,
+						"name":"Saxo",
+						"lifeValue":10,
+						"attackValue":0,
 						"manaCost":0,
-						"imageURL":"shinobiDeckImage/Naruto_Uzumaki.png",
+						"imageURL":"standardDeckImage/Cane.png",
 						"copies":20,
 						"effect":{
 							"effectName":"Growth",
-							"cardName":"Naruto [Mod. Eremita]",
-							"lifeValue":6,
-							"attackValue":6,
-							"imageURL":"shinobiDeckImage/Naruto_Mod.Eremita.png",
+							"cardName":"Egg",
+							"lifeValue":30,
+							"attackValue":0,
+							"imageURL":"standardDeckImage/Uovo.png",
 							"innerEffect": {
 								"effectName":"Growth",
-								"cardName":"Naruto [Six-Path]",
+								"cardName":"MAISxodia the forbidden one",
 								"lifeValue":8,
 								"attackValue":8,
-								"imageURL":"shinobiDeckImage/Naruto_Six_Path.png",
+								"imageURL":"maisDeckImage/MAISxodia.png",
 								"innerEffect": {
 									"effectName":"Growth",
-									"cardName":"Naruto [Mod. Bayron]",
+									"cardName":"Sample",
 									"lifeValue":10,
 									"attackValue":10,
-									"imageURL":"shinobiDeckImage/Naruto_Mod.Bayron.png",
+									"imageURL":"SampleCardImage.png",
 									"innerEffect": {
-										"effectName":"Armored"
+										"effectName":"Poison"
 									}
 								}
 							}
