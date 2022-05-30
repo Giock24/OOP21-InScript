@@ -3,19 +3,22 @@
  */
 package main.application;
 
-
 import javafx.application.Application;
 import view.MainApplication;
 import shared.AppStateSingleton;
 
+
 /** Main application entry-point. */
 
 public final class App {
+
     private App() { }
 
     public static void main(final String[] args) {
         AppStateSingleton.getInstance(); // initialization of the appState
         Application.launch(MainApplication.class, args);
+        
+        // DeckFactoryImpl.JsonParsing();
         // The following line raises: Error: class it.unibo.samplejavafx.App is not a subclass of javafx.application.Application
         //JavaFXApp.launch(args);
         // While the following would do just fine:

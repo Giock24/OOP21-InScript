@@ -1,0 +1,41 @@
+{
+    "Deck":{
+        "name": "deck-testing",     
+        "cards":[
+            {
+                "card":{
+                    "name":"Saxo",
+                    "lifeValue":10,
+                    "attackValue":0,
+                    "manaCost":0,
+                    "imageURL":"standardDeckImage/Cane.png",
+                    "copies":20,
+                    "effect":{
+                        "effectName":"Growth",
+                        "cardName":"Egg",
+                        "lifeValue":30,
+                        "attackValue":0,
+                        "imageURL":"standardDeckImage/Uovo.png",
+                        "innerEffect": {
+                            "effectName":"Growth",
+                            "cardName":"MAISxodia the forbidden one",
+                            "lifeValue":8,
+                            "attackValue":8,
+                            "imageURL":"maisDeckImage/MAISxodia.png",
+                            "innerEffect": {
+                                "effectName":"Growth",
+                                "cardName":"Sample",
+                                "lifeValue":10,
+                                "attackValue":10,
+                                "imageURL":"SampleCardImage.png",
+                                "innerEffect": {
+                                    "effectName":"Poison"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

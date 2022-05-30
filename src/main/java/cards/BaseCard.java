@@ -115,7 +115,28 @@ public class BaseCard implements Card {
     public int hashCode() {
         return Objects.hash(idCard);
     }
+    
+    @Override
+    public String toString() {
+        if (this.effect.isPresent()) {
+            return "Card = \n"
+                    + "Name : " + this.name + "\n"
+                    + "manaCost : " + this.manaCost + "\n"
+                    + "lifeValue : " + this.lifeValue + "\n"
+                    + "attackValue : " + this.attackValue + "\n"
+                    + "effect : " + this.effect.get().toString() + "\n"
+                    + "imageURL : " + this.imageURL + "\n";
+        } else {
+            return "Card = \n"
+                    + "Name : " + this.name + "\n"
+                    + "manaCost : " + this.manaCost + "\n"
+                    + "lifeValue : " + this.lifeValue + "\n"
+                    + "attackValue : " + this.attackValue + "\n"
+                    + "effect :  NoEffect\n"
+                    + "imageURL : " + this.imageURL + "\n";
+        }
 
+    }
 
     @Override
     public boolean equals(final Object obj) {

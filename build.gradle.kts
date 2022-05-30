@@ -31,8 +31,8 @@ val jUnitVersion = "5.7.1"
 val javaFxVersion = 15
 
 dependencies {
-    // Example library: Guava. Add what you need (and remove Guava if you don't use it)
-    // implementation("com.google.guava:guava:28.1-jre")
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 
     // JavaFX: comment out if you do not need them
     for (platform in supportedPlatforms) {
@@ -40,7 +40,8 @@ dependencies {
             implementation("org.openjfx:javafx-$module:$javaFxVersion:$platform")
         }
     }
-
+	
+	
     // JUnit API and testing engine
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")

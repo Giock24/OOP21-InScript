@@ -1,6 +1,10 @@
 package cards;
 
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.nio.file.FileSystems;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +16,9 @@ import effects.Elusive;
 import effects.Growth;
 import effects.Healer;
 import effects.Poison;
+import jsonparser.ParserImpl;
+
+
 
 public class DeckFactoryImpl implements DeckFactory {
     
@@ -27,17 +34,23 @@ public class DeckFactoryImpl implements DeckFactory {
     @Override
     public Map<String, List<Card>> getDecks() {
         
-        this.deckList.put("deck-standard", getPlayerDeck());
-        this.deckList.put("deck-standard-IA", getPlayerIADeck());
-        this.deckList.put("deck-mais", getMaisDeck());
-        this.deckList.put("deck-shinobi", getShinobiDeck());
-        this.deckList.put("deck-duck", getDuckDeck());
-        this.deckList.put("deck-ofThePit", getdeckOfThePit());
+        ParserImpl parser =  new ParserImpl("");
+        // System.out.print(fileSeparator);
+        final java.net.URL res = Thread.currentThread().getContextClassLoader().getResource("json/decks.json");
+        File file;
+        try {
+            file = Paths.get(res.toURI()).toFile();
+            final String absolutePath = file.getAbsolutePath();
+            parser = new ParserImpl(absolutePath);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        //final Map<String, List<Card>> deckList = parser.deckListParser();
+
         
-        return deckList;
-    }
-
-
+        return parser.deckListParser();
+    }    
+    
     private List<Card> getPlayerDeck() {
        
         this.playerDeck.add(new CardFactoyImpl().noEffect( "Dog", 1, 1, 1, "standardDeckImage/Cane.png"));
@@ -278,5 +291,6 @@ public class DeckFactoryImpl implements DeckFactory {
         
         return this.deckOfThePit;
     }
+    
 
 }

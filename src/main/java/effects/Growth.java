@@ -42,5 +42,23 @@ public class Growth extends AbstractEffect{
         cardOwner.getCurrentBoard().get(boardPosition).get().setImageURL(this.imageURL);
         
     }
+    
+    @Override
+    public String toString() {
+        if (this.effect.isPresent()) {
+            return " Growth \n"
+                    + "newAttack : " + this.attack +"\n"
+                    + "newLife : " + this.lifePoint + "\n"
+                    + "newEffect : " + this.effect.get().getNameEffect() + "\n"
+                    + "newURL :" + this.imageURL;
+        } else {
+            return "\n"
+                    + "Effect Name : " + this.name + "\n"
+                    + "newAttack : " + this.attack +"\n"
+                    + "newLife : " + this.lifePoint + "\n"
+                    + "newEffect : NoEffect\n";
+        }
+
+    }
 
 }

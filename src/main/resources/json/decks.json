@@ -1,0 +1,1225 @@
+[
+	{
+        "Deck":{
+            "name": "deck-standard",
+            "cards" :[
+                        { 
+							"card" : {
+								"name": "Dog",
+								"lifeValue": 1,
+							 	"attackValue": 1,
+							 	"manaCost": 1,
+							 	"imageURL": "standardDeckImage/Cane.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": ""
+							 	}
+						 	}
+                    	},
+                        { 
+				            "card" : {
+					            "name": "Viper",
+								"lifeValue": 1,
+								"attackValue": 1,
+								"manaCost": 2,
+			            		"imageURL": "standardDeckImage/Vipera.png",
+								"copies" : 2,                                          
+								"effect": {
+									"effectName": "Poison"
+								}
+							}
+                    	},
+						{
+							"card" : {
+								"name": "Calendula",
+								"lifeValue": 2,
+							 	"attackValue": 0,
+							 	"manaCost": 1,
+							 	"imageURL": "standardDeckImage/Calendula.png",
+							 	"copies" : 3,                                        
+							 	"effect": {
+									"effectName": "Healer"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Dr. Stone",
+								"lifeValue": 4,
+							 	"attackValue": 0,
+							 	"manaCost": 2,
+							 	"imageURL": "standardDeckImage/Sasso.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": ""
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Flat-earther",
+								"lifeValue": 1,
+							 	"attackValue": 1,
+							 	"manaCost": 2,
+							 	"imageURL": "standardDeckImage/Terrapiattista.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": "Exalted"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Academic",
+								"lifeValue": 1,
+							 	"attackValue": 1,
+							 	"manaCost": 3,
+							 	"imageURL": "standardDeckImage/Studiato.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": "Draw"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Peach",
+								"lifeValue": 1,
+							 	"attackValue": 0,
+							 	"manaCost": 2,
+							 	"imageURL": "standardDeckImage/Pesca.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": "Draw"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Thief",
+								"lifeValue": 1,
+							 	"attackValue": 3,
+							 	"manaCost": 3,
+							 	"imageURL": "standardDeckImage/Ladro.png",
+							 	"copies" : 1,                                        
+							 	"effect": {
+									"effectName": "Elusive"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Red Lizard",
+								"lifeValue": 1,
+							 	"attackValue": 1,
+							 	"manaCost": 3,
+							 	"imageURL": "standardDeckImage/Lucertola_rossa.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName": "Growth",
+									"cardName": "Red Crocodile",
+									"lifeValue": 3,
+									"attackValue": 3,
+									"imageURL": "standardDeckImage/Coccodrillo_rosso.png",
+									"innerEffect": {
+										"effectName": ""
+									}
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "No Vax Parade",
+								"lifeValue": 1,
+							 	"attackValue": 3,
+							 	"manaCost": 4,
+							 	"imageURL": "standardDeckImage/Corteo_No_Vax.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName":"Exalted"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "G3n0s",
+								"lifeValue": 4,
+							 	"attackValue": 1,
+							 	"manaCost": 5,
+							 	"imageURL": "standardDeckImage/G3n0s.png",
+							 	"copies" : 1,                                        
+							 	"effect": {
+									"effectName":"Armored"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Cleric",
+								"lifeValue": 3,
+							 	"attackValue": 2,
+							 	"manaCost": 3,
+							 	"imageURL": "standardDeckImage/Chierico.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName":"Healer"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Templar",
+								"lifeValue": 2,
+							 	"attackValue": 4,
+							 	"manaCost": 5,
+							 	"imageURL": "standardDeckImage/Templare.png",
+							 	"copies" : 1,                                        
+							 	"effect": {
+									"effectName":"Armored"
+							 	}
+						 	}
+						},
+						{
+							"card" : {
+								"name": "Dinosaur",
+								"lifeValue": 6,
+							 	"attackValue": 6,
+							 	"manaCost": 6,
+							 	"imageURL": "standardDeckImage/Dinosauro.png",
+							 	"copies" : 2,                                        
+							 	"effect": {
+									"effectName":""
+							 	}
+						 	}
+						}
+			
+        	]
+        }
+    },
+    {
+        "Deck":{
+            "name": "deck-standard-IA",     
+			"cards":[
+				{
+					"card" : {
+						"name": "Dog",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 1,
+						"imageURL": "standardDeckImage/Cane.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": ""
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Calendula",
+						"lifeValue": 2,
+						"attackValue": 0,
+						"manaCost": 1,
+						"imageURL": "standardDeckImage/Calendula.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Healer"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Stone",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Sasso.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": ""
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Flat-earther",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Terrapiattista.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Rat",
+						"lifeValue": 2,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Ratto.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Poison"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Academic",
+						"lifeValue": 1,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Studiato.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Peach",
+						"lifeValue": 1,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "standardDeckImage/Pesca.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Mummy",
+						"lifeValue": 1,
+						"attackValue": 4,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Mummia.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Rotten"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Mimic",
+						"lifeValue": 3,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Mimic.png",
+						"copies" : 1,                                        
+						"effect": {
+							"effectName": "Elusive"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Slime",
+						"lifeValue": 4,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Melma.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Rotten"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "No Vax Parade",
+						"lifeValue": 1,
+						"attackValue": 3,
+						"manaCost": 4,
+						"imageURL": "standardDeckImage/Corteo_No_Vax.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Guts",
+						"lifeValue": 1,
+						"attackValue": 3,
+						"manaCost": 3,
+						"imageURL": "standardDeckImage/Guts.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Berserk",
+							"lifeValue":2,
+							"attackValue":5,
+							"imageURL":"standardDeckImage/Berserk.png",
+							"innerEffect": {
+								"effectName":"Elusive"
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Egg",
+						"lifeValue": 8,
+						"attackValue": 0,
+						"manaCost": 8,
+						"imageURL": "standardDeckImage/Uovo.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Fafnir Ancient Dragon",
+							"lifeValue":8,
+							"attackValue":8,
+							"imageURL":"standardDeckImage/Fafnir.png",
+							"innerEffect": {
+								"effectName":"Armored"
+							}
+						}
+					}
+				}
+			]
+        }
+    },
+	{
+        "Deck":{
+            "name": "deck-mais",     
+			"cards":[
+				{
+					"card" : {
+						"name": "Mais",
+						"lifeValue": 1,
+						"attackValue": 0,
+						"manaCost": 1,
+						"imageURL": "maisDeckImage/mais.jpg",
+						"copies" : 10,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Silo",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "maisDeckImage/granaio.jpg",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Healer"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Doppleganger Mais",
+						"lifeValue": 2,
+						"attackValue": 1,
+						"manaCost": 2,
+						"imageURL": "maisDeckImage/doppleganger_mais.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Elusive"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Scarecrow",
+						"lifeValue": 1,
+						"attackValue": 2,
+						"manaCost": 3,
+						"imageURL": "maisDeckImage/spaventapasseri.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Mais knight",
+						"lifeValue": 3,
+						"attackValue": 1,
+						"manaCost": 3,
+						"imageURL": "maisDeckImage/mais_cavaliere.png",
+						"copies" : 3,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Mill",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/mulino.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Giant",
+							"lifeValue":4,
+							"attackValue":4,
+							"imageURL":"maisDeckImage/gigante.png",
+							"innerEffect": {
+								"effectName":""
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Khael Mais Lich",
+						"lifeValue": 4,
+						"attackValue": 2,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/khael_mais_lich.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Church of Mais",
+						"lifeValue": 5,
+						"attackValue": 0,
+						"manaCost": 4,
+						"imageURL": "maisDeckImage/chiesa_del_mais.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Mais Cathedral",
+							"lifeValue":10,
+							"attackValue":0,
+							"imageURL":"maisDeckImage/cattedrale_del_mais.png",
+							"innerEffect": {
+								"effectName":"Healer"
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "The Farmer",
+						"lifeValue": 5,
+						"attackValue": 2,
+						"manaCost": 5,
+						"imageURL": "maisDeckImage/il_fattore.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "Harvester",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 7,
+						"imageURL": "maisDeckImage/mietitrebbia.png",
+						"copies" : 2,                                        
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Grim Reaper",
+							"lifeValue":8,
+							"attackValue":8,
+							"imageURL":"maisDeckImage/cupo_mietitore.png",
+							"innerEffect": {
+								"effectName":"Poison"
+							}
+						}
+					}
+				},
+				{
+					"card" : {
+						"name": "MAISxodia the forbidden one",
+						"lifeValue": 10,
+						"attackValue": 10,
+						"manaCost": 10,
+						"imageURL": "maisDeckImage/MAISxodia.png",
+						"copies" : 1,                                        
+						"effect":{
+							"effectName":""
+						}
+					}
+				}
+			]
+        }
+    },
+	{
+        "Deck":{
+            "name": "deck-shinobi",     
+			"cards":[
+				{
+					"card":{
+						"name":"Academy Student",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"shinobiDeckImage/Studente_Accademia.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Draw"
+						} 
+					}
+				},
+				{
+					"card":{
+						"name":"Genin",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"shinobiDeckImage/Genin.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Medical Ninja",
+						"lifeValue":4,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"shinobiDeckImage/Ninja_Medico.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Sakura shadow clone",
+						"lifeValue":2,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"shinobiDeckImage/Copia_Sakura.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Chunin",
+						"lifeValue":1,
+						"attackValue":3,
+						"manaCost":3,
+						"imageURL":"shinobiDeckImage/Chunin.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Sand Ninja",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"shinobiDeckImage/Ninja_della_Sabbia.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Orochimaru",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"shinobiDeckImage/Orochimaru.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Jonin",
+						"lifeValue":3,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"shinobiDeckImage/Jonin.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Traitor Ninja",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"shinobiDeckImage/Ninja_Traditore.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Hinata",
+						"lifeValue":4,
+						"attackValue":1,
+						"manaCost":4,
+						"imageURL":"shinobiDeckImage/Hinata.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Nagato",
+						"lifeValue":4,
+						"attackValue":4,
+						"manaCost":4,
+						"imageURL":"shinobiDeckImage/Nagato.png",
+						"copies":1,
+						"effect":{
+							"effectName":"LastWill",
+							"cardName":"Nagato [Reincarnation]",
+							"lifeValue":2,
+							"attackValue":2,
+							"imageURL":"shinobiDeckImage/Nagato_Reincarnation2.png",
+							"innerEffect": {
+								"effectName":"Elusive"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Kakashi",
+						"lifeValue":2,
+						"attackValue":2,
+						"manaCost":4,
+						"imageURL":"shinobiDeckImage/Kakashi.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Kakashi [Anbu]",
+							"lifeValue":4,
+							"attackValue":2,
+							"imageURL":"shinobiDeckImage/Kakashi_Anbu.png",
+							"innerEffect": {
+								"effectName":"Armored"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Itachi",
+						"lifeValue":4,
+						"attackValue":1,
+						"manaCost":5,
+						"imageURL":"shinobiDeckImage/Itachi.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Itachi [Susanoo]",
+							"lifeValue":1,
+							"attackValue":5,
+							"imageURL":"shinobiDeckImage/Itachi_Susanoo.png",
+							"innerEffect": {
+								"effectName":""
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boruto Uzumaki",
+						"lifeValue":5,
+						"attackValue":5,
+						"manaCost":8,
+						"imageURL":"shinobiDeckImage/Boruto_Uzumaki.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Momoshiki Otsutsuki",
+							"lifeValue":8,
+							"attackValue":1,
+							"imageURL":"shinobiDeckImage/Momoshiki_Otsutsuki.png",
+							"innerEffect": {
+								"effectName":"Poison"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Kaguya Otsutsuki",
+						"lifeValue":10,
+						"attackValue":7,
+						"manaCost":10,
+						"imageURL":"shinobiDeckImage/Kaguya_Otsutsuki.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Naruto Uzumaki",
+						"lifeValue":4,
+						"attackValue":4,
+						"manaCost":7,
+						"imageURL":"shinobiDeckImage/Naruto_Uzumaki.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Naruto [Mod. Eremita]",
+							"lifeValue":6,
+							"attackValue":6,
+							"imageURL":"shinobiDeckImage/Naruto_Mod.Eremita.png",
+							"innerEffect": {
+								"effectName":"Growth",
+								"cardName":"Naruto [Six-Path]",
+								"lifeValue":8,
+								"attackValue":8,
+								"imageURL":"shinobiDeckImage/Naruto_Six_Path.png",
+								"innerEffect": {
+									"effectName":"Growth",
+									"cardName":"Naruto [Mod. Bayron]",
+									"lifeValue":10,
+									"attackValue":10,
+									"imageURL":"shinobiDeckImage/Naruto_Mod.Bayron.png",
+									"innerEffect": {
+										"effectName":"Armored"
+									}
+								}
+							}
+						}
+					}
+				}
+
+			]
+        }
+    },
+	{
+        "Deck":{
+            "name": "deck-duck",     
+			"cards":[
+				{
+					"card":{
+						"name":"Boss's Tailor",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Tailor.png",
+						"copies":3,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Statue",
+						"lifeValue":3,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Statue.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Assassin",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Assassin.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Ducktor Watson",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"DuckDeckImage/Ducktor_Watson.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Guard",
+						"lifeValue":2,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Guard.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Maiden",
+						"lifeValue":2,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Maiden.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Lil Fella",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"DuckDeckImage/Bosss_Lil_Fella.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Boss's Acolytes",
+							"lifeValue":3,
+							"attackValue":2,
+							"imageURL":"DuckDeckImage/Bosss_Acolytes.png",
+							"innerEffect":{
+								"effectName":"Elusive"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Right Hand",
+						"lifeValue":1,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Right_Hand.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Ducktective Holmes",
+						"lifeValue":2,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Ducktective_Holmes.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Kitty",
+						"lifeValue":2,
+						"attackValue":3,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/Bosss_Kitty.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Acolytes",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/Bosss_Acolytes.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Impostor",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/The_Impostor.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Garden's Sage",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":5,
+						"imageURL":"DuckDeckImage/Gardens_Sage.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Heir",
+						"lifeValue":5,
+						"attackValue":3,
+						"manaCost":6,
+						"imageURL":"DuckDeckImage/Bosss_Heir.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"DuckPocalipse",
+						"lifeValue":6,
+						"attackValue":5,
+						"manaCost":7,
+						"imageURL":"DuckDeckImage/DuckPocalipse.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Boss",
+						"lifeValue":7,
+						"attackValue":6,
+						"manaCost":8,
+						"imageURL":"DuckDeckImage/The_Boss.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				}
+			]
+        }
+    },
+	{
+        "Deck":{
+            "name": "deck-ofThePit",     
+			"cards":[
+				{
+					"card":{
+						"name":"Cane Marcescente",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"deckOfThePitImage/Cane_Marcescente.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Rotten"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Palikko Salsa",
+						"lifeValue":1,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"deckOfThePitImage/Palikko_Salsa.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Sacrifical Chicken",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"deckOfThePitImage/Pollo_Sacrificale.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Pit",
+						"lifeValue":4,
+						"attackValue":0,
+						"manaCost":2,
+						"imageURL":"deckOfThePitImage/The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Arancina of The Pit",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"deckOfThePitImage/Arancina_Of_The_Pit.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Infernal Cop",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"deckOfThePitImage/Infernal_Cop.png",
+						"copies":3,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Faxen Shadow",
+						"lifeValue":1,
+						"attackValue":3,
+						"manaCost":4,
+						"imageURL":"deckOfThePitImage/Faxen_Shadow.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Tower of The Pit",
+						"lifeValue":4,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"deckOfThePitImage/Tower_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Generic Paladin 3000",
+						"lifeValue":4,
+						"attackValue":4,
+						"manaCost":4,
+						"imageURL":"deckOfThePitImage/Paladin.png",
+						"copies":2,
+						"effect":{
+							"effectName":"LastWill",
+							"cardName":"Corupted Paladin",
+							"lifeValue":2,
+							"attackValue":2,
+							"imageURL":"deckOfThePitImage/Corrupted_Paladin.png",
+							"innerEffect":{
+								"effectName":""
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Lawyer of The Pit",
+						"lifeValue":2,
+						"attackValue":4,
+						"manaCost":5,
+						"imageURL":"deckOfThePitImage/Lawyer_Of_The_Pit.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Herald of The Pit",
+						"lifeValue":6,
+						"attackValue":6,
+						"manaCost":6,
+						"imageURL":"deckOfThePitImage/Herald_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"LastWill",
+							"cardName":"Seo",
+							"lifeValue":2,
+							"attackValue":1,
+							"imageURL":"deckOfThePitImage/Seo.png",
+							"innerEffect":{
+								"effectName":"Armored"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Lord of The Pit",
+						"lifeValue":7,
+						"attackValue":7,
+						"manaCost":7,
+						"imageURL":"deckOfThePitImage/Lord_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				}
+			]
+        }
+    }
+    
+]

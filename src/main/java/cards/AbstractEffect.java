@@ -30,5 +30,12 @@ public abstract class AbstractEffect implements Effect {
     public void setImageEffectURL(final String newImageEffectURL) {
         this.imageEffectURL = newImageEffectURL;
     }
+    
+    @Override
+    public String toString() {
+        return "\n"
+                + "Effect Name : " + this.effectName + "\n"
+                + "imageURL : " + this.imageEffectURL + "\n";
+    }
 	
 }
