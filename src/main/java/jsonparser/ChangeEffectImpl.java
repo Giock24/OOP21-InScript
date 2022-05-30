@@ -30,14 +30,6 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
     public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
         super(effectName);
-//        System.out.println("PARAMETRI PASSATI....\n"
-//                + "Name: " + cardName + "\n"
-//                + "life: " + lifeValue + "\n"
-//                + "atk: " + attackValue + "\n"
-//                + "Name Actual Effect : " + effectName + "\n"
-//                + "Inner Effect : " + effect.toString());
-        //System.out.println("New Card Name : " + cardName + "\n");
-        //System.out.println("New Life : " + lifeValue + "\n");
         this.name = Optional.of(cardName);
         this.lifePoints = Optional.of(lifeValue);
         this.attack = Optional.of(attackValue);
@@ -47,7 +39,6 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     
     public ChangeEffectImpl(final String effectName) {
         super(effectName);
-        //System.out.println("\n Name Effect : " + effectName + "\n");
         this.name = Optional.empty();
         this.lifePoints = Optional.empty();
         this.attack = Optional.empty();
@@ -102,39 +93,19 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
 
     @Override
     public Optional<Effect> generateChangeEffect() {
-        //System.out.println("Nome Effetto : " + effect.get().getName());
         if(effect.isPresent()) {
-            System.out.println("INFO SINGOLO EFFETTO....\n"
-                    + "Effetto che ha "+ super.getName() +"\n"
-                    + "Name: " + this.getNameCard() + "\n"
-                    + "life: " + this.lifePoints.get() + "\n"
-                    + "atk: " + this.attack.get() +"\n"
-                    + "New Effect "+ this.effect.toString() +"\n");
-            //System.out.println("è DENTRO " + effect.get().getName());
-                if("Growth".equals(effect.get().getName())) {
-                    //Optional<Effect> tmp = this.effect.get().generateChangeEffect();
-                    //System.out.println("return da sezione Growth");
-                    //System.out.println(lifePoints.get());
-//                    System.out.println("CREAZIONE EFFETTO GROWTH CON NUOVI PARAMETRI....\n"
-//                            + "Effetto che ha "+ super.getName() +"\n"
-//                            + "Name: " + this.getNameCard() + "\n"
-//                            + "life: " + this.lifePoints.get() + "\n"
-//                            + "atk: " + this.attack.get() +"\n"
-//                            + "New Effect "+ this.effect.get().generateChangeEffect().get().getNameEffect() +"\n");
-                    return Optional.of(new Growth(this.getNameCard(), 0, this.attack.get(), this.effect.get().generateChangeEffect(), this.imageURL.get()));
+                if("Growth".equals(super.getName())) {
+                    return Optional.of(new Growth(this.getNameCard(), this.lifePoints.get(), this.attack.get(), this.effect.get().generateChangeEffect(), this.imageURL.get()));
                 }
-                else if("LastWill".equals(this.effect.get().getName())) {
+                else if("LastWill".equals(super.getName())) {
                     return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateChangeEffect(), imageURL.get()));
                 }
                 else
                 {
-                    //System.out.println("return se effetto semplice");
-                    //System.out.println(lifePoints.get());
                     return this.effect.get().generateInfoEffect();
                 }
             }
         else {
-            System.out.println("FAILSAFE");
             return this.generateInfoEffect();
         }
     }

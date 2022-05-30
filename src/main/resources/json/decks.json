@@ -7,24 +7,38 @@
 					"card" : {
 						"name": "Red Lizard",
 						"lifeValue": 2,
-						"attackValue": 1,
+						"attackValue": 0,
 						"manaCost": 0,
 						"imageURL": "standardDeckImage/Lucertola_rossa.png",
-						"copies" : 1,                                        
+						"copies" : 10,                                        
 						"effect": {
 							"effectName": "Growth",
 							"cardName": "Red Crocodile",
 							"lifeValue": 3,
-							"attackValue": 3,
+							"attackValue": 1,
 							"imageURL": "standardDeckImage/Coccodrillo_rosso.png",
 							"innerEffect": {
 								"effectName": "Growth",
 								"cardName": "Saxo",
 								"lifeValue": 4,
-								"attackValue": 6,
+								"attackValue": 1,
 								"imageURL": "standardDeckImage/Cane.png",
 								"innerEffect": {
-									"effectName": "Armored"
+									"effectName": "Growth",
+									"cardName": "Saxo",
+									"lifeValue": 1,
+									"attackValue": 1,
+									"imageURL": "standardDeckImage/Coccodrillo_rosso.png",
+									"innerEffect": {
+										"effectName": "LastWill",
+										"cardName": "Libertà",
+										"lifeValue": 10,
+										"attackValue": 0,
+										"imageURL": "standardDeckImage/Cane.png",
+										"innerEffect": {
+											"effectName": "Poison"
+										}
+									}
 								}
 							}
 						}

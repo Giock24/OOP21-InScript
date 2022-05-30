@@ -44,7 +44,6 @@ public class ParserImpl implements Parser {
     }
     
     private ChangeEffect simpleEffectParser(final JSONObject effect) {
-        //System.out.println("è passato qui dentro");
         return new ChangeEffectImpl((String) effect.get("effectName"));
     }
     
@@ -54,18 +53,10 @@ public class ParserImpl implements Parser {
         final String effectName = (String) effect.get("effectName");        
         
         if("Growth".equals(effectName) || "LastWill".equals(effectName)) {
-            //System.out.println(effectName);
             final String name = (String) effect.get("cardName");
-            //System.out.println(name);
             final int lifeValue = (int)(long) effect.get("lifeValue");
-            //System.out.println(lifeValue);
             final int attackValue = (int)(long) effect.get("attackValue");
-            //System.out.println(attackValue);
             final String imageURL = (String) effect.get("imageURL");
-//            System.out.println("CREAZIONE EFFETTO GROWTH CON NUOVI PARAMETRI....\n"
-//                    + "Name: " + name + "\n"
-//                    + "life: " + lifeValue + "\n"
-//                    + "atk: " + attackValue );
             final JSONObject innerInnerEffect = (JSONObject) effect.get("innerEffect");
             final ChangeEffect innerEffect = complexEffectParser(innerInnerEffect);
 
@@ -74,7 +65,6 @@ public class ParserImpl implements Parser {
         //  else nel caso effect è una stringa vuota o se effect è un effetto semplice(alias armored, etc...)
         else 
         {
-            //System.out.println("è stato richiamato un simple effect" + effect.get("effectName"));
             return simpleEffectParser(effect);
         }
     }
@@ -90,16 +80,7 @@ public class ParserImpl implements Parser {
         final JSONArray jCardList = (JSONArray) deckObject.get("cards");
         final List<InfoCard> cardList = new ArrayList<>();
         jCardList.forEach( card -> {  cardList.add( cardParser((JSONObject) card)); });
-        /*for(InfoCard tmp : cardList) {
-            System.out.println(tmp.getName());
-            System.out.println(tmp);
-        }*/
-        // final JSONObject deckObject = (JSONObject) deck.get("card");
-        /*final String deckName = (String) deck.get("name");
-        final JSONArray jCardList = (JSONArray) deck.get("cards");
-        System.out.println(deckName);
-        final List<InfoCard> cardList = new ArrayList<>();
-        jCardList.forEach( card -> {  cardList.add( cardParser((JSONObject) card)); });*/
+        
         return new InfoDeckImpl(deckName, cardList);
     }
     

@@ -72,20 +72,11 @@ public class InfoCardImpl implements InfoCard {
 
     @Override
     public Card generateCard() {
-        if ("Growth".equals(effectName)) {
-            //System.out.println(this.name);
-            //System.out.println(effect.getNameCard());
-            //System.out.println(effect.getName());
-            System.out.println("GENERAZIONE CARTA GROWTH ....\n"
-                    + "Name: " + name + "\n"
-                    + "life: " + lifeValue + "\n"
-                    + "atk: " + attackValue +"\n"
-                    /*+ "EFFECT INCASTONATO: " + effect.generateChangeEffect().get().toString()*/);
-            
-            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+        if ("Growth".equals(effectName)) {  
+            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateChangeEffect(), effect.getImageURL());
         }
         if ("LastWill".equals(effectName)) {
-            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.generateChangeEffect(), effect.getImageURL());
+            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateChangeEffect(), effect.getImageURL());
         }
         if ("Elusive".equals(effectName)) {
             return new CardFactoyImpl().elusiveEffect(name, lifeValue, attackValue, manaCost, imageURL);
@@ -112,8 +103,6 @@ public class InfoCardImpl implements InfoCard {
             return new CardFactoyImpl().noEffect(name, lifeValue, attackValue, manaCost, imageURL);
         }
         
-        
-        //return new BaseCard(name, lifeValue, attackValue, manaCost, imageURL, effect);
     }
 
 }

@@ -10,11 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-
-import javax.print.DocFlavor.URL;
-
-import java.util.Map.Entry;
 
 import effects.Armored;
 import effects.Elusive;
@@ -43,35 +38,12 @@ public class DeckFactoryImpl implements DeckFactory {
         
         ParserImpl parser =  new ParserImpl("");
         // System.out.print(fileSeparator);
-//        this.deckList.put("deck-standard", getPlayerDeck());
-//        this.deckList.put("deck-standard-IA", getPlayerIADeck());
-//        this.deckList.put("deck-mais", getMaisDeck());
-//        this.deckList.put("deck-shinobi", getShinobiDeck());
-//        this.deckList.put("deck-duck", getDuckDeck());
-//        this.deckList.put("deck-ofThePit", getdeckOfThePit());
         final java.net.URL res = Thread.currentThread().getContextClassLoader().getResource("json/decks.json");
         File file;
         try {
             file = Paths.get(res.toURI()).toFile();
             final String absolutePath = file.getAbsolutePath();
             parser = new ParserImpl(absolutePath);
-            
-//            final Set<Entry<String, List<Card>>> tmp = parser.deckListParser().entrySet();
-//            
-//            for (final Entry<String, List<Card>> tmp1 : tmp) {
-//                System.out.println(tmp1.getKey());
-//                for(final Card tmp2 : tmp1.getValue()) {
-//                    System.out.println(tmp2.toString());
-//                    /*
-//                    if(tmp2.getEffect().isPresent()) {
-//                        System.out.println(tmp2.getEffect().get().getNameEffect());
-//                    }
-//                    */
-//                    System.out.println();
-//                }
-//                System.out.println();
-//
-//            }
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
