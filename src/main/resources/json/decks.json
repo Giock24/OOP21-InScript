@@ -572,7 +572,221 @@
         "Deck":{
             "name": "deck-duck",     
 			"cards":[
-
+				{
+					"card":{
+						"name":"Boss's Tailor",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Tailor.png",
+						"copies":3,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Statue",
+						"lifeValue":3,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Statue.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Assassin",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"DuckDeckImage/Bosss_Assassin.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Ducktor Watson",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"DuckDeckImage/Ducktor_Watson.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Guard",
+						"lifeValue":2,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Guard.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Armored"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Maiden",
+						"lifeValue":2,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Maiden.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Lil Fella",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"DuckDeckImage/Bosss_Lil_Fella.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Growth",
+							"cardName":"Boss's Acolytes",
+							"lifeValue":3,
+							"attackValue":2,
+							"imageURL":"DuckDeckImage/Bosss_Acolytes.png",
+							"innerEffect":{
+								"effectName":"Elusive"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Right Hand",
+						"lifeValue":1,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Bosss_Right_Hand.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Ducktective Holmes",
+						"lifeValue":2,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"DuckDeckImage/Ducktective_Holmes.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Kitty",
+						"lifeValue":2,
+						"attackValue":3,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/Bosss_Kitty.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Acolytes",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/Bosss_Acolytes.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Impostor",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":4,
+						"imageURL":"DuckDeckImage/The_Impostor.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Garden's Sage",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":5,
+						"imageURL":"DuckDeckImage/Gardens_Sage.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Boss's Heir",
+						"lifeValue":5,
+						"attackValue":3,
+						"manaCost":6,
+						"imageURL":"DuckDeckImage/Bosss_Heir.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"DuckPocalipse",
+						"lifeValue":6,
+						"attackValue":5,
+						"manaCost":7,
+						"imageURL":"DuckDeckImage/DuckPocalipse.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Boss",
+						"lifeValue":7,
+						"attackValue":6,
+						"manaCost":8,
+						"imageURL":"DuckDeckImage/The_Boss.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				}
 			]
         }
     },
@@ -580,7 +794,176 @@
         "Deck":{
             "name": "deck-ofThePit",     
 			"cards":[
-
+				{
+					"card":{
+						"name":"Cane Marcescente",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":1,
+						"imageURL":"deckOfThePitImage/Cane_Marcescente.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Rotten"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Palikko Salsa",
+						"lifeValue":1,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"deckOfThePitImage/Palikko_Salsa.png",
+						"copies":2,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Sacrifical Chicken",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"deckOfThePitImage/Pollo_Sacrificale.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"The Pit",
+						"lifeValue":4,
+						"attackValue":0,
+						"manaCost":1,
+						"imageURL":"deckOfThePitImage/The_Pit.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Draw"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Arancina of The Pit",
+						"lifeValue":1,
+						"attackValue":1,
+						"manaCost":2,
+						"imageURL":"deckOfThePitImage/Arancina_Of_The_Pit.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Poison"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Infernal Cop",
+						"lifeValue":3,
+						"attackValue":2,
+						"manaCost":3,
+						"imageURL":"deckOfThePitImage/Infernal_Cop.png",
+						"copies":3,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Faxen Shadow",
+						"lifeValue":1,
+						"attackValue":3,
+						"manaCost":4,
+						"imageURL":"deckOfThePitImage/Faxen_Shadow.png",
+						"copies":3,
+						"effect":{
+							"effectName":"Elusive"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Tower of The Pit",
+						"lifeValue":4,
+						"attackValue":1,
+						"manaCost":3,
+						"imageURL":"deckOfThePitImage/Tower_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Healer"
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Generic Paladin 3000",
+						"lifeValue":4,
+						"attackValue":4,
+						"manaCost":4,
+						"imageURL":"deckOfThePitImage/Paladin.png",
+						"copies":2,
+						"effect":{
+							"effectName":"LastWill",
+							"cardName":"Corupted Paladin",
+							"lifeValue":2,
+							"attackValue":2,
+							"imageURL":"DuckDeckImage/Corrupted_Paladin.png",
+							"innerEffect":{
+								"effectName":""
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Lawyer of The Pit",
+						"lifeValue":2,
+						"attackValue":4,
+						"manaCost":5,
+						"imageURL":"deckOfThePitImage/Lawyer_Of_The_Pit.png",
+						"copies":2,
+						"effect":{
+							"effectName":""
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Herald of The Pit",
+						"lifeValue":6,
+						"attackValue":6,
+						"manaCost":6,
+						"imageURL":"deckOfThePitImage/Herald_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"LastWill",
+							"cardName":"Seo",
+							"lifeValue":2,
+							"attackValue":1,
+							"imageURL":"DuckDeckImage/Seo.png",
+							"innerEffect":{
+								"effectName":"Armored"
+							}
+						}
+					}
+				},
+				{
+					"card":{
+						"name":"Lord of The Pit",
+						"lifeValue":7,
+						"attackValue":7,
+						"manaCost":7,
+						"imageURL":"deckOfThePitImage/Lord_Of_The_Pit.png",
+						"copies":1,
+						"effect":{
+							"effectName":"Exalted"
+						}
+					}
+				}
 			]
         }
     },
