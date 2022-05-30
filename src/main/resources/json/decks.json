@@ -51,7 +51,58 @@
         "Deck":{
             "name": "deck-mais",     
 			"cards":[
-
+				{
+					"card" : {
+						"name": "Mais",
+						"lifeValue": 1,
+						"attackValue": 0,
+						"manaCost": 1,
+						"imageURL": "maisDeckImage/mais.jpg",
+						"copies" : 10,                                        
+						"effect": {
+							"effectName": "Draw"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Silo",
+						"lifeValue": 4,
+						"attackValue": 0,
+						"manaCost": 2,
+						"imageURL": "maisDeckImage/granaio.jpg",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Healer"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Doppleganger Mais",
+						"lifeValue": 2,
+						"attackValue": 1,
+						"manaCost": 2,
+						"imageURL": "maisDeckImage/doppleganger_mais.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Healer"
+						}
+					}	
+				},
+				{
+					"card" : {
+						"name": "Scarecrow",
+						"lifeValue": 1,
+						"attackValue": 2,
+						"manaCost": 3,
+						"imageURL": "maisDeckImage/spaventapasseri.png",
+						"copies" : 2,                                        
+						"effect": {
+							"effectName": "Exalted"
+						}
+					}	
+				}
 			]
         }
     },
