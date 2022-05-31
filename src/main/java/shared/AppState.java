@@ -17,7 +17,7 @@ public interface AppState {
     
     void selectAIPlayer(String deckName);
     
-    void demoveDeck(String deckName);
+    void removeDeck(String deckName);
     
     void addDeck(String deckName,List<Card> newDeck);
     

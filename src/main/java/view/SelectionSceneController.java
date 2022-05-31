@@ -1,8 +1,5 @@
 package view;
 
-import static view.ViewState.HEIGHT;
-import static view.ViewState.WIDTH;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,13 +9,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import shared.AppState;
-import shared.AppStateSingleton;
+import shared.AppStateController;
 
 public class SelectionSceneController extends AbstractController{
     
     Stage primaryStage;
     Showable gui;
-    final AppState appState =  AppStateSingleton.getInstance();
+    final AppState appState = new AppStateController();
     
     @FXML
     private BorderPane root;

@@ -76,7 +76,7 @@ public class AppStateSingleton implements AppState {
     }
 
     @Override
-    public void demoveDeck(final String deckName) {
+    public void removeDeck(final String deckName) {
        aiPlayerDeck = decksList.remove(deckName);
     }
 
