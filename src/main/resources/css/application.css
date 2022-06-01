@@ -53,6 +53,13 @@
 	-fx-text-fill: #424d30;
 }
 
+.menuBG{
+	-fx-background-image: url("/image/menu_background.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: contain;
+	-fx-background-size: 100% 100%;
+}
+
 .boardBG{
 	-fx-background-image: url("/image/template_board_Inscript.png");
 	-fx-background-repeat: no-repeat;

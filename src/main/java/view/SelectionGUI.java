@@ -31,6 +31,9 @@ public class SelectionGUI implements Showable {
         
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Scene getScene() {
         return this.scene;

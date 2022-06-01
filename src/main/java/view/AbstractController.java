@@ -22,13 +22,21 @@ public abstract class AbstractController {
      *     
      * @param scene is new scene to switch
      */
-    public void switchToAnotherScene(final Showable scene) {
-        final Stage primaryStage = (Stage)root.getScene().getWindow();
-        WIDTH.setCurrentValue(primaryStage.getScene().getWidth());
-        HEIGHT.setCurrentValue(primaryStage.getScene().getHeight());
-        
+    public void switchToAnotherScene(final Showable scene, final Stage primaryStage) {
         primaryStage.setScene(scene.getScene());
         primaryStage.show();
+    }
+    
+    /**
+     * 
+     *     set dimensions for the next scene
+     * 
+     * @param width
+     * @param height
+     */
+    public void setDimension(final double width, final double height) {
+        WIDTH.setCurrentValue(width);
+        HEIGHT.setCurrentValue(height);
     }
     
     /**
@@ -39,7 +47,9 @@ public abstract class AbstractController {
      */
     public void switchToMenuScene(final MouseEvent event) {
         final Stage primaryStage = (Stage)root.getScene().getWindow();
-        this.switchToAnotherScene(new MenuGUI(primaryStage));
+        this.setDimension(primaryStage.getScene().getWidth(), primaryStage.getScene().getHeight());
+        
+        this.switchToAnotherScene(new MenuGUI(primaryStage), primaryStage);
     }
     
 }

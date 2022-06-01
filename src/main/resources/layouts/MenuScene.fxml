@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="menuBG" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuSceneController">
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#onStartGamePressed" styleClass="buttonMenu" stylesheets="@../css/application.css" text="START GAME" />
+            <Button mnemonicParsing="false" onMouseClicked="#onRulesPressed" styleClass="buttonMenu" stylesheets="@../css/application.css" text="RULES" />
+            <Button mnemonicParsing="false" onMouseClicked="#onQuitPressed" styleClass="buttonMenu" stylesheets="@../css/application.css" text="QUIT" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="volumeB" mnemonicParsing="false" styleClass="buttonMenu" stylesheets="@../css/application.css" text="VOLUME ON" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </bottom>
+</BorderPane>

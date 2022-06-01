@@ -50,7 +50,18 @@ public class SelectionSceneController extends AbstractController{
         appState.selectHumanPlayerDeck(selectedPlayerDeck.getValue());
         appState.selectAIPlayer(selectedAIDeck.getValue());
         
-        super.switchToAnotherScene(new BoardGUI());
+        final Stage primaryStage = (Stage)root.getScene().getWindow();
+        super.setDimension(primaryStage.getScene().getWidth(), primaryStage.getScene().getHeight());
+        super.switchToAnotherScene(new BoardGUI(), primaryStage);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void switchToMenuScene(final MouseEvent event) {
+        Music.SELECTION_THEME.stopMusic();
+        super.switchToMenuScene(event);
     }
 
 }
