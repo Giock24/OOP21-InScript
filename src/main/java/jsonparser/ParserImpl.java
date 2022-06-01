@@ -1,12 +1,13 @@
 package jsonparser;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.io.Reader;
+import java.io.InputStreamReader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,10 +18,10 @@ import cards.Card;
 
 public class ParserImpl implements Parser {
     
-    final String path;
+    final InputStreamReader reader;
     
-    public ParserImpl(final String filePath) {
-        this.path = filePath;
+    public ParserImpl(final InputStreamReader reader) {
+        this.reader = reader;
     }
     
     //@Override
@@ -89,11 +90,12 @@ public class ParserImpl implements Parser {
     public Map<String, List<Card>> deckListParser() {
         final Map<String, List<Card>> deckMap = new HashMap<>();
 
-        try (FileReader reader = new FileReader(path)){
+        try {
+        //try (FileReader reader = new FileReader(path)){
             
             final JSONParser jsonParser = new JSONParser();
 
-            final Object obj = jsonParser.parse(reader);
+            final Object obj = jsonParser.parse(this.reader);
             final JSONArray deckList = (JSONArray) obj;
             
             // print per il controllo del corretto parsing da parte del JsonParser;

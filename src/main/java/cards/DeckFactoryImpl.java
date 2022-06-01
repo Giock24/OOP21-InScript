@@ -1,10 +1,8 @@
 package cards;
 
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.nio.file.FileSystems;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +15,8 @@ import effects.Growth;
 import effects.Healer;
 import effects.Poison;
 import jsonparser.ParserImpl;
+import jsonparser.Parser;
+
 
 
 
@@ -30,26 +30,27 @@ public class DeckFactoryImpl implements DeckFactory {
     final List<Card> duckDeck = new ArrayList<>();
     final Map<String, List<Card>> deckList = new HashMap<>();
   
-    
-    @Override
-    public Map<String, List<Card>> getDecks() {
-        
-        ParserImpl parser =  new ParserImpl("");
-        // System.out.print(fileSeparator);
-        final java.net.URL res = Thread.currentThread().getContextClassLoader().getResource("json/decks.json");
-        File file;
-        try {
-            file = Paths.get(res.toURI()).toFile();
-            final String absolutePath = file.getAbsolutePath();
-            parser = new ParserImpl(absolutePath);
-        } catch (URISyntaxException e) {
+   
+  @Override
+  public Map<String, List<Card>> getDecks() {
+
+
+      try {
+              final InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/decks.json");
+              final InputStreamReader reader = new InputStreamReader(in);
+              Parser parser = new ParserImpl(reader);
+              return parser.deckListParser();
+          } catch (Exception e) {
             e.printStackTrace();
         }
-        //final Map<String, List<Card>> deckList = parser.deckListParser();
+      
+    getPlayerDeck();
+    getPlayerIADeck();
+    deckList.put("deck-standard", playerDeck);
+    deckList.put("deck-standard-AI", playerIADeck);
+    return deckList;
 
-        
-        return parser.deckListParser();
-    }    
+  } 
     
     private List<Card> getPlayerDeck() {
        
@@ -114,183 +115,5 @@ public class DeckFactoryImpl implements DeckFactory {
         
         return this.playerIADeck;
     }
-    
-    private List<Card> getMaisDeck(){
-        
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-
-        
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().drawEffect( "Mais", 1, 0, 1, "maisDeckImage/mais.jpg"));
-        
-        this.maisDeck.add(new CardFactoyImpl().healerEffect( "Silo", 4, 0, 2, "maisDeckImage/granaio.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().healerEffect( "Silo", 4, 0, 2, "maisDeckImage/granaio.jpg"));
-        this.maisDeck.add(new CardFactoyImpl().elusiveEffect( "Doppleganger Mais", 2, 1, 2, "maisDeckImage/doppleganger_mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().elusiveEffect( "Doppleganger Mais", 2, 1, 2, "maisDeckImage/doppleganger_mais.png"));
-        this.maisDeck.add(new CardFactoyImpl().exaltedEffect( "Scarecrow", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
-        
-        this.maisDeck.add(new CardFactoyImpl().exaltedEffect( "Scarecrow", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
-        this.maisDeck.add(new CardFactoyImpl().exaltedEffect( "Scarecrow", 1, 2, 3, "maisDeckImage/spaventapasseri.png"));
-        this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
-        this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
-        this.maisDeck.add(new CardFactoyImpl().rottenEffect( "Mais knight", 3, 1, 3, "maisDeckImage/mais_cavaliere.png"));
-        
-        this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png", "Giant", 4, 4, Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect( "Mill", 4, 0, 4, "maisDeckImage/mulino.png","Giant", 4, 4,  Optional.empty(), "maisDeckImage/gigante.png"));
-        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 2, 4, "maisDeckImage/khael_mais_lich.png"));
-        this.maisDeck.add(new CardFactoyImpl().poisonEffect( "Khael Mais Lich", 4, 2, 4, "maisDeckImage/khael_mais_lich.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect( "Church of Mais", 5, 0, 4, "maisDeckImage/chiesa_del_mais.png", "Mais Cathedral", 10, 0, Optional.of(new Healer()), "maisDeckImage/cattedrale_del_mais.png"));
-        
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect( "The Farmer", 5, 2, 5, "maisDeckImage/il_fattore.png"));
-        this.maisDeck.add(new CardFactoyImpl().armoredEffect( "The Farmer", 5, 2, 5, "maisDeckImage/il_fattore.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect( "Harvester", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Grim Reaper", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo_mietitore.png"));
-        this.maisDeck.add(new CardFactoyImpl().growthEffect( "Harvester", 4, 0, 7, "maisDeckImage/mietitrebbia.png", "Grim Reaper", 8, 8, Optional.of(new Poison()), "maisDeckImage/cupo_mietitore.png"));
-        this.maisDeck.add(new CardFactoyImpl().noEffect( "MAISxodia the forbidden one", 10, 10, 10, "maisDeckImage/MAISxodia.png"));
-       
-        return this.maisDeck;
-    }
-    
-    private List<Card> getShinobiDeck() {
-        
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().drawEffect( "Academy Student", 1, 1, 2, "shinobiDeckImage/Studente_Accademia.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Genin", 1, 1, 1, "shinobiDeckImage/Genin.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Medical Ninja", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Medical Ninja", 4, 0, 2, "shinobiDeckImage/Ninja_Medico.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Sakura shadow clone", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().healerEffect( "Sakura's shadow clone", 2, 1, 2, "shinobiDeckImage/Copia_Sakura.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Chunin", 1, 3, 3, "shinobiDeckImage/Chunin.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().exaltedEffect( "Sand Ninja", 1, 1, 1, "shinobiDeckImage/Ninja_della_Sabbia.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().poisonEffect( "Orochimaru", 1, 1, 2, "shinobiDeckImage/Orochimaru.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 3, 1, 3, "shinobiDeckImage/Jonin.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().noEffect( "Jonin", 3, 1, 3, "shinobiDeckImage/Jonin.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Traitor Ninja", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().elusiveEffect( "Traitor Ninja", 3, 2, 3, "shinobiDeckImage/Ninja_Traditore.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Hinata", 4, 1, 4, "shinobiDeckImage/Hinata.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().lastwillEffect("Nagato", 4, 4, 4, "shinobiDeckImage/Nagato.png", "Nagato [Reincarnation]", 2, 2, Optional.of(new Elusive()), "shinobiDeckImage/Nagato_Reincarnation2.png"));
-        
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Kakashi", 2, 2, 4, "shinobiDeckImage/Kakashi.png", "Kakashi [Anbu]", 4, 2, Optional.of(new Armored()), "shinobiDeckImage/Kakashi_Anbu.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Itachi", 4, 1, 5, "shinobiDeckImage/Itachi.png", "Itachi [Susanoo]", 1, 5, Optional.empty(), "shinobiDeckImage/Itachi_Susanoo.png"));
-        
-        //Card-Bosses
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( "Boruto Uzumaki", 5, 5, 8, "shinobiDeckImage/Boruto_Uzumaki.png", "Momoshiki Otsutsuki", 8, 1, Optional.of(new Poison()), "shinobiDeckImage/Momoshiki_Otsutsuki.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().armoredEffect( "Kaguya Otsutsuki", 10, 7, 10, "shinobiDeckImage/Kaguya_Otsutsuki.png"));
-        this.shinobiDeck.add(new CardFactoyImpl().growthEffect( 
-                "Naruto Uzumaki", 4, 4, 7, "shinobiDeckImage/Naruto_Uzumaki.png", 
-                        "Naruto [Mod. Eremita]", 6, 6, Optional.of(new Growth(
-                                "Naruto [Six-Path]", 8, 8, Optional.of(new Growth(
-                                        "Naruto [Mod. Bayron]", 10, 10, Optional.empty(), 
-                                            "shinobiDeckImage/Naruto_Mod.Bayron.png")), 
-                                                "shinobiDeckImage/Naruto_Six_Path.png")), 
-                                                    "shinobiDeckImage/Naruto_Mod.Eremita.png"));  
-        
-        return this.shinobiDeck;
-    }
-    
-    private List<Card> getDuckDeck() {
-        
-        
-    	
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Tailor", 1, 1, 1,"DuckDeckImage/Bosss_Tailor.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Tailor", 1, 1, 1,"DuckDeckImage/Bosss_Tailor.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Tailor", 1, 1, 1,"DuckDeckImage/Bosss_Tailor.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Statue", 3, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Statue", 3, 0, 1,"DuckDeckImage/Bosss_Statue.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
-        this.duckDeck.add(new CardFactoyImpl().poisonEffect( "Boss's Assassin", 1, 1, 1,"DuckDeckImage/Bosss_Assassin.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 1, 1, 2,"DuckDeckImage/Ducktor_Watson.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktor Watson", 1, 1, 2,"DuckDeckImage/Ducktor_Watson.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect( "Boss's Guard", 2, 1, 3, "DuckDeckImage/Bosss_Guard.png"));
-        this.duckDeck.add(new CardFactoyImpl().armoredEffect( "Boss's Guard", 2, 1, 3, "DuckDeckImage/Bosss_Guard.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().healerEffect( "Boss's Maiden", 2, 2, 3,"DuckDeckImage/Bosss_Maiden.png"));
-        this.duckDeck.add(new CardFactoyImpl().healerEffect( "Boss's Maiden", 2, 2, 3,"DuckDeckImage/Bosss_Maiden.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 1, 1, 3,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
-        this.duckDeck.add(new CardFactoyImpl().growthEffect( "Boss's Lil Fella", 1, 1, 3,"DuckDeckImage/Bosss_Lil_Fella.png", "Boss's Acolytes", 3, 2, Optional.of(new Elusive()),"DuckDeckImage/Bosss_Acolytes.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 1, 2, 3, "DuckDeckImage/Bosss_Right_Hand.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Right Hand", 1, 2, 3, "DuckDeckImage/Bosss_Right_Hand.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 2, 1, 3,"DuckDeckImage/Ducktective_Holmes.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Ducktective Holmes", 2, 1, 3,"DuckDeckImage/Ducktective_Holmes.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 2, 3, 4, "DuckDeckImage/Bosss_Kitty.png"));
-        this.duckDeck.add(new CardFactoyImpl().noEffect( "Boss's Kitty", 2, 3, 4, "DuckDeckImage/Bosss_Kitty.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "Boss's Acolytes", 3, 2, 4,"DuckDeckImage/Bosss_Acolytes.png"));
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "Boss's Acolytes", 3, 2, 4,"DuckDeckImage/Bosss_Acolytes.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().elusiveEffect( "The Impostor", 3, 2, 4,"DuckDeckImage/The_Impostor.png"));
-        
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 5,"DuckDeckImage/Gardens_Sage.png"));
-        this.duckDeck.add(new CardFactoyImpl().drawEffect( "Garden's Sage", 3, 2, 5,"DuckDeckImage/Gardens_Sage.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "Boss's Heir", 5, 3, 6, "DuckDeckImage/Bosss_Heir.png"));
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "Boss's Heir", 5, 3, 6, "DuckDeckImage/Bosss_Heir.png"));
-
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "DuckPocalipse", 6, 5, 7,"DuckDeckImage/DuckPocalipse.png"));
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "The Boss", 7, 6, 8,"DuckDeckImage/The_Boss.png"));
-        this.duckDeck.add(new CardFactoyImpl().exaltedEffect( "The Boss", 7, 6, 8,"DuckDeckImage/The_Boss.png"));
-
-        //32 carte.
-        return this.duckDeck;
-    }
-    
-    private List<Card> getdeckOfThePit() {
-        
-        this.deckOfThePit.add(new CardFactoyImpl().rottenEffect( "Cane Marcescente", 1, 1, 1, "deckOfThePitImage/Cane_Marcescente.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().rottenEffect( "Cane Marcescente", 1, 1, 1, "deckOfThePitImage/Cane_Marcescente.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().rottenEffect( "Cane Marcescente", 1, 1, 1, "deckOfThePitImage/Cane_Marcescente.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().exaltedEffect( "Palikko Salsa", 1, 0, 1, "deckOfThePitImage/Palikko_Salsa.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().exaltedEffect( "Palikko Salsa", 1, 0, 1, "deckOfThePitImage/Palikko_Salsa.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().drawEffect( "Sacrifical Chicken", 1, 1, 2, "deckOfThePitImage/Pollo_Sacrificale.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().drawEffect( "Sacrifical Chicken", 1, 1, 2, "deckOfThePitImage/Pollo_Sacrificale.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().drawEffect( "Sacrifical Chicken", 1, 1, 2, "deckOfThePitImage/Pollo_Sacrificale.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().healerEffect( "The Pit", 4, 0, 2, "deckOfThePitImage/The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 1, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 1, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().poisonEffect( "Arancina of The Pit", 1, 1, 2, "deckOfThePitImage/Arancina_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Infernal Cop", 3, 2, 3, "deckOfThePitImage/Infernal_Cop.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 4, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 4, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().elusiveEffect( "Faxen Shadow", 1, 3, 4, "deckOfThePitImage/Faxen_Shadow.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().healerEffect( "Tower of The Pit", 4, 1, 3, "deckOfThePitImage/Tower_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 4, 4, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 2, 2, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Generic Paladin 3000", 4, 4, 4, "deckOfThePitImage/Paladin.png", "Corupted Paladin", 2, 2, Optional.empty(), "deckOfThePitImage/Corrupted_Paladin.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Lawyer of The Pit", 2, 4, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().noEffect( "Lawyer of The Pit", 2, 4, 5, "deckOfThePitImage/Lawyer_Of_The_Pit.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().lastwillEffect( "Herald of The Pit", 6, 6, 6, "deckOfThePitImage/Herald_Of_The_Pit.png", "Seo", 2, 1, Optional.of(new Armored()), "deckOfThePitImage/Seo.png"));
-        this.deckOfThePit.add(new CardFactoyImpl().exaltedEffect( "Lord of The Pit", 7, 7, 7, "deckOfThePitImage/Lord_Of_The_Pit.png"));
-        
-        return this.deckOfThePit;
-    }
-    
 
 }

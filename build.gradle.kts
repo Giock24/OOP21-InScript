@@ -31,7 +31,6 @@ val jUnitVersion = "5.7.1"
 val javaFxVersion = 15
 
 dependencies {
-	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
 	implementation("com.googlecode.json-simple:json-simple:1.1.1")
 
     // JavaFX: comment out if you do not need them
