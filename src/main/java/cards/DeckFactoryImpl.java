@@ -24,10 +24,6 @@ public class DeckFactoryImpl implements DeckFactory {
     
     final List<Card> playerDeck = new ArrayList<>();
     final List<Card> playerIADeck = new ArrayList<>();
-    final List<Card> maisDeck = new ArrayList<>();
-    final List<Card> deckOfThePit = new ArrayList<>();
-    final List<Card> shinobiDeck = new ArrayList<>();    
-    final List<Card> duckDeck = new ArrayList<>();
     final Map<String, List<Card>> deckList = new HashMap<>();
   
    
