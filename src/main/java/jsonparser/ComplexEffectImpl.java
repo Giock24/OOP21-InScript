@@ -6,7 +6,7 @@ import cards.Effect;
 import effects.Growth;
 import effects.LastWill;
 
-public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
+public class ComplexEffectImpl extends SimpleEffectImpl implements ComplexEffect {
     
     /*private final String name;
     private final int lifePoints;
@@ -18,7 +18,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     private final Optional<Integer> lifePoints;
     private final Optional<Integer> attack;
     private final Optional<String> imageURL;
-    private final Optional<ChangeEffect> effect;
+    private final Optional<ComplexEffect> effect;
 
     
     // Devo aggiungere un nuovo costruttore per gestire la creazione di un ChangeEffect con solo il nome;
@@ -28,7 +28,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     // - Aggiungiamo un nuovo campo privato(eventualmente Optional), per salvarci il nome dell'effetto in 
     //   ChangeEffectImpl, invece che doverlo passare al costruttore di InfoEffectImpl;
     
-    public ChangeEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect) {
+    public ComplexEffectImpl(final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ComplexEffect effect) {
         super(effectName);
         this.name = Optional.of(cardName);
         this.lifePoints = Optional.of(lifeValue);
@@ -37,7 +37,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
         this.effect = Optional.of(effect);
     }
     
-    public ChangeEffectImpl(final String effectName) {
+    public ComplexEffectImpl(final String effectName) {
         super(effectName);
         this.name = Optional.empty();
         this.lifePoints = Optional.empty();
@@ -67,7 +67,7 @@ public class ChangeEffectImpl extends InfoEffectImpl implements ChangeEffect {
     }
     
     @Override
-    public Optional<ChangeEffect> getInnerEffect() {
+    public Optional<ComplexEffect> getInnerEffect() {
         return this.effect;
     }
     

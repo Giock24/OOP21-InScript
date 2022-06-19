@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import cards.Effect;
 
-public interface InfoEffect {
+public interface SimpleEffect {
 
     String getName();
     

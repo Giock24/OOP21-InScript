@@ -12,11 +12,11 @@ import effects.Healer;
 import effects.Poison;
 import effects.Rotten;
 
-public class InfoEffectImpl implements InfoEffect {
+public class SimpleEffectImpl implements SimpleEffect {
 
     private final String name;
     
-    public InfoEffectImpl(final String name) {
+    public SimpleEffectImpl(final String name) {
         this.name = name;
     }
     

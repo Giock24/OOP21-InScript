@@ -38,18 +38,18 @@ public class ParserImpl implements Parser {
         final int manaCost = (int)(long) cardObject.get("manaCost");
         final String imageURL = (String) cardObject.get("imageURL");
         final int copies = (int)(long) cardObject.get("copies");
-        final ChangeEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
+        final ComplexEffect effect = complexEffectParser((JSONObject)cardObject.get("effect"));
         
         
         return new InfoCardImpl(name, lifeValue, attackValue, manaCost, effect, imageURL, copies);
     }
     
-    private ChangeEffect simpleEffectParser(final JSONObject effect) {
-        return new ChangeEffectImpl((String) effect.get("effectName"));
+    private ComplexEffect simpleEffectParser(final JSONObject effect) {
+        return new ComplexEffectImpl((String) effect.get("effectName"));
     }
     
     // Costruttore ChangeEffectImpl: final String effectName, final String cardName, final int lifeValue, final int attackValue, final String imageURL, final ChangeEffect effect
-    private ChangeEffect complexEffectParser(final JSONObject effect) {
+    private ComplexEffect complexEffectParser(final JSONObject effect) {
         // If se effect è un effetto composto(alias Growth o LastWill)
         final String effectName = (String) effect.get("effectName");        
         
@@ -59,9 +59,9 @@ public class ParserImpl implements Parser {
             final int attackValue = (int)(long) effect.get("attackValue");
             final String imageURL = (String) effect.get("imageURL");
             final JSONObject innerInnerEffect = (JSONObject) effect.get("innerEffect");
-            final ChangeEffect innerEffect = complexEffectParser(innerInnerEffect);
+            final ComplexEffect innerEffect = complexEffectParser(innerInnerEffect);
 
-            return new ChangeEffectImpl(effectName, name, lifeValue, attackValue, imageURL, innerEffect);
+            return new ComplexEffectImpl(effectName, name, lifeValue, attackValue, imageURL, innerEffect);
         }
         //  else nel caso effect è una stringa vuota o se effect è un effetto semplice(alias armored, etc...)
         else 

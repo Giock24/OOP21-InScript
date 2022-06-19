@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import cards.Effect;
 
-public interface ChangeEffect extends InfoEffect {
+public interface ComplexEffect extends SimpleEffect {
     
     String getNameCard();
 
@@ -14,7 +14,7 @@ public interface ChangeEffect extends InfoEffect {
     
     String getImageURL();
     
-    Optional<ChangeEffect> getInnerEffect();
+    Optional<ComplexEffect> getInnerEffect();
     
     Optional<Effect> generateChangeEffect();
     

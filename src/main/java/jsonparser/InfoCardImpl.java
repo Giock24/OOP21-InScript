@@ -13,13 +13,13 @@ public class InfoCardImpl implements InfoCard {
     private final int lifeValue;
     private final int attackValue;
     private final int manaCost;
-    private final ChangeEffect effect;
+    private final ComplexEffect effect;
     private final String imageURL;
     private final int copies;
     String effectName; 
 
     
-    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ChangeEffect effect, final String imageURL, final int copies) {
+    public InfoCardImpl(final String name, final int lifeValue, final int attackValue, final int manaCost, final ComplexEffect effect, final String imageURL, final int copies) {
         this.name = name;
         this.lifeValue = lifeValue;
         this.attackValue = attackValue;
