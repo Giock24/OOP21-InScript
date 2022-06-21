@@ -16,6 +16,6 @@ public interface ComplexEffect extends SimpleEffect {
     
     Optional<ComplexEffect> getInnerEffect();
     
-    Optional<Effect> generateChangeEffect();
+    Optional<Effect> generateComplexEffect();
     
 }

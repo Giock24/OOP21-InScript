@@ -92,21 +92,21 @@ public class ComplexEffectImpl extends SimpleEffectImpl implements ComplexEffect
     }
 
     @Override
-    public Optional<Effect> generateChangeEffect() {
+    public Optional<Effect> generateComplexEffect() {
         if(effect.isPresent()) {
                 if("Growth".equals(super.getName())) {
-                    return Optional.of(new Growth(this.getNameCard(), this.lifePoints.get(), this.attack.get(), this.effect.get().generateChangeEffect(), this.imageURL.get()));
+                    return Optional.of(new Growth(this.getNameCard(), this.lifePoints.get(), this.attack.get(), this.effect.get().generateComplexEffect(), this.imageURL.get()));
                 }
                 else if("LastWill".equals(super.getName())) {
-                    return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateChangeEffect(), imageURL.get()));
+                    return Optional.of(new LastWill(name.get(), lifePoints.get(), attack.get(), this.effect.get().generateComplexEffect(), imageURL.get()));
                 }
                 else
                 {
-                    return this.effect.get().generateInfoEffect();
+                    return this.effect.get().generateSimpleEffect();
                 }
             }
         else {
-            return this.generateInfoEffect();
+            return this.generateSimpleEffect();
         }
     }
 

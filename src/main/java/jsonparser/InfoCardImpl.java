@@ -57,7 +57,7 @@ public class InfoCardImpl implements InfoCard {
     
     @Override
     public Optional<Effect> getEffect() {
-        return this.effect.generateChangeEffect();
+        return this.effect.generateComplexEffect();
     }
     
     @Override
@@ -73,10 +73,10 @@ public class InfoCardImpl implements InfoCard {
     @Override
     public Card generateCard() {
         if ("Growth".equals(effectName)) {  
-            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateChangeEffect(), effect.getImageURL());
+            return new CardFactoyImpl().growthEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateComplexEffect(), effect.getImageURL());
         }
         if ("LastWill".equals(effectName)) {
-            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateChangeEffect(), effect.getImageURL());
+            return new CardFactoyImpl().lastwillEffect(name, lifeValue, attackValue, manaCost, imageURL, effect.getNameCard(), effect.getLifePoints(), effect.getAttack(), effect.getInnerEffect().get().generateComplexEffect(), effect.getImageURL());
         }
         if ("Elusive".equals(effectName)) {
             return new CardFactoyImpl().elusiveEffect(name, lifeValue, attackValue, manaCost, imageURL);
