@@ -41,12 +41,17 @@ public class AppStateSingleton implements AppState {
     
     private List<Card> aiPlayerDeck;
     
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public  Map<String, List<Card>> getDecksList() {
         return  this.decksList;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Card> getHumanPlayerDeck() {
         final List<Card> humanPlayerDeckCopy = new ArrayList<>();
@@ -56,6 +61,9 @@ public class AppStateSingleton implements AppState {
         return humanPlayerDeckCopy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public List<Card> getAIPlayerDeck() {
         final List<Card> aiPlayerDeckCopy = new ArrayList<>();
@@ -65,21 +73,33 @@ public class AppStateSingleton implements AppState {
         return aiPlayerDeckCopy;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void selectHumanPlayerDeck(final String deckName) {
        humanPlayerDeck = decksList.get(deckName);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void selectAIPlayer(final String deckName) {
        aiPlayerDeck = decksList.get(deckName);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void removeDeck(final String deckName) {
        aiPlayerDeck = decksList.remove(deckName);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void addDeck(final String deckName, final List<Card> newDeck) {
         decksList.put(deckName,newDeck);

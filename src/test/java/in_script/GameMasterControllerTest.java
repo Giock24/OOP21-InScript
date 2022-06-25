@@ -2,7 +2,6 @@ package in_script;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,14 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import cards.Card;
-import drawphasemanager.DrawPhaseManager;
 import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
-import gamemaster.OnPhaseChange;
 import gamemaster.UpdateView;
-import shared.AppState;
-import shared.AppStateSingleton;
-import shared.Player;
 
 public class GameMasterControllerTest {
     
@@ -26,10 +20,9 @@ public class GameMasterControllerTest {
     @BeforeEach
     void initialize() {
         final UpdateView updateBoardView = () -> {};
-        final OnPhaseChange onPhaseChange = (String phase) -> {};
         final OnGameEnd onGameEnd = (String endMessage) -> {};
      
-        this.gameMasterController = new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
+        this.gameMasterController = new GameMasterControllerImpl(updateBoardView,onGameEnd);
     }
     
     @Test

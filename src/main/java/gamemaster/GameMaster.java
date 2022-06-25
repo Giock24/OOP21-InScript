@@ -19,17 +19,50 @@ public interface GameMaster {
      */
     int INTIAL_NUM_CARDS_IN_HAND = 3;
     
+    /**
+     * this method is meat to be call for doing some setup operation when the game start 
+     */
     void startGame();
     
+    /**
+     * this method is meat to be call for receive the user player
+     * 
+     * @return is the user player 
+     */
     Player getHumanPlayer();
     
+    /**
+     * this method is meat to be call for receive the AI player
+     * 
+     * @return is the AI player 
+     */
     Player getIAPlayer();
     
+    /**
+     * this method is meat to be call for receive the the manager for the Draw Phase player
+     *
+     * @return an instance of the DrawPhaseManager
+     */
     DrawPhaseManager getDrawPhaseManager();
     
+    /**
+     * this method is meat to be call for receive the the manager for the Main Phase player
+     *
+     * @return an instance of the MainPhaseManager
+     */
     MainPhaseManager getMainPhaseManager();
     
+    /**
+     * this method is meat to be call for receive the the manager for the Battle Phase player
+     *
+     * @return an instance of the BattlePhaseManager
+     */
     BattlePhaseManager getBattlePhaseManager();
     
+    /**
+     * this method is meat to be call for receive the the manager for the Main Phase AI player
+     *
+     * @return an instance of the MainPhaseManagerAI
+     */
     MainPhaseManagerIA getMainPhaseManagerAI();
 }
