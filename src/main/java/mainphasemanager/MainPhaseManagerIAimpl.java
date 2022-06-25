@@ -27,14 +27,7 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
      * {@inheritDoc}
      */
     @Override
-    public boolean startAIMainPhase() {
-        /*
-        playerAI.getHand().stream().forEach(card -> {
-            System.out.print(card.getMana()+"\n");
-        });
-        */
-        
-        //System.out.print( indexOfTheMostExpensivePlacebleCard());
+    public void startAIMainPhase() {
         
         if(numberOfEmptyBoardCell() != 0) {
             do {
@@ -47,13 +40,23 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
             } while (cheaperPlacableCard<=playerAI.getCurrentMana() && numberOfEmptyBoardCell() != 0);
         }
         
-        return false;
     }
     
+    /**
+     * this method calculate how many available cell are in the AI Board
+     * 
+     * @return the number of Empty Cell in the Board
+     */
     private int numberOfEmptyBoardCell() {
         return (int) playerAI.getCurrentBoard().stream().filter((card)->card.isEmpty()).count();
     }
     
+    /**
+     * this method return the card with the higher mana cost in the AI hand that 
+     * the AI is able to place based on AI current mana 
+     * 
+     * @return the card can be empty
+     */
     private Optional<Card> getMostExpensivePlacebleCard() {
 
         Optional<Card> MostExpensiveCard = Optional.empty();
@@ -76,7 +79,13 @@ public class MainPhaseManagerIAimpl implements MainPhaseManagerIA {
         return MostExpensiveCard;     
     }
     
-    
+    /**
+     * this method calculate the index of the most dangerous card of the enemy
+     * that not have any card in fort of it.
+     * the index of dangerousness of a card is based of its attack
+     * 
+     * @return index where AI should place the next card
+     */
     private int indexOfTheDungerousEnemyCardNotAlreadyCovered() {
         int indexOfTheDungerous = Math.abs(rand.nextInt()%Player.NUM_CARD_BOARD);
         do {indexOfTheDungerous = Math.abs(rand.nextInt()%Player.NUM_CARD_BOARD); } while (playerAI.getCurrentBoard().get(indexOfTheDungerous).isPresent());

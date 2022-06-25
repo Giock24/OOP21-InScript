@@ -47,6 +47,9 @@ public class GameMasterImpl implements GameMaster {
         this.mainPhaseManagerIA = new MainPhaseManagerIAimpl(humanPlayer, aiPlayer);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void startGame() {
         
@@ -59,31 +62,49 @@ public class GameMasterImpl implements GameMaster {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Player getHumanPlayer() {
         return humanPlayer;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Player getIAPlayer() {
         return aiPlayer;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DrawPhaseManager getDrawPhaseManager() {
         return drawPhaseManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public MainPhaseManager getMainPhaseManager() {
         return mainPhaseManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public BattlePhaseManager getBattlePhaseManager() {
         return battlePhaseManager;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public MainPhaseManagerIA getMainPhaseManagerAI() {
         return mainPhaseManagerIA;

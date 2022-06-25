@@ -12,23 +12,25 @@ public class GameMasterControllerImpl implements GameMasterController {
     
     private final GameMaster gameMaster;
     private final UpdateView updateView;
-    private final OnPhaseChange onPhaseChange;
     private final OnGameEnd onGameEnd;
     private Optional<Card> selectedCardToPlace;
     private Optional<Card> selectedCardToShow;
     
-    public GameMasterControllerImpl(UpdateView updateView,OnPhaseChange onPhaseChange,OnGameEnd onGameEnd) {
+    public GameMasterControllerImpl(UpdateView updateView,OnGameEnd onGameEnd) {
         this.updateView = updateView;
-        this.onPhaseChange = onPhaseChange;
         this.onGameEnd = onGameEnd;
         selectedCardToPlace = Optional.empty();
         selectedCardToShow = Optional.empty();
         final AppState appState =  AppStateSingleton.getInstance(); 
         gameMaster= new GameMasterImpl(appState.getHumanPlayerDeck(),appState.getAIPlayerDeck());
         gameMaster.startGame(); //TODO cosider to split the operation in start game in different method for use also slowUpdate
-        this.onPhaseChange.change(MainPhaseMessage);
     }
 
+    /**
+     * this method check if the game is over
+     * 
+     * @return true if the game is Over
+     */
     private boolean checkGameEnd() {
         if(getHumanPlayer().getLifePoints() <= GameMaster.MIN_PLAYER_LIFE ) {
             this.onGameEnd.end(GameOverLoseMessage);
@@ -45,30 +47,40 @@ public class GameMasterControllerImpl implements GameMasterController {
         return false;
     }
 
-    
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Card> getCardToPlace() {
         return selectedCardToPlace;
     }
     
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<Card> getCardToShow() {
         return selectedCardToShow;
     }
 
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Player getHumanPlayer() {
         return gameMaster.getHumanPlayer();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Player getIAPlayer() {
         return gameMaster.getIAPlayer();
     }
 
     /**
-     * handle the selection for the card to show in the card detail section
+     * {@inheritDoc}
      */
     @Override
     public void onSelectCardToShow(final Card card) {
@@ -77,7 +89,7 @@ public class GameMasterControllerImpl implements GameMasterController {
     }
 
     /**
-     *  handle the selection for the card to place in the board
+     * {@inheritDoc}
      */
     @Override
     public void onSelectCardToPlace(final Card card) {
@@ -87,7 +99,7 @@ public class GameMasterControllerImpl implements GameMasterController {
     }
 
     /**
-     *  handle the card placing on the board
+     * {@inheritDoc}
      */
     @Override
     public void onCardPlacing(final int indexOfTheCellInTheBoard) {
@@ -99,8 +111,7 @@ public class GameMasterControllerImpl implements GameMasterController {
     }
 
     /**
-     * handle the turn end
-     * 
+     * {@inheritDoc}
      */
     @Override
     public void onEndTurn() {
@@ -108,24 +119,18 @@ public class GameMasterControllerImpl implements GameMasterController {
         
         gameMaster.getBattlePhaseManager().startBattle(false);
         updateView.update();
-        this.onPhaseChange.change(BattlePhaseMessage);
         if(checkGameEnd())return;
         gameMaster.getDrawPhaseManager().draw(true);
-        this.onPhaseChange.change(DrawPhaseAIMessage);
         if(checkGameEnd())return;
         gameMaster.getMainPhaseManagerAI().startAIMainPhase();
         if(checkGameEnd())return;
         updateView.update();
-        this.onPhaseChange.change(MainPhaseAIMessage);
         gameMaster.getBattlePhaseManager().startBattle(true);
         updateView.update();
-        this.onPhaseChange.change(BattlePhaseAIMessage);
         if(checkGameEnd())return;
         gameMaster.getDrawPhaseManager().draw(false);
         updateView.update();
-        this.onPhaseChange.change(DrawPhaseMessage);
         if(checkGameEnd())return;
-        this.onPhaseChange.change(MainPhaseMessage);
 
     
     }

@@ -16,6 +16,11 @@ public class BalanceOfLifeGrafic {
         this.aI = aI;
     }
     
+    /**
+     * this method calculate which image of the balance should be placed
+     * 
+     * @return is the path of an image
+     */
     private String getBalanceURL() {
         if(player.getLifePoints()>aI.getLifePoints()) {
             return "image/Balance-icon-left-heavy.png";
@@ -26,6 +31,10 @@ public class BalanceOfLifeGrafic {
         }
     }
     
+    /**
+     * this method generate the grafic of the "Balance of life"
+     * @return the grafic of the "Balance of life" is an Hbox
+     */
     public HBox generateBalanceOfLife() {
         final HBox balance = new HBox();
         final Pane imageBalace = new Pane();

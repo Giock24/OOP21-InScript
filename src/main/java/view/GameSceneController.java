@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import cards.Card;
 import gamemaster.GameMasterControllerImpl;
 import gamemaster.OnGameEnd;
-import gamemaster.OnPhaseChange;
 import gamemaster.UpdateView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -55,7 +54,7 @@ public class GameSceneController extends AbstractController{
     
     @Override
     public void initialize(){
-        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onPhaseChange,onGameEnd);
+        this.gameMasterController= new GameMasterControllerImpl(updateBoardView,onGameEnd);
         this.cardGrafic = new CardGraficImpl();
         this.balanceGrafic = new BalanceOfLifeGrafic(this.gameMasterController.getHumanPlayer(),this.gameMasterController.getIAPlayer());
         inizializeEndTurnButton();
@@ -65,6 +64,9 @@ public class GameSceneController extends AbstractController{
        
     }
     
+    /**
+     * this method is meat to be call for update the view after a change in the player
+     */
     private final UpdateView updateBoardView = () -> {
 
         ////player info/////
@@ -81,18 +83,9 @@ public class GameSceneController extends AbstractController{
     
 };
 
-    private final OnPhaseChange onPhaseChange = (String phase) -> {
-        //try {
-            //this.currentPhase.setText(phase);
-            //System.out.print(phase+"\n");
-            //Thread.sleep(500);
-        //} catch (InterruptedException e) {
-         //   e.printStackTrace();
-        //}
-         
-
-    };
- 
+    /**
+     * this method is meat to be call for when the match is over
+     */
     private final OnGameEnd onGameEnd = (String endMessage) -> {
         showGameOverDialog(endMessage);
     };
@@ -100,7 +93,6 @@ public class GameSceneController extends AbstractController{
     /**
      * function update the end-turn button
      * 
-     * @param event
      */
     private void inizializeEndTurnButton() {
         battlePhaseButton.setMinSize(ViewState.CARD_WIDTH.getValue(), ViewState.CARD_WIDTH.getValue());
@@ -120,13 +112,17 @@ public class GameSceneController extends AbstractController{
         );
     }
     
+    /**
+     * this method is meat to be call for update the grafic of the
+     * "balance of life"
+     */
     private void updateBalance() {
         balance.getChildren().clear();
         balance.getChildren().add(balanceGrafic.generateBalanceOfLife());
     }
 
     /**
-     * this function attach the cards element to the HBox named boardIA
+     * this method update the grafic of the bord of the AI player
      */
     private void updateBoardIA() {    
         boardIA.getChildren().clear();
@@ -156,7 +152,7 @@ public class GameSceneController extends AbstractController{
     }
     
     /**
-     * this function attach the cards element to the HBox named boardIA
+     * this method update the grafic of the board of the Human Player
      */
     private void updateBoardPlayer() {    
         boardPlayer.getChildren().clear();
@@ -187,7 +183,7 @@ public class GameSceneController extends AbstractController{
     }
     
     /**
-     * this function attach the cards element to the HBOX named handPlayer
+     * this method update the grafic of the card in the hand of the Human player
      */
     private void updatePlayerHand() {
         handPlayer.getChildren().clear();
@@ -205,10 +201,7 @@ public class GameSceneController extends AbstractController{
     }
        
     /**
-     * this function generate the element for the VBox cardView 
-     * 
-     * @param card this is the selected card to show (it can be Optional.empty)
-     * @return
+     * this method update the grafic of the 'card in evidence'
      */
     private void updateCardViewElement() {
         
@@ -219,6 +212,9 @@ public class GameSceneController extends AbstractController{
         
     }
     
+    /**
+     * this method is meat to be use for return in the menu
+     */
     private void returnToMenu() {
         
         Music.BOARD_THEME.stopMusic();
